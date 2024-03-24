@@ -16,5 +16,10 @@ namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM
         {
             InitializeComponent();
         }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

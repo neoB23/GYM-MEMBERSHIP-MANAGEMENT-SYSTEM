@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.guna2GradientButton1 = new Guna.UI2.WinForms.Guna2GradientButton();
+            this.btnsave = new Guna.UI2.WinForms.Guna2GradientButton();
             this.btnDelete = new Guna.UI2.WinForms.Guna2GradientButton();
             this.btnUpdate = new Guna.UI2.WinForms.Guna2GradientButton();
-            this.txtusername = new Guna.UI2.WinForms.Guna2TextBox();
+            this.txtfirstname = new Guna.UI2.WinForms.Guna2TextBox();
             this.txtpassword = new Guna.UI2.WinForms.Guna2TextBox();
             this.guna2TextBox2 = new Guna.UI2.WinForms.Guna2TextBox();
             this.txtexp = new Guna.UI2.WinForms.Guna2TextBox();
@@ -46,6 +46,10 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
+            this.txtlastname = new Guna.UI2.WinForms.Guna2TextBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.txtusername = new Guna.UI2.WinForms.Guna2TextBox();
+            this.label9 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -56,22 +60,25 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(789, 330);
             this.dataGridView1.TabIndex = 0;
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            this.dataGridView1.RowHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView1_RowHeaderMouseClick);
             // 
-            // guna2GradientButton1
+            // btnsave
             // 
-            this.guna2GradientButton1.CheckedState.Parent = this.guna2GradientButton1;
-            this.guna2GradientButton1.CustomImages.Parent = this.guna2GradientButton1;
-            this.guna2GradientButton1.FillColor = System.Drawing.Color.White;
-            this.guna2GradientButton1.FillColor2 = System.Drawing.Color.Yellow;
-            this.guna2GradientButton1.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.guna2GradientButton1.ForeColor = System.Drawing.Color.Black;
-            this.guna2GradientButton1.HoverState.Parent = this.guna2GradientButton1;
-            this.guna2GradientButton1.Location = new System.Drawing.Point(375, 241);
-            this.guna2GradientButton1.Name = "guna2GradientButton1";
-            this.guna2GradientButton1.ShadowDecoration.Parent = this.guna2GradientButton1;
-            this.guna2GradientButton1.Size = new System.Drawing.Size(180, 45);
-            this.guna2GradientButton1.TabIndex = 27;
-            this.guna2GradientButton1.Text = "Save";
+            this.btnsave.CheckedState.Parent = this.btnsave;
+            this.btnsave.CustomImages.Parent = this.btnsave;
+            this.btnsave.FillColor = System.Drawing.Color.White;
+            this.btnsave.FillColor2 = System.Drawing.Color.Yellow;
+            this.btnsave.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.btnsave.ForeColor = System.Drawing.Color.Black;
+            this.btnsave.HoverState.Parent = this.btnsave;
+            this.btnsave.Location = new System.Drawing.Point(375, 241);
+            this.btnsave.Name = "btnsave";
+            this.btnsave.ShadowDecoration.Parent = this.btnsave;
+            this.btnsave.Size = new System.Drawing.Size(180, 45);
+            this.btnsave.TabIndex = 27;
+            this.btnsave.Text = "Save";
+            this.btnsave.Click += new System.EventHandler(this.btnsave_Click);
             // 
             // btnDelete
             // 
@@ -106,27 +113,27 @@
             this.btnUpdate.TabIndex = 25;
             this.btnUpdate.Text = "Edit";
             // 
-            // txtusername
+            // txtfirstname
             // 
-            this.txtusername.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtusername.DefaultText = "";
-            this.txtusername.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.txtusername.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.txtusername.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtusername.DisabledState.Parent = this.txtusername;
-            this.txtusername.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtusername.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtusername.FocusedState.Parent = this.txtusername;
-            this.txtusername.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtusername.HoverState.Parent = this.txtusername;
-            this.txtusername.Location = new System.Drawing.Point(45, 66);
-            this.txtusername.Name = "txtusername";
-            this.txtusername.PasswordChar = '\0';
-            this.txtusername.PlaceholderText = "";
-            this.txtusername.SelectedText = "";
-            this.txtusername.ShadowDecoration.Parent = this.txtusername;
-            this.txtusername.Size = new System.Drawing.Size(202, 36);
-            this.txtusername.TabIndex = 28;
+            this.txtfirstname.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtfirstname.DefaultText = "";
+            this.txtfirstname.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txtfirstname.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.txtfirstname.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtfirstname.DisabledState.Parent = this.txtfirstname;
+            this.txtfirstname.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtfirstname.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtfirstname.FocusedState.Parent = this.txtfirstname;
+            this.txtfirstname.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtfirstname.HoverState.Parent = this.txtfirstname;
+            this.txtfirstname.Location = new System.Drawing.Point(45, 66);
+            this.txtfirstname.Name = "txtfirstname";
+            this.txtfirstname.PasswordChar = '\0';
+            this.txtfirstname.PlaceholderText = "";
+            this.txtfirstname.SelectedText = "";
+            this.txtfirstname.ShadowDecoration.Parent = this.txtfirstname;
+            this.txtfirstname.Size = new System.Drawing.Size(202, 36);
+            this.txtfirstname.TabIndex = 28;
             // 
             // txtpassword
             // 
@@ -258,9 +265,9 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(42, 50);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(35, 13);
+            this.label1.Size = new System.Drawing.Size(60, 13);
             this.label1.TabIndex = 37;
-            this.label1.Text = "Name";
+            this.label1.Text = "First Name:";
             // 
             // label2
             // 
@@ -316,10 +323,77 @@
             this.label6.TabIndex = 43;
             this.label6.Text = "Password";
             // 
+            // txtlastname
+            // 
+            this.txtlastname.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtlastname.DefaultText = "";
+            this.txtlastname.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txtlastname.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.txtlastname.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtlastname.DisabledState.Parent = this.txtlastname;
+            this.txtlastname.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtlastname.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtlastname.FocusedState.Parent = this.txtlastname;
+            this.txtlastname.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtlastname.HoverState.Parent = this.txtlastname;
+            this.txtlastname.Location = new System.Drawing.Point(45, 199);
+            this.txtlastname.Name = "txtlastname";
+            this.txtlastname.PasswordChar = '\0';
+            this.txtlastname.PlaceholderText = "";
+            this.txtlastname.SelectedText = "";
+            this.txtlastname.ShadowDecoration.Parent = this.txtlastname;
+            this.txtlastname.Size = new System.Drawing.Size(202, 36);
+            this.txtlastname.TabIndex = 44;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(42, 183);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(58, 13);
+            this.label8.TabIndex = 45;
+            this.label8.Text = "Last Name";
+            // 
+            // txtusername
+            // 
+            this.txtusername.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtusername.DefaultText = "";
+            this.txtusername.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txtusername.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.txtusername.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtusername.DisabledState.Parent = this.txtusername;
+            this.txtusername.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtusername.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtusername.FocusedState.Parent = this.txtusername;
+            this.txtusername.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtusername.HoverState.Parent = this.txtusername;
+            this.txtusername.Location = new System.Drawing.Point(289, 199);
+            this.txtusername.Name = "txtusername";
+            this.txtusername.PasswordChar = '\0';
+            this.txtusername.PlaceholderText = "";
+            this.txtusername.SelectedText = "";
+            this.txtusername.ShadowDecoration.Parent = this.txtusername;
+            this.txtusername.Size = new System.Drawing.Size(202, 36);
+            this.txtusername.TabIndex = 46;
+            this.txtusername.TextChanged += new System.EventHandler(this.guna2TextBox1_TextChanged);
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(288, 183);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(58, 13);
+            this.label9.TabIndex = 47;
+            this.label9.Text = "Username:";
+            // 
             // UserControl1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.label9);
+            this.Controls.Add(this.txtusername);
+            this.Controls.Add(this.label8);
+            this.Controls.Add(this.txtlastname);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label5);
@@ -333,8 +407,8 @@
             this.Controls.Add(this.txtexp);
             this.Controls.Add(this.guna2TextBox2);
             this.Controls.Add(this.txtpassword);
-            this.Controls.Add(this.txtusername);
-            this.Controls.Add(this.guna2GradientButton1);
+            this.Controls.Add(this.txtfirstname);
+            this.Controls.Add(this.btnsave);
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnUpdate);
             this.Controls.Add(this.dataGridView1);
@@ -350,10 +424,10 @@
         #endregion
 
         private System.Windows.Forms.DataGridView dataGridView1;
-        private Guna.UI2.WinForms.Guna2GradientButton guna2GradientButton1;
+        private Guna.UI2.WinForms.Guna2GradientButton btnsave;
         private Guna.UI2.WinForms.Guna2GradientButton btnDelete;
         private Guna.UI2.WinForms.Guna2GradientButton btnUpdate;
-        private Guna.UI2.WinForms.Guna2TextBox txtusername;
+        private Guna.UI2.WinForms.Guna2TextBox txtfirstname;
         private Guna.UI2.WinForms.Guna2TextBox txtpassword;
         private Guna.UI2.WinForms.Guna2TextBox guna2TextBox2;
         private Guna.UI2.WinForms.Guna2TextBox txtexp;
@@ -367,5 +441,9 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
+        private Guna.UI2.WinForms.Guna2TextBox txtlastname;
+        private System.Windows.Forms.Label label8;
+        private Guna.UI2.WinForms.Guna2TextBox txtusername;
+        private System.Windows.Forms.Label label9;
     }
 }
