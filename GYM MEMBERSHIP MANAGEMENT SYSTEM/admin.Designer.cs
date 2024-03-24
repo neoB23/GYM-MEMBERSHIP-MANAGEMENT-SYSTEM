@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.bunifuCustomLabel6 = new Bunifu.Framework.UI.BunifuCustomLabel();
+            this.bunifuCustomLabel5 = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.bunifuCustomLabel4 = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.bunifuCustomLabel3 = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.bunifuCustomLabel2 = new Bunifu.Framework.UI.BunifuCustomLabel();
@@ -39,20 +41,47 @@
             this.userControl41 = new GYM_MEMBERSHIP_MANAGEMENT_SYSTEM.UserControl4();
             this.userControl31 = new GYM_MEMBERSHIP_MANAGEMENT_SYSTEM.UserControl3();
             this.userControl21 = new GYM_MEMBERSHIP_MANAGEMENT_SYSTEM.UserControl2();
+            this.userControl01 = new GYM_MEMBERSHIP_MANAGEMENT_SYSTEM.UserControl0();
+            this.userControl51 = new GYM_MEMBERSHIP_MANAGEMENT_SYSTEM.UserControl5();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.guna2Button1);
+            this.panel1.Controls.Add(this.bunifuCustomLabel6);
+            this.panel1.Controls.Add(this.bunifuCustomLabel5);
             this.panel1.Controls.Add(this.bunifuCustomLabel4);
             this.panel1.Controls.Add(this.bunifuCustomLabel3);
             this.panel1.Controls.Add(this.bunifuCustomLabel2);
             this.panel1.Controls.Add(this.bunifuCustomLabel1);
-            this.panel1.Controls.Add(this.guna2Button1);
             this.panel1.Location = new System.Drawing.Point(-1, 0);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(147, 647);
             this.panel1.TabIndex = 0;
+            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
+            // 
+            // bunifuCustomLabel6
+            // 
+            this.bunifuCustomLabel6.AutoSize = true;
+            this.bunifuCustomLabel6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bunifuCustomLabel6.Location = new System.Drawing.Point(30, 360);
+            this.bunifuCustomLabel6.Name = "bunifuCustomLabel6";
+            this.bunifuCustomLabel6.Size = new System.Drawing.Size(54, 20);
+            this.bunifuCustomLabel6.TabIndex = 10;
+            this.bunifuCustomLabel6.Text = "Admin";
+            this.bunifuCustomLabel6.Click += new System.EventHandler(this.bunifuCustomLabel6_Click);
+            // 
+            // bunifuCustomLabel5
+            // 
+            this.bunifuCustomLabel5.AutoSize = true;
+            this.bunifuCustomLabel5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bunifuCustomLabel5.Location = new System.Drawing.Point(30, 199);
+            this.bunifuCustomLabel5.Name = "bunifuCustomLabel5";
+            this.bunifuCustomLabel5.Size = new System.Drawing.Size(27, 20);
+            this.bunifuCustomLabel5.TabIndex = 9;
+            this.bunifuCustomLabel5.Text = "??";
+            this.bunifuCustomLabel5.Click += new System.EventHandler(this.bunifuCustomLabel5_Click);
             // 
             // bunifuCustomLabel4
             // 
@@ -108,7 +137,7 @@
             this.guna2Button1.Location = new System.Drawing.Point(0, 599);
             this.guna2Button1.Name = "guna2Button1";
             this.guna2Button1.ShadowDecoration.Parent = this.guna2Button1;
-            this.guna2Button1.Size = new System.Drawing.Size(145, 48);
+            this.guna2Button1.Size = new System.Drawing.Size(147, 48);
             this.guna2Button1.TabIndex = 4;
             this.guna2Button1.Text = "Log out";
             this.guna2Button1.Click += new System.EventHandler(this.guna2Button1_Click);
@@ -151,6 +180,20 @@
             this.userControl21.Size = new System.Drawing.Size(861, 656);
             this.userControl21.TabIndex = 2;
             // 
+            // userControl01
+            // 
+            this.userControl01.Location = new System.Drawing.Point(150, 0);
+            this.userControl01.Name = "userControl01";
+            this.userControl01.Size = new System.Drawing.Size(839, 647);
+            this.userControl01.TabIndex = 5;
+            // 
+            // userControl51
+            // 
+            this.userControl51.Location = new System.Drawing.Point(150, 0);
+            this.userControl51.Name = "userControl51";
+            this.userControl51.Size = new System.Drawing.Size(851, 647);
+            this.userControl51.TabIndex = 6;
+            // 
             // admin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -161,6 +204,8 @@
             this.Controls.Add(this.userControl41);
             this.Controls.Add(this.userControl31);
             this.Controls.Add(this.userControl21);
+            this.Controls.Add(this.userControl01);
+            this.Controls.Add(this.userControl51);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "admin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -184,5 +229,9 @@
         private UserControl2 userControl21;
         private UserControl3 userControl31;
         private UserControl4 userControl41;
+        private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel5;
+        private UserControl0 userControl01;
+        private UserControl5 userControl51;
+        private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel6;
     }
 }

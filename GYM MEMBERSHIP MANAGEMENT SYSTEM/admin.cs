@@ -20,21 +20,18 @@ namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM
         private void guna2Button1_Click(object sender, EventArgs e)
         {
             DialogResult result = MessageBox.Show("Are you sure you want to log out?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-
-            // Check if the user confirms the logout
             if (result == DialogResult.Yes)
             {
-                // Perform logout action
-                // For example, you can hide the current form and show the login form
+                
                 this.Hide();
-                Form1 Form1 = new Form1(); // Replace LoginForm with the actual name of your login form
+                Form1 Form1 = new Form1(); 
                 Form1.Show();
             }
         }
 
         private void bunifuCustomLabel1_Click(object sender, EventArgs e)
         {
-
+            userControl01.Hide();
             userControl11.Show();
             userControl11.BringToFront();
         }
@@ -79,6 +76,24 @@ namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM
         private void userControl41_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void bunifuCustomLabel5_Click(object sender, EventArgs e)
+        {
+            userControl01.Show();
+            userControl01.BringToFront();   
+        }
+
+        private void bunifuCustomLabel6_Click(object sender, EventArgs e)
+        {
+            userControl41.Hide();
+            userControl51.Show();
+            userControl51.BringToFront();   
         }
     }
 }

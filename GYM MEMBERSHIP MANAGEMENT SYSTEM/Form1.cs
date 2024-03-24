@@ -141,5 +141,10 @@ namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM
                 txtpassword.PasswordChar = '*';
             }
         }
+
+        private void bunifuThinButton21_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
+        }
     }
 }

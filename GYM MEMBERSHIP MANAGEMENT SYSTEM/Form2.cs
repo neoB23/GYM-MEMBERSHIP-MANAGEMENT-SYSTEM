@@ -224,7 +224,6 @@ namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM
                 return builder.ToString();
             }
         }
-
         private void bunifuCheckbox1_OnChange(object sender, EventArgs e)
         {
             

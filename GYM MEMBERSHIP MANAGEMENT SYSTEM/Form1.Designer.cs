@@ -73,13 +73,14 @@
             this.bunifuThinButton21.IdleFillColor = System.Drawing.Color.White;
             this.bunifuThinButton21.IdleForecolor = System.Drawing.Color.SeaGreen;
             this.bunifuThinButton21.IdleLineColor = System.Drawing.Color.SeaGreen;
-            this.bunifuThinButton21.Location = new System.Drawing.Point(352, 311);
+            this.bunifuThinButton21.Location = new System.Drawing.Point(354, 303);
             this.bunifuThinButton21.Margin = new System.Windows.Forms.Padding(5);
             this.bunifuThinButton21.Name = "bunifuThinButton21";
             this.bunifuThinButton21.Size = new System.Drawing.Size(202, 41);
             this.bunifuThinButton21.TabIndex = 1;
             this.bunifuThinButton21.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.bunifuThinButton21.Click += new System.EventHandler(this.bunifuThinButton21_Click);
+            this.bunifuThinButton21.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.bunifuThinButton21_KeyPress);
             // 
             // txtusername
             // 

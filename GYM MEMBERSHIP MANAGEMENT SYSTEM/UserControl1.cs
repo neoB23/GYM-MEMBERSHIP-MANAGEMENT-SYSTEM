@@ -7,6 +7,7 @@ using System.Drawing;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml.Linq;
@@ -22,6 +23,7 @@ namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM
         public UserControl1()
         {
             InitializeComponent();
+            DisplayData();
         }
 
         private void UserControl1_Load(object sender, EventArgs e)
@@ -29,10 +31,50 @@ namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM
 
         }
 
+        private bool IsNumeric(string text)
+        {
+            foreach (char c in text)
+            {
+                if (!char.IsDigit(c))
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
            
+            // Check if the user name is entered
+            if (!string.IsNullOrEmpty(txtfirstname.Text))
+            {
+                // Create a command to delete the user
+                string sql = "DELETE FROM coach WHERE firstname=@firstname";
+                cmd = new MySqlCommand(sql, con);
+                cmd.Parameters.AddWithValue("@firstname", txtfirstname.Text); // Use @firstname instead of @name
+
+                // Open the connection and execute the command
+                con.Open();
+                int rowsAffected = cmd.ExecuteNonQuery();
+                con.Close();
+
+                // Check if any row was affected
+                if (rowsAffected > 0)
+                {
+                    MessageBox.Show("User deleted successfully!", "DELETE", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    DisplayData();
+                    ClearData();
+                }
+                else
+                {
+                    MessageBox.Show("No user found with this name!", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Enter the name of the user you want to delete", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -42,6 +84,20 @@ namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM
 
         private void btnsave_Click(object sender, EventArgs e)
         {
+            // Check if any of the required fields are empty
+            if (string.IsNullOrWhiteSpace(txtusername.Text) ||
+                string.IsNullOrWhiteSpace(txtpassword.Text) ||
+                string.IsNullOrWhiteSpace(txtfirstname.Text) ||
+                string.IsNullOrWhiteSpace(txtlastname.Text) ||
+                timepicker.Value == null ||
+                string.IsNullOrWhiteSpace(txtphonenumber.Text) ||
+                string.IsNullOrWhiteSpace(txtexp.Text) ||
+                cmbgender.SelectedItem == null)
+            {
+                MessageBox.Show("Fill up all information", "Error");
+                return; // Return without further processing if any field is empty
+            }
+
             // Checks if Username Exists
             MySqlCommand cmd1 = new MySqlCommand("SELECT * FROM coach WHERE FirstName = @firstname", con); // Changed column name in the query
             cmd1.Parameters.AddWithValue("@firstname", txtfirstname.Text);
@@ -53,57 +109,106 @@ namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM
                 if (userExists)
                 {
                     MessageBox.Show("Username not available!", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    con.Close();
+                    return;
                 }
             }
             con.Close();
 
-            if (!userExists)
+            // Special characters pattern for password
+            string passwordPattern = @"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^\da-zA-Z]).{8,}$";
+            // Minimum length for username, password, email, phone number, first name, last name, and address
+            int minimumUsernameLength = 6;
+            int minimumPasswordLength = 8;
+            int minimumPhoneNumLength = 11;
+            int minimumFirstNameLength = 3;
+            int minimumLastNameLength = 3;
+
+            if (!IsNumeric(txtphonenumber.Text))
             {
-                // Adds a User in the Database
-                if (!string.IsNullOrWhiteSpace(txtfirstname.Text) && !string.IsNullOrWhiteSpace(txtlastname.Text) && !string.IsNullOrWhiteSpace(txtpassword.Text) && timepicker.Value != null && !string.IsNullOrWhiteSpace(txtphonenumber.Text) && !string.IsNullOrWhiteSpace(txtexp.Text) && cmbgender.SelectedItem != null)
-                {
-                    MySqlCommand cmd = new MySqlCommand("INSERT INTO coach(FirstName, LastName, UserName, Password, DateofBirth, `contactnumber`, Experience, Gender) VALUES(@FirstName, @LastName, @username, @password, @dateofbirth, @contactnum, @exp, @gender)", con); // Changed column names in the query
-                    con.Open();
-                    cmd.Parameters.AddWithValue("@FirstName", txtfirstname.Text);
-                    cmd.Parameters.AddWithValue("@LastName", txtlastname.Text);
-                    cmd.Parameters.AddWithValue("@username", txtusername.Text);
-                    cmd.Parameters.AddWithValue("@password", txtpassword.Text);
-                    cmd.Parameters.AddWithValue("@dateofbirth", timepicker.Value);
-                    cmd.Parameters.AddWithValue("@contactnum", txtphonenumber.Text);
-                    cmd.Parameters.AddWithValue("@exp", txtexp.Text);
-                    cmd.Parameters.AddWithValue("@gender", cmbgender.SelectedItem.ToString());
-                    cmd.ExecuteNonQuery();
-                    con.Close();
-                    MessageBox.Show("You have successfully rented a car", "SAVE", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    DisplayData();
-                    ClearData();
-                }
-                else
-                {
-                    MessageBox.Show("Fill out all the information needed", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+                MessageBox.Show("Phone number should contain only numeric characters", "Error");
+                return; // Return without further processing if phone number is not numeric
             }
+
+            // Check other validations if all fields are filled and phone number is numeric
+            if (txtusername.Text.Length < minimumUsernameLength)
+            {
+                // Display error message if username length is less than minimum
+                MessageBox.Show($"Username must be at least {minimumUsernameLength} characters long", "Error");
+                return;
+            }
+            else if (txtpassword.Text.Length < minimumPasswordLength)
+            {
+                // Display error message if password length is less than minimum
+                MessageBox.Show($"Password must be at least {minimumPasswordLength} characters long", "Error");
+                return;
+            }
+            else if (!Regex.IsMatch(txtpassword.Text, passwordPattern))
+            {
+                // Display error message if password format is incorrect
+                MessageBox.Show("Password must contain at least one uppercase letter, one lowercase letter, one special character, one number, and be at least 8 characters long", "Error");
+                return;
+            }
+            else if (txtphonenumber.Text.Length < minimumPhoneNumLength)
+            {
+                // Display error message if phone number length is less than minimum
+                MessageBox.Show($"Phone number must be at least {minimumPhoneNumLength} characters long", "Error");
+                return;
+            }
+            else if (txtfirstname.Text.Length < minimumFirstNameLength || txtlastname.Text.Length < minimumLastNameLength)
+            {
+                // Display error message if first name or last name length is less than minimum
+                MessageBox.Show($"First name and Last name must be at least {minimumFirstNameLength} characters long", "Error");
+                return;
+            }
+
+            // Adds a User in the Database
+            MySqlCommand cmd = new MySqlCommand("INSERT INTO coach(FirstName, LastName, UserName, Password, DateofBirth, `contactnumber`, Experience, Gender) VALUES(@FirstName, @LastName, @username, @password, @dateofbirth, @contactnum, @exp, @gender)", con); // Changed column names in the query
+            con.Open();
+            cmd.Parameters.AddWithValue("@FirstName", txtfirstname.Text);
+            cmd.Parameters.AddWithValue("@LastName", txtlastname.Text);
+            cmd.Parameters.AddWithValue("@username", txtusername.Text);
+            cmd.Parameters.AddWithValue("@password", txtpassword.Text);
+            cmd.Parameters.AddWithValue("@dateofbirth", timepicker.Value);
+            cmd.Parameters.AddWithValue("@contactnum", txtphonenumber.Text);
+            cmd.Parameters.AddWithValue("@exp", txtexp.Text);
+            cmd.Parameters.AddWithValue("@gender", cmbgender.SelectedItem.ToString());
+            cmd.ExecuteNonQuery();
+            con.Close();
+            MessageBox.Show("Coach added successfully", "SAVE", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            DisplayData();
+            ClearData();
         }
         private void dataGridView1_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
-            txtfirstname.Text = dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString();
-            txtlastname.Text = dataGridView1.Rows[e.RowIndex].Cells[1].Value.ToString();
-            txtusername.Text = dataGridView1.Rows[e.RowIndex].Cells[2].Value.ToString();
-            txtpassword.Text = dataGridView1.Rows[e.RowIndex].Cells[3].Value.ToString(); // Changed index to match the correct column
-            timepicker.Value = Convert.ToDateTime(dataGridView1.Rows[e.RowIndex].Cells[4].Value); // Convert string to DateTime
-            txtphonenumber.Text = dataGridView1.Rows[e.RowIndex].Cells[5].Value.ToString(); // Changed index to match the correct column
-            txtexp.Text = dataGridView1.Rows[e.RowIndex].Cells[6].Value.ToString();
-            cmbgender.SelectedItem = dataGridView1.Rows[e.RowIndex].Cells[7].Value.ToString();
+            if (e.RowIndex >= 0 && e.RowIndex < dataGridView2.Rows.Count)
+            {
+                txtfirstname.Text = dataGridView2.Rows[e.RowIndex].Cells["firstname"].Value?.ToString() ?? "";
+                txtlastname.Text = dataGridView2.Rows[e.RowIndex].Cells["lastname"].Value?.ToString();
+                txtusername.Text = dataGridView2.Rows[e.RowIndex].Cells["username"].Value?.ToString();
+                txtpassword.Text = dataGridView2.Rows[e.RowIndex].Cells["password"].Value?.ToString();
 
+                if (DateTime.TryParse(dataGridView2.Rows[e.RowIndex].Cells["dateofbirth"].Value?.ToString(), out DateTime dob))
+                    timepicker.Value = dob;
+
+                txtphonenumber.Text = dataGridView2.Rows[e.RowIndex].Cells["contactnumber"].Value?.ToString();
+                txtexp.Text = dataGridView2.Rows[e.RowIndex].Cells["experience"].Value?.ToString();
+
+                // Check if the column exists before accessing it
+                if (dataGridView2.Columns.Contains("gender") && dataGridView2.Rows[e.RowIndex].Cells["gender"].Value != null)
+                    cmbgender.SelectedItem = dataGridView2.Rows[e.RowIndex].Cells["gender"].Value.ToString();
+                else
+                    cmbgender.SelectedItem = null;
+            }
         }
         private void DisplayData()
         {
-            string sql = "SELECT firstname, lastname, username, password, dateofbirth, contactnumber, experience FROM coach"; // Changed column names
+            string sql = "SELECT firstname, lastname, username, password, dateofbirth, contactnumber, experience, gender FROM coach"; // Changed column names
             cmd = new MySqlCommand(sql, con);
             adapt = new MySqlDataAdapter(cmd);
             DataTable dt = new DataTable();
             adapt.Fill(dt);
-            dataGridView1.DataSource = dt;
+            dataGridView2.DataSource = dt;
         }
 
         // Clears the Data  
@@ -121,6 +226,53 @@ namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM
         private void guna2TextBox1_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnUpdate_Click(object sender, EventArgs e)
+        {
+            //may error sa pag update ng username
+            // Check if all required fields are filled
+            if (!string.IsNullOrWhiteSpace(txtfirstname.Text) &&
+                !string.IsNullOrWhiteSpace(txtlastname.Text) &&
+                !string.IsNullOrWhiteSpace(txtpassword.Text) &&
+                timepicker.Value != null &&
+                !string.IsNullOrWhiteSpace(txtphonenumber.Text) &&
+                !string.IsNullOrWhiteSpace(txtexp.Text) &&
+                cmbgender.SelectedItem != null)
+            {
+                // Create a command to update the user information
+                string sql = "UPDATE coach SET lastname = @LastName, username = @username, password = @password, dateofbirth = @dateofbirth, contactnumber = @contactnum, experience = @exp, gender = @gender WHERE firstname = @FirstName";
+                cmd = new MySqlCommand(sql, con);
+                cmd.Parameters.AddWithValue("@FirstName", txtfirstname.Text);
+                cmd.Parameters.AddWithValue("@LastName", txtlastname.Text);
+                cmd.Parameters.AddWithValue("@username", txtusername.Text);
+                cmd.Parameters.AddWithValue("@password", txtpassword.Text);
+                cmd.Parameters.AddWithValue("@dateofbirth", timepicker.Value);
+                cmd.Parameters.AddWithValue("@contactnum", txtphonenumber.Text); // Corrected parameter name
+                cmd.Parameters.AddWithValue("@exp", txtexp.Text);
+                cmd.Parameters.AddWithValue("@gender", cmbgender.SelectedItem.ToString());
+
+                // Open the connection and execute the command
+                con.Open();
+                int rowsAffected = cmd.ExecuteNonQuery();
+                con.Close();
+
+                // Check if any row was affected
+                if (rowsAffected > 0)
+                {
+                    MessageBox.Show("User information updated successfully!", "UPDATE", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    DisplayData();
+                    ClearData();
+                }
+                else
+                {
+                    MessageBox.Show("No user found with this name!", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Fill out all the information needed", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

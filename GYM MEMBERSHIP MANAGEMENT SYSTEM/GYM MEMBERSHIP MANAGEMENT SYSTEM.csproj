@@ -73,11 +73,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="aboutus.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="aboutus.Designer.cs">
+      <DependentUpon>aboutus.cs</DependentUpon>
+    </Compile>
     <Compile Include="admin.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="admin.Designer.cs">
       <DependentUpon>admin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="coach.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="coach.Designer.cs">
+      <DependentUpon>coach.cs</DependentUpon>
     </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
@@ -103,13 +115,37 @@
     <Compile Include="loadingscreen.Designer.cs">
       <DependentUpon>loadingscreen.cs</DependentUpon>
     </Compile>
+    <Compile Include="membership.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="membership.Designer.cs">
+      <DependentUpon>membership.cs</DependentUpon>
+    </Compile>
+    <Compile Include="profile.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="profile.Designer.cs">
+      <DependentUpon>profile.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="schedule.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="schedule.Designer.cs">
+      <DependentUpon>schedule.cs</DependentUpon>
+    </Compile>
     <Compile Include="termsagreement.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="termsagreement.Designer.cs">
       <DependentUpon>termsagreement.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControl0.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControl0.Designer.cs">
+      <DependentUpon>UserControl0.cs</DependentUpon>
     </Compile>
     <Compile Include="UserControl1.cs">
       <SubType>UserControl</SubType>
@@ -135,8 +171,20 @@
     <Compile Include="UserControl4.Designer.cs">
       <DependentUpon>UserControl4.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControl5.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControl5.Designer.cs">
+      <DependentUpon>UserControl5.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="aboutus.resx">
+      <DependentUpon>aboutus.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="admin.resx">
       <DependentUpon>admin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="coach.resx">
+      <DependentUpon>coach.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
@@ -150,6 +198,9 @@
     <EmbeddedResource Include="loadingscreen.resx">
       <DependentUpon>loadingscreen.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="membership.resx">
+      <DependentUpon>membership.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -159,8 +210,14 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="schedule.resx">
+      <DependentUpon>schedule.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="termsagreement.resx">
       <DependentUpon>termsagreement.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControl0.resx">
+      <DependentUpon>UserControl0.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControl1.resx">
       <DependentUpon>UserControl1.cs</DependentUpon>
@@ -173,6 +230,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserControl4.resx">
       <DependentUpon>UserControl4.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControl5.resx">
+      <DependentUpon>UserControl5.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

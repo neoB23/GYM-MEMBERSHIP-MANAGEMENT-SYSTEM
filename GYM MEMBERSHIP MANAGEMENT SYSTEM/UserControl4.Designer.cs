@@ -28,14 +28,17 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UserControl4));
             this.guna2GradientButton1 = new Guna.UI2.WinForms.Guna2GradientButton();
             this.btnDelete = new Guna.UI2.WinForms.Guna2GradientButton();
             this.btnUpdate = new Guna.UI2.WinForms.Guna2GradientButton();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.guna2ComboBox1 = new Guna.UI2.WinForms.Guna2ComboBox();
+            this.cmbmembership = new Guna.UI2.WinForms.Guna2ComboBox();
             this.guna2DateTimePicker1 = new Guna.UI2.WinForms.Guna2DateTimePicker();
             this.guna2DateTimePicker2 = new Guna.UI2.WinForms.Guna2DateTimePicker();
-            this.txtusername = new Guna.UI2.WinForms.Guna2TextBox();
+            this.txtname = new Guna.UI2.WinForms.Guna2TextBox();
+            this.printDocument1 = new System.Drawing.Printing.PrintDocument();
+            this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -92,27 +95,28 @@
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(51, 252);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(786, 385);
+            this.dataGridView1.Size = new System.Drawing.Size(710, 385);
             this.dataGridView1.TabIndex = 28;
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
-            // guna2ComboBox1
+            // cmbmembership
             // 
-            this.guna2ComboBox1.BackColor = System.Drawing.Color.Transparent;
-            this.guna2ComboBox1.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.guna2ComboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.guna2ComboBox1.FocusedColor = System.Drawing.Color.Empty;
-            this.guna2ComboBox1.FocusedState.Parent = this.guna2ComboBox1;
-            this.guna2ComboBox1.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.guna2ComboBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
-            this.guna2ComboBox1.FormattingEnabled = true;
-            this.guna2ComboBox1.HoverState.Parent = this.guna2ComboBox1;
-            this.guna2ComboBox1.ItemHeight = 30;
-            this.guna2ComboBox1.ItemsAppearance.Parent = this.guna2ComboBox1;
-            this.guna2ComboBox1.Location = new System.Drawing.Point(51, 115);
-            this.guna2ComboBox1.Name = "guna2ComboBox1";
-            this.guna2ComboBox1.ShadowDecoration.Parent = this.guna2ComboBox1;
-            this.guna2ComboBox1.Size = new System.Drawing.Size(140, 36);
-            this.guna2ComboBox1.TabIndex = 32;
+            this.cmbmembership.BackColor = System.Drawing.Color.Transparent;
+            this.cmbmembership.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cmbmembership.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbmembership.FocusedColor = System.Drawing.Color.Empty;
+            this.cmbmembership.FocusedState.Parent = this.cmbmembership;
+            this.cmbmembership.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.cmbmembership.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
+            this.cmbmembership.FormattingEnabled = true;
+            this.cmbmembership.HoverState.Parent = this.cmbmembership;
+            this.cmbmembership.ItemHeight = 30;
+            this.cmbmembership.ItemsAppearance.Parent = this.cmbmembership;
+            this.cmbmembership.Location = new System.Drawing.Point(51, 115);
+            this.cmbmembership.Name = "cmbmembership";
+            this.cmbmembership.ShadowDecoration.Parent = this.cmbmembership;
+            this.cmbmembership.Size = new System.Drawing.Size(140, 36);
+            this.cmbmembership.TabIndex = 32;
             // 
             // guna2DateTimePicker1
             // 
@@ -142,36 +146,46 @@
             this.guna2DateTimePicker2.TabIndex = 34;
             this.guna2DateTimePicker2.Value = new System.DateTime(2024, 3, 3, 23, 2, 33, 443);
             // 
-            // txtusername
+            // txtname
             // 
-            this.txtusername.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtusername.DefaultText = "";
-            this.txtusername.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.txtusername.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.txtusername.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtusername.DisabledState.Parent = this.txtusername;
-            this.txtusername.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtusername.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtusername.FocusedState.Parent = this.txtusername;
-            this.txtusername.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtusername.HoverState.Parent = this.txtusername;
-            this.txtusername.Location = new System.Drawing.Point(51, 53);
-            this.txtusername.Name = "txtusername";
-            this.txtusername.PasswordChar = '\0';
-            this.txtusername.PlaceholderText = "";
-            this.txtusername.SelectedText = "";
-            this.txtusername.ShadowDecoration.Parent = this.txtusername;
-            this.txtusername.Size = new System.Drawing.Size(202, 36);
-            this.txtusername.TabIndex = 38;
+            this.txtname.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtname.DefaultText = "";
+            this.txtname.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txtname.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.txtname.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtname.DisabledState.Parent = this.txtname;
+            this.txtname.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtname.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtname.FocusedState.Parent = this.txtname;
+            this.txtname.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtname.HoverState.Parent = this.txtname;
+            this.txtname.Location = new System.Drawing.Point(51, 53);
+            this.txtname.Name = "txtname";
+            this.txtname.PasswordChar = '\0';
+            this.txtname.PlaceholderText = "";
+            this.txtname.SelectedText = "";
+            this.txtname.ShadowDecoration.Parent = this.txtname;
+            this.txtname.Size = new System.Drawing.Size(202, 36);
+            this.txtname.TabIndex = 38;
+            // 
+            // printPreviewDialog1
+            // 
+            this.printPreviewDialog1.AutoScrollMargin = new System.Drawing.Size(0, 0);
+            this.printPreviewDialog1.AutoScrollMinSize = new System.Drawing.Size(0, 0);
+            this.printPreviewDialog1.ClientSize = new System.Drawing.Size(400, 300);
+            this.printPreviewDialog1.Enabled = true;
+            this.printPreviewDialog1.Icon = ((System.Drawing.Icon)(resources.GetObject("printPreviewDialog1.Icon")));
+            this.printPreviewDialog1.Name = "printPreviewDialog1";
+            this.printPreviewDialog1.Visible = false;
             // 
             // UserControl4
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.txtusername);
+            this.Controls.Add(this.txtname);
             this.Controls.Add(this.guna2DateTimePicker2);
             this.Controls.Add(this.guna2DateTimePicker1);
-            this.Controls.Add(this.guna2ComboBox1);
+            this.Controls.Add(this.cmbmembership);
             this.Controls.Add(this.guna2GradientButton1);
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnUpdate);
@@ -189,9 +203,11 @@
         private Guna.UI2.WinForms.Guna2GradientButton btnDelete;
         private Guna.UI2.WinForms.Guna2GradientButton btnUpdate;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private Guna.UI2.WinForms.Guna2ComboBox guna2ComboBox1;
+        private Guna.UI2.WinForms.Guna2ComboBox cmbmembership;
         private Guna.UI2.WinForms.Guna2DateTimePicker guna2DateTimePicker1;
         private Guna.UI2.WinForms.Guna2DateTimePicker guna2DateTimePicker2;
-        private Guna.UI2.WinForms.Guna2TextBox txtusername;
+        private Guna.UI2.WinForms.Guna2TextBox txtname;
+        private System.Drawing.Printing.PrintDocument printDocument1;
+        private System.Windows.Forms.PrintPreviewDialog printPreviewDialog1;
     }
 }
