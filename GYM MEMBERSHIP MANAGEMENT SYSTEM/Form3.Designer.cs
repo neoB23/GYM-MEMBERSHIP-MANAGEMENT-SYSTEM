@@ -41,11 +41,11 @@
             this.guna2GradientButton2 = new Guna.UI2.WinForms.Guna2GradientButton();
             this.guna2GradientButton3 = new Guna.UI2.WinForms.Guna2GradientButton();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.profile1 = new GYM_MEMBERSHIP_MANAGEMENT_SYSTEM.profile();
             this.aboutus1 = new GYM_MEMBERSHIP_MANAGEMENT_SYSTEM.aboutus();
             this.coach1 = new GYM_MEMBERSHIP_MANAGEMENT_SYSTEM.coach();
             this.membership1 = new GYM_MEMBERSHIP_MANAGEMENT_SYSTEM.membership();
             this.schedule1 = new GYM_MEMBERSHIP_MANAGEMENT_SYSTEM.schedule();
+            this.profile1 = new GYM_MEMBERSHIP_MANAGEMENT_SYSTEM.profile();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -210,13 +210,6 @@
             this.panel2.Size = new System.Drawing.Size(1052, 100);
             this.panel2.TabIndex = 7;
             // 
-            // profile1
-            // 
-            this.profile1.Location = new System.Drawing.Point(121, -1);
-            this.profile1.Name = "profile1";
-            this.profile1.Size = new System.Drawing.Size(1052, 722);
-            this.profile1.TabIndex = 12;
-            // 
             // aboutus1
             // 
             this.aboutus1.BackColor = System.Drawing.Color.SaddleBrown;
@@ -248,6 +241,13 @@
             this.schedule1.Name = "schedule1";
             this.schedule1.Size = new System.Drawing.Size(1049, 625);
             this.schedule1.TabIndex = 8;
+            // 
+            // profile1
+            // 
+            this.profile1.Location = new System.Drawing.Point(121, -1);
+            this.profile1.Name = "profile1";
+            this.profile1.Size = new System.Drawing.Size(1052, 722);
+            this.profile1.TabIndex = 12;
             // 
             // Form3
             // 
