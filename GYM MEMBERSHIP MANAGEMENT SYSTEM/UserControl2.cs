@@ -1,12 +1,6 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM
@@ -43,7 +37,7 @@ namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM
         }
         private void DisplayData()
         {
-            string sql = "SELECT id, firstname, lastname, username, password, emailadress, address, phonenumber, gender, account_created, membershipplan, img FROM register"; // Changed column names
+            string sql = "SELECT id, firstname, lastname, username, password, emailadress, address, phonenumber, gender, account_created, membershipplan FROM register";
             cmd = new MySqlCommand(sql, con);
             adapt = new MySqlDataAdapter(cmd);
             DataTable dt = new DataTable();
@@ -51,7 +45,7 @@ namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM
             dataGridView1.DataSource = dt;
         }
 
-        // Clears the Data  
+
         private void ClearData()
         {
             txtusername.Text = "";
