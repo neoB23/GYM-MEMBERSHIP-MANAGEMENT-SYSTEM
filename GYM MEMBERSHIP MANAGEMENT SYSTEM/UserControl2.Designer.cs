@@ -31,7 +31,7 @@
             this.guna2GradientButton1 = new Guna.UI2.WinForms.Guna2GradientButton();
             this.btnDelete = new Guna.UI2.WinForms.Guna2GradientButton();
             this.btnUpdate = new Guna.UI2.WinForms.Guna2GradientButton();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.timepicker = new Guna.UI2.WinForms.Guna2DateTimePicker();
             this.label9 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -42,7 +42,6 @@
             this.label7 = new System.Windows.Forms.Label();
             this.txtusername = new Guna.UI2.WinForms.Guna2TextBox();
             this.txtpassword = new Guna.UI2.WinForms.Guna2TextBox();
-            this.txtgender = new Guna.UI2.WinForms.Guna2TextBox();
             this.txtemailadd = new Guna.UI2.WinForms.Guna2TextBox();
             this.txtadd = new Guna.UI2.WinForms.Guna2TextBox();
             this.txtphonenum = new Guna.UI2.WinForms.Guna2TextBox();
@@ -51,7 +50,8 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.cmbmembership = new Guna.UI2.WinForms.Guna2ComboBox();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.cmbgender = new Guna.UI2.WinForms.Guna2ComboBox();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.SuspendLayout();
             // 
             // guna2GradientButton1
@@ -104,14 +104,15 @@
             this.btnUpdate.Text = "Edit";
             this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
-            // dataGridView1
+            // dataGridView2
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(42, 352);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(693, 287);
-            this.dataGridView1.TabIndex = 28;
-            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView2.Location = new System.Drawing.Point(42, 352);
+            this.dataGridView2.Name = "dataGridView2";
+            this.dataGridView2.Size = new System.Drawing.Size(693, 287);
+            this.dataGridView2.TabIndex = 28;
+            this.dataGridView2.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            this.dataGridView2.RowHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView2_RowHeaderMouseClick);
             // 
             // timepicker
             // 
@@ -252,28 +253,6 @@
             this.txtpassword.ShadowDecoration.Parent = this.txtpassword;
             this.txtpassword.Size = new System.Drawing.Size(209, 36);
             this.txtpassword.TabIndex = 114;
-            // 
-            // txtgender
-            // 
-            this.txtgender.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtgender.DefaultText = "";
-            this.txtgender.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.txtgender.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.txtgender.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtgender.DisabledState.Parent = this.txtgender;
-            this.txtgender.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtgender.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtgender.FocusedState.Parent = this.txtgender;
-            this.txtgender.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtgender.HoverState.Parent = this.txtgender;
-            this.txtgender.Location = new System.Drawing.Point(42, 169);
-            this.txtgender.Name = "txtgender";
-            this.txtgender.PasswordChar = '\0';
-            this.txtgender.PlaceholderText = "";
-            this.txtgender.SelectedText = "";
-            this.txtgender.ShadowDecoration.Parent = this.txtgender;
-            this.txtgender.Size = new System.Drawing.Size(209, 36);
-            this.txtgender.TabIndex = 115;
             // 
             // txtemailadd
             // 
@@ -419,10 +398,34 @@
             this.cmbmembership.Size = new System.Drawing.Size(209, 36);
             this.cmbmembership.TabIndex = 126;
             // 
+            // cmbgender
+            // 
+            this.cmbgender.BackColor = System.Drawing.Color.Transparent;
+            this.cmbgender.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cmbgender.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbgender.FocusedColor = System.Drawing.Color.Empty;
+            this.cmbgender.FocusedState.Parent = this.cmbgender;
+            this.cmbgender.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.cmbgender.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
+            this.cmbgender.FormattingEnabled = true;
+            this.cmbgender.HoverState.Parent = this.cmbgender;
+            this.cmbgender.ItemHeight = 30;
+            this.cmbgender.Items.AddRange(new object[] {
+            "Male",
+            "Female",
+            "Prefer not to say"});
+            this.cmbgender.ItemsAppearance.Parent = this.cmbgender;
+            this.cmbgender.Location = new System.Drawing.Point(42, 178);
+            this.cmbgender.Name = "cmbgender";
+            this.cmbgender.ShadowDecoration.Parent = this.cmbgender;
+            this.cmbgender.Size = new System.Drawing.Size(209, 36);
+            this.cmbgender.TabIndex = 127;
+            // 
             // UserControl2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.cmbgender);
             this.Controls.Add(this.cmbmembership);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label2);
@@ -432,7 +435,6 @@
             this.Controls.Add(this.txtphonenum);
             this.Controls.Add(this.txtadd);
             this.Controls.Add(this.txtemailadd);
-            this.Controls.Add(this.txtgender);
             this.Controls.Add(this.txtpassword);
             this.Controls.Add(this.txtusername);
             this.Controls.Add(this.label7);
@@ -445,11 +447,11 @@
             this.Controls.Add(this.guna2GradientButton1);
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnUpdate);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.dataGridView2);
             this.Name = "UserControl2";
             this.Size = new System.Drawing.Size(930, 679);
             this.Load += new System.EventHandler(this.UserControl2_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -460,7 +462,7 @@
         private Guna.UI2.WinForms.Guna2GradientButton guna2GradientButton1;
         private Guna.UI2.WinForms.Guna2GradientButton btnDelete;
         private Guna.UI2.WinForms.Guna2GradientButton btnUpdate;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dataGridView2;
         private Guna.UI2.WinForms.Guna2DateTimePicker timepicker;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label3;
@@ -471,7 +473,6 @@
         private System.Windows.Forms.Label label7;
         private Guna.UI2.WinForms.Guna2TextBox txtusername;
         private Guna.UI2.WinForms.Guna2TextBox txtpassword;
-        private Guna.UI2.WinForms.Guna2TextBox txtgender;
         private Guna.UI2.WinForms.Guna2TextBox txtemailadd;
         private Guna.UI2.WinForms.Guna2TextBox txtadd;
         private Guna.UI2.WinForms.Guna2TextBox txtphonenum;
@@ -480,5 +481,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label8;
         private Guna.UI2.WinForms.Guna2ComboBox cmbmembership;
+        private Guna.UI2.WinForms.Guna2ComboBox cmbgender;
     }
 }
