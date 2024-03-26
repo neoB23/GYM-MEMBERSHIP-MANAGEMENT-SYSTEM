@@ -236,5 +236,39 @@ namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM
                 
             }
         }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+
+            // Check if the user name is entered
+            if (!string.IsNullOrEmpty(txtfirstname.Text))
+            {
+                // Create a command to delete the user
+                string sql = "DELETE FROM register WHERE firstname=@firstname";
+                cmd = new MySqlCommand(sql, con);
+                cmd.Parameters.AddWithValue("@firstname", txtfirstname.Text); // Use @firstname instead of @name
+
+                // Open the connection and execute the command
+                con.Open();
+                int rowsAffected = cmd.ExecuteNonQuery();
+                con.Close();
+
+                // Check if any row was affected
+                if (rowsAffected > 0)
+                {
+                    MessageBox.Show("User deleted successfully!", "DELETE", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    DisplayData();
+                    ClearData();
+                }
+                else
+                {
+                    MessageBox.Show("No user found with this name!", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Enter the name of the user you want to delete", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
     }
 }

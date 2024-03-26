@@ -18,10 +18,11 @@ namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM
     public partial class profile : UserControl
     {
         private int userId; // Declare userId at the class level to make it accessible in different methods
-        public profile()
+
+        public profile(int userId)
         {
             InitializeComponent();
-            SetUserId(1); // Example: Set the user ID here
+            this.userId = userId;
             LoadUserData();
         }
 
@@ -88,26 +89,28 @@ namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM
                 using (MySqlConnection connection = new MySqlConnection(connectionString))
                 {
                     connection.Open();
-                    string query = "SELECT * FROM register WHERE id = @id"; // Assuming 'id' is the primary key column
+                    string query = "SELECT * FROM register WHERE id = @id";
                     MySqlCommand command = new MySqlCommand(query, connection);
                     command.Parameters.AddWithValue("@id", userId);
-                    MySqlDataReader reader = command.ExecuteReader();
-
-                    if (reader.Read())
+                    using (MySqlDataReader reader = command.ExecuteReader())
                     {
-                        // Populate TextBoxes with data from the database
-                        txtFirstName.Text = reader["firstname"].ToString();
-                        txtLastName.Text = reader["lastname"].ToString();
-                        txtUsername.Text = reader["username"].ToString();
-                        txtPassword.Text = reader["password"].ToString();
-                        txtEmail.Text = reader["emailadress"].ToString();
-                        txtAddress.Text = reader["address"].ToString();
-                        txtPhoneNumber.Text = reader["phonenumber"].ToString();
-                        txtGender.Text = reader["gender"].ToString();
-                        txtMembershipPla.Text = reader["membershipplan"].ToString();
+                        if (reader.Read())
+                        {
+                            txtFirstName.Text = reader["firstname"].ToString();
+                            txtLastName.Text = reader["lastname"].ToString();
+                            txtUsername.Text = reader["username"].ToString();
+                            txtPassword.Text = reader["password"].ToString();
+                            txtEmail.Text = reader["emailadress"].ToString();
+                            txtAddress.Text = reader["address"].ToString();
+                            txtPhoneNumber.Text = reader["phonenumber"].ToString();
+                            txtGender.Text = reader["gender"].ToString();
+                            txtMembershipPla.Text = reader["membershipplan"].ToString();
+                        }
+                        else
+                        {
+                            MessageBox.Show("User not found in the database.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
                     }
-
-                    reader.Close();
                 }
             }
             catch (Exception ex)
