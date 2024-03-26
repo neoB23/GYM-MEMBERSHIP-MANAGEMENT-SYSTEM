@@ -45,21 +45,14 @@ namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-           
-            // Check if the user name is entered
             if (!string.IsNullOrEmpty(txtfirstname.Text))
             {
-                // Create a command to delete the user
                 string sql = "DELETE FROM coach WHERE firstname=@firstname";
                 cmd = new MySqlCommand(sql, con);
-                cmd.Parameters.AddWithValue("@firstname", txtfirstname.Text); // Use @firstname instead of @name
-
-                // Open the connection and execute the command
+                cmd.Parameters.AddWithValue("@firstname", txtfirstname.Text); 
                 con.Open();
                 int rowsAffected = cmd.ExecuteNonQuery();
                 con.Close();
-
-                // Check if any row was affected
                 if (rowsAffected > 0)
                 {
                     MessageBox.Show("User deleted successfully!", "DELETE", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -84,7 +77,6 @@ namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM
 
         private void btnsave_Click(object sender, EventArgs e)
         {
-            // Check if any of the required fields are empty
             if (string.IsNullOrWhiteSpace(txtusername.Text) ||
                 string.IsNullOrWhiteSpace(txtpassword.Text) ||
                 string.IsNullOrWhiteSpace(txtfirstname.Text) ||
@@ -95,10 +87,8 @@ namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM
                 cmbgender.SelectedItem == null)
             {
                 MessageBox.Show("Fill up all information", "Error");
-                return; // Return without further processing if any field is empty
+                return; 
             }
-
-            // Checks if Username Exists
             MySqlCommand cmd1 = new MySqlCommand("SELECT * FROM coach WHERE FirstName = @firstname", con); // Changed column name in the query
             cmd1.Parameters.AddWithValue("@firstname", txtfirstname.Text);
             con.Open();

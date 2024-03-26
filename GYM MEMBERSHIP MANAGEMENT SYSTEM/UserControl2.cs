@@ -36,7 +36,6 @@ namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM
         private void guna2GradientButton1_Click(object sender, EventArgs e)
         {
 
-            // Check if any of the required fields are empty
             if (string.IsNullOrWhiteSpace(txtusername.Text) ||
                 string.IsNullOrWhiteSpace(txtpassword.Text) ||
                 string.IsNullOrWhiteSpace(txtfirstname.Text) ||
@@ -47,10 +46,9 @@ namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM
                 cmbgender.SelectedItem == null)
             {
                 MessageBox.Show("Fill up all information", "Error");
-                return; // Return without further processing if any field is empty
+                return; 
             }
 
-            // Checks if Username Exists
             MySqlCommand cmd1 = new MySqlCommand("SELECT * FROM coach WHERE FirstName = @firstname", con); // Changed column name in the query
             cmd1.Parameters.AddWithValue("@firstname", txtfirstname.Text);
             con.Open();
@@ -66,8 +64,6 @@ namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM
                 }
             }
             con.Close();
-
-            // Special characters pattern for password
             string passwordPattern = @"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^\da-zA-Z]).{8,}$";
             // Minimum length for username, password, email, phone number, first name, last name, and address
             int minimumUsernameLength = 6;
@@ -153,7 +149,6 @@ namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM
                 !string.IsNullOrWhiteSpace(txtphonenum.Text) &&
                 cmbgender.SelectedItem != null)
             {
-                // Create a command to update the user information
                 string sql = "UPDATE register SET lastname = @LastName, username = @username, password = @password, dateofbirth = @dateofbirth, contactnumber = @contactnum, gender = @gender WHERE firstname = @FirstName";
                 cmd = new MySqlCommand(sql, con);
                 cmd.Parameters.AddWithValue("@FirstName", txtfirstname.Text);
@@ -163,15 +158,11 @@ namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM
                 cmd.Parameters.AddWithValue("@dateofbirth", timepicker.Value);
                 cmd.Parameters.AddWithValue("@emailaddress", txtemailadd.Text);
                 cmd.Parameters.AddWithValue("@address", txtadd.Text);
-                cmd.Parameters.AddWithValue("@contactnum", txtphonenum.Text); // Corrected parameter name
+                cmd.Parameters.AddWithValue("@contactnum", txtphonenum.Text); 
                 cmd.Parameters.AddWithValue("@gender", cmbgender.SelectedItem.ToString());
-
-                // Open the connection and execute the command
                 con.Open();
                 int rowsAffected = cmd.ExecuteNonQuery();
                 con.Close();
-
-                // Check if any row was affected
                 if (rowsAffected > 0)
                 {
                     MessageBox.Show("User information updated successfully!", "UPDATE", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -223,8 +214,6 @@ namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM
                 txtemailadd.Text = dataGridView2.Rows[e.RowIndex].Cells["password"].Value?.ToString();
                 txtadd.Text = dataGridView2.Rows[e.RowIndex].Cells["password"].Value?.ToString();
                 txtphonenum.Text = dataGridView2.Rows[e.RowIndex].Cells["phonenumber"].Value?.ToString();
-
-                // Check if the column exists before accessing it
                 if (dataGridView2.Columns.Contains("gender") && dataGridView2.Rows[e.RowIndex].Cells["gender"].Value != null)
                     cmbgender.SelectedItem = dataGridView2.Rows[e.RowIndex].Cells["gender"].Value.ToString();
                 else
@@ -239,21 +228,14 @@ namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-
-            // Check if the user name is entered
             if (!string.IsNullOrEmpty(txtfirstname.Text))
             {
-                // Create a command to delete the user
                 string sql = "DELETE FROM register WHERE firstname=@firstname";
                 cmd = new MySqlCommand(sql, con);
-                cmd.Parameters.AddWithValue("@firstname", txtfirstname.Text); // Use @firstname instead of @name
-
-                // Open the connection and execute the command
+                cmd.Parameters.AddWithValue("@firstname", txtfirstname.Text); 
                 con.Open();
                 int rowsAffected = cmd.ExecuteNonQuery();
                 con.Close();
-
-                // Check if any row was affected
                 if (rowsAffected > 0)
                 {
                     MessageBox.Show("User deleted successfully!", "DELETE", MessageBoxButtons.OK, MessageBoxIcon.Information);

@@ -54,19 +54,16 @@ namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM
         }
         private void bunifuThinButton21_Click(object sender, EventArgs e)
         {
-            // Special characters pattern for password
             string passwordPattern = @"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^\da-zA-Z]).{8,}$";
             // Minimum length for username, password, email, phone number, first name, last name, and address
             int minimumUsernameLength = 6;
             int minimumPasswordLength = 8;
-            int minimumEmailLength = 5; // add function that will deny user when he/she doesnt input "@"
+            int minimumEmailLength = 5; // add function at deny user kapag he/she doesnt input "@"
             int minimumPhoneNumLength = 11; 
             int minimumFirstNameLength = 3;
             int minimumLastNameLength = 3;
             int minimumAddressLength = 10;
-            // Clear any previous error messages
             errorProvider1.Clear();
-            // Check if any of the required fields are empty
             if (string.IsNullOrEmpty(txtusername.Text) || string.IsNullOrEmpty(txtpassword.Text) || string.IsNullOrEmpty(txtemailadd.Text) || string.IsNullOrEmpty(txtphonenum.Text) || string.IsNullOrEmpty(txtfirstname.Text) || string.IsNullOrEmpty(txtlastname.Text) || string.IsNullOrEmpty(txtgender.Text) || string.IsNullOrEmpty(txtadd.Text))
             {
                 // Display error messages for empty fields
@@ -96,12 +93,12 @@ namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM
                     errorProvider1.SetError(txtadd, "Please enter your address");
 
                 MessageBox.Show("Fill up all information", "Error");
-                return; // Return without further processing if any field is empty
+                return;
             }
             if (!bunifuCheckbox1.Checked)
             {
                 MessageBox.Show("Please agree to the terms and agreement before registering.", "Error");
-                return; // Return without further processing
+                return;
             }
             // Check if contact number contains only numeric characters
             if (!IsNumeric(txtphonenum.Text))
@@ -191,8 +188,6 @@ namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM
                     cmd.Parameters.AddWithValue("@gender", txtgender.Text);
                     cmd.Parameters.AddWithValue("@address", txtadd.Text);
                     cmd.ExecuteNonQuery();
-
-                    // Registration successful
                     this.Hide();
                     Form1 Frm1 = new Form1();
                     Frm1.Show();

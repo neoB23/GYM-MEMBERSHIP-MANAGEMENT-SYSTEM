@@ -17,12 +17,13 @@ namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM
 {
     public partial class profile : UserControl
     {
+
         private int userId; // Declare userId at the class level to make it accessible in different methods
 
-        public profile(int userId)
+        public profile(int userId = 0)
         {
             InitializeComponent();
-            this.userId = userId;
+            this.userId = userId; // Assign the parameter value to the class-level variable
             LoadUserData();
         }
 

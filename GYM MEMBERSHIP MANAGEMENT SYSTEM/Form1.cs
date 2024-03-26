@@ -74,18 +74,16 @@ namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM
                 try
                 {
                     con.Open();
-                    // Query for checking if the user is an admin
                     sql = "SELECT * FROM Admin WHERE username = @username AND password = @password";
                     cmd = new MySqlCommand(sql, con);
                     cmd.Parameters.AddWithValue("@username", txtusername.Text);
-                    cmd.Parameters.AddWithValue("@password", txtpassword.Text); // No need to hash for admin login
+                    cmd.Parameters.AddWithValue("@password", txtpassword.Text); 
                     da = new MySqlDataAdapter(cmd);
                     dt = new DataTable();
                     da.Fill(dt);
 
                     if (dt.Rows.Count > 0)
                     {
-                        // Admin login, direct to admin form
                         MessageBox.Show("Admin Login Successful");
                         this.Hide();
                         admin admin = new admin();
@@ -93,7 +91,6 @@ namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM
                     }
                     else
                     {
-                        // Regular user login, direct to user form
                         sql = "SELECT * FROM register WHERE username = @username AND password = @password";
                         cmd = new MySqlCommand(sql, con);
                         cmd.Parameters.AddWithValue("@username", txtusername.Text);
@@ -104,7 +101,6 @@ namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM
 
                         if (dt.Rows.Count > 0)
                         {
-                            // Regular user login
                             MessageBox.Show("User Login Successful");
                             this.Hide();
                             Form3 Form3 = new Form3();

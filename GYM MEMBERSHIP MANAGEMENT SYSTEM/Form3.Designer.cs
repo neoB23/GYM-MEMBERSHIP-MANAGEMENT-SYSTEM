@@ -45,7 +45,7 @@
             this.coach1 = new GYM_MEMBERSHIP_MANAGEMENT_SYSTEM.coach();
             this.membership1 = new GYM_MEMBERSHIP_MANAGEMENT_SYSTEM.membership();
             this.schedule1 = new GYM_MEMBERSHIP_MANAGEMENT_SYSTEM.schedule();
-            this.profile1 = new GYM_MEMBERSHIP_MANAGEMENT_SYSTEM.profile();
+            this.profile1 = new GYM_MEMBERSHIP_MANAGEMENT_SYSTEM.profile(); 
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
