@@ -112,7 +112,7 @@ namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM
             }
 
             // Adds a User in the Database
-            MySqlCommand cmd = new MySqlCommand("INSERT INTO register(firstname, lastname, username, password, emailadress, address, phonenumber, gender, membershipplan) VALUES(@firstname, @lastname, @username, @password, @emailadress, @address, @phonenumber, @gender, @membershipplan)", con); // Changed column names in the query
+            MySqlCommand cmd = new MySqlCommand("INSERT INTO register(firstname, lastname, username, password, emailadress, address, phonenumber, gender, membershipplan) VALUES(@firstname, @lastname, @username, @password, @emailadress, @address, @phonenumber, @gender, @membershipplan)", con); 
             con.Open();
             cmd.Parameters.AddWithValue("@firstname", txtfirstname.Text);
             cmd.Parameters.AddWithValue("@lastname", txtlastname.Text);
@@ -121,7 +121,7 @@ namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM
             cmd.Parameters.AddWithValue("@dateofbirth", timepicker.Value);
             cmd.Parameters.AddWithValue("@phonenumber", txtphonenum.Text);
             cmd.Parameters.AddWithValue("@address", txtadd.Text);
-            cmd.Parameters.AddWithValue("@emailadress", txtemailadd.Text); // corrected parameter name
+            cmd.Parameters.AddWithValue("@emailadress", txtemailadd.Text);
             cmd.Parameters.AddWithValue("@membershipplan", cmbmembership.SelectedItem.ToString());
             cmd.Parameters.AddWithValue("@gender", cmbgender.SelectedItem.ToString());
             cmd.ExecuteNonQuery();
@@ -143,27 +143,28 @@ namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM
             //may error sa pag update ng username
             // Check if all required fields are filled
             if (!string.IsNullOrWhiteSpace(txtfirstname.Text) &&
-                 !string.IsNullOrWhiteSpace(txtusername.Text) &&
-                  !string.IsNullOrWhiteSpace(txtadd.Text) &&
+                !string.IsNullOrWhiteSpace(txtusername.Text) &&
+                !string.IsNullOrWhiteSpace(txtadd.Text) &&
                 !string.IsNullOrWhiteSpace(txtlastname.Text) &&
-                 !string.IsNullOrWhiteSpace(txtemailadd.Text) &&
+                !string.IsNullOrWhiteSpace(txtemailadd.Text) &&
                 !string.IsNullOrWhiteSpace(txtpassword.Text) &&
-
                 timepicker.Value != null &&
                 !string.IsNullOrWhiteSpace(txtphonenum.Text) &&
-                cmbgender.SelectedItem != null)
+                cmbgender.SelectedItem != null &&
+                cmbmembership.SelectedItem != null)
             {
-                string sql = "UPDATE register SET lastname = @LastName, username = @username, password = @password, dateofbirth = @dateofbirth, contactnumber = @contactnum, gender = @gender WHERE firstname = @FirstName";
+                string sql = "UPDATE register SET lastname = @lastname, username = @username, password = @password, emailadress = @emailadress, address = @address, phonenumber = @phonenumber, gender = @gender, membershipplan = @membershipplan WHERE firstname = @FirstName";
                 cmd = new MySqlCommand(sql, con);
                 cmd.Parameters.AddWithValue("@FirstName", txtfirstname.Text);
                 cmd.Parameters.AddWithValue("@LastName", txtlastname.Text);
                 cmd.Parameters.AddWithValue("@username", txtusername.Text);
                 cmd.Parameters.AddWithValue("@password", txtpassword.Text);
                 cmd.Parameters.AddWithValue("@dateofbirth", timepicker.Value);
-                cmd.Parameters.AddWithValue("@emailaddress", txtemailadd.Text);
+                cmd.Parameters.AddWithValue("@emailadress", txtemailadd.Text);
                 cmd.Parameters.AddWithValue("@address", txtadd.Text);
-                cmd.Parameters.AddWithValue("@contactnum", txtphonenum.Text); 
+                cmd.Parameters.AddWithValue("@phonenumber", txtphonenum.Text); 
                 cmd.Parameters.AddWithValue("@gender", cmbgender.SelectedItem.ToString());
+                cmd.Parameters.AddWithValue("@membershipplan", cmbmembership.SelectedItem.ToString());
                 con.Open();
                 int rowsAffected = cmd.ExecuteNonQuery();
                 con.Close();
@@ -242,7 +243,7 @@ namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM
                 con.Close();
                 if (rowsAffected > 0)
                 {
-                    MessageBox.Show("User deleted successfully!", "DELETE", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Member deleted successfully!", "DELETE", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     DisplayData();
                     ClearData();
                 }

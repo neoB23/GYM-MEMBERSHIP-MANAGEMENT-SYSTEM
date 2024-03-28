@@ -386,7 +386,6 @@
             this.cmbmembership.HoverState.Parent = this.cmbmembership;
             this.cmbmembership.ItemHeight = 30;
             this.cmbmembership.Items.AddRange(new object[] {
-            "",
             "Bronze Membership",
             "Silver Membership",
             "Gold Membership",
