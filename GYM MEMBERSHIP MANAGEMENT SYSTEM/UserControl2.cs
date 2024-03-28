@@ -35,21 +35,22 @@ namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM
         }
         private void guna2GradientButton1_Click(object sender, EventArgs e)
         {
-
             if (string.IsNullOrWhiteSpace(txtusername.Text) ||
                 string.IsNullOrWhiteSpace(txtpassword.Text) ||
                 string.IsNullOrWhiteSpace(txtfirstname.Text) ||
                 string.IsNullOrWhiteSpace(txtlastname.Text) ||
                 timepicker.Value == null ||
                 string.IsNullOrWhiteSpace(txtphonenum.Text) ||
-                
-                cmbgender.SelectedItem == null)
+                string.IsNullOrWhiteSpace(txtemailadd.Text) ||
+                string.IsNullOrWhiteSpace(txtadd.Text) ||
+                cmbgender.SelectedItem == null ||
+                cmbmembership.SelectedItem == null)
             {
                 MessageBox.Show("Fill up all information", "Error");
-                return; 
+                return;
             }
 
-            MySqlCommand cmd1 = new MySqlCommand("SELECT * FROM coach WHERE FirstName = @firstname", con); // Changed column name in the query
+            MySqlCommand cmd1 = new MySqlCommand("SELECT * FROM register WHERE FirstName = @firstname", con); // Changed column name in the query
             cmd1.Parameters.AddWithValue("@firstname", txtfirstname.Text);
             con.Open();
             bool userExists = false;
@@ -111,23 +112,26 @@ namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM
             }
 
             // Adds a User in the Database
-            MySqlCommand cmd = new MySqlCommand("INSERT INTO coach(FirstName, LastName, UserName, Password, DateofBirth, `contactnumber`,  Gender) VALUES(@FirstName, @LastName, @username, @password, @dateofbirth, @contactnum, @gender)", con); // Changed column names in the query
+            MySqlCommand cmd = new MySqlCommand("INSERT INTO register(firstname, lastname, username, password, emailadress, address, phonenumber, gender, membershipplan) VALUES(@firstname, @lastname, @username, @password, @emailadress, @address, @phonenumber, @gender, @membershipplan)", con); // Changed column names in the query
             con.Open();
-            cmd.Parameters.AddWithValue("@FirstName", txtfirstname.Text);
-            cmd.Parameters.AddWithValue("@LastName", txtlastname.Text);
+            cmd.Parameters.AddWithValue("@firstname", txtfirstname.Text);
+            cmd.Parameters.AddWithValue("@lastname", txtlastname.Text);
             cmd.Parameters.AddWithValue("@username", txtusername.Text);
             cmd.Parameters.AddWithValue("@password", txtpassword.Text);
             cmd.Parameters.AddWithValue("@dateofbirth", timepicker.Value);
-            cmd.Parameters.AddWithValue("@contactnum", txtphonenum.Text);
-            
+            cmd.Parameters.AddWithValue("@phonenumber", txtphonenum.Text);
+            cmd.Parameters.AddWithValue("@address", txtadd.Text);
+            cmd.Parameters.AddWithValue("@emailadress", txtemailadd.Text); // corrected parameter name
+            cmd.Parameters.AddWithValue("@membershipplan", cmbmembership.SelectedItem.ToString());
             cmd.Parameters.AddWithValue("@gender", cmbgender.SelectedItem.ToString());
             cmd.ExecuteNonQuery();
             con.Close();
-            MessageBox.Show("Coach added successfully", "SAVE", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show("Member added successfully", "SAVE", MessageBoxButtons.OK, MessageBoxIcon.Information);
             DisplayData();
             ClearData();
         }
-    
+
+
 
         private void UserControl2_Load(object sender, EventArgs e)
         {
@@ -211,8 +215,8 @@ namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM
                 txtlastname.Text = dataGridView2.Rows[e.RowIndex].Cells["lastname"].Value?.ToString();
                 txtusername.Text = dataGridView2.Rows[e.RowIndex].Cells["username"].Value?.ToString();
                 txtpassword.Text = dataGridView2.Rows[e.RowIndex].Cells["password"].Value?.ToString();
-                txtemailadd.Text = dataGridView2.Rows[e.RowIndex].Cells["password"].Value?.ToString();
-                txtadd.Text = dataGridView2.Rows[e.RowIndex].Cells["password"].Value?.ToString();
+                txtemailadd.Text = dataGridView2.Rows[e.RowIndex].Cells["emailadress"].Value?.ToString();
+                txtadd.Text = dataGridView2.Rows[e.RowIndex].Cells["address"].Value?.ToString();
                 txtphonenum.Text = dataGridView2.Rows[e.RowIndex].Cells["phonenumber"].Value?.ToString();
                 if (dataGridView2.Columns.Contains("gender") && dataGridView2.Rows[e.RowIndex].Cells["gender"].Value != null)
                     cmbgender.SelectedItem = dataGridView2.Rows[e.RowIndex].Cells["gender"].Value.ToString();
