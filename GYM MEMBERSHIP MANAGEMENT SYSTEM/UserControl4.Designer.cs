@@ -192,6 +192,7 @@
             this.Controls.Add(this.dataGridView1);
             this.Name = "UserControl4";
             this.Size = new System.Drawing.Size(930, 693);
+            this.Load += new System.EventHandler(this.UserControl4_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
 

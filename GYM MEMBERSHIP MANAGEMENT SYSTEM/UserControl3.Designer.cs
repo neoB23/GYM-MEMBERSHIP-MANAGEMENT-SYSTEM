@@ -31,7 +31,7 @@
             this.guna2GradientButton1 = new Guna.UI2.WinForms.Guna2GradientButton();
             this.btnDelete = new Guna.UI2.WinForms.Guna2GradientButton();
             this.btnUpdate = new Guna.UI2.WinForms.Guna2GradientButton();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.txtduration = new Guna.UI2.WinForms.Guna2TextBox();
             this.txtgoal = new Guna.UI2.WinForms.Guna2TextBox();
             this.txtcost = new Guna.UI2.WinForms.Guna2TextBox();
@@ -40,7 +40,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.SuspendLayout();
             // 
             // guna2GradientButton1
@@ -91,15 +91,16 @@
             this.btnUpdate.Size = new System.Drawing.Size(180, 45);
             this.btnUpdate.TabIndex = 33;
             this.btnUpdate.Text = "Edit";
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
-            // dataGridView1
+            // dataGridView2
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(59, 263);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(682, 380);
-            this.dataGridView1.TabIndex = 32;
-            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView2.Location = new System.Drawing.Point(59, 263);
+            this.dataGridView2.Name = "dataGridView2";
+            this.dataGridView2.Size = new System.Drawing.Size(682, 380);
+            this.dataGridView2.TabIndex = 32;
+            this.dataGridView2.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // txtduration
             // 
@@ -240,11 +241,11 @@
             this.Controls.Add(this.guna2GradientButton1);
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnUpdate);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.dataGridView2);
             this.Name = "UserControl3";
             this.Size = new System.Drawing.Size(946, 683);
             this.Load += new System.EventHandler(this.UserControl3_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -255,7 +256,7 @@
         private Guna.UI2.WinForms.Guna2GradientButton guna2GradientButton1;
         private Guna.UI2.WinForms.Guna2GradientButton btnDelete;
         private Guna.UI2.WinForms.Guna2GradientButton btnUpdate;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dataGridView2;
         private Guna.UI2.WinForms.Guna2TextBox txtduration;
         private Guna.UI2.WinForms.Guna2TextBox txtgoal;
         private Guna.UI2.WinForms.Guna2TextBox txtcost;

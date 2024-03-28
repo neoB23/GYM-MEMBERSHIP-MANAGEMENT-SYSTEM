@@ -66,13 +66,28 @@ namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM
             }
             con.Close();
             string passwordPattern = @"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^\da-zA-Z]).{8,}$";
-            // Minimum length for username, password, email, phone number, first name, last name, and address
+            //address min input wala pa pati sa email add
             int minimumUsernameLength = 6;
             int minimumPasswordLength = 8;
             int minimumPhoneNumLength = 11;
             int minimumFirstNameLength = 3;
             int minimumLastNameLength = 3;
+            int minimumAddressLength = 6;
+            int minimumEmailadLength = 4;
 
+            if (!txtemailadd.Text.Contains("@gmail.com"))
+            {
+                MessageBox.Show("Email address should contain '@gmail' symbol", "Error");
+                return;
+            }
+            if (txtemailadd.Text.Length < minimumEmailadLength)
+            {
+                MessageBox.Show($"Email address must be at least {minimumEmailadLength} characters long", "Error");
+            }
+            if (txtadd.Text.Length < minimumAddressLength)
+            {
+                MessageBox.Show($"Address must be at least {minimumAddressLength} characters long", "Error");
+            }
             if (!IsNumeric(txtphonenum.Text))
             {
                 MessageBox.Show("Phone number should contain only numeric characters", "Error");
@@ -138,7 +153,7 @@ namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM
 
         }
 
-        private void btnUpdate_Click(object sender, EventArgs e)
+        private void btnUpdate_Click(object sender, EventArgs e) 
         {
             //may error sa pag update ng username
             // Check if all required fields are filled
@@ -222,12 +237,7 @@ namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM
                 if (dataGridView2.Columns.Contains("gender") && dataGridView2.Rows[e.RowIndex].Cells["gender"].Value != null)
                     cmbgender.SelectedItem = dataGridView2.Rows[e.RowIndex].Cells["gender"].Value.ToString();
                 else
-                    cmbgender.SelectedItem = null;
-
-               
-               
-
-                
+                    cmbgender.SelectedItem = null;      
             }
         }
 

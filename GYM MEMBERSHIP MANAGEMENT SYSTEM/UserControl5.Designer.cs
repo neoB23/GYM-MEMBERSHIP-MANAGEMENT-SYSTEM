@@ -277,6 +277,7 @@
             this.Controls.Add(this.dataGridView1);
             this.Name = "UserControl5";
             this.Size = new System.Drawing.Size(927, 630);
+            this.Load += new System.EventHandler(this.UserControl5_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

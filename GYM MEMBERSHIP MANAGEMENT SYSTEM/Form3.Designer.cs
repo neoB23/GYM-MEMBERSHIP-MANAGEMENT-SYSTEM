@@ -45,7 +45,7 @@
             this.coach1 = new GYM_MEMBERSHIP_MANAGEMENT_SYSTEM.coach();
             this.membership1 = new GYM_MEMBERSHIP_MANAGEMENT_SYSTEM.membership();
             this.schedule1 = new GYM_MEMBERSHIP_MANAGEMENT_SYSTEM.schedule();
-            this.profile1 = new GYM_MEMBERSHIP_MANAGEMENT_SYSTEM.profile(); 
+            this.profile1 = new GYM_MEMBERSHIP_MANAGEMENT_SYSTEM.profile();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -267,7 +267,7 @@
             this.Controls.Add(this.guna2RadioButton1);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.guna2Button1);
-            this.Controls.Add(this.profile1);
+            this.Controls.Add(this.profile1); //error The variable 'profile1' is either undeclared or was never assigned. 
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Form3";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

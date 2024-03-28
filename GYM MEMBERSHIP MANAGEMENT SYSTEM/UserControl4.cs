@@ -44,5 +44,10 @@ namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM
 
 
         }
+
+        private void UserControl4_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
