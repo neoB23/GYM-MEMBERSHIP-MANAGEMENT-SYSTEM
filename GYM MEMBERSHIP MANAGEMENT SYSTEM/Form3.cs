@@ -46,7 +46,6 @@ namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM
         {
 
         }
-
         private void bunifuCustomLabel3_Click(object sender, EventArgs e)
         {
             profile1.Hide();
@@ -54,7 +53,6 @@ namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM
             schedule1.Show();
             schedule1.BringToFront();
         }
-
         private void bunifuCustomLabel4_Click(object sender, EventArgs e)
         {
             profile1.Hide();
@@ -62,13 +60,11 @@ namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM
             membership1.Show();
             membership1.BringToFront();
         }
-
         private void bunifuTileButton1_Click(object sender, EventArgs e)
         {
             membership1.Hide();
             profile1.Show();
             profile1.BringToFront();
-
         }
     }
 }

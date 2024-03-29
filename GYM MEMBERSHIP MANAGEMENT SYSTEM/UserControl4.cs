@@ -24,7 +24,6 @@ namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-
         }
         private void DisplayData()
         {

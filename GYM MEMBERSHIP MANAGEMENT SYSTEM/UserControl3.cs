@@ -86,9 +86,6 @@ namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM
             txtduration.Text= "";
             txtgoal.Text = "";
             txtcost.Text = "";
-           
-
-
         }
         private void dataGridView2_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
@@ -141,7 +138,6 @@ namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM
                string.IsNullOrWhiteSpace(txtduration.Text) ||
                string.IsNullOrWhiteSpace(txtgoal.Text) ||
                string.IsNullOrWhiteSpace(txtcost.Text))
-
             {
                 MessageBox.Show("Fill up all information", "Error");
                 return;
@@ -168,8 +164,6 @@ namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM
             int minimumDurationLength = 2;
             int minimumGoalLength = 4;
             int minimumcostLength = 3;
-
-
             if (txtmembership.Text.Length > minimumUsernameLength)
             {
                 MessageBox.Show($"Membership must be at least {minimumUsernameLength} characters long", "Error");

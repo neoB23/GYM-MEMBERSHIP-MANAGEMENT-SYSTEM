@@ -145,9 +145,6 @@ namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM
             DisplayData();
             ClearData();
         }
-
-
-
         private void UserControl2_Load(object sender, EventArgs e)
         {
 

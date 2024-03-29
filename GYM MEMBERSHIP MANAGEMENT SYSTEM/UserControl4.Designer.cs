@@ -57,6 +57,7 @@
             this.guna2GradientButton1.Size = new System.Drawing.Size(180, 45);
             this.guna2GradientButton1.TabIndex = 31;
             this.guna2GradientButton1.Text = "Save";
+            this.guna2GradientButton1.Click += new System.EventHandler(this.guna2GradientButton1_Click);
             // 
             // btnDelete
             // 
