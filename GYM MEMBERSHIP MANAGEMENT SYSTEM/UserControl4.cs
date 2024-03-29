@@ -24,6 +24,7 @@ namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+
         }
         private void DisplayData()
         {
@@ -38,13 +39,13 @@ namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM
         // Clears the Data  
         private void ClearData()
         {
-            
-
-
-
         }
 
         private void UserControl4_Load(object sender, EventArgs e)
+        {
+
+        }
+        private void guna2GradientButton1_Click(object sender, EventArgs e)
         {
 
         }

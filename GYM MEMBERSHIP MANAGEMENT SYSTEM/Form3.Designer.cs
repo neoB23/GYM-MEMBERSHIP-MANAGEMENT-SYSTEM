@@ -45,7 +45,6 @@
             this.coach1 = new GYM_MEMBERSHIP_MANAGEMENT_SYSTEM.coach();
             this.membership1 = new GYM_MEMBERSHIP_MANAGEMENT_SYSTEM.membership();
             this.schedule1 = new GYM_MEMBERSHIP_MANAGEMENT_SYSTEM.schedule();
-            this.profile1 = new GYM_MEMBERSHIP_MANAGEMENT_SYSTEM.profile();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -242,13 +241,6 @@
             this.schedule1.Size = new System.Drawing.Size(1049, 625);
             this.schedule1.TabIndex = 8;
             // 
-            // profile1
-            // 
-            this.profile1.Location = new System.Drawing.Point(121, -1);
-            this.profile1.Name = "profile1";
-            this.profile1.Size = new System.Drawing.Size(1052, 722);
-            this.profile1.TabIndex = 12;
-            // 
             // Form3
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -267,7 +259,6 @@
             this.Controls.Add(this.guna2RadioButton1);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.guna2Button1);
-            this.Controls.Add(this.profile1); //error The variable 'profile1' is either undeclared or was never assigned. 
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Form3";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -276,7 +267,6 @@
             this.panel1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
-
         }
 
         #endregion
