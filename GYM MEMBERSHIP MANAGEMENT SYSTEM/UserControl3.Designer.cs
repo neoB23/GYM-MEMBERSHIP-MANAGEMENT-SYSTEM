@@ -35,7 +35,7 @@
             this.txtduration = new Guna.UI2.WinForms.Guna2TextBox();
             this.txtgoal = new Guna.UI2.WinForms.Guna2TextBox();
             this.txtcost = new Guna.UI2.WinForms.Guna2TextBox();
-            this.txtusername = new Guna.UI2.WinForms.Guna2TextBox();
+            this.txtmembership = new Guna.UI2.WinForms.Guna2TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -58,6 +58,7 @@
             this.guna2GradientButton1.Size = new System.Drawing.Size(180, 45);
             this.guna2GradientButton1.TabIndex = 35;
             this.guna2GradientButton1.Text = "Save";
+            this.guna2GradientButton1.Click += new System.EventHandler(this.guna2GradientButton1_Click);
             // 
             // btnDelete
             // 
@@ -101,6 +102,7 @@
             this.dataGridView2.Size = new System.Drawing.Size(682, 380);
             this.dataGridView2.TabIndex = 32;
             this.dataGridView2.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            this.dataGridView2.RowHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView2_RowHeaderMouseClick);
             // 
             // txtduration
             // 
@@ -168,27 +170,27 @@
             this.txtcost.Size = new System.Drawing.Size(202, 36);
             this.txtcost.TabIndex = 38;
             // 
-            // txtusername
+            // txtmembership
             // 
-            this.txtusername.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtusername.DefaultText = "";
-            this.txtusername.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.txtusername.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.txtusername.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtusername.DisabledState.Parent = this.txtusername;
-            this.txtusername.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtusername.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtusername.FocusedState.Parent = this.txtusername;
-            this.txtusername.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtusername.HoverState.Parent = this.txtusername;
-            this.txtusername.Location = new System.Drawing.Point(57, 68);
-            this.txtusername.Name = "txtusername";
-            this.txtusername.PasswordChar = '\0';
-            this.txtusername.PlaceholderText = "";
-            this.txtusername.SelectedText = "";
-            this.txtusername.ShadowDecoration.Parent = this.txtusername;
-            this.txtusername.Size = new System.Drawing.Size(202, 36);
-            this.txtusername.TabIndex = 37;
+            this.txtmembership.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtmembership.DefaultText = "";
+            this.txtmembership.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txtmembership.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.txtmembership.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtmembership.DisabledState.Parent = this.txtmembership;
+            this.txtmembership.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtmembership.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtmembership.FocusedState.Parent = this.txtmembership;
+            this.txtmembership.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtmembership.HoverState.Parent = this.txtmembership;
+            this.txtmembership.Location = new System.Drawing.Point(57, 68);
+            this.txtmembership.Name = "txtmembership";
+            this.txtmembership.PasswordChar = '\0';
+            this.txtmembership.PlaceholderText = "";
+            this.txtmembership.SelectedText = "";
+            this.txtmembership.ShadowDecoration.Parent = this.txtmembership;
+            this.txtmembership.Size = new System.Drawing.Size(202, 36);
+            this.txtmembership.TabIndex = 37;
             // 
             // label1
             // 
@@ -237,7 +239,7 @@
             this.Controls.Add(this.txtduration);
             this.Controls.Add(this.txtgoal);
             this.Controls.Add(this.txtcost);
-            this.Controls.Add(this.txtusername);
+            this.Controls.Add(this.txtmembership);
             this.Controls.Add(this.guna2GradientButton1);
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnUpdate);
@@ -260,7 +262,7 @@
         private Guna.UI2.WinForms.Guna2TextBox txtduration;
         private Guna.UI2.WinForms.Guna2TextBox txtgoal;
         private Guna.UI2.WinForms.Guna2TextBox txtcost;
-        private Guna.UI2.WinForms.Guna2TextBox txtusername;
+        private Guna.UI2.WinForms.Guna2TextBox txtmembership;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;

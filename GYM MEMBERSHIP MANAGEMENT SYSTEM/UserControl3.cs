@@ -40,7 +40,29 @@ namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-
+            if (!string.IsNullOrEmpty(txtmembership.Text))
+            {
+                string sql = "DELETE FROM membership WHERE membership=@membership";
+                cmd = new MySqlCommand(sql, con);
+                cmd.Parameters.AddWithValue("@membership", txtmembership.Text);
+                con.Open();
+                int rowsAffected = cmd.ExecuteNonQuery();
+                con.Close();
+                if (rowsAffected > 0)
+                {
+                    MessageBox.Show("Membership deleted successfully!", "DELETE", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    DisplayData();
+                    ClearData();
+                }
+                else
+                {
+                    MessageBox.Show("No user found with this name!", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Enter the name of the user you want to delete", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -60,7 +82,7 @@ namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM
         // Clears the Data  
         private void ClearData()
         {
-            txtusername.Text = "";
+            txtmembership.Text = "";
             txtduration.Text= "";
             txtgoal.Text = "";
             txtcost.Text = "";
@@ -72,7 +94,7 @@ namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM
         {
             if (e.RowIndex >= 0 && e.RowIndex < dataGridView2.Rows.Count)
             {
-                txtusername.Text = dataGridView2.Rows[e.RowIndex].Cells["username"].Value?.ToString() ?? "";
+                txtmembership.Text = dataGridView2.Rows[e.RowIndex].Cells["membership"].Value?.ToString() ?? "";
                 txtduration.Text = dataGridView2.Rows[e.RowIndex].Cells["duration"].Value?.ToString();
                 txtgoal.Text = dataGridView2.Rows[e.RowIndex].Cells["goal"].Value?.ToString();
                 txtcost.Text = dataGridView2.Rows[e.RowIndex].Cells["cost"].Value?.ToString();
@@ -80,18 +102,53 @@ namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM
         }
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(txtusername.Text) ||
+            //may error sa pag update ng username
+            // Check if all required fields are filled
+            if (!string.IsNullOrWhiteSpace(txtmembership.Text) &&
+                !string.IsNullOrWhiteSpace(txtduration.Text) &&
+                !string.IsNullOrWhiteSpace(txtgoal.Text) &&
+                !string.IsNullOrWhiteSpace(txtcost.Text))
+            {
+                string sql = "UPDATE membership SET duration = @duration, goal = @goal, cost = @cost WHERE membership = @membership";
+                cmd = new MySqlCommand(sql, con);
+                cmd.Parameters.AddWithValue("@membership", txtmembership.Text);
+                cmd.Parameters.AddWithValue("@duration", txtduration.Text);
+                cmd.Parameters.AddWithValue("@goal", txtgoal.Text);
+                cmd.Parameters.AddWithValue("@cost", txtcost.Text);
+                con.Open();
+                int rowsAffected = cmd.ExecuteNonQuery();
+                con.Close();
+                if (rowsAffected > 0)
+                {
+                    MessageBox.Show("Membership information updated successfully!", "UPDATE", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    DisplayData();
+                    ClearData();
+                }
+                else
+                {
+                    MessageBox.Show("No user found with this name!", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Fill out all the information needed", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void guna2GradientButton1_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txtmembership.Text) ||
                string.IsNullOrWhiteSpace(txtduration.Text) ||
                string.IsNullOrWhiteSpace(txtgoal.Text) ||
-               string.IsNullOrWhiteSpace(txtcost.Text) )
-               
+               string.IsNullOrWhiteSpace(txtcost.Text))
+
             {
                 MessageBox.Show("Fill up all information", "Error");
                 return;
             }
 
-            MySqlCommand cmd1 = new MySqlCommand("SELECT * FROM register WHERE FirstName = @firstname", con); // Changed column name in the query
-            cmd1.Parameters.AddWithValue("@membership", txtusername.Text);
+            MySqlCommand cmd1 = new MySqlCommand("SELECT * FROM membership WHERE membership = @membership", con); 
+            cmd1.Parameters.AddWithValue("@membership", txtmembership.Text);
             con.Open();
             bool userExists = false;
             using (var dr1 = cmd1.ExecuteReader())
@@ -105,15 +162,15 @@ namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM
                 }
             }
             con.Close();
-            
+
             //address min input wala pa pati sa email add
             int minimumUsernameLength = 6;
             int minimumDurationLength = 2;
             int minimumGoalLength = 4;
             int minimumcostLength = 3;
-            
 
-           if (txtusername.Text.Length> minimumUsernameLength)
+
+            if (txtmembership.Text.Length > minimumUsernameLength)
             {
                 MessageBox.Show($"Membership must be at least {minimumUsernameLength} characters long", "Error");
             }
@@ -134,19 +191,16 @@ namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM
                 MessageBox.Show("cost should contain only numeric characters", "Error");
                 return; // Return without further processing if phone number is not numeric
             }
-
-           
-
             // Adds a User in the Database
             MySqlCommand cmd = new MySqlCommand("INSERT INTO membership(membership, duration, goal, cost) VALUES(@membership, @duration, @goal, @cost)", con);
             con.Open();
-            cmd.Parameters.AddWithValue("@firstname", txtusername.Text);
-            cmd.Parameters.AddWithValue("@lastname", txtduration.Text);
-            cmd.Parameters.AddWithValue("@username", txtgoal.Text);
-            cmd.Parameters.AddWithValue("@password", txtcost.Text);
+            cmd.Parameters.AddWithValue("@membership", txtmembership.Text);
+            cmd.Parameters.AddWithValue("@duration", txtduration.Text);
+            cmd.Parameters.AddWithValue("@goal", txtgoal.Text);
+            cmd.Parameters.AddWithValue("@cost", txtcost.Text);
             cmd.ExecuteNonQuery();
             con.Close();
-            MessageBox.Show("Member added successfully", "SAVE", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show("Membership added successfully", "SAVE", MessageBoxButtons.OK, MessageBoxIcon.Information);
             DisplayData();
             ClearData();
         }
