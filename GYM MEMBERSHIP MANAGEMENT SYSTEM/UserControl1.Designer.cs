@@ -28,6 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnsave = new Guna.UI2.WinForms.Guna2GradientButton();
             this.btnDelete = new Guna.UI2.WinForms.Guna2GradientButton();
             this.btnUpdate = new Guna.UI2.WinForms.Guna2GradientButton();
@@ -47,7 +49,7 @@
             this.label8 = new System.Windows.Forms.Label();
             this.txtusername = new Guna.UI2.WinForms.Guna2TextBox();
             this.label9 = new System.Windows.Forms.Label();
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.dataGridView2 = new Bunifu.Framework.UI.BunifuCustomDataGrid();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.SuspendLayout();
             // 
@@ -346,18 +348,39 @@
             // 
             // dataGridView2
             // 
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.dataGridView2.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.dataGridView2.BackgroundColor = System.Drawing.Color.White;
+            this.dataGridView2.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dataGridView2.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.RoyalBlue;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.GhostWhite;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView2.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView2.DoubleBuffered = true;
+            this.dataGridView2.EnableHeadersVisualStyles = false;
+            this.dataGridView2.GridColor = System.Drawing.SystemColors.ActiveCaption;
+            this.dataGridView2.HeaderBgColor = System.Drawing.Color.RoyalBlue;
+            this.dataGridView2.HeaderForeColor = System.Drawing.Color.GhostWhite;
             this.dataGridView2.Location = new System.Drawing.Point(45, 301);
             this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.Size = new System.Drawing.Size(789, 330);
-            this.dataGridView2.TabIndex = 0;
-            this.dataGridView2.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            this.dataGridView2.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.dataGridView2.RowHeadersWidth = 46;
+            this.dataGridView2.Size = new System.Drawing.Size(789, 351);
+            this.dataGridView2.TabIndex = 48;
+            this.dataGridView2.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellContentClick);
             this.dataGridView2.RowHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView1_RowHeaderMouseClick);
             // 
             // UserControl1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.dataGridView2);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.txtusername);
             this.Controls.Add(this.label8);
@@ -377,7 +400,6 @@
             this.Controls.Add(this.btnsave);
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnUpdate);
-            this.Controls.Add(this.dataGridView2);
             this.Name = "UserControl1";
             this.Size = new System.Drawing.Size(928, 682);
             this.Load += new System.EventHandler(this.UserControl1_Load);
@@ -407,6 +429,6 @@
         private System.Windows.Forms.Label label8;
         private Guna.UI2.WinForms.Guna2TextBox txtusername;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.DataGridView dataGridView2;
+        private Bunifu.Framework.UI.BunifuCustomDataGrid dataGridView2;
     }
 }

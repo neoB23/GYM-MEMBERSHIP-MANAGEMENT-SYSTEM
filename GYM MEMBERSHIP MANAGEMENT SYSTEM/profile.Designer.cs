@@ -62,6 +62,7 @@
             this.guna2CirclePictureBox1.Size = new System.Drawing.Size(194, 192);
             this.guna2CirclePictureBox1.TabIndex = 0;
             this.guna2CirclePictureBox1.TabStop = false;
+            this.guna2CirclePictureBox1.Click += new System.EventHandler(this.guna2CirclePictureBox1_Click);
             // 
             // label1
             // 
@@ -276,6 +277,7 @@
             this.txtPassword.ShadowDecoration.Parent = this.txtPassword;
             this.txtPassword.Size = new System.Drawing.Size(200, 36);
             this.txtPassword.TabIndex = 25;
+            this.txtPassword.TextChanged += new System.EventHandler(this.txtPassword_TextChanged);
             // 
             // txtAddress
             // 

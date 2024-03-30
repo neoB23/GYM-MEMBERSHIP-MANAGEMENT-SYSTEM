@@ -244,5 +244,10 @@ namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM
                 MessageBox.Show("Fill out all the information needed", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

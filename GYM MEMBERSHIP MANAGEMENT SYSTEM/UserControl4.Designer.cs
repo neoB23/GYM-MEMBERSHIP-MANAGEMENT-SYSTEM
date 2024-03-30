@@ -197,7 +197,7 @@
             this.bunifuCustomDataGrid1.Location = new System.Drawing.Point(51, 252);
             this.bunifuCustomDataGrid1.Name = "bunifuCustomDataGrid1";
             this.bunifuCustomDataGrid1.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            this.bunifuCustomDataGrid1.Size = new System.Drawing.Size(710, 385);
+            this.bunifuCustomDataGrid1.Size = new System.Drawing.Size(710, 400);
             this.bunifuCustomDataGrid1.TabIndex = 39;
             this.bunifuCustomDataGrid1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.bunifuCustomDataGrid1_CellContentClick);
             // 

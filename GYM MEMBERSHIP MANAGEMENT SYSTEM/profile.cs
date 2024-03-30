@@ -164,6 +164,16 @@ namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM
         {
 
         }
+
+        private void txtPassword_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void guna2CirclePictureBox1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
 
