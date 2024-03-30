@@ -1,4 +1,5 @@
-﻿using MySql.Data.MySqlClient;
+﻿using Bunifu.Framework.UI;
+using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -33,7 +34,7 @@ namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM
             adapt = new MySqlDataAdapter(cmd);
             DataTable dt = new DataTable();
             adapt.Fill(dt);
-            dataGridView1.DataSource = dt;
+            bunifuCustomDataGrid1.DataSource = dt;
         }
 
         // Clears the Data  
@@ -51,6 +52,11 @@ namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void bunifuCustomDataGrid1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
         }
