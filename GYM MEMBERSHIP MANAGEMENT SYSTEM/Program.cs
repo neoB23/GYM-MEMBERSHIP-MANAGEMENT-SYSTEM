@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using SYSTEM_GYM;
 
 namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM
 {
@@ -16,7 +17,7 @@ namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form3());
+            Application.Run(new userchoice());
         }
     }
 }

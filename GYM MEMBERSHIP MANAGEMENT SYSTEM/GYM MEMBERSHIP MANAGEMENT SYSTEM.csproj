@@ -135,6 +135,54 @@
     <Compile Include="membership.Designer.cs">
       <DependentUpon>membership.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\CoachAlex.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\CoachAlex.Designer.cs">
+      <DependentUpon>CoachAlex.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\CoachJames.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\CoachJames.Designer.cs">
+      <DependentUpon>CoachJames.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\CoachLilli.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\CoachLilli.Designer.cs">
+      <DependentUpon>CoachLilli.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\formEquipment.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\formEquipment.Designer.cs">
+      <DependentUpon>formEquipment.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\formMembership.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\formMembership.Designer.cs">
+      <DependentUpon>formMembership.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\formMenu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\formMenu.Designer.cs">
+      <DependentUpon>formMenu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\formSchedule.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\formSchedule.Designer.cs">
+      <DependentUpon>formSchedule.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\userchoice.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\userchoice.Designer.cs">
+      <DependentUpon>userchoice.cs</DependentUpon>
+    </Compile>
     <Compile Include="profile.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -218,6 +266,30 @@
     </EmbeddedResource>
     <EmbeddedResource Include="membership.resx">
       <DependentUpon>membership.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\CoachAlex.resx">
+      <DependentUpon>CoachAlex.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\CoachJames.resx">
+      <DependentUpon>CoachJames.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\CoachLilli.resx">
+      <DependentUpon>CoachLilli.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\formEquipment.resx">
+      <DependentUpon>formEquipment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\formMembership.resx">
+      <DependentUpon>formMembership.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\formMenu.resx">
+      <DependentUpon>formMenu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\formSchedule.resx">
+      <DependentUpon>formSchedule.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\userchoice.resx">
+      <DependentUpon>userchoice.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="profile.resx">
       <DependentUpon>profile.cs</DependentUpon>

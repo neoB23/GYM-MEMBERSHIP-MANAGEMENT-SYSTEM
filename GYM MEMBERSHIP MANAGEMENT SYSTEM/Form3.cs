@@ -19,13 +19,7 @@ namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM
 
         private void guna2Button1_Click(object sender, EventArgs e)
         {
-            DialogResult result = MessageBox.Show("Are you sure you want to log out?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (result == DialogResult.Yes)
-            {
-                this.Hide();
-                Form1 Form1 = new Form1(); 
-                Form1.Show();
-            }
+           
         }
         private void bunifuCustomLabel1_Click(object sender, EventArgs e)
         {
