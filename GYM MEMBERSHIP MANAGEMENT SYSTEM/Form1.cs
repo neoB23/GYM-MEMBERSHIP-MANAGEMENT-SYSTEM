@@ -31,6 +31,7 @@ namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM
         {
             InitializeComponent();
 
+
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
@@ -53,10 +54,49 @@ namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM
 
         private void bunifuThinButton21_Click(object sender, EventArgs e)
         {
+           
+        }
+
+        
+
+        private void bunifuThinButton21_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
+        }
+
+        private void SignUp_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            this.Hide();
+            Form2 Form2 = new Form2();
+            Form2.Show();
+        }
+
+        private void bunifuThinButton21_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtusername_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void guna2ToggleSwitch1_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void bunifuThinButton21_Click_2(object sender, EventArgs e)
+        {
             // Check if username or password is empty
             if (string.IsNullOrEmpty(txtusername.Text) || string.IsNullOrEmpty(txtpassword.Text))
             {
-                // Display warning message for empty fields
+                // Display warning pag walang laman txtbox
                 if (string.IsNullOrEmpty(txtusername.Text))
                 {
                     MessageBox.Show("Please enter your username", "Error");
@@ -77,7 +117,7 @@ namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM
                     sql = "SELECT * FROM Admin WHERE username = @username AND password = @password";
                     cmd = new MySqlCommand(sql, con);
                     cmd.Parameters.AddWithValue("@username", txtusername.Text);
-                    cmd.Parameters.AddWithValue("@password", txtpassword.Text); 
+                    cmd.Parameters.AddWithValue("@password", txtpassword.Text);
                     da = new MySqlDataAdapter(cmd);
                     dt = new DataTable();
                     da.Fill(dt);
@@ -124,23 +164,34 @@ namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM
             }
         }
 
-        private void guna2ToggleSwitch1_CheckedChanged(object sender, EventArgs e)
+        private void picblack_Click(object sender, EventArgs e)
         {
-            if (guna2ToggleSwitch1.Checked)
-            {
-                // If checked, show the password
-                txtpassword.PasswordChar = '\0';
-            }
-            else
-            {
-                // If unchecked, hide the password
-                txtpassword.PasswordChar = '*';
-            }
+
         }
 
-        private void bunifuThinButton21_KeyPress(object sender, KeyPressEventArgs e)
+        private void picblack_MouseEnter(object sender, EventArgs e)
         {
+            picblack.Visible = false;
+            picorange.Visible = true;
+        }
 
+        private void picblack_MouseLeave(object sender, EventArgs e)
+        {
+            picblack.Visible = true;
+            picorange.Visible = false;
+
+        }
+
+        private void passblack_MouseEnter(object sender, EventArgs e)
+        {
+            passblack.Visible = false;
+            passorange.Visible = true;
+        }
+
+        private void passblack_MouseLeave(object sender, EventArgs e)
+        {
+            passblack.Visible = true;
+            passorange.Visible = false;
         }
     }
 }

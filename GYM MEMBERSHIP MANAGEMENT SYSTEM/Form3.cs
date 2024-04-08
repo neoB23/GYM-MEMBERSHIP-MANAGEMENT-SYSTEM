@@ -66,5 +66,10 @@ namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM
            // profile1.Show();
             //profile1.BringToFront();
         }
+
+        private void aboutus1_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

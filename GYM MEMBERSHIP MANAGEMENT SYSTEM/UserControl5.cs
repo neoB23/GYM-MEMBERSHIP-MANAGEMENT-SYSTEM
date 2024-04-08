@@ -172,6 +172,7 @@ namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM
             con.Close();
             string passwordPattern = @"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^\da-zA-Z]).{8,}$";
             //address min input wala pa pati sa email add
+            
             int minimumUsernameLength = 6;
             int minimumPasswordLength = 8;
             int minimumFirstNameLength = 3;

@@ -54,8 +54,9 @@ namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM
         }
         private void bunifuThinButton21_Click(object sender, EventArgs e)
         {
+            // for special characters
             string passwordPattern = @"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^\da-zA-Z]).{8,}$";
-            // Minimum length for username, password, email, phone number, first name, last name, and address
+            // Minimum length for infos
             int minimumUsernameLength = 6;
             int minimumPasswordLength = 8;
             int minimumEmailLength = 5; // add function at deny user kapag he/she doesnt input "@"
@@ -66,7 +67,7 @@ namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM
             errorProvider1.Clear();
             if (string.IsNullOrEmpty(txtusername.Text) || string.IsNullOrEmpty(txtpassword.Text) || string.IsNullOrEmpty(txtemailadd.Text) || string.IsNullOrEmpty(txtphonenum.Text) || string.IsNullOrEmpty(txtfirstname.Text) || string.IsNullOrEmpty(txtlastname.Text) || string.IsNullOrEmpty(txtgender.Text) || string.IsNullOrEmpty(txtadd.Text))
             {
-                // Display error messages for empty fields
+                // Display error messages and error provider for empty fields 
 
                 if (string.IsNullOrEmpty(txtusername.Text))
                     errorProvider1.SetError(txtusername, "Please enter your username");
@@ -95,6 +96,7 @@ namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM
                 MessageBox.Show("Fill up all information", "Error");
                 return;
             }
+            //terms and agreement
             if (!bunifuCheckbox1.Checked)
             {
                 MessageBox.Show("Please agree to the terms and agreement before registering.", "Error");
@@ -222,6 +224,124 @@ namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM
         private void bunifuCheckbox1_OnChange(object sender, EventArgs e)
         {
             
+        }
+
+        private void pictureBox4_MouseEnter(object sender, EventArgs e)
+        {
+            pictureBox4.Visible = false;
+            pictureBox3.Visible = true;
+        }
+
+        private void pictureBox4_MouseLeave(object sender, EventArgs e)
+        {
+            pictureBox4.Visible = true;
+            pictureBox3.Visible = false;
+        }
+        
+        private void pictureBox5_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pictureBox4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtfirstname_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pictureBox5_MouseEnter_1(object sender, EventArgs e)
+        {
+            pictureBox5.Visible = false;
+            pictureBox12.Visible = true;
+            
+        }
+
+        private void pictureBox5_MouseLeave_1(object sender, EventArgs e)
+        {
+            pictureBox5.Visible = true;
+            pictureBox12.Visible = false;
+        }
+
+        private void pictureBox13_MouseEnter(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void pictureBox6_MouseLeave(object sender, EventArgs e)
+        {
+            pictureBox6.Visible = true;
+            pictureBox13.Visible = false;
+        }
+
+        private void pictureBox6_MouseEnter(object sender, EventArgs e)
+        {
+            pictureBox6.Visible = false;
+            pictureBox13.Visible = true;
+        }
+
+        private void pictureBox7_MouseEnter(object sender, EventArgs e)
+        {
+            pictureBox7.Visible = false;
+            pictureBox14.Visible = true;
+
+        }
+
+        private void pictureBox7_MouseLeave(object sender, EventArgs e)
+        {
+            pictureBox7.Visible = true;
+            pictureBox14.Visible = false;
+        }
+
+        private void pictureBox8_MouseEnter(object sender, EventArgs e)
+        {
+            pictureBox8.Visible = false;
+            pictureBox15.Visible = true;
+        }
+
+        private void pictureBox8_MouseLeave(object sender, EventArgs e)
+        {
+            pictureBox8.Visible = true;
+            pictureBox15.Visible = false;
+        }
+
+        private void pictureBox11_MouseEnter(object sender, EventArgs e)
+        {
+            pictureBox11.Visible = false;
+            pictureBox16.Visible = true;
+        }
+
+        private void pictureBox11_MouseLeave(object sender, EventArgs e)
+        {
+            pictureBox11.Visible = true;
+            pictureBox16.Visible = false;
+        }
+
+        private void pictureBox10_MouseEnter(object sender, EventArgs e)
+        {
+            pictureBox10.Visible = false;
+            pictureBox17.Visible = true;
+        }
+
+        private void pictureBox10_MouseLeave(object sender, EventArgs e)
+        {
+            pictureBox10.Visible = true;
+            pictureBox17.Visible = false;
+        }
+
+        private void pictureBox9_MouseEnter(object sender, EventArgs e)
+        {
+            pictureBox9.Visible = false;
+            pictureBox18.Visible = true;
+        }
+
+        private void pictureBox9_MouseLeave(object sender, EventArgs e)
+        {
+            pictureBox9.Visible = true;
+            pictureBox18.Visible = false;
         }
     }
 }

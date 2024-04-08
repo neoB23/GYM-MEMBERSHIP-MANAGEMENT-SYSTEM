@@ -216,6 +216,7 @@
             this.aboutus1.Name = "aboutus1";
             this.aboutus1.Size = new System.Drawing.Size(1052, 625);
             this.aboutus1.TabIndex = 11;
+            this.aboutus1.Load += new System.EventHandler(this.aboutus1_Load);
             // 
             // coach1
             // 
