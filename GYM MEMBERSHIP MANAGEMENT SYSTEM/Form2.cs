@@ -343,5 +343,15 @@ namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM
             pictureBox9.Visible = true;
             pictureBox18.Visible = false;
         }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox1_TextChanged_1(object sender, EventArgs e)
+        {
+
+        }
     }
 }

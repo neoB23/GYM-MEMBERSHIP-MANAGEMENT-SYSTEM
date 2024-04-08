@@ -46,14 +46,6 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.txtlastname = new Guna.UI2.WinForms.Guna2TextBox();
-            this.txtphonenum = new Guna.UI2.WinForms.Guna2TextBox();
-            this.txtadd = new Guna.UI2.WinForms.Guna2TextBox();
-            this.txtemailadd = new Guna.UI2.WinForms.Guna2TextBox();
-            this.txtgender = new Guna.UI2.WinForms.Guna2TextBox();
-            this.txtpassword = new Guna.UI2.WinForms.Guna2TextBox();
-            this.txtusername = new Guna.UI2.WinForms.Guna2TextBox();
-            this.txtfirstname = new Guna.UI2.WinForms.Guna2TextBox();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
@@ -70,6 +62,14 @@
             this.pictureBox16 = new System.Windows.Forms.PictureBox();
             this.pictureBox17 = new System.Windows.Forms.PictureBox();
             this.pictureBox18 = new System.Windows.Forms.PictureBox();
+            this.txtusername = new System.Windows.Forms.TextBox();
+            this.txtfirstname = new System.Windows.Forms.TextBox();
+            this.txtemailadd = new System.Windows.Forms.TextBox();
+            this.txtphonenum = new System.Windows.Forms.TextBox();
+            this.txtpassword = new System.Windows.Forms.TextBox();
+            this.txtlastname = new System.Windows.Forms.TextBox();
+            this.txtadd = new System.Windows.Forms.TextBox();
+            this.txtgender = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -192,6 +192,14 @@
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.txtgender);
+            this.panel1.Controls.Add(this.txtadd);
+            this.panel1.Controls.Add(this.txtlastname);
+            this.panel1.Controls.Add(this.txtpassword);
+            this.panel1.Controls.Add(this.txtphonenum);
+            this.panel1.Controls.Add(this.txtemailadd);
+            this.panel1.Controls.Add(this.txtfirstname);
+            this.panel1.Controls.Add(this.txtusername);
             this.panel1.Controls.Add(this.label10);
             this.panel1.Controls.Add(this.label9);
             this.panel1.Controls.Add(this.label8);
@@ -199,14 +207,6 @@
             this.panel1.Controls.Add(this.label5);
             this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.label3);
-            this.panel1.Controls.Add(this.txtlastname);
-            this.panel1.Controls.Add(this.txtphonenum);
-            this.panel1.Controls.Add(this.txtadd);
-            this.panel1.Controls.Add(this.txtemailadd);
-            this.panel1.Controls.Add(this.txtgender);
-            this.panel1.Controls.Add(this.txtpassword);
-            this.panel1.Controls.Add(this.txtusername);
-            this.panel1.Controls.Add(this.txtfirstname);
             this.panel1.Controls.Add(this.pictureBox4);
             this.panel1.Controls.Add(this.pictureBox3);
             this.panel1.Controls.Add(this.linkLabel1);
@@ -312,207 +312,6 @@
             this.label3.Size = new System.Drawing.Size(95, 21);
             this.label3.TabIndex = 136;
             this.label3.Text = "First Name:";
-            // 
-            // txtlastname
-            // 
-            this.txtlastname.BorderColor = System.Drawing.Color.Black;
-            this.txtlastname.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtlastname.DefaultText = "";
-            this.txtlastname.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.txtlastname.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.txtlastname.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtlastname.DisabledState.Parent = this.txtlastname;
-            this.txtlastname.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtlastname.FillColor = System.Drawing.Color.Black;
-            this.txtlastname.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtlastname.FocusedState.Parent = this.txtlastname;
-            this.txtlastname.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtlastname.HoverState.Parent = this.txtlastname;
-            this.txtlastname.Location = new System.Drawing.Point(724, 200);
-            this.txtlastname.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.txtlastname.Name = "txtlastname";
-            this.txtlastname.PasswordChar = '\0';
-            this.txtlastname.PlaceholderText = "";
-            this.txtlastname.SelectedText = "";
-            this.txtlastname.ShadowDecoration.Parent = this.txtlastname;
-            this.txtlastname.Size = new System.Drawing.Size(232, 28);
-            this.txtlastname.TabIndex = 128;
-            // 
-            // txtphonenum
-            // 
-            this.txtphonenum.BorderColor = System.Drawing.Color.Black;
-            this.txtphonenum.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtphonenum.DefaultText = "";
-            this.txtphonenum.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.txtphonenum.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.txtphonenum.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtphonenum.DisabledState.Parent = this.txtphonenum;
-            this.txtphonenum.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtphonenum.FillColor = System.Drawing.Color.Black;
-            this.txtphonenum.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtphonenum.FocusedState.Parent = this.txtphonenum;
-            this.txtphonenum.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtphonenum.HoverState.Parent = this.txtphonenum;
-            this.txtphonenum.Location = new System.Drawing.Point(398, 369);
-            this.txtphonenum.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.txtphonenum.Name = "txtphonenum";
-            this.txtphonenum.PasswordChar = '\0';
-            this.txtphonenum.PlaceholderText = "";
-            this.txtphonenum.SelectedText = "";
-            this.txtphonenum.ShadowDecoration.Parent = this.txtphonenum;
-            this.txtphonenum.Size = new System.Drawing.Size(236, 28);
-            this.txtphonenum.TabIndex = 127;
-            // 
-            // txtadd
-            // 
-            this.txtadd.BorderColor = System.Drawing.Color.Black;
-            this.txtadd.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtadd.DefaultText = "";
-            this.txtadd.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.txtadd.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.txtadd.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtadd.DisabledState.Parent = this.txtadd;
-            this.txtadd.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtadd.FillColor = System.Drawing.Color.Black;
-            this.txtadd.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtadd.FocusedState.Parent = this.txtadd;
-            this.txtadd.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtadd.HoverState.Parent = this.txtadd;
-            this.txtadd.Location = new System.Drawing.Point(724, 286);
-            this.txtadd.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.txtadd.Name = "txtadd";
-            this.txtadd.PasswordChar = '\0';
-            this.txtadd.PlaceholderText = "";
-            this.txtadd.SelectedText = "";
-            this.txtadd.ShadowDecoration.Parent = this.txtadd;
-            this.txtadd.Size = new System.Drawing.Size(232, 28);
-            this.txtadd.TabIndex = 126;
-            // 
-            // txtemailadd
-            // 
-            this.txtemailadd.BorderColor = System.Drawing.Color.Black;
-            this.txtemailadd.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtemailadd.DefaultText = "";
-            this.txtemailadd.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.txtemailadd.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.txtemailadd.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtemailadd.DisabledState.Parent = this.txtemailadd;
-            this.txtemailadd.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtemailadd.FillColor = System.Drawing.Color.Black;
-            this.txtemailadd.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtemailadd.FocusedState.Parent = this.txtemailadd;
-            this.txtemailadd.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtemailadd.HoverState.Parent = this.txtemailadd;
-            this.txtemailadd.Location = new System.Drawing.Point(398, 286);
-            this.txtemailadd.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.txtemailadd.Name = "txtemailadd";
-            this.txtemailadd.PasswordChar = '\0';
-            this.txtemailadd.PlaceholderText = "";
-            this.txtemailadd.SelectedText = "";
-            this.txtemailadd.ShadowDecoration.Parent = this.txtemailadd;
-            this.txtemailadd.Size = new System.Drawing.Size(236, 28);
-            this.txtemailadd.TabIndex = 125;
-            // 
-            // txtgender
-            // 
-            this.txtgender.BorderColor = System.Drawing.Color.Black;
-            this.txtgender.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtgender.DefaultText = "";
-            this.txtgender.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.txtgender.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.txtgender.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtgender.DisabledState.Parent = this.txtgender;
-            this.txtgender.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtgender.FillColor = System.Drawing.Color.Black;
-            this.txtgender.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtgender.FocusedState.Parent = this.txtgender;
-            this.txtgender.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtgender.HoverState.Parent = this.txtgender;
-            this.txtgender.Location = new System.Drawing.Point(724, 369);
-            this.txtgender.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.txtgender.Name = "txtgender";
-            this.txtgender.PasswordChar = '\0';
-            this.txtgender.PlaceholderText = "";
-            this.txtgender.SelectedText = "";
-            this.txtgender.ShadowDecoration.Parent = this.txtgender;
-            this.txtgender.Size = new System.Drawing.Size(232, 28);
-            this.txtgender.TabIndex = 124;
-            // 
-            // txtpassword
-            // 
-            this.txtpassword.BorderColor = System.Drawing.Color.Black;
-            this.txtpassword.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtpassword.DefaultText = "";
-            this.txtpassword.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.txtpassword.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.txtpassword.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtpassword.DisabledState.Parent = this.txtpassword;
-            this.txtpassword.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtpassword.FillColor = System.Drawing.Color.Black;
-            this.txtpassword.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtpassword.FocusedState.Parent = this.txtpassword;
-            this.txtpassword.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtpassword.HoverState.Parent = this.txtpassword;
-            this.txtpassword.Location = new System.Drawing.Point(724, 120);
-            this.txtpassword.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.txtpassword.Name = "txtpassword";
-            this.txtpassword.PasswordChar = '\0';
-            this.txtpassword.PlaceholderText = "";
-            this.txtpassword.SelectedText = "";
-            this.txtpassword.ShadowDecoration.Parent = this.txtpassword;
-            this.txtpassword.Size = new System.Drawing.Size(232, 28);
-            this.txtpassword.TabIndex = 123;
-            // 
-            // txtusername
-            // 
-            this.txtusername.BorderColor = System.Drawing.Color.Black;
-            this.txtusername.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtusername.DefaultText = "";
-            this.txtusername.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.txtusername.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.txtusername.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtusername.DisabledState.Parent = this.txtusername;
-            this.txtusername.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtusername.FillColor = System.Drawing.Color.Black;
-            this.txtusername.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtusername.FocusedState.Parent = this.txtusername;
-            this.txtusername.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtusername.HoverState.Parent = this.txtusername;
-            this.txtusername.Location = new System.Drawing.Point(398, 120);
-            this.txtusername.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.txtusername.Name = "txtusername";
-            this.txtusername.PasswordChar = '\0';
-            this.txtusername.PlaceholderText = "";
-            this.txtusername.SelectedText = "";
-            this.txtusername.ShadowDecoration.Parent = this.txtusername;
-            this.txtusername.Size = new System.Drawing.Size(236, 28);
-            this.txtusername.TabIndex = 122;
-            // 
-            // txtfirstname
-            // 
-            this.txtfirstname.BorderColor = System.Drawing.Color.Black;
-            this.txtfirstname.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtfirstname.DefaultText = "";
-            this.txtfirstname.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.txtfirstname.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.txtfirstname.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtfirstname.DisabledState.Parent = this.txtfirstname;
-            this.txtfirstname.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtfirstname.FillColor = System.Drawing.Color.Black;
-            this.txtfirstname.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtfirstname.FocusedState.Parent = this.txtfirstname;
-            this.txtfirstname.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtfirstname.HoverState.Parent = this.txtfirstname;
-            this.txtfirstname.Location = new System.Drawing.Point(398, 200);
-            this.txtfirstname.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.txtfirstname.Name = "txtfirstname";
-            this.txtfirstname.PasswordChar = '\0';
-            this.txtfirstname.PlaceholderText = "";
-            this.txtfirstname.SelectedText = "";
-            this.txtfirstname.ShadowDecoration.Parent = this.txtfirstname;
-            this.txtfirstname.Size = new System.Drawing.Size(236, 28);
-            this.txtfirstname.TabIndex = 121;
-            this.txtfirstname.TextChanged += new System.EventHandler(this.txtfirstname_TextChanged);
             // 
             // pictureBox4
             // 
@@ -677,6 +476,96 @@
             this.pictureBox18.TabIndex = 150;
             this.pictureBox18.TabStop = false;
             // 
+            // txtusername
+            // 
+            this.txtusername.BackColor = System.Drawing.Color.Black;
+            this.txtusername.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtusername.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtusername.ForeColor = System.Drawing.Color.White;
+            this.txtusername.Location = new System.Drawing.Point(398, 120);
+            this.txtusername.Name = "txtusername";
+            this.txtusername.Size = new System.Drawing.Size(250, 19);
+            this.txtusername.TabIndex = 151;
+            // 
+            // txtfirstname
+            // 
+            this.txtfirstname.BackColor = System.Drawing.Color.Black;
+            this.txtfirstname.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtfirstname.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtfirstname.ForeColor = System.Drawing.Color.White;
+            this.txtfirstname.Location = new System.Drawing.Point(393, 200);
+            this.txtfirstname.Name = "txtfirstname";
+            this.txtfirstname.Size = new System.Drawing.Size(250, 19);
+            this.txtfirstname.TabIndex = 152;
+            this.txtfirstname.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            // 
+            // txtemailadd
+            // 
+            this.txtemailadd.BackColor = System.Drawing.Color.Black;
+            this.txtemailadd.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtemailadd.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtemailadd.ForeColor = System.Drawing.Color.White;
+            this.txtemailadd.Location = new System.Drawing.Point(393, 286);
+            this.txtemailadd.Name = "txtemailadd";
+            this.txtemailadd.Size = new System.Drawing.Size(250, 19);
+            this.txtemailadd.TabIndex = 153;
+            // 
+            // txtphonenum
+            // 
+            this.txtphonenum.BackColor = System.Drawing.Color.Black;
+            this.txtphonenum.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtphonenum.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtphonenum.ForeColor = System.Drawing.Color.White;
+            this.txtphonenum.Location = new System.Drawing.Point(393, 369);
+            this.txtphonenum.Name = "txtphonenum";
+            this.txtphonenum.Size = new System.Drawing.Size(250, 19);
+            this.txtphonenum.TabIndex = 154;
+            this.txtphonenum.TextChanged += new System.EventHandler(this.textBox1_TextChanged_1);
+            // 
+            // txtpassword
+            // 
+            this.txtpassword.BackColor = System.Drawing.Color.Black;
+            this.txtpassword.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtpassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtpassword.ForeColor = System.Drawing.Color.White;
+            this.txtpassword.Location = new System.Drawing.Point(724, 120);
+            this.txtpassword.Name = "txtpassword";
+            this.txtpassword.Size = new System.Drawing.Size(250, 19);
+            this.txtpassword.TabIndex = 155;
+            // 
+            // txtlastname
+            // 
+            this.txtlastname.BackColor = System.Drawing.Color.Black;
+            this.txtlastname.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtlastname.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtlastname.ForeColor = System.Drawing.Color.White;
+            this.txtlastname.Location = new System.Drawing.Point(724, 200);
+            this.txtlastname.Name = "txtlastname";
+            this.txtlastname.Size = new System.Drawing.Size(250, 19);
+            this.txtlastname.TabIndex = 156;
+            // 
+            // txtadd
+            // 
+            this.txtadd.BackColor = System.Drawing.Color.Black;
+            this.txtadd.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtadd.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtadd.ForeColor = System.Drawing.Color.White;
+            this.txtadd.Location = new System.Drawing.Point(724, 286);
+            this.txtadd.Name = "txtadd";
+            this.txtadd.Size = new System.Drawing.Size(250, 19);
+            this.txtadd.TabIndex = 157;
+            // 
+            // txtgender
+            // 
+            this.txtgender.BackColor = System.Drawing.Color.Black;
+            this.txtgender.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtgender.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtgender.ForeColor = System.Drawing.Color.White;
+            this.txtgender.Location = new System.Drawing.Point(724, 369);
+            this.txtgender.Name = "txtgender";
+            this.txtgender.Size = new System.Drawing.Size(250, 19);
+            this.txtgender.TabIndex = 158;
+            // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -728,14 +617,6 @@
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private Guna.UI2.WinForms.Guna2TextBox txtlastname;
-        private Guna.UI2.WinForms.Guna2TextBox txtphonenum;
-        private Guna.UI2.WinForms.Guna2TextBox txtadd;
-        private Guna.UI2.WinForms.Guna2TextBox txtemailadd;
-        private Guna.UI2.WinForms.Guna2TextBox txtgender;
-        private Guna.UI2.WinForms.Guna2TextBox txtpassword;
-        private Guna.UI2.WinForms.Guna2TextBox txtusername;
-        private Guna.UI2.WinForms.Guna2TextBox txtfirstname;
         private System.Windows.Forms.PictureBox pictureBox5;
         private System.Windows.Forms.PictureBox pictureBox6;
         private System.Windows.Forms.PictureBox pictureBox7;
@@ -757,5 +638,13 @@
         private System.Windows.Forms.PictureBox pictureBox16;
         private System.Windows.Forms.PictureBox pictureBox17;
         private System.Windows.Forms.PictureBox pictureBox18;
+        private System.Windows.Forms.TextBox txtusername;
+        private System.Windows.Forms.TextBox txtfirstname;
+        private System.Windows.Forms.TextBox txtphonenum;
+        private System.Windows.Forms.TextBox txtemailadd;
+        private System.Windows.Forms.TextBox txtlastname;
+        private System.Windows.Forms.TextBox txtpassword;
+        private System.Windows.Forms.TextBox txtgender;
+        private System.Windows.Forms.TextBox txtadd;
     }
 }

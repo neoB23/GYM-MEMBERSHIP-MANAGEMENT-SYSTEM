@@ -47,8 +47,8 @@
             this.passorange = new System.Windows.Forms.PictureBox();
             this.picblack = new System.Windows.Forms.PictureBox();
             this.picorange = new System.Windows.Forms.PictureBox();
-            this.txtusername = new Guna.UI2.WinForms.Guna2TextBox();
-            this.txtpassword = new Guna.UI2.WinForms.Guna2TextBox();
+            this.txtusername = new System.Windows.Forms.TextBox();
+            this.txtpassword = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -278,52 +278,24 @@
             // txtusername
             // 
             this.txtusername.BackColor = System.Drawing.Color.White;
-            this.txtusername.BorderColor = System.Drawing.Color.White;
-            this.txtusername.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtusername.DefaultText = "";
-            this.txtusername.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.txtusername.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.txtusername.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtusername.DisabledState.Parent = this.txtusername;
-            this.txtusername.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtusername.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtusername.FocusedState.Parent = this.txtusername;
-            this.txtusername.ForeColor = System.Drawing.Color.White;
-            this.txtusername.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtusername.HoverState.Parent = this.txtusername;
-            this.txtusername.Location = new System.Drawing.Point(55, 199);
+            this.txtusername.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtusername.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtusername.ForeColor = System.Drawing.Color.Black;
+            this.txtusername.Location = new System.Drawing.Point(57, 203);
             this.txtusername.Name = "txtusername";
-            this.txtusername.PasswordChar = '\0';
-            this.txtusername.PlaceholderForeColor = System.Drawing.Color.White;
-            this.txtusername.PlaceholderText = "";
-            this.txtusername.SelectedText = "";
-            this.txtusername.ShadowDecoration.Parent = this.txtusername;
-            this.txtusername.Size = new System.Drawing.Size(359, 36);
-            this.txtusername.TabIndex = 31;
+            this.txtusername.Size = new System.Drawing.Size(344, 19);
+            this.txtusername.TabIndex = 152;
             // 
             // txtpassword
             // 
-            this.txtpassword.BackColor = System.Drawing.Color.Transparent;
-            this.txtpassword.BorderColor = System.Drawing.Color.White;
-            this.txtpassword.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtpassword.DefaultText = "";
-            this.txtpassword.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.txtpassword.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.txtpassword.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtpassword.DisabledState.Parent = this.txtpassword;
-            this.txtpassword.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtpassword.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtpassword.FocusedState.Parent = this.txtpassword;
-            this.txtpassword.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtpassword.HoverState.Parent = this.txtpassword;
-            this.txtpassword.Location = new System.Drawing.Point(55, 268);
+            this.txtpassword.BackColor = System.Drawing.Color.White;
+            this.txtpassword.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtpassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtpassword.ForeColor = System.Drawing.Color.Black;
+            this.txtpassword.Location = new System.Drawing.Point(57, 272);
             this.txtpassword.Name = "txtpassword";
-            this.txtpassword.PasswordChar = '\0';
-            this.txtpassword.PlaceholderText = "";
-            this.txtpassword.SelectedText = "";
-            this.txtpassword.ShadowDecoration.Parent = this.txtpassword;
-            this.txtpassword.Size = new System.Drawing.Size(359, 36);
-            this.txtpassword.TabIndex = 32;
+            this.txtpassword.Size = new System.Drawing.Size(344, 19);
+            this.txtpassword.TabIndex = 153;
             // 
             // Form1
             // 
@@ -365,14 +337,14 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox pictureBox6;
         private Bunifu.Framework.UI.BunifuThinButton2 bunifuThinButton21;
-        private Guna.UI2.WinForms.Guna2TextBox txtpassword;
-        private Guna.UI2.WinForms.Guna2TextBox txtusername;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.PictureBox passblack;
         private System.Windows.Forms.PictureBox passorange;
         private System.Windows.Forms.PictureBox picblack;
         private System.Windows.Forms.PictureBox picorange;
+        private System.Windows.Forms.TextBox txtusername;
+        private System.Windows.Forms.TextBox txtpassword;
     }
 }
 
