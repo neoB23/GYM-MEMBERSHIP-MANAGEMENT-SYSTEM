@@ -65,6 +65,7 @@
             this.bntLogout = new System.Windows.Forms.Button();
             this.coachTransition = new System.Windows.Forms.Timer(this.components);
             this.SidebarTransition = new System.Windows.Forms.Timer(this.components);
+            this.bunifuTileButton1 = new Bunifu.Framework.UI.BunifuTileButton();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bntham)).BeginInit();
             this.slidebar.SuspendLayout();
@@ -89,6 +90,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.Coral;
+            this.panel1.Controls.Add(this.bunifuTileButton1);
             this.panel1.Controls.Add(this.bntham);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
@@ -514,6 +516,26 @@
             // 
             this.SidebarTransition.Tick += new System.EventHandler(this.SidebarTransition_Tick);
             // 
+            // bunifuTileButton1
+            // 
+            this.bunifuTileButton1.BackColor = System.Drawing.Color.SeaGreen;
+            this.bunifuTileButton1.color = System.Drawing.Color.SeaGreen;
+            this.bunifuTileButton1.colorActive = System.Drawing.Color.MediumSeaGreen;
+            this.bunifuTileButton1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.bunifuTileButton1.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bunifuTileButton1.ForeColor = System.Drawing.Color.White;
+            this.bunifuTileButton1.Image = ((System.Drawing.Image)(resources.GetObject("bunifuTileButton1.Image")));
+            this.bunifuTileButton1.ImagePosition = 17;
+            this.bunifuTileButton1.ImageZoom = 50;
+            this.bunifuTileButton1.LabelPosition = 34;
+            this.bunifuTileButton1.LabelText = "User";
+            this.bunifuTileButton1.Location = new System.Drawing.Point(1135, 0);
+            this.bunifuTileButton1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.bunifuTileButton1.Name = "bunifuTileButton1";
+            this.bunifuTileButton1.Size = new System.Drawing.Size(182, 45);
+            this.bunifuTileButton1.TabIndex = 7;
+            this.bunifuTileButton1.Click += new System.EventHandler(this.bunifuTileButton1_Click);
+            // 
             // userchoice
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -586,5 +608,6 @@
         private System.Windows.Forms.Timer coachTransition;
         private System.Windows.Forms.Timer SidebarTransition;
         private System.Windows.Forms.PictureBox bntham;
+        private Bunifu.Framework.UI.BunifuTileButton bunifuTileButton1;
     }
 }

@@ -17,6 +17,7 @@ using System.Threading;
 using Guna.UI2.WinForms.Suite;
 using System.Text.RegularExpressions;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
+using SYSTEM_GYM;
 
 namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM
 {
@@ -124,7 +125,13 @@ namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM
 
                     if (dt.Rows.Count > 0)
                     {
+                        // Admin login successful
                         MessageBox.Show("Admin Login Successful");
+                        // Save login history for admin
+                        sql = "INSERT INTO login_history_admin (username, time_in) VALUES (@username, NOW())";
+                        cmd = new MySqlCommand(sql, con);
+                        cmd.Parameters.AddWithValue("@username", txtusername.Text);
+                        cmd.ExecuteNonQuery();
                         this.Hide();
                         admin admin = new admin();
                         admin.Show();
@@ -141,10 +148,16 @@ namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM
 
                         if (dt.Rows.Count > 0)
                         {
+                            // Regular user login successful
                             MessageBox.Show("User Login Successful");
+                            // Save login history for regular user
+                            sql = "INSERT INTO login_history (username, time_in) VALUES (@username, NOW())";
+                            cmd = new MySqlCommand(sql, con);
+                            cmd.Parameters.AddWithValue("@username", txtusername.Text);
+                            cmd.ExecuteNonQuery();
                             this.Hide();
-                            Form3 Form3 = new Form3();
-                            Form3.Show();
+                            userchoice userchoice = new userchoice();
+                            userchoice.Show();
                         }
                         else
                         {
@@ -163,7 +176,6 @@ namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM
                 }
             }
         }
-
         private void picblack_Click(object sender, EventArgs e)
         {
 

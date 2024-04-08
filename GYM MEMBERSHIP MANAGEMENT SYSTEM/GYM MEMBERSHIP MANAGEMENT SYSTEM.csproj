@@ -177,6 +177,12 @@
     <Compile Include="UI\formSchedule.Designer.cs">
       <DependentUpon>formSchedule.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\profile1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\profile1.Designer.cs">
+      <DependentUpon>profile1.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\userchoice.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -287,6 +293,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\formSchedule.resx">
       <DependentUpon>formSchedule.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\profile1.resx">
+      <DependentUpon>profile1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\userchoice.resx">
       <DependentUpon>userchoice.cs</DependentUpon>

@@ -1,4 +1,7 @@
-﻿using System;
+﻿using GYM_MEMBERSHIP_MANAGEMENT_SYSTEM;
+using GYM_MEMBERSHIP_MANAGEMENT_SYSTEM.UI;
+using Microsoft.VisualBasic.ApplicationServices;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -6,13 +9,13 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.Security;
 using System.Windows.Forms;
 
 namespace SYSTEM_GYM
 {
     public partial class userchoice : Form
     {
-
         formMenu menu;
         CoachLilli lilli;
         CoachJames james;
@@ -20,16 +23,13 @@ namespace SYSTEM_GYM
         formMembership membership;
         formSchedule schedule;
         formEquipment equipment;
+        profile1 profile;
         private Size formOriginalSize;
-
         public userchoice()
         {
             InitializeComponent();
             this.Resize += Userchoice_Resize;
             formOriginalSize = this.Size;
-           
-
-
         }
 
         private void Userchoice_Resize(object sender, EventArgs e)
@@ -58,27 +58,20 @@ namespace SYSTEM_GYM
             control.Left = (int)(control.Left * widthRatio);
             control.Top = (int)(control.Top * heightRatio);
         }
-
-
-
-
         private void button6_Click(object sender, EventArgs e)
         {
             DialogResult result = MessageBox.Show("Are you sure you want to log out?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (result == DialogResult.Yes)
             {
+                Form1 form1 = new Form1();
                 this.Hide();
-                Form Form1 = new Form();
-                Form1.Show();
+                form1.Show();
             }
         }
-
-
         private void flowLayoutPanel2_Paint_1(object sender, PaintEventArgs e)
         {
 
         }
-
         private void coachTransition_Tick(object sender, EventArgs e)
         {
             if(coachExpand == false)
@@ -100,7 +93,6 @@ namespace SYSTEM_GYM
                 }
             }
         }
-
         private void bntcoach_Click(object sender, EventArgs e)
         {
             coachTransition.Start();
@@ -142,17 +134,14 @@ namespace SYSTEM_GYM
                 }
             }
         }
-
         private void slidebar_Paint(object sender, PaintEventArgs e)
         {
 
         }
-
         private void bntham_Click(object sender, EventArgs e)
         {
             SidebarTransition.Start();
         }
-
         private void button1_Click(object sender, EventArgs e)
         {
             if (menu == null)
@@ -162,7 +151,6 @@ namespace SYSTEM_GYM
                 menu.MdiParent = this;
                 menu.Dock = DockStyle.Fill;
                 menu.Show();
-
             }
             else
             {
@@ -184,15 +172,11 @@ namespace SYSTEM_GYM
                 lilli.MdiParent = this;
                 lilli.Dock = DockStyle.Fill;
                 lilli.Show();
-
             }
             else
             {
                 lilli.Activate();
             }
-
-
-           
         }
 
         private void Lilli_FormClosed(object sender, FormClosedEventArgs e)
@@ -307,6 +291,30 @@ namespace SYSTEM_GYM
 
 
         }
-            
-    }
+
+        private void membership1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void bunifuTileButton1_Click(object sender, EventArgs e)
+        {
+            if (profile == null)
+            {
+                profile = new profile1();
+                profile.FormClosed += Profile1_FormClosed; 
+                profile.MdiParent = this;
+                profile.Dock = DockStyle.Fill;
+                profile.Show();
+            }
+            else
+            {
+                profile.Activate();
+            }
+        }
+        private void Profile1_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            equipment = null;
+        }
+    }   
 }
