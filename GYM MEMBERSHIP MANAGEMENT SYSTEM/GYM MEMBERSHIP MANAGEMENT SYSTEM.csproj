@@ -81,12 +81,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="aboutus.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="aboutus.Designer.cs">
-      <DependentUpon>aboutus.cs</DependentUpon>
-    </Compile>
     <Compile Include="admin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -117,23 +111,11 @@
     <Compile Include="Form2.Designer.cs">
       <DependentUpon>Form2.cs</DependentUpon>
     </Compile>
-    <Compile Include="Form3.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Form3.Designer.cs">
-      <DependentUpon>Form3.cs</DependentUpon>
-    </Compile>
     <Compile Include="loadingscreen.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="loadingscreen.Designer.cs">
       <DependentUpon>loadingscreen.cs</DependentUpon>
-    </Compile>
-    <Compile Include="membership.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="membership.Designer.cs">
-      <DependentUpon>membership.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\CoachAlex.cs">
       <SubType>Form</SubType>
@@ -197,12 +179,6 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="schedule.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="schedule.Designer.cs">
-      <DependentUpon>schedule.cs</DependentUpon>
-    </Compile>
     <Compile Include="termsagreement.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -245,9 +221,6 @@
     <Compile Include="UserControl5.Designer.cs">
       <DependentUpon>UserControl5.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="aboutus.resx">
-      <DependentUpon>aboutus.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="admin.resx">
       <DependentUpon>admin.cs</DependentUpon>
     </EmbeddedResource>
@@ -264,14 +237,8 @@
     <EmbeddedResource Include="Form2.resx">
       <DependentUpon>Form2.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form3.resx">
-      <DependentUpon>Form3.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="loadingscreen.resx">
       <DependentUpon>loadingscreen.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="membership.resx">
-      <DependentUpon>membership.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\CoachAlex.resx">
       <DependentUpon>CoachAlex.cs</DependentUpon>
@@ -312,9 +279,6 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="schedule.resx">
-      <DependentUpon>schedule.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="termsagreement.resx">
       <DependentUpon>termsagreement.cs</DependentUpon>
     </EmbeddedResource>
