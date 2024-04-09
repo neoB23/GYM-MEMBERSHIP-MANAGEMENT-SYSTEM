@@ -55,6 +55,10 @@
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
+            this.userControl61 = new GYM_MEMBERSHIP_MANAGEMENT_SYSTEM.UI.UserControl6();
+            this.userControl71 = new GYM_MEMBERSHIP_MANAGEMENT_SYSTEM.UI.UserControl7();
+            this.userControl81 = new GYM_MEMBERSHIP_MANAGEMENT_SYSTEM.UI.UserControl8();
+            this.userControl91 = new GYM_MEMBERSHIP_MANAGEMENT_SYSTEM.UI.UserControl9();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picboxrange)).BeginInit();
@@ -111,6 +115,7 @@
             this.picboxwhite.Size = new System.Drawing.Size(241, 338);
             this.picboxwhite.TabIndex = 3;
             this.picboxwhite.TabStop = false;
+            this.picboxwhite.Click += new System.EventHandler(this.picboxwhite_Click);
             this.picboxwhite.MouseEnter += new System.EventHandler(this.picboxwhite_MouseEnter);
             this.picboxwhite.MouseLeave += new System.EventHandler(this.picboxwhite_MouseLeave);
             // 
@@ -176,6 +181,7 @@
             this.pictureBox4.Size = new System.Drawing.Size(241, 338);
             this.pictureBox4.TabIndex = 10;
             this.pictureBox4.TabStop = false;
+            this.pictureBox4.Click += new System.EventHandler(this.pictureBox4_Click);
             this.pictureBox4.MouseEnter += new System.EventHandler(this.pictureBox4_MouseEnter);
             // 
             // pictureBox6
@@ -197,6 +203,7 @@
             this.pictureBox7.Size = new System.Drawing.Size(241, 338);
             this.pictureBox7.TabIndex = 12;
             this.pictureBox7.TabStop = false;
+            this.pictureBox7.Click += new System.EventHandler(this.pictureBox7_Click);
             // 
             // pictureBox8
             // 
@@ -217,6 +224,7 @@
             this.pictureBox9.Size = new System.Drawing.Size(241, 338);
             this.pictureBox9.TabIndex = 14;
             this.pictureBox9.TabStop = false;
+            this.pictureBox9.Click += new System.EventHandler(this.pictureBox9_Click);
             // 
             // pictureBox10
             // 
@@ -348,12 +356,46 @@
             this.label12.TabIndex = 26;
             this.label12.Text = "2300.00";
             // 
+            // userControl61
+            // 
+            this.userControl61.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.userControl61.Location = new System.Drawing.Point(-4, -2);
+            this.userControl61.Name = "userControl61";
+            this.userControl61.Size = new System.Drawing.Size(1164, 657);
+            this.userControl61.TabIndex = 27;
+            // 
+            // userControl71
+            // 
+            this.userControl71.BackColor = System.Drawing.SystemColors.Highlight;
+            this.userControl71.ForeColor = System.Drawing.SystemColors.ActiveCaption;
+            this.userControl71.Location = new System.Drawing.Point(-4, -2);
+            this.userControl71.Name = "userControl71";
+            this.userControl71.Size = new System.Drawing.Size(1164, 657);
+            this.userControl71.TabIndex = 28;
+            // 
+            // userControl81
+            // 
+            this.userControl81.BackColor = System.Drawing.Color.DarkRed;
+            this.userControl81.Location = new System.Drawing.Point(-4, -2);
+            this.userControl81.Name = "userControl81";
+            this.userControl81.Size = new System.Drawing.Size(1164, 657);
+            this.userControl81.TabIndex = 29;
+            // 
+            // userControl91
+            // 
+            this.userControl91.BackColor = System.Drawing.Color.Orange;
+            this.userControl91.Location = new System.Drawing.Point(-3, -2);
+            this.userControl91.Name = "userControl91";
+            this.userControl91.Size = new System.Drawing.Size(1163, 657);
+            this.userControl91.TabIndex = 30;
+            // 
             // formMembership
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.MenuText;
             this.ClientSize = new System.Drawing.Size(1156, 657);
+            this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.label10);
@@ -378,8 +420,11 @@
             this.Controls.Add(this.pictureBox5);
             this.Controls.Add(this.picboxwhite);
             this.Controls.Add(this.picboxrange);
-            this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.userControl61);
+            this.Controls.Add(this.userControl71);
+            this.Controls.Add(this.userControl81);
+            this.Controls.Add(this.userControl91);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "formMembership";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -431,5 +476,9 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label12;
+        private GYM_MEMBERSHIP_MANAGEMENT_SYSTEM.UI.UserControl6 userControl61;
+        private GYM_MEMBERSHIP_MANAGEMENT_SYSTEM.UI.UserControl7 userControl71;
+        private GYM_MEMBERSHIP_MANAGEMENT_SYSTEM.UI.UserControl8 userControl81;
+        private GYM_MEMBERSHIP_MANAGEMENT_SYSTEM.UI.UserControl9 userControl91;
     }
 }

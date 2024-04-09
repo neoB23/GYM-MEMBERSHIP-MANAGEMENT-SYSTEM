@@ -44,14 +44,14 @@ namespace SYSTEM_GYM
 
         private void picboxwhite_MouseEnter(object sender, EventArgs e)
         {
-            picboxwhite.Visible = false;
-            picboxrange.Visible = true;
+           // picboxwhite.Visible = false;
+          //  picboxrange.Visible = true;
         }
 
         private void picboxwhite_MouseLeave(object sender, EventArgs e)
         {
-            picboxwhite.Visible = true;
-            picboxrange.Visible = false;
+           // picboxwhite.Visible = true;
+           // picboxrange.Visible = false;
         }
 
         private void label7_Click(object sender, EventArgs e)
@@ -61,8 +61,35 @@ namespace SYSTEM_GYM
 
         private void pictureBox4_MouseEnter(object sender, EventArgs e)
         {
-            pictureBox4.Visible = false;
-            pictureBox3.Visible = true;
+           // pictureBox4.Visible = false;
+            //pictureBox3.Visible = true;
+        }
+
+        private void picboxwhite_Click(object sender, EventArgs e)
+        {
+            userControl61.Show();
+            userControl61.BringToFront();
+        }
+
+        private void pictureBox4_Click(object sender, EventArgs e)
+        {
+            userControl61.Hide();
+            userControl71.Show();
+            userControl71.BringToFront();
+        }
+
+        private void pictureBox7_Click(object sender, EventArgs e)
+        {
+            userControl71.Hide();
+            userControl81.Show();
+            userControl81.BringToFront();
+        }
+
+        private void pictureBox9_Click(object sender, EventArgs e)
+        {
+            userControl81.Hide();
+            userControl91.Show();
+            userControl91.BringToFront();
         }
     }
 }
