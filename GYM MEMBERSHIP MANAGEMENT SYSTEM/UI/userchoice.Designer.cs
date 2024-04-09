@@ -158,7 +158,7 @@
             this.slidebar.Location = new System.Drawing.Point(0, 45);
             this.slidebar.Name = "slidebar";
             this.slidebar.Padding = new System.Windows.Forms.Padding(0, 30, 0, 0);
-            this.slidebar.Size = new System.Drawing.Size(234, 669);
+            this.slidebar.Size = new System.Drawing.Size(243, 669);
             this.slidebar.TabIndex = 2;
             this.slidebar.Paint += new System.Windows.Forms.PaintEventHandler(this.slidebar_Paint);
             // 

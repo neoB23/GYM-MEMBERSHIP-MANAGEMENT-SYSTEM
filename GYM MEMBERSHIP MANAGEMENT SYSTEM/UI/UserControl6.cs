@@ -22,7 +22,9 @@ namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM.UI
 
         private void guna2GradientButton1_Click(object sender, EventArgs e)
         {
-            
+            UserControl6 UserControl6 = new UserControl6();
+            this.Hide();
+            UserControl6.Show();
         }
 
         private void UserControl6_Load(object sender, EventArgs e)

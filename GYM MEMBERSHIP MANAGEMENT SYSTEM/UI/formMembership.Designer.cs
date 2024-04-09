@@ -90,11 +90,12 @@
             // 
             this.pictureBox2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox2.BackgroundImage")));
             this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pictureBox2.Location = new System.Drawing.Point(-4, 460);
+            this.pictureBox2.Location = new System.Drawing.Point(-6, 463);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(1164, 279);
             this.pictureBox2.TabIndex = 1;
             this.pictureBox2.TabStop = false;
+            this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
             // 
             // picboxrange
             // 
@@ -105,6 +106,7 @@
             this.picboxrange.Size = new System.Drawing.Size(241, 338);
             this.picboxrange.TabIndex = 2;
             this.picboxrange.TabStop = false;
+            this.picboxrange.Click += new System.EventHandler(this.picboxrange_Click);
             // 
             // picboxwhite
             // 
@@ -128,6 +130,7 @@
             this.pictureBox5.Size = new System.Drawing.Size(120, 120);
             this.pictureBox5.TabIndex = 4;
             this.pictureBox5.TabStop = false;
+            this.pictureBox5.Click += new System.EventHandler(this.pictureBox5_Click);
             // 
             // label1
             // 
@@ -139,6 +142,7 @@
             this.label1.Size = new System.Drawing.Size(77, 28);
             this.label1.TabIndex = 6;
             this.label1.Text = "1 day";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // label2
             // 
@@ -150,6 +154,7 @@
             this.label2.Size = new System.Drawing.Size(90, 30);
             this.label2.TabIndex = 7;
             this.label2.Text = "150.00";
+            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // label3
             // 
@@ -161,6 +166,7 @@
             this.label3.Size = new System.Drawing.Size(108, 28);
             this.label3.TabIndex = 8;
             this.label3.Text = "PER DAY";
+            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // pictureBox3
             // 
@@ -171,6 +177,7 @@
             this.pictureBox3.Size = new System.Drawing.Size(241, 338);
             this.pictureBox3.TabIndex = 9;
             this.pictureBox3.TabStop = false;
+            this.pictureBox3.Click += new System.EventHandler(this.pictureBox3_Click);
             // 
             // pictureBox4
             // 
@@ -193,6 +200,7 @@
             this.pictureBox6.Size = new System.Drawing.Size(241, 338);
             this.pictureBox6.TabIndex = 11;
             this.pictureBox6.TabStop = false;
+            this.pictureBox6.Click += new System.EventHandler(this.pictureBox6_Click);
             // 
             // pictureBox7
             // 
@@ -214,6 +222,7 @@
             this.pictureBox8.Size = new System.Drawing.Size(241, 338);
             this.pictureBox8.TabIndex = 13;
             this.pictureBox8.TabStop = false;
+            this.pictureBox8.Click += new System.EventHandler(this.pictureBox8_Click);
             // 
             // pictureBox9
             // 
@@ -235,6 +244,7 @@
             this.pictureBox10.Size = new System.Drawing.Size(120, 120);
             this.pictureBox10.TabIndex = 15;
             this.pictureBox10.TabStop = false;
+            this.pictureBox10.Click += new System.EventHandler(this.pictureBox10_Click);
             // 
             // pictureBox11
             // 
@@ -245,6 +255,7 @@
             this.pictureBox11.Size = new System.Drawing.Size(120, 120);
             this.pictureBox11.TabIndex = 16;
             this.pictureBox11.TabStop = false;
+            this.pictureBox11.Click += new System.EventHandler(this.pictureBox11_Click);
             // 
             // pictureBox12
             // 
@@ -255,6 +266,7 @@
             this.pictureBox12.Size = new System.Drawing.Size(120, 120);
             this.pictureBox12.TabIndex = 17;
             this.pictureBox12.TabStop = false;
+            this.pictureBox12.Click += new System.EventHandler(this.pictureBox12_Click);
             // 
             // label4
             // 
@@ -266,6 +278,7 @@
             this.label4.Size = new System.Drawing.Size(124, 28);
             this.label4.TabIndex = 18;
             this.label4.Text = "2 months";
+            this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // label5
             // 
@@ -277,6 +290,7 @@
             this.label5.Size = new System.Drawing.Size(124, 28);
             this.label5.TabIndex = 19;
             this.label5.Text = "6 months";
+            this.label5.Click += new System.EventHandler(this.label5_Click);
             // 
             // label6
             // 
@@ -288,6 +302,7 @@
             this.label6.Size = new System.Drawing.Size(138, 28);
             this.label6.TabIndex = 20;
             this.label6.Text = "12 months";
+            this.label6.Click += new System.EventHandler(this.label6_Click);
             // 
             // label7
             // 
@@ -311,6 +326,7 @@
             this.label8.Size = new System.Drawing.Size(124, 28);
             this.label8.TabIndex = 22;
             this.label8.Text = "MONTHLY";
+            this.label8.Click += new System.EventHandler(this.label8_Click);
             // 
             // label9
             // 
@@ -322,6 +338,7 @@
             this.label9.Size = new System.Drawing.Size(104, 30);
             this.label9.TabIndex = 23;
             this.label9.Text = "2700.00";
+            this.label9.Click += new System.EventHandler(this.label9_Click);
             // 
             // label10
             // 
@@ -333,6 +350,7 @@
             this.label10.Size = new System.Drawing.Size(124, 28);
             this.label10.TabIndex = 24;
             this.label10.Text = "MONTHLY";
+            this.label10.Click += new System.EventHandler(this.label10_Click);
             // 
             // label11
             // 
@@ -344,6 +362,7 @@
             this.label11.Size = new System.Drawing.Size(124, 28);
             this.label11.TabIndex = 25;
             this.label11.Text = "MONTHLY";
+            this.label11.Click += new System.EventHandler(this.label11_Click);
             // 
             // label12
             // 
@@ -355,39 +374,44 @@
             this.label12.Size = new System.Drawing.Size(104, 30);
             this.label12.TabIndex = 26;
             this.label12.Text = "2300.00";
+            this.label12.Click += new System.EventHandler(this.label12_Click);
             // 
             // userControl61
             // 
             this.userControl61.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.userControl61.Location = new System.Drawing.Point(-4, -2);
+            this.userControl61.Location = new System.Drawing.Point(-4, 0);
             this.userControl61.Name = "userControl61";
             this.userControl61.Size = new System.Drawing.Size(1164, 657);
             this.userControl61.TabIndex = 27;
+            this.userControl61.Load += new System.EventHandler(this.userControl61_Load);
             // 
             // userControl71
             // 
             this.userControl71.BackColor = System.Drawing.SystemColors.Highlight;
             this.userControl71.ForeColor = System.Drawing.SystemColors.ActiveCaption;
-            this.userControl71.Location = new System.Drawing.Point(-4, -2);
+            this.userControl71.Location = new System.Drawing.Point(-4, 0);
             this.userControl71.Name = "userControl71";
             this.userControl71.Size = new System.Drawing.Size(1164, 657);
             this.userControl71.TabIndex = 28;
+            this.userControl71.Load += new System.EventHandler(this.userControl71_Load);
             // 
             // userControl81
             // 
             this.userControl81.BackColor = System.Drawing.Color.DarkRed;
-            this.userControl81.Location = new System.Drawing.Point(-4, -2);
+            this.userControl81.Location = new System.Drawing.Point(-5, 0);
             this.userControl81.Name = "userControl81";
             this.userControl81.Size = new System.Drawing.Size(1164, 657);
             this.userControl81.TabIndex = 29;
+            this.userControl81.Load += new System.EventHandler(this.userControl81_Load);
             // 
             // userControl91
             // 
             this.userControl91.BackColor = System.Drawing.Color.Orange;
-            this.userControl91.Location = new System.Drawing.Point(-3, -2);
+            this.userControl91.Location = new System.Drawing.Point(-5, 0);
             this.userControl91.Name = "userControl91";
             this.userControl91.Size = new System.Drawing.Size(1163, 657);
             this.userControl91.TabIndex = 30;
+            this.userControl91.Load += new System.EventHandler(this.userControl91_Load);
             // 
             // formMembership
             // 
