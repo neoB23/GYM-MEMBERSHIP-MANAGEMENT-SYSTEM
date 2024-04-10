@@ -117,6 +117,7 @@
             this.bunifuThinButton21.TabIndex = 15;
             this.bunifuThinButton21.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.bunifuThinButton21.Click += new System.EventHandler(this.bunifuThinButton21_Click);
+            this.bunifuThinButton21.MouseEnter += new System.EventHandler(this.bunifuThinButton21_MouseEnter);
             // 
             // bunifuCheckbox1
             // 

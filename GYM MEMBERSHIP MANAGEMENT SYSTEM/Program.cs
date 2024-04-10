@@ -17,7 +17,7 @@ namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new admin());
+            Application.Run(new userchoice());
         }
     }
 }

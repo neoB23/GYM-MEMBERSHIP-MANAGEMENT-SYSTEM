@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(userchoice));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label2 = new System.Windows.Forms.Label();
             this.bunifuTileButton1 = new Bunifu.Framework.UI.BunifuTileButton();
             this.bntham = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -90,15 +91,29 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.Coral;
+            this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.bunifuTileButton1);
             this.panel1.Controls.Add(this.bntham);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1362, 45);
+            this.panel1.Size = new System.Drawing.Size(1362, 39);
             this.panel1.TabIndex = 0;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.Transparent;
+            this.label2.Font = new System.Drawing.Font("Calibri", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.White;
+            this.label2.Location = new System.Drawing.Point(706, 5);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(73, 29);
+            this.label2.TabIndex = 4;
+            this.label2.Text = "Home";
+            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // bunifuTileButton1
             // 
@@ -113,7 +128,7 @@
             this.bunifuTileButton1.ImageZoom = 50;
             this.bunifuTileButton1.LabelPosition = 34;
             this.bunifuTileButton1.LabelText = "User";
-            this.bunifuTileButton1.Location = new System.Drawing.Point(1176, 0);
+            this.bunifuTileButton1.Location = new System.Drawing.Point(1180, 0);
             this.bunifuTileButton1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.bunifuTileButton1.Name = "bunifuTileButton1";
             this.bunifuTileButton1.Size = new System.Drawing.Size(182, 45);
@@ -140,9 +155,9 @@
             this.label1.ForeColor = System.Drawing.Color.White;
             this.label1.Location = new System.Drawing.Point(66, 11);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(233, 23);
+            this.label1.Size = new System.Drawing.Size(114, 23);
             this.label1.TabIndex = 3;
-            this.label1.Text = "GYM MANAGEMENT SYSTEM";
+            this.label1.Text = "GYM FITNESS";
             // 
             // slidebar
             // 
@@ -155,10 +170,10 @@
             this.slidebar.Controls.Add(this.pnLogout);
             this.slidebar.Dock = System.Windows.Forms.DockStyle.Left;
             this.slidebar.ForeColor = System.Drawing.Color.White;
-            this.slidebar.Location = new System.Drawing.Point(0, 45);
+            this.slidebar.Location = new System.Drawing.Point(0, 39);
             this.slidebar.Name = "slidebar";
             this.slidebar.Padding = new System.Windows.Forms.Padding(0, 30, 0, 0);
-            this.slidebar.Size = new System.Drawing.Size(243, 669);
+            this.slidebar.Size = new System.Drawing.Size(243, 675);
             this.slidebar.TabIndex = 2;
             this.slidebar.Paint += new System.Windows.Forms.PaintEventHandler(this.slidebar_Paint);
             // 
@@ -610,5 +625,6 @@
         private System.Windows.Forms.Timer SidebarTransition;
         private System.Windows.Forms.PictureBox bntham;
         private Bunifu.Framework.UI.BunifuTileButton bunifuTileButton1;
+        private System.Windows.Forms.Label label2;
     }
 }

@@ -185,6 +185,12 @@
     <Compile Include="termsagreement.Designer.cs">
       <DependentUpon>termsagreement.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\UserControl10.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\UserControl10.Designer.cs">
+      <DependentUpon>UserControl10.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\UserControl6.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -305,6 +311,9 @@
     </Compile>
     <EmbeddedResource Include="termsagreement.resx">
       <DependentUpon>termsagreement.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\UserControl10.resx">
+      <DependentUpon>UserControl10.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\UserControl6.resx">
       <DependentUpon>UserControl6.cs</DependentUpon>

@@ -284,6 +284,7 @@
             this.guna2Button4.Size = new System.Drawing.Size(93, 45);
             this.guna2Button4.TabIndex = 42;
             this.guna2Button4.Text = "Edit profile";
+            this.guna2Button4.Click += new System.EventHandler(this.guna2Button4_Click);
             // 
             // guna2Button2
             // 
@@ -298,6 +299,7 @@
             this.guna2Button2.Size = new System.Drawing.Size(118, 45);
             this.guna2Button2.TabIndex = 41;
             this.guna2Button2.Text = "Save";
+            this.guna2Button2.Click += new System.EventHandler(this.guna2Button2_Click);
             // 
             // guna2Button1
             // 
@@ -312,6 +314,7 @@
             this.guna2Button1.Size = new System.Drawing.Size(118, 45);
             this.guna2Button1.TabIndex = 40;
             this.guna2Button1.Text = "Cancel";
+            this.guna2Button1.Click += new System.EventHandler(this.guna2Button1_Click);
             // 
             // label9
             // 
@@ -390,6 +393,7 @@
             this.guna2CirclePictureBox1.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
             this.guna2CirclePictureBox1.ShadowDecoration.Parent = this.guna2CirclePictureBox1;
             this.guna2CirclePictureBox1.Size = new System.Drawing.Size(194, 192);
+            this.guna2CirclePictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.guna2CirclePictureBox1.TabIndex = 32;
             this.guna2CirclePictureBox1.TabStop = false;
             // 
@@ -424,6 +428,7 @@
             this.Name = "profile1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "profile1";
+            this.Load += new System.EventHandler(this.profile1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.guna2CirclePictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

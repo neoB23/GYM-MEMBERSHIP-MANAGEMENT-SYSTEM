@@ -12,6 +12,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Guna.UI2.WinForms;
+
 
 namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM
 {
@@ -30,6 +32,7 @@ namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM
         {
             userId = id;
         }
+        
         private void guna2Button4_Click(object sender, EventArgs e)
         {
             try
@@ -73,7 +76,7 @@ namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM
             }
             catch (Exception ex)
             {
-                MessageBox.Show("An error occurred while updating the profile image: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error: " + ex.Message);
             }
         }
 
@@ -116,37 +119,6 @@ namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM
             catch (Exception ex)
             {
                 MessageBox.Show("An error occurred while loading user data: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        private void UpdateUserData()
-        {
-            try
-            {
-                string connectionString = "Server=localhost;User ID=root;Database=gym membership management;SslMode=none;";
-                using (MySqlConnection connection = new MySqlConnection(connectionString))
-                {
-                    connection.Open();
-                    string updateQuery = "UPDATE register SET firstname = @firstname, lastname = @lastname, username = @username, password = @password, email_address = @email, address = @address, phone_number = @phone, gender = @gender, membership_plan = @plan WHERE id = @id";
-                    MySqlCommand updateCommand = new MySqlCommand(updateQuery, connection);
-                    updateCommand.Parameters.AddWithValue("@firstname", txtFirstName.Text);
-                    updateCommand.Parameters.AddWithValue("@lastname", txtLastName.Text);
-                    updateCommand.Parameters.AddWithValue("@username", txtUsername.Text);
-                    updateCommand.Parameters.AddWithValue("@password", txtPassword.Text);
-                    updateCommand.Parameters.AddWithValue("@email", txtEmail.Text);
-                    updateCommand.Parameters.AddWithValue("@address", txtAddress.Text);
-                    updateCommand.Parameters.AddWithValue("@phone", txtPhoneNumber.Text);
-                    updateCommand.Parameters.AddWithValue("@gender", txtGender.Text);
-                    updateCommand.Parameters.AddWithValue("@plan", txtMembershipPla.Text);
-                    updateCommand.Parameters.AddWithValue("@id", userId);
-                    updateCommand.ExecuteNonQuery();
-
-                    MessageBox.Show("User data updated successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("An error occurred while updating user data: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

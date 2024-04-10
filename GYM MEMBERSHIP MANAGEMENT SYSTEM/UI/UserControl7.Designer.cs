@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.guna2GradientButton1 = new Guna.UI2.WinForms.Guna2GradientButton();
+            this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // guna2GradientButton1
@@ -46,20 +47,32 @@
             this.guna2GradientButton1.Text = "Go back";
             this.guna2GradientButton1.Click += new System.EventHandler(this.guna2GradientButton1_Click);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(460, 319);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(126, 13);
+            this.label1.TabIndex = 34;
+            this.label1.Text = "PERKS OF 2 month pass";
+            // 
             // UserControl7
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.guna2GradientButton1);
             this.Name = "UserControl7";
             this.Size = new System.Drawing.Size(1105, 616);
             this.Load += new System.EventHandler(this.UserControl7_Load);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
 
         private Guna.UI2.WinForms.Guna2GradientButton guna2GradientButton1;
+        private System.Windows.Forms.Label label1;
     }
 }

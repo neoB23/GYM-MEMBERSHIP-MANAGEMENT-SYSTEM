@@ -198,7 +198,7 @@ namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM
         }
         private void DisplayData()
         {
-            string sql = "SELECT id, firstname, lastname, username, password, emailadress, address, phonenumber, gender, account_created, membershipplan FROM register";
+            string sql = "SELECT id, firstname, lastname, username, password, emailadress, address, phonenumber, gender, account_created, membershipplan, img FROM register";
             cmd = new MySqlCommand(sql, con);
             adapt = new MySqlDataAdapter(cmd);
             DataTable dt = new DataTable();

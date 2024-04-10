@@ -96,6 +96,7 @@ namespace SYSTEM_GYM
         private void bntcoach_Click(object sender, EventArgs e)
         {
             coachTransition.Start();
+            label2.Text = "Coach";   
         }
 
         bool SidebarExpand = true;
@@ -156,6 +157,7 @@ namespace SYSTEM_GYM
             {
                 menu.Activate();
             }
+            label2.Text = "Menu";
         }
 
         private void Menu_FormClosed(object sender, FormClosedEventArgs e)
@@ -236,6 +238,7 @@ namespace SYSTEM_GYM
             {
                 membership.Activate();
             }
+            label2.Text = "Membership";
         }
 
         private void Membership_FormClosed(object sender, FormClosedEventArgs e)
@@ -258,6 +261,7 @@ namespace SYSTEM_GYM
                 schedule.Activate();
 
             }
+            label2.Text = "Schedule";
         }
 
         private void Schedule_FormClosed(object sender, FormClosedEventArgs e)
@@ -279,6 +283,7 @@ namespace SYSTEM_GYM
             {
                 equipment.Activate();
             }
+            label2.Text = "Equipment";
         }
 
         private void Equipment_FormClosed(object sender, FormClosedEventArgs e)
@@ -311,10 +316,21 @@ namespace SYSTEM_GYM
             {
                 profile.Activate();
             }
+            label2.Text = "Profile";
         }
         private void Profile1_FormClosed(object sender, FormClosedEventArgs e)
         {
             equipment = null;
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void guna2GradientButton1_Click(object sender, EventArgs e)
+        {
+
         }
     }   
 }

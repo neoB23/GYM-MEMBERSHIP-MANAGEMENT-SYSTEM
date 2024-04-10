@@ -82,11 +82,6 @@ namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM
 
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void guna2ToggleSwitch1_CheckedChanged(object sender, EventArgs e)
         {
 
@@ -204,6 +199,26 @@ namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM
         {
             passblack.Visible = true;
             passorange.Visible = false;
+        }
+
+        private void bunifuThinButton21_MouseEnter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Form1_MouseEnter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            WindowState = FormWindowState.Minimized;
         }
     }
 }
