@@ -274,5 +274,18 @@ namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM
         {
 
         }
+
+        
+
+        private void txtemailadd_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+
+        private void cmbmembership_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -48,6 +48,8 @@
             // 
             // panel1
             // 
+            this.panel1.BackColor = System.Drawing.Color.Black;
+            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel1.Controls.Add(this.guna2Button1);
             this.panel1.Controls.Add(this.bunifuCustomLabel6);
             this.panel1.Controls.Add(this.bunifuCustomLabel5);
@@ -68,7 +70,7 @@
             this.guna2Button1.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.guna2Button1.ForeColor = System.Drawing.Color.White;
             this.guna2Button1.HoverState.Parent = this.guna2Button1;
-            this.guna2Button1.Location = new System.Drawing.Point(0, 599);
+            this.guna2Button1.Location = new System.Drawing.Point(-1, 598);
             this.guna2Button1.Name = "guna2Button1";
             this.guna2Button1.ShadowDecoration.Parent = this.guna2Button1;
             this.guna2Button1.Size = new System.Drawing.Size(147, 48);
@@ -80,6 +82,7 @@
             // 
             this.bunifuCustomLabel6.AutoSize = true;
             this.bunifuCustomLabel6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bunifuCustomLabel6.ForeColor = System.Drawing.Color.White;
             this.bunifuCustomLabel6.Location = new System.Drawing.Point(30, 360);
             this.bunifuCustomLabel6.Name = "bunifuCustomLabel6";
             this.bunifuCustomLabel6.Size = new System.Drawing.Size(54, 20);
@@ -91,6 +94,7 @@
             // 
             this.bunifuCustomLabel5.AutoSize = true;
             this.bunifuCustomLabel5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bunifuCustomLabel5.ForeColor = System.Drawing.Color.White;
             this.bunifuCustomLabel5.Location = new System.Drawing.Point(30, 199);
             this.bunifuCustomLabel5.Name = "bunifuCustomLabel5";
             this.bunifuCustomLabel5.Size = new System.Drawing.Size(27, 20);
@@ -102,6 +106,7 @@
             // 
             this.bunifuCustomLabel4.AutoSize = true;
             this.bunifuCustomLabel4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bunifuCustomLabel4.ForeColor = System.Drawing.Color.White;
             this.bunifuCustomLabel4.Location = new System.Drawing.Point(30, 326);
             this.bunifuCustomLabel4.Name = "bunifuCustomLabel4";
             this.bunifuCustomLabel4.Size = new System.Drawing.Size(50, 20);
@@ -113,6 +118,7 @@
             // 
             this.bunifuCustomLabel3.AutoSize = true;
             this.bunifuCustomLabel3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bunifuCustomLabel3.ForeColor = System.Drawing.Color.White;
             this.bunifuCustomLabel3.Location = new System.Drawing.Point(30, 297);
             this.bunifuCustomLabel3.Name = "bunifuCustomLabel3";
             this.bunifuCustomLabel3.Size = new System.Drawing.Size(96, 20);
@@ -124,6 +130,7 @@
             // 
             this.bunifuCustomLabel2.AutoSize = true;
             this.bunifuCustomLabel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bunifuCustomLabel2.ForeColor = System.Drawing.Color.White;
             this.bunifuCustomLabel2.Location = new System.Drawing.Point(30, 264);
             this.bunifuCustomLabel2.Name = "bunifuCustomLabel2";
             this.bunifuCustomLabel2.Size = new System.Drawing.Size(75, 20);
@@ -135,6 +142,7 @@
             // 
             this.bunifuCustomLabel1.AutoSize = true;
             this.bunifuCustomLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bunifuCustomLabel1.ForeColor = System.Drawing.Color.White;
             this.bunifuCustomLabel1.Location = new System.Drawing.Point(30, 230);
             this.bunifuCustomLabel1.Name = "bunifuCustomLabel1";
             this.bunifuCustomLabel1.Size = new System.Drawing.Size(55, 20);
@@ -148,8 +156,8 @@
             // 
             // userControl11
             // 
-            this.userControl11.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.userControl11.Location = new System.Drawing.Point(140, 0);
+            this.userControl11.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.userControl11.Location = new System.Drawing.Point(146, 0);
             this.userControl11.Name = "userControl11";
             this.userControl11.Size = new System.Drawing.Size(861, 647);
             this.userControl11.TabIndex = 1;
@@ -157,8 +165,8 @@
             // 
             // userControl41
             // 
-            this.userControl41.BackColor = System.Drawing.Color.Khaki;
-            this.userControl41.Location = new System.Drawing.Point(140, 0);
+            this.userControl41.BackColor = System.Drawing.Color.Black;
+            this.userControl41.Location = new System.Drawing.Point(128, 134);
             this.userControl41.Name = "userControl41";
             this.userControl41.Size = new System.Drawing.Size(861, 647);
             this.userControl41.TabIndex = 4;
@@ -166,18 +174,18 @@
             // 
             // userControl31
             // 
-            this.userControl31.BackColor = System.Drawing.Color.Firebrick;
-            this.userControl31.Location = new System.Drawing.Point(140, 0);
+            this.userControl31.BackColor = System.Drawing.Color.Black;
+            this.userControl31.Location = new System.Drawing.Point(132, 145);
             this.userControl31.Name = "userControl31";
             this.userControl31.Size = new System.Drawing.Size(861, 647);
             this.userControl31.TabIndex = 3;
             // 
             // userControl21
             // 
-            this.userControl21.BackColor = System.Drawing.SystemColors.AppWorkspace;
-            this.userControl21.Location = new System.Drawing.Point(140, 0);
+            this.userControl21.BackColor = System.Drawing.Color.Black;
+            this.userControl21.Location = new System.Drawing.Point(146, 0);
             this.userControl21.Name = "userControl21";
-            this.userControl21.Size = new System.Drawing.Size(861, 656);
+            this.userControl21.Size = new System.Drawing.Size(855, 656);
             this.userControl21.TabIndex = 2;
             // 
             // userControl01

@@ -39,6 +39,14 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.txtgender = new System.Windows.Forms.TextBox();
+            this.txtadd = new System.Windows.Forms.TextBox();
+            this.txtlastname = new System.Windows.Forms.TextBox();
+            this.txtpassword = new System.Windows.Forms.TextBox();
+            this.txtphonenum = new System.Windows.Forms.TextBox();
+            this.txtemailadd = new System.Windows.Forms.TextBox();
+            this.txtfirstname = new System.Windows.Forms.TextBox();
+            this.txtusername = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
@@ -62,14 +70,6 @@
             this.pictureBox16 = new System.Windows.Forms.PictureBox();
             this.pictureBox17 = new System.Windows.Forms.PictureBox();
             this.pictureBox18 = new System.Windows.Forms.PictureBox();
-            this.txtusername = new System.Windows.Forms.TextBox();
-            this.txtfirstname = new System.Windows.Forms.TextBox();
-            this.txtemailadd = new System.Windows.Forms.TextBox();
-            this.txtphonenum = new System.Windows.Forms.TextBox();
-            this.txtpassword = new System.Windows.Forms.TextBox();
-            this.txtlastname = new System.Windows.Forms.TextBox();
-            this.txtadd = new System.Windows.Forms.TextBox();
-            this.txtgender = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -110,10 +110,10 @@
             this.bunifuThinButton21.IdleFillColor = System.Drawing.Color.Black;
             this.bunifuThinButton21.IdleForecolor = System.Drawing.Color.SeaShell;
             this.bunifuThinButton21.IdleLineColor = System.Drawing.Color.OrangeRed;
-            this.bunifuThinButton21.Location = new System.Drawing.Point(582, 438);
+            this.bunifuThinButton21.Location = new System.Drawing.Point(580, 423);
             this.bunifuThinButton21.Margin = new System.Windows.Forms.Padding(5);
             this.bunifuThinButton21.Name = "bunifuThinButton21";
-            this.bunifuThinButton21.Size = new System.Drawing.Size(202, 41);
+            this.bunifuThinButton21.Size = new System.Drawing.Size(202, 52);
             this.bunifuThinButton21.TabIndex = 15;
             this.bunifuThinButton21.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.bunifuThinButton21.Click += new System.EventHandler(this.bunifuThinButton21_Click);
@@ -235,6 +235,96 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1035, 523);
             this.panel1.TabIndex = 105;
+            // 
+            // txtgender
+            // 
+            this.txtgender.BackColor = System.Drawing.Color.Black;
+            this.txtgender.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtgender.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtgender.ForeColor = System.Drawing.Color.White;
+            this.txtgender.Location = new System.Drawing.Point(723, 373);
+            this.txtgender.Name = "txtgender";
+            this.txtgender.Size = new System.Drawing.Size(250, 19);
+            this.txtgender.TabIndex = 158;
+            // 
+            // txtadd
+            // 
+            this.txtadd.BackColor = System.Drawing.Color.Black;
+            this.txtadd.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtadd.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtadd.ForeColor = System.Drawing.Color.White;
+            this.txtadd.Location = new System.Drawing.Point(722, 289);
+            this.txtadd.Name = "txtadd";
+            this.txtadd.Size = new System.Drawing.Size(250, 19);
+            this.txtadd.TabIndex = 157;
+            // 
+            // txtlastname
+            // 
+            this.txtlastname.BackColor = System.Drawing.Color.Black;
+            this.txtlastname.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtlastname.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtlastname.ForeColor = System.Drawing.Color.White;
+            this.txtlastname.Location = new System.Drawing.Point(722, 203);
+            this.txtlastname.Name = "txtlastname";
+            this.txtlastname.Size = new System.Drawing.Size(250, 19);
+            this.txtlastname.TabIndex = 156;
+            // 
+            // txtpassword
+            // 
+            this.txtpassword.BackColor = System.Drawing.Color.Black;
+            this.txtpassword.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtpassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtpassword.ForeColor = System.Drawing.Color.White;
+            this.txtpassword.Location = new System.Drawing.Point(722, 122);
+            this.txtpassword.Name = "txtpassword";
+            this.txtpassword.Size = new System.Drawing.Size(250, 19);
+            this.txtpassword.TabIndex = 155;
+            // 
+            // txtphonenum
+            // 
+            this.txtphonenum.BackColor = System.Drawing.Color.Black;
+            this.txtphonenum.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtphonenum.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtphonenum.ForeColor = System.Drawing.Color.White;
+            this.txtphonenum.Location = new System.Drawing.Point(393, 369);
+            this.txtphonenum.Name = "txtphonenum";
+            this.txtphonenum.Size = new System.Drawing.Size(250, 19);
+            this.txtphonenum.TabIndex = 154;
+            this.txtphonenum.TextChanged += new System.EventHandler(this.textBox1_TextChanged_1);
+            // 
+            // txtemailadd
+            // 
+            this.txtemailadd.BackColor = System.Drawing.Color.Black;
+            this.txtemailadd.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtemailadd.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtemailadd.ForeColor = System.Drawing.Color.White;
+            this.txtemailadd.Location = new System.Drawing.Point(393, 286);
+            this.txtemailadd.Name = "txtemailadd";
+            this.txtemailadd.Size = new System.Drawing.Size(250, 19);
+            this.txtemailadd.TabIndex = 153;
+            // 
+            // txtfirstname
+            // 
+            this.txtfirstname.BackColor = System.Drawing.Color.Black;
+            this.txtfirstname.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtfirstname.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtfirstname.ForeColor = System.Drawing.Color.White;
+            this.txtfirstname.Location = new System.Drawing.Point(395, 203);
+            this.txtfirstname.Name = "txtfirstname";
+            this.txtfirstname.Size = new System.Drawing.Size(250, 19);
+            this.txtfirstname.TabIndex = 152;
+            this.txtfirstname.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            // 
+            // txtusername
+            // 
+            this.txtusername.BackColor = System.Drawing.Color.Black;
+            this.txtusername.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtusername.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtusername.ForeColor = System.Drawing.Color.White;
+            this.txtusername.Location = new System.Drawing.Point(393, 122);
+            this.txtusername.Name = "txtusername";
+            this.txtusername.Size = new System.Drawing.Size(250, 19);
+            this.txtusername.TabIndex = 151;
             // 
             // label10
             // 
@@ -475,96 +565,6 @@
             this.pictureBox18.Size = new System.Drawing.Size(280, 46);
             this.pictureBox18.TabIndex = 150;
             this.pictureBox18.TabStop = false;
-            // 
-            // txtusername
-            // 
-            this.txtusername.BackColor = System.Drawing.Color.Black;
-            this.txtusername.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtusername.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtusername.ForeColor = System.Drawing.Color.White;
-            this.txtusername.Location = new System.Drawing.Point(398, 120);
-            this.txtusername.Name = "txtusername";
-            this.txtusername.Size = new System.Drawing.Size(250, 19);
-            this.txtusername.TabIndex = 151;
-            // 
-            // txtfirstname
-            // 
-            this.txtfirstname.BackColor = System.Drawing.Color.Black;
-            this.txtfirstname.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtfirstname.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtfirstname.ForeColor = System.Drawing.Color.White;
-            this.txtfirstname.Location = new System.Drawing.Point(393, 200);
-            this.txtfirstname.Name = "txtfirstname";
-            this.txtfirstname.Size = new System.Drawing.Size(250, 19);
-            this.txtfirstname.TabIndex = 152;
-            this.txtfirstname.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
-            // 
-            // txtemailadd
-            // 
-            this.txtemailadd.BackColor = System.Drawing.Color.Black;
-            this.txtemailadd.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtemailadd.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtemailadd.ForeColor = System.Drawing.Color.White;
-            this.txtemailadd.Location = new System.Drawing.Point(393, 286);
-            this.txtemailadd.Name = "txtemailadd";
-            this.txtemailadd.Size = new System.Drawing.Size(250, 19);
-            this.txtemailadd.TabIndex = 153;
-            // 
-            // txtphonenum
-            // 
-            this.txtphonenum.BackColor = System.Drawing.Color.Black;
-            this.txtphonenum.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtphonenum.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtphonenum.ForeColor = System.Drawing.Color.White;
-            this.txtphonenum.Location = new System.Drawing.Point(393, 369);
-            this.txtphonenum.Name = "txtphonenum";
-            this.txtphonenum.Size = new System.Drawing.Size(250, 19);
-            this.txtphonenum.TabIndex = 154;
-            this.txtphonenum.TextChanged += new System.EventHandler(this.textBox1_TextChanged_1);
-            // 
-            // txtpassword
-            // 
-            this.txtpassword.BackColor = System.Drawing.Color.Black;
-            this.txtpassword.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtpassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtpassword.ForeColor = System.Drawing.Color.White;
-            this.txtpassword.Location = new System.Drawing.Point(724, 120);
-            this.txtpassword.Name = "txtpassword";
-            this.txtpassword.Size = new System.Drawing.Size(250, 19);
-            this.txtpassword.TabIndex = 155;
-            // 
-            // txtlastname
-            // 
-            this.txtlastname.BackColor = System.Drawing.Color.Black;
-            this.txtlastname.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtlastname.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtlastname.ForeColor = System.Drawing.Color.White;
-            this.txtlastname.Location = new System.Drawing.Point(724, 200);
-            this.txtlastname.Name = "txtlastname";
-            this.txtlastname.Size = new System.Drawing.Size(250, 19);
-            this.txtlastname.TabIndex = 156;
-            // 
-            // txtadd
-            // 
-            this.txtadd.BackColor = System.Drawing.Color.Black;
-            this.txtadd.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtadd.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtadd.ForeColor = System.Drawing.Color.White;
-            this.txtadd.Location = new System.Drawing.Point(724, 286);
-            this.txtadd.Name = "txtadd";
-            this.txtadd.Size = new System.Drawing.Size(250, 19);
-            this.txtadd.TabIndex = 157;
-            // 
-            // txtgender
-            // 
-            this.txtgender.BackColor = System.Drawing.Color.Black;
-            this.txtgender.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtgender.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtgender.ForeColor = System.Drawing.Color.White;
-            this.txtgender.Location = new System.Drawing.Point(724, 369);
-            this.txtgender.Name = "txtgender";
-            this.txtgender.Size = new System.Drawing.Size(250, 19);
-            this.txtgender.TabIndex = 158;
             // 
             // Form2
             // 

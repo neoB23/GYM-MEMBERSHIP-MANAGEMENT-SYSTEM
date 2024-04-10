@@ -249,5 +249,35 @@ namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM
         {
 
         }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtfirstname_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtexp_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void timepicker_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cmbgender_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

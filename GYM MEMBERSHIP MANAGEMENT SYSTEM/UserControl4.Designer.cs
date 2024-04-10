@@ -37,88 +37,103 @@
             this.cmbmembership = new Guna.UI2.WinForms.Guna2ComboBox();
             this.guna2DateTimePicker1 = new Guna.UI2.WinForms.Guna2DateTimePicker();
             this.guna2DateTimePicker2 = new Guna.UI2.WinForms.Guna2DateTimePicker();
-            this.txtname = new Guna.UI2.WinForms.Guna2TextBox();
             this.printDocument1 = new System.Drawing.Printing.PrintDocument();
             this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
             this.bunifuCustomDataGrid1 = new Bunifu.Framework.UI.BunifuCustomDataGrid();
+            this.txtname = new Guna.UI2.WinForms.Guna2TextBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.pictureBox4 = new System.Windows.Forms.PictureBox();
+            this.pictureBox5 = new System.Windows.Forms.PictureBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.bunifuCustomDataGrid1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // guna2GradientButton1
             // 
+            this.guna2GradientButton1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("guna2GradientButton1.BackgroundImage")));
             this.guna2GradientButton1.CheckedState.Parent = this.guna2GradientButton1;
             this.guna2GradientButton1.CustomImages.Parent = this.guna2GradientButton1;
-            this.guna2GradientButton1.FillColor = System.Drawing.Color.White;
-            this.guna2GradientButton1.FillColor2 = System.Drawing.Color.Yellow;
+            this.guna2GradientButton1.FillColor = System.Drawing.Color.Transparent;
+            this.guna2GradientButton1.FillColor2 = System.Drawing.Color.Transparent;
             this.guna2GradientButton1.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.guna2GradientButton1.ForeColor = System.Drawing.Color.Black;
             this.guna2GradientButton1.HoverState.Parent = this.guna2GradientButton1;
-            this.guna2GradientButton1.Location = new System.Drawing.Point(378, 188);
+            this.guna2GradientButton1.Location = new System.Drawing.Point(156, 483);
             this.guna2GradientButton1.Name = "guna2GradientButton1";
             this.guna2GradientButton1.ShadowDecoration.Parent = this.guna2GradientButton1;
-            this.guna2GradientButton1.Size = new System.Drawing.Size(180, 45);
+            this.guna2GradientButton1.Size = new System.Drawing.Size(120, 40);
             this.guna2GradientButton1.TabIndex = 31;
-            this.guna2GradientButton1.Text = "Save";
             this.guna2GradientButton1.Click += new System.EventHandler(this.guna2GradientButton1_Click);
             // 
             // btnDelete
             // 
+            this.btnDelete.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnDelete.BackgroundImage")));
             this.btnDelete.CheckedState.Parent = this.btnDelete;
             this.btnDelete.CustomImages.Parent = this.btnDelete;
-            this.btnDelete.FillColor = System.Drawing.Color.White;
-            this.btnDelete.FillColor2 = System.Drawing.Color.Yellow;
+            this.btnDelete.FillColor = System.Drawing.Color.Transparent;
+            this.btnDelete.FillColor2 = System.Drawing.Color.Transparent;
             this.btnDelete.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btnDelete.ForeColor = System.Drawing.Color.Black;
             this.btnDelete.HoverState.Parent = this.btnDelete;
-            this.btnDelete.Location = new System.Drawing.Point(581, 188);
+            this.btnDelete.Location = new System.Drawing.Point(156, 534);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.ShadowDecoration.Parent = this.btnDelete;
-            this.btnDelete.Size = new System.Drawing.Size(180, 45);
+            this.btnDelete.Size = new System.Drawing.Size(120, 40);
             this.btnDelete.TabIndex = 30;
-            this.btnDelete.Text = "Delete";
             // 
             // btnUpdate
             // 
+            this.btnUpdate.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnUpdate.BackgroundImage")));
             this.btnUpdate.CheckedState.Parent = this.btnUpdate;
             this.btnUpdate.CustomImages.Parent = this.btnUpdate;
-            this.btnUpdate.FillColor = System.Drawing.Color.White;
-            this.btnUpdate.FillColor2 = System.Drawing.Color.Yellow;
+            this.btnUpdate.FillColor = System.Drawing.Color.Transparent;
+            this.btnUpdate.FillColor2 = System.Drawing.Color.Transparent;
             this.btnUpdate.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btnUpdate.ForeColor = System.Drawing.Color.Black;
             this.btnUpdate.HoverState.Parent = this.btnUpdate;
-            this.btnUpdate.Location = new System.Drawing.Point(169, 188);
+            this.btnUpdate.Location = new System.Drawing.Point(156, 432);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.ShadowDecoration.Parent = this.btnUpdate;
-            this.btnUpdate.Size = new System.Drawing.Size(180, 45);
+            this.btnUpdate.Size = new System.Drawing.Size(120, 40);
             this.btnUpdate.TabIndex = 29;
-            this.btnUpdate.Text = "Edit";
             this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
             // cmbmembership
             // 
             this.cmbmembership.BackColor = System.Drawing.Color.Transparent;
+            this.cmbmembership.BorderThickness = 0;
             this.cmbmembership.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cmbmembership.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbmembership.FillColor = System.Drawing.Color.Transparent;
             this.cmbmembership.FocusedColor = System.Drawing.Color.Empty;
             this.cmbmembership.FocusedState.Parent = this.cmbmembership;
             this.cmbmembership.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.cmbmembership.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
+            this.cmbmembership.ForeColor = System.Drawing.Color.White;
             this.cmbmembership.FormattingEnabled = true;
             this.cmbmembership.HoverState.Parent = this.cmbmembership;
-            this.cmbmembership.ItemHeight = 30;
+            this.cmbmembership.ItemHeight = 28;
             this.cmbmembership.ItemsAppearance.Parent = this.cmbmembership;
-            this.cmbmembership.Location = new System.Drawing.Point(51, 115);
+            this.cmbmembership.Location = new System.Drawing.Point(113, 248);
             this.cmbmembership.Name = "cmbmembership";
             this.cmbmembership.ShadowDecoration.Parent = this.cmbmembership;
-            this.cmbmembership.Size = new System.Drawing.Size(140, 36);
+            this.cmbmembership.Size = new System.Drawing.Size(202, 34);
             this.cmbmembership.TabIndex = 32;
+            this.cmbmembership.SelectedIndexChanged += new System.EventHandler(this.cmbmembership_SelectedIndexChanged);
             // 
             // guna2DateTimePicker1
             // 
             this.guna2DateTimePicker1.CheckedState.Parent = this.guna2DateTimePicker1;
+            this.guna2DateTimePicker1.FillColor = System.Drawing.Color.Transparent;
+            this.guna2DateTimePicker1.ForeColor = System.Drawing.Color.White;
             this.guna2DateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Long;
             this.guna2DateTimePicker1.HoverState.Parent = this.guna2DateTimePicker1;
-            this.guna2DateTimePicker1.Location = new System.Drawing.Point(291, 53);
+            this.guna2DateTimePicker1.Location = new System.Drawing.Point(116, 309);
             this.guna2DateTimePicker1.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
             this.guna2DateTimePicker1.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
             this.guna2DateTimePicker1.Name = "guna2DateTimePicker1";
@@ -130,38 +145,18 @@
             // guna2DateTimePicker2
             // 
             this.guna2DateTimePicker2.CheckedState.Parent = this.guna2DateTimePicker2;
+            this.guna2DateTimePicker2.FillColor = System.Drawing.Color.Transparent;
+            this.guna2DateTimePicker2.ForeColor = System.Drawing.Color.White;
             this.guna2DateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.Long;
             this.guna2DateTimePicker2.HoverState.Parent = this.guna2DateTimePicker2;
-            this.guna2DateTimePicker2.Location = new System.Drawing.Point(537, 53);
+            this.guna2DateTimePicker2.Location = new System.Drawing.Point(114, 368);
             this.guna2DateTimePicker2.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
             this.guna2DateTimePicker2.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
             this.guna2DateTimePicker2.Name = "guna2DateTimePicker2";
             this.guna2DateTimePicker2.ShadowDecoration.Parent = this.guna2DateTimePicker2;
-            this.guna2DateTimePicker2.Size = new System.Drawing.Size(192, 36);
+            this.guna2DateTimePicker2.Size = new System.Drawing.Size(202, 36);
             this.guna2DateTimePicker2.TabIndex = 34;
             this.guna2DateTimePicker2.Value = new System.DateTime(2024, 3, 3, 23, 2, 33, 443);
-            // 
-            // txtname
-            // 
-            this.txtname.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtname.DefaultText = "";
-            this.txtname.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.txtname.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.txtname.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtname.DisabledState.Parent = this.txtname;
-            this.txtname.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtname.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtname.FocusedState.Parent = this.txtname;
-            this.txtname.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtname.HoverState.Parent = this.txtname;
-            this.txtname.Location = new System.Drawing.Point(51, 53);
-            this.txtname.Name = "txtname";
-            this.txtname.PasswordChar = '\0';
-            this.txtname.PlaceholderText = "";
-            this.txtname.SelectedText = "";
-            this.txtname.ShadowDecoration.Parent = this.txtname;
-            this.txtname.Size = new System.Drawing.Size(202, 36);
-            this.txtname.TabIndex = 38;
             // 
             // printPreviewDialog1
             // 
@@ -194,17 +189,95 @@
             this.bunifuCustomDataGrid1.GridColor = System.Drawing.SystemColors.ActiveCaption;
             this.bunifuCustomDataGrid1.HeaderBgColor = System.Drawing.Color.RoyalBlue;
             this.bunifuCustomDataGrid1.HeaderForeColor = System.Drawing.Color.GhostWhite;
-            this.bunifuCustomDataGrid1.Location = new System.Drawing.Point(51, 252);
+            this.bunifuCustomDataGrid1.Location = new System.Drawing.Point(366, 53);
             this.bunifuCustomDataGrid1.Name = "bunifuCustomDataGrid1";
             this.bunifuCustomDataGrid1.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            this.bunifuCustomDataGrid1.Size = new System.Drawing.Size(710, 400);
+            this.bunifuCustomDataGrid1.Size = new System.Drawing.Size(526, 566);
             this.bunifuCustomDataGrid1.TabIndex = 39;
             this.bunifuCustomDataGrid1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.bunifuCustomDataGrid1_CellContentClick);
+            // 
+            // txtname
+            // 
+            this.txtname.BackColor = System.Drawing.Color.Transparent;
+            this.txtname.BorderThickness = 0;
+            this.txtname.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtname.DefaultText = "";
+            this.txtname.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txtname.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.txtname.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtname.DisabledState.Parent = this.txtname;
+            this.txtname.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtname.FillColor = System.Drawing.Color.Transparent;
+            this.txtname.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtname.FocusedState.Parent = this.txtname;
+            this.txtname.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtname.HoverState.Parent = this.txtname;
+            this.txtname.Location = new System.Drawing.Point(111, 190);
+            this.txtname.Name = "txtname";
+            this.txtname.PasswordChar = '\0';
+            this.txtname.PlaceholderText = "";
+            this.txtname.SelectedText = "";
+            this.txtname.ShadowDecoration.Parent = this.txtname;
+            this.txtname.Size = new System.Drawing.Size(204, 30);
+            this.txtname.TabIndex = 38;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox2.BackgroundImage")));
+            this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pictureBox2.Location = new System.Drawing.Point(107, 184);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(213, 43);
+            this.pictureBox2.TabIndex = 136;
+            this.pictureBox2.TabStop = false;
+            this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
+            // 
+            // pictureBox3
+            // 
+            this.pictureBox3.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox3.BackgroundImage")));
+            this.pictureBox3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pictureBox3.Location = new System.Drawing.Point(107, 244);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(213, 43);
+            this.pictureBox3.TabIndex = 137;
+            this.pictureBox3.TabStop = false;
+            // 
+            // pictureBox4
+            // 
+            this.pictureBox4.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox4.BackgroundImage")));
+            this.pictureBox4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pictureBox4.Location = new System.Drawing.Point(109, 306);
+            this.pictureBox4.Name = "pictureBox4";
+            this.pictureBox4.Size = new System.Drawing.Size(213, 43);
+            this.pictureBox4.TabIndex = 138;
+            this.pictureBox4.TabStop = false;
+            // 
+            // pictureBox5
+            // 
+            this.pictureBox5.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox5.BackgroundImage")));
+            this.pictureBox5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pictureBox5.Location = new System.Drawing.Point(109, 365);
+            this.pictureBox5.Name = "pictureBox5";
+            this.pictureBox5.Size = new System.Drawing.Size(213, 43);
+            this.pictureBox5.TabIndex = 139;
+            this.pictureBox5.TabStop = false;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.BackgroundImage")));
+            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pictureBox1.Location = new System.Drawing.Point(147, 55);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(130, 105);
+            this.pictureBox1.TabIndex = 140;
+            this.pictureBox1.TabStop = false;
             // 
             // UserControl4
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.Black;
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.bunifuCustomDataGrid1);
             this.Controls.Add(this.txtname);
             this.Controls.Add(this.guna2DateTimePicker2);
@@ -213,10 +286,19 @@
             this.Controls.Add(this.guna2GradientButton1);
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnUpdate);
+            this.Controls.Add(this.pictureBox2);
+            this.Controls.Add(this.pictureBox3);
+            this.Controls.Add(this.pictureBox4);
+            this.Controls.Add(this.pictureBox5);
             this.Name = "UserControl4";
             this.Size = new System.Drawing.Size(930, 693);
             this.Load += new System.EventHandler(this.UserControl4_Load);
             ((System.ComponentModel.ISupportInitialize)(this.bunifuCustomDataGrid1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -229,9 +311,14 @@
         private Guna.UI2.WinForms.Guna2ComboBox cmbmembership;
         private Guna.UI2.WinForms.Guna2DateTimePicker guna2DateTimePicker1;
         private Guna.UI2.WinForms.Guna2DateTimePicker guna2DateTimePicker2;
-        private Guna.UI2.WinForms.Guna2TextBox txtname;
         private System.Drawing.Printing.PrintDocument printDocument1;
         private System.Windows.Forms.PrintPreviewDialog printPreviewDialog1;
         private Bunifu.Framework.UI.BunifuCustomDataGrid bunifuCustomDataGrid1;
+        private Guna.UI2.WinForms.Guna2TextBox txtname;
+        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.PictureBox pictureBox3;
+        private System.Windows.Forms.PictureBox pictureBox4;
+        private System.Windows.Forms.PictureBox pictureBox5;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
