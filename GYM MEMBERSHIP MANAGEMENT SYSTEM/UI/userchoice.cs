@@ -24,6 +24,7 @@ namespace SYSTEM_GYM
         formSchedule schedule;
         formEquipment equipment;
         profile1 profile;
+        About_us about_Us;
         private Size formOriginalSize;
         public userchoice()
         {
@@ -104,7 +105,7 @@ namespace SYSTEM_GYM
         {
             if (SidebarExpand)
             {
-                slidebar.Width -= 20;
+                slidebar.Width -= 50;
                 if (slidebar.Width <= 63)
                 {
                     SidebarExpand = false;
@@ -120,7 +121,7 @@ namespace SYSTEM_GYM
             }
             else
             {
-                slidebar.Width += 20;
+                slidebar.Width += 50;
                 if (slidebar.Width >= 234)
                 {
                     SidebarExpand = true;
@@ -331,6 +332,37 @@ namespace SYSTEM_GYM
         private void guna2GradientButton1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void guna2CirclePictureBox1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if (about_Us == null)
+            {
+                about_Us = new About_us();
+                about_Us.FormClosed += About_us_FormClosed;
+                about_Us.MdiParent = this;
+                about_Us.Dock = DockStyle.Fill;
+                about_Us.Show();
+            }
+            else
+            {
+                about_Us.Activate();
+            }
+            label2.Text = "About Us";
+        }
+        private void About_us_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            about_Us = null;
         }
     }   
 }

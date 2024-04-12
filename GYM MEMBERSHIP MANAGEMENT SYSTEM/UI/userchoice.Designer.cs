@@ -64,7 +64,10 @@
             this.pnEquipment = new System.Windows.Forms.Panel();
             this.bntequipment = new System.Windows.Forms.Button();
             this.pnLogout = new System.Windows.Forms.Panel();
+            this.button2 = new System.Windows.Forms.Button();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.bntLogout = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.coachTransition = new System.Windows.Forms.Timer(this.components);
             this.SidebarTransition = new System.Windows.Forms.Timer(this.components);
             this.panel1.SuspendLayout();
@@ -86,6 +89,7 @@
             this.pnschedule.SuspendLayout();
             this.pnEquipment.SuspendLayout();
             this.pnLogout.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -168,6 +172,7 @@
             this.slidebar.Controls.Add(this.pnschedule);
             this.slidebar.Controls.Add(this.pnEquipment);
             this.slidebar.Controls.Add(this.pnLogout);
+            this.slidebar.Controls.Add(this.panel2);
             this.slidebar.Dock = System.Windows.Forms.DockStyle.Left;
             this.slidebar.ForeColor = System.Drawing.Color.White;
             this.slidebar.Location = new System.Drawing.Point(0, 39);
@@ -519,11 +524,37 @@
             // 
             // pnLogout
             // 
-            this.pnLogout.Controls.Add(this.bntLogout);
+            this.pnLogout.Controls.Add(this.button2);
             this.pnLogout.Location = new System.Drawing.Point(3, 362);
             this.pnLogout.Name = "pnLogout";
             this.pnLogout.Size = new System.Drawing.Size(272, 61);
             this.pnLogout.TabIndex = 9;
+            // 
+            // button2
+            // 
+            this.button2.BackColor = System.Drawing.Color.Black;
+            this.button2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.ForeColor = System.Drawing.Color.White;
+            this.button2.Image = ((System.Drawing.Image)(resources.GetObject("button2.Image")));
+            this.button2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button2.Location = new System.Drawing.Point(-15, -7);
+            this.button2.Name = "button2";
+            this.button2.Padding = new System.Windows.Forms.Padding(25, 0, 0, 0);
+            this.button2.Size = new System.Drawing.Size(307, 77);
+            this.button2.TabIndex = 4;
+            this.button2.Text = "             About Us";
+            this.button2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.bntLogout);
+            this.panel2.Controls.Add(this.button1);
+            this.panel2.Location = new System.Drawing.Point(3, 429);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(272, 61);
+            this.panel2.TabIndex = 6;
             // 
             // bntLogout
             // 
@@ -532,7 +563,7 @@
             this.bntLogout.ForeColor = System.Drawing.Color.White;
             this.bntLogout.Image = ((System.Drawing.Image)(resources.GetObject("bntLogout.Image")));
             this.bntLogout.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.bntLogout.Location = new System.Drawing.Point(-14, -10);
+            this.bntLogout.Location = new System.Drawing.Point(-14, -12);
             this.bntLogout.Name = "bntLogout";
             this.bntLogout.Padding = new System.Windows.Forms.Padding(25, 0, 0, 0);
             this.bntLogout.Size = new System.Drawing.Size(307, 77);
@@ -541,6 +572,22 @@
             this.bntLogout.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.bntLogout.UseVisualStyleBackColor = false;
             this.bntLogout.Click += new System.EventHandler(this.button6_Click);
+            // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.Black;
+            this.button1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.ForeColor = System.Drawing.Color.White;
+            this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
+            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button1.Location = new System.Drawing.Point(-14, -12);
+            this.button1.Name = "button1";
+            this.button1.Padding = new System.Windows.Forms.Padding(25, 0, 0, 0);
+            this.button1.Size = new System.Drawing.Size(307, 77);
+            this.button1.TabIndex = 10;
+            this.button1.Text = "             Log out";
+            this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button1.UseVisualStyleBackColor = false;
             // 
             // coachTransition
             // 
@@ -558,6 +605,7 @@
             this.ClientSize = new System.Drawing.Size(1362, 714);
             this.Controls.Add(this.slidebar);
             this.Controls.Add(this.panel1);
+            this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.IsMdiContainer = true;
             this.Name = "userchoice";
@@ -583,6 +631,7 @@
             this.pnschedule.ResumeLayout(false);
             this.pnEquipment.ResumeLayout(false);
             this.pnLogout.ResumeLayout(false);
+            this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -626,5 +675,8 @@
         private System.Windows.Forms.PictureBox bntham;
         private Bunifu.Framework.UI.BunifuTileButton bunifuTileButton1;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Panel panel2;
     }
 }

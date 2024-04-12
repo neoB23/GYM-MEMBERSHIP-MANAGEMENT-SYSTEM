@@ -13,6 +13,7 @@ using System.Xml.Linq;
 using Bunifu.Framework.UI;
 using Guna.UI2.WinForms.Suite;
 using MySql.Data.MySqlClient;
+using BCrypt.Net;
 
 namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM
 {
@@ -205,21 +206,10 @@ namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM
         {
 
         }
-        // Function to hash the password
-        //may error sa hash pero pag tinangal gagana ulet
         private string Hash(string input)
         {
-            using (SHA256 sha256Hash = SHA256.Create())
-            {
-                byte[] bytes = sha256Hash.ComputeHash(Encoding.UTF8.GetBytes(input));
-
-                StringBuilder builder = new StringBuilder();
-                for (int i = 0; i < bytes.Length; i++)
-                {
-                    builder.Append(bytes[i].ToString("x2"));
-                }
-                return builder.ToString();
-            }
+            // Generate a salt and hash the password
+            return BCrypt.Net.BCrypt.HashPassword(input, BCrypt.Net.BCrypt.GenerateSalt());
         }
         private void bunifuCheckbox1_OnChange(object sender, EventArgs e)
         {

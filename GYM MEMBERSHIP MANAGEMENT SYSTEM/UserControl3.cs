@@ -198,5 +198,10 @@ namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM
             DisplayData();
             ClearData();
         }
+
+        private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

@@ -203,6 +203,7 @@
             this.txtpassword.ShadowDecoration.Parent = this.txtpassword;
             this.txtpassword.Size = new System.Drawing.Size(167, 32);
             this.txtpassword.TabIndex = 52;
+            this.txtpassword.TextChanged += new System.EventHandler(this.txtpassword_TextChanged);
             // 
             // label3
             // 

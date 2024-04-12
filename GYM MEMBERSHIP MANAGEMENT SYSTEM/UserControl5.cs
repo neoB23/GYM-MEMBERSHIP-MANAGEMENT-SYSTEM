@@ -10,11 +10,13 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml.Linq;
+using BCrypt.Net;
 
 namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM
 {
     public partial class UserControl5 : UserControl
     {
+
         MySqlConnection con = new MySqlConnection("server=localhost;user id=root;database=gym membership management;sslMode=none");
         MySqlCommand cmd;
         MySqlDataAdapter adapt;
@@ -144,32 +146,43 @@ namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM
 
         private void guna2GradientButton1_Click(object sender, EventArgs e)
         {
+            // Check if all required fields are filled
             if (string.IsNullOrWhiteSpace(txtusername.Text) ||
                 string.IsNullOrWhiteSpace(txtpassword.Text) ||
                 string.IsNullOrWhiteSpace(txtfirstname.Text) ||
                 string.IsNullOrWhiteSpace(txtlastname.Text) ||
                 string.IsNullOrWhiteSpace(txtemail.Text))
-                
             {
                 MessageBox.Show("Fill up all information", "Error");
                 return;
             }
 
-            MySqlCommand cmd1 = new MySqlCommand("SELECT * FROM admin WHERE FirstName = @firstname", con); // Changed column name in the query
+            MySqlCommand cmd1 = new MySqlCommand("SELECT * FROM admin WHERE FirstName = @firstname", con);
             cmd1.Parameters.AddWithValue("@firstname", txtfirstname.Text);
             con.Open();
             bool userExists = false;
+            string hashedPasswordFromDatabase = null; // Variable to store hashed password from database
             using (var dr1 = cmd1.ExecuteReader())
             {
-                userExists = dr1.HasRows;
-                if (userExists)
+                if (dr1.Read())
+                {
+                    userExists = true;
+                    hashedPasswordFromDatabase = dr1["password"].ToString(); // Retrieve hashed password from database
+                }
+            }
+            con.Close();
+
+            if (userExists)
+            {
+                // Verify the entered password with the hashed password from the database
+                if (BCrypt.Net.BCrypt.Verify(txtpassword.Text, hashedPasswordFromDatabase))
                 {
                     MessageBox.Show("Username not available!", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    con.Close();
                     return;
                 }
             }
             con.Close();
+            
             string passwordPattern = @"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^\da-zA-Z]).{8,}$";
             //address min input wala pa pati sa email add
             
@@ -218,7 +231,7 @@ namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM
             cmd.Parameters.AddWithValue("@firstname", txtfirstname.Text);
             cmd.Parameters.AddWithValue("@lastname", txtlastname.Text);
             cmd.Parameters.AddWithValue("@username", txtusername.Text);
-            cmd.Parameters.AddWithValue("@password", txtpassword.Text);
+            cmd.Parameters.AddWithValue("@password", Hash(txtpassword.Text)); ;
             cmd.Parameters.AddWithValue("@email", txtemail.Text);
             cmd.ExecuteNonQuery();
             con.Close();
@@ -243,6 +256,16 @@ namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM
         }
 
         private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+        private string Hash(string input)
+        {
+            // Generate a salt and hash the password
+            return BCrypt.Net.BCrypt.HashPassword(input, BCrypt.Net.BCrypt.GenerateSalt());
+        }
+
+        private void txtpassword_TextChanged(object sender, EventArgs e)
         {
 
         }

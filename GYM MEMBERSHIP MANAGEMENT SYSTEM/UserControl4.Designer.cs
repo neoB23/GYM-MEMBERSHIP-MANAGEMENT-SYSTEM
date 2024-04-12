@@ -46,12 +46,16 @@
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.guna2GradientButton2 = new Guna.UI2.WinForms.Guna2GradientButton();
+            this.txtprice = new Guna.UI2.WinForms.Guna2TextBox();
+            this.pictureBox6 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.bunifuCustomDataGrid1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             this.SuspendLayout();
             // 
             // guna2GradientButton1
@@ -64,7 +68,7 @@
             this.guna2GradientButton1.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.guna2GradientButton1.ForeColor = System.Drawing.Color.Black;
             this.guna2GradientButton1.HoverState.Parent = this.guna2GradientButton1;
-            this.guna2GradientButton1.Location = new System.Drawing.Point(156, 483);
+            this.guna2GradientButton1.Location = new System.Drawing.Point(71, 500);
             this.guna2GradientButton1.Name = "guna2GradientButton1";
             this.guna2GradientButton1.ShadowDecoration.Parent = this.guna2GradientButton1;
             this.guna2GradientButton1.Size = new System.Drawing.Size(120, 40);
@@ -81,11 +85,12 @@
             this.btnDelete.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btnDelete.ForeColor = System.Drawing.Color.Black;
             this.btnDelete.HoverState.Parent = this.btnDelete;
-            this.btnDelete.Location = new System.Drawing.Point(156, 534);
+            this.btnDelete.Location = new System.Drawing.Point(211, 557);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.ShadowDecoration.Parent = this.btnDelete;
             this.btnDelete.Size = new System.Drawing.Size(120, 40);
             this.btnDelete.TabIndex = 30;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // btnUpdate
             // 
@@ -97,7 +102,7 @@
             this.btnUpdate.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btnUpdate.ForeColor = System.Drawing.Color.Black;
             this.btnUpdate.HoverState.Parent = this.btnUpdate;
-            this.btnUpdate.Location = new System.Drawing.Point(156, 432);
+            this.btnUpdate.Location = new System.Drawing.Point(211, 500);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.ShadowDecoration.Parent = this.btnUpdate;
             this.btnUpdate.Size = new System.Drawing.Size(120, 40);
@@ -118,8 +123,13 @@
             this.cmbmembership.FormattingEnabled = true;
             this.cmbmembership.HoverState.Parent = this.cmbmembership;
             this.cmbmembership.ItemHeight = 28;
+            this.cmbmembership.Items.AddRange(new object[] {
+            "1 Day Pass",
+            "VIP",
+            "VVIP",
+            "VVVIP"});
             this.cmbmembership.ItemsAppearance.Parent = this.cmbmembership;
-            this.cmbmembership.Location = new System.Drawing.Point(113, 248);
+            this.cmbmembership.Location = new System.Drawing.Point(117, 260);
             this.cmbmembership.Name = "cmbmembership";
             this.cmbmembership.ShadowDecoration.Parent = this.cmbmembership;
             this.cmbmembership.Size = new System.Drawing.Size(202, 34);
@@ -133,7 +143,7 @@
             this.guna2DateTimePicker1.ForeColor = System.Drawing.Color.White;
             this.guna2DateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Long;
             this.guna2DateTimePicker1.HoverState.Parent = this.guna2DateTimePicker1;
-            this.guna2DateTimePicker1.Location = new System.Drawing.Point(116, 309);
+            this.guna2DateTimePicker1.Location = new System.Drawing.Point(113, 377);
             this.guna2DateTimePicker1.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
             this.guna2DateTimePicker1.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
             this.guna2DateTimePicker1.Name = "guna2DateTimePicker1";
@@ -149,7 +159,7 @@
             this.guna2DateTimePicker2.ForeColor = System.Drawing.Color.White;
             this.guna2DateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.Long;
             this.guna2DateTimePicker2.HoverState.Parent = this.guna2DateTimePicker2;
-            this.guna2DateTimePicker2.Location = new System.Drawing.Point(114, 368);
+            this.guna2DateTimePicker2.Location = new System.Drawing.Point(111, 436);
             this.guna2DateTimePicker2.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
             this.guna2DateTimePicker2.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
             this.guna2DateTimePicker2.Name = "guna2DateTimePicker2";
@@ -157,6 +167,10 @@
             this.guna2DateTimePicker2.Size = new System.Drawing.Size(202, 36);
             this.guna2DateTimePicker2.TabIndex = 34;
             this.guna2DateTimePicker2.Value = new System.DateTime(2024, 3, 3, 23, 2, 33, 443);
+            // 
+            // printDocument1
+            // 
+            this.printDocument1.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocument1_PrintPage);
             // 
             // printPreviewDialog1
             // 
@@ -195,6 +209,7 @@
             this.bunifuCustomDataGrid1.Size = new System.Drawing.Size(526, 566);
             this.bunifuCustomDataGrid1.TabIndex = 39;
             this.bunifuCustomDataGrid1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.bunifuCustomDataGrid1_CellContentClick);
+            this.bunifuCustomDataGrid1.RowHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.bunifuCustomDataGrid1_RowHeaderMouseClick);
             // 
             // txtname
             // 
@@ -212,7 +227,7 @@
             this.txtname.FocusedState.Parent = this.txtname;
             this.txtname.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtname.HoverState.Parent = this.txtname;
-            this.txtname.Location = new System.Drawing.Point(111, 190);
+            this.txtname.Location = new System.Drawing.Point(115, 202);
             this.txtname.Name = "txtname";
             this.txtname.PasswordChar = '\0';
             this.txtname.PlaceholderText = "";
@@ -225,18 +240,17 @@
             // 
             this.pictureBox2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox2.BackgroundImage")));
             this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pictureBox2.Location = new System.Drawing.Point(107, 184);
+            this.pictureBox2.Location = new System.Drawing.Point(111, 196);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(213, 43);
             this.pictureBox2.TabIndex = 136;
             this.pictureBox2.TabStop = false;
-            this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
             // 
             // pictureBox3
             // 
             this.pictureBox3.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox3.BackgroundImage")));
             this.pictureBox3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pictureBox3.Location = new System.Drawing.Point(107, 244);
+            this.pictureBox3.Location = new System.Drawing.Point(111, 256);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(213, 43);
             this.pictureBox3.TabIndex = 137;
@@ -246,7 +260,7 @@
             // 
             this.pictureBox4.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox4.BackgroundImage")));
             this.pictureBox4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pictureBox4.Location = new System.Drawing.Point(109, 306);
+            this.pictureBox4.Location = new System.Drawing.Point(106, 374);
             this.pictureBox4.Name = "pictureBox4";
             this.pictureBox4.Size = new System.Drawing.Size(213, 43);
             this.pictureBox4.TabIndex = 138;
@@ -256,7 +270,7 @@
             // 
             this.pictureBox5.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox5.BackgroundImage")));
             this.pictureBox5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pictureBox5.Location = new System.Drawing.Point(109, 365);
+            this.pictureBox5.Location = new System.Drawing.Point(106, 433);
             this.pictureBox5.Name = "pictureBox5";
             this.pictureBox5.Size = new System.Drawing.Size(213, 43);
             this.pictureBox5.TabIndex = 139;
@@ -272,11 +286,66 @@
             this.pictureBox1.TabIndex = 140;
             this.pictureBox1.TabStop = false;
             // 
+            // guna2GradientButton2
+            // 
+            this.guna2GradientButton2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("guna2GradientButton2.BackgroundImage")));
+            this.guna2GradientButton2.CheckedState.Parent = this.guna2GradientButton2;
+            this.guna2GradientButton2.CustomImages.Parent = this.guna2GradientButton2;
+            this.guna2GradientButton2.FillColor = System.Drawing.Color.Transparent;
+            this.guna2GradientButton2.FillColor2 = System.Drawing.Color.Transparent;
+            this.guna2GradientButton2.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.guna2GradientButton2.ForeColor = System.Drawing.Color.Black;
+            this.guna2GradientButton2.HoverState.Parent = this.guna2GradientButton2;
+            this.guna2GradientButton2.Location = new System.Drawing.Point(71, 557);
+            this.guna2GradientButton2.Name = "guna2GradientButton2";
+            this.guna2GradientButton2.ShadowDecoration.Parent = this.guna2GradientButton2;
+            this.guna2GradientButton2.Size = new System.Drawing.Size(120, 40);
+            this.guna2GradientButton2.TabIndex = 141;
+            this.guna2GradientButton2.Click += new System.EventHandler(this.guna2GradientButton2_Click);
+            // 
+            // txtprice
+            // 
+            this.txtprice.BackColor = System.Drawing.Color.Transparent;
+            this.txtprice.BorderThickness = 0;
+            this.txtprice.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtprice.DefaultText = "";
+            this.txtprice.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txtprice.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.txtprice.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtprice.DisabledState.Parent = this.txtprice;
+            this.txtprice.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtprice.FillColor = System.Drawing.Color.Transparent;
+            this.txtprice.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtprice.FocusedState.Parent = this.txtprice;
+            this.txtprice.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtprice.HoverState.Parent = this.txtprice;
+            this.txtprice.Location = new System.Drawing.Point(115, 320);
+            this.txtprice.Name = "txtprice";
+            this.txtprice.PasswordChar = '\0';
+            this.txtprice.PlaceholderText = "";
+            this.txtprice.SelectedText = "";
+            this.txtprice.ShadowDecoration.Parent = this.txtprice;
+            this.txtprice.Size = new System.Drawing.Size(204, 30);
+            this.txtprice.TabIndex = 142;
+            // 
+            // pictureBox6
+            // 
+            this.pictureBox6.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox6.BackgroundImage")));
+            this.pictureBox6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pictureBox6.Location = new System.Drawing.Point(111, 314);
+            this.pictureBox6.Name = "pictureBox6";
+            this.pictureBox6.Size = new System.Drawing.Size(213, 43);
+            this.pictureBox6.TabIndex = 143;
+            this.pictureBox6.TabStop = false;
+            // 
             // UserControl4
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
+            this.Controls.Add(this.txtprice);
+            this.Controls.Add(this.pictureBox6);
+            this.Controls.Add(this.guna2GradientButton2);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.bunifuCustomDataGrid1);
             this.Controls.Add(this.txtname);
@@ -299,6 +368,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -320,5 +390,8 @@
         private System.Windows.Forms.PictureBox pictureBox4;
         private System.Windows.Forms.PictureBox pictureBox5;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private Guna.UI2.WinForms.Guna2GradientButton guna2GradientButton2;
+        private Guna.UI2.WinForms.Guna2TextBox txtprice;
+        private System.Windows.Forms.PictureBox pictureBox6;
     }
 }

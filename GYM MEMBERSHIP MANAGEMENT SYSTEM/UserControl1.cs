@@ -77,6 +77,7 @@ namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM
 
         private void btnsave_Click(object sender, EventArgs e)
         {
+            // Check if all required fields are filled
             if (string.IsNullOrWhiteSpace(txtusername.Text) ||
                 string.IsNullOrWhiteSpace(txtpassword.Text) ||
                 string.IsNullOrWhiteSpace(txtfirstname.Text) ||
@@ -87,9 +88,11 @@ namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM
                 cmbgender.SelectedItem == null)
             {
                 MessageBox.Show("Fill up all information", "Error");
-                return; 
+                return;
             }
-            MySqlCommand cmd1 = new MySqlCommand("SELECT * FROM coach WHERE FirstName = @firstname", con); // Changed column name in the query
+
+            // Check if username is available
+            MySqlCommand cmd1 = new MySqlCommand("SELECT * FROM coach WHERE firstname = @firstname", con);
             cmd1.Parameters.AddWithValue("@firstname", txtfirstname.Text);
             con.Open();
             bool userExists = false;
@@ -104,55 +107,33 @@ namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM
                 }
             }
             con.Close();
-            string passwordPattern = @"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^\da-zA-Z]).{8,}$";
-            int minimumUsernameLength = 6;
-            int minimumPasswordLength = 8;
-            int minimumPhoneNumLength = 11;
-            int minimumFirstNameLength = 3;
-            int minimumLastNameLength = 3;
 
-            if (!IsNumeric(txtphonenumber.Text))
+            // Validate password complexity and length
+            string passwordPattern = @"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^\da-zA-Z]).{8,}$";
+            int minimumPasswordLength = 8;
+            if (!Regex.IsMatch(txtpassword.Text, passwordPattern) || txtpassword.Text.Length < minimumPasswordLength)
             {
-                MessageBox.Show("Phone number should contain only numeric characters", "Error");
-                return; 
-            }
-            if (txtusername.Text.Length < minimumUsernameLength)
-            {
-                MessageBox.Show($"Username must be at least {minimumUsernameLength} characters long", "Error");
+                MessageBox.Show("Password must be at least 8 characters long and contain at least one uppercase letter, one lowercase letter, one special character, and one number.", "Error");
                 return;
             }
-            else if (txtpassword.Text.Length < minimumPasswordLength)
-            {
-                MessageBox.Show($"Password must be at least {minimumPasswordLength} characters long", "Error");
-                return;
-            }
-            else if (!Regex.IsMatch(txtpassword.Text, passwordPattern))
-            {
-                MessageBox.Show("Password must contain at least one uppercase letter, one lowercase letter, one special character, one number, and be at least 8 characters long", "Error");
-                return;
-            }
-            else if (txtphonenumber.Text.Length < minimumPhoneNumLength)
-            {
-                MessageBox.Show($"Phone number must be at least {minimumPhoneNumLength} characters long", "Error");
-                return;
-            }
-            else if (txtfirstname.Text.Length < minimumFirstNameLength || txtlastname.Text.Length < minimumLastNameLength)
-            {
-                MessageBox.Show($"First name and Last name must be at least {minimumFirstNameLength} characters long", "Error");
-                return;
-            }
-            MySqlCommand cmd = new MySqlCommand("INSERT INTO coach(FirstName, LastName, UserName, Password, DateofBirth, `contactnumber`, Experience, Gender) VALUES(@FirstName, @LastName, @username, @password, @dateofbirth, @contactnum, @exp, @gender)", con); // Changed column names in the query
+
+            // Hash the password
+            string hashedPassword = Hash(txtpassword.Text);
+
+            // Insert user data into the database
+            MySqlCommand cmd = new MySqlCommand("INSERT INTO coach(FirstName, LastName, UserName, Password, DateofBirth, `contactnumber`, Experience, Gender) VALUES(@FirstName, @LastName, @username, @password, @dateofbirth, @contactnum, @exp, @gender)", con);
             con.Open();
             cmd.Parameters.AddWithValue("@FirstName", txtfirstname.Text);
             cmd.Parameters.AddWithValue("@LastName", txtlastname.Text);
             cmd.Parameters.AddWithValue("@username", txtusername.Text);
-            cmd.Parameters.AddWithValue("@password", txtpassword.Text);
+            cmd.Parameters.AddWithValue("@password", hashedPassword);
             cmd.Parameters.AddWithValue("@dateofbirth", timepicker.Value);
             cmd.Parameters.AddWithValue("@contactnum", txtphonenumber.Text);
             cmd.Parameters.AddWithValue("@exp", txtexp.Text);
             cmd.Parameters.AddWithValue("@gender", cmbgender.SelectedItem.ToString());
             cmd.ExecuteNonQuery();
             con.Close();
+
             MessageBox.Show("Coach added successfully", "SAVE", MessageBoxButtons.OK, MessageBoxIcon.Information);
             DisplayData();
             ClearData();
@@ -278,6 +259,16 @@ namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM
         private void cmbgender_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void txtpassword_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+        private string Hash(string input)
+        {
+            // Generate a salt and hash the password
+            return BCrypt.Net.BCrypt.HashPassword(input, BCrypt.Net.BCrypt.GenerateSalt());
         }
     }
 }

@@ -379,7 +379,7 @@
             // userControl61
             // 
             this.userControl61.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.userControl61.Location = new System.Drawing.Point(-4, 0);
+            this.userControl61.Location = new System.Drawing.Point(-6, 33);
             this.userControl61.Name = "userControl61";
             this.userControl61.Size = new System.Drawing.Size(1164, 657);
             this.userControl61.TabIndex = 27;
