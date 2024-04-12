@@ -1,5 +1,4 @@
 ﻿using Bunifu.Framework.UI;
-using CrystalDecisions.CrystalReports.ViewerObjectModel;
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
@@ -35,9 +34,9 @@ namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM
             InitializeComponent();
 
             // Set values in the receipt
-            this.name = name;
-            this.membership = membership;
-            this.price = price;
+            //this.name = name;
+            //this.membership = membership;
+           // this.price = price;
 
             // Set values in the controls
             txtname.Text = name;
