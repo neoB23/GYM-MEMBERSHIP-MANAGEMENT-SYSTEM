@@ -450,7 +450,7 @@
             this.dataGridView2.Margin = new System.Windows.Forms.Padding(3, 3, 3, 7);
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            this.dataGridView2.Size = new System.Drawing.Size(442, 552);
+            this.dataGridView2.Size = new System.Drawing.Size(746, 552);
             this.dataGridView2.TabIndex = 128;
             this.dataGridView2.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellContentClick);
             this.dataGridView2.RowHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView2_RowHeaderMouseClick);
@@ -656,7 +656,7 @@
             this.Controls.Add(this.pictureBox9);
             this.Controls.Add(this.pictureBox7);
             this.Name = "UserControl2";
-            this.Size = new System.Drawing.Size(861, 647);
+            this.Size = new System.Drawing.Size(1171, 647);
             this.Load += new System.EventHandler(this.UserControl2_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();

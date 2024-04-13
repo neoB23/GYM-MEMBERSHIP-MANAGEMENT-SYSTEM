@@ -36,7 +36,7 @@ namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM
             // Set values in the receipt
             //this.name = name;
             //this.membership = membership;
-           // this.price = price;
+            // this.price = price;
 
             // Set values in the controls
             txtname.Text = name;
@@ -65,7 +65,7 @@ namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM
             txtname.Text = "";
             cmbmembership.Text = "";
             txtprice.Text = "";
-            
+
         }
 
         private void UserControl4_Load(object sender, EventArgs e)
@@ -111,7 +111,7 @@ namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM
             MessageBox.Show("Membership added successfully", "SAVE", MessageBoxButtons.OK, MessageBoxIcon.Information);
             DisplayData(); // Assuming DisplayData() method is defined to refresh the data grid
             ClearData(); // Assuming ClearData() method is defined to clear the input fields
-            
+
         }
 
 
@@ -147,18 +147,50 @@ namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM
             {
                 MessageBox.Show("Fill out all the information needed", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            
+
         }
-    
+
 
         private void bunifuCustomDataGrid1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
         }
-
+        
         private void cmbmembership_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if (!string.IsNullOrWhiteSpace(cmbmembership.Text))
+            {
+                string selectedMembership = cmbmembership.Text;
 
+                try
+                {
+                    using (MySqlCommand cmd = new MySqlCommand())
+                    {
+                        cmd.Connection = con;
+                        cmd.CommandText = "SELECT price FROM membership WHERE membership = @membership";
+                        cmd.Parameters.AddWithValue("@membership", selectedMembership);
+
+                        con.Open();
+                        object result = cmd.ExecuteScalar();
+                        con.Close(); // Close the connection after executing the query
+
+                        if (result != null)
+                        {
+                            txtprice.Text = result.ToString();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Price not found for the selected membership", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            txtprice.Text = ""; // Clear the price textbox if no price is found
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error fetching membership price: " + ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    con.Close(); // Ensure the connection is closed in case of an exception
+                }
+            }
         }
 
         private void pictureBox2_Click(object sender, EventArgs e)
@@ -208,7 +240,7 @@ namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM
         }
         private void dataGridView2_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
-            
+
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
@@ -245,21 +277,89 @@ namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM
             Font font = new Font("Courier New", 12); // Define font
             float fontHeight = font.GetHeight();
 
-            int startX = 10;
-            int startY = 10;
-            int offset = 40;
+            int startY = (e.MarginBounds.Height - 30 * (int)fontHeight) / 2 + e.MarginBounds.Top; // Center vertically
+            int maxWidth = e.MarginBounds.Width; // Maximum width within the printable area
+            int offset = 0;
 
             // Drawing text on the receipt
-            graphic.DrawString("Invoice Receipt", new Font("Courier New", 18), new SolidBrush(Color.Black), startX, startY);
-            graphic.DrawString("==========================", font, new SolidBrush(Color.Black), startX, startY + offset);
-            offset = offset + (int)fontHeight + 5;
-            graphic.DrawString("Username: " + txtname.Text, font, new SolidBrush(Color.Black), startX, startY + offset);
-            offset = offset + (int)fontHeight + 5;
-            graphic.DrawString("Membership: " + cmbmembership.Text, font, new SolidBrush(Color.Black), startX, startY + offset);
-            offset = offset + (int)fontHeight + 5;
-            graphic.DrawString("Price: $" + txtprice.Text, font, new SolidBrush(Color.Black), startX, startY + offset);
-            offset = offset + (int)fontHeight + 5;
-            graphic.DrawString("==========================", font, new SolidBrush(Color.Black), startX, startY + offset);
+            string[] lines = {
+        "GYM FITNESS",
+        "OWNED AND OPERATED BY",
+        "JUSTIN AND YASMIN",
+        "", // Add space below this
+        "3RD LEVEL BLDG 3 STA LCUAI MALL MARCOS",
+        "HIGHWAY COR, FELIX AVE. SAN ISIDRO 1900",
+        "CAINTA RIZAL PHILIPPINES",
+        "", // Add space below this
+        "OFFICIAL RECEIPT",
+        "", // Add space below this
+        "Date: " + DateTime.Now.ToString("MM/dd/yyyy") + "   Time: " + DateTime.Now.ToString("HH:mm:ss"),
+        "Receipt Number: 1234567890",
+        "Username: " + txtname.Text,
+        "Membership: " + cmbmembership.Text,
+        "Price: $" + txtprice.Text,
+        "", // Add space below this
+        "THIS DOCUMENT IS NOT VALID FOR",
+        "CLAIM OF INPUT TAX",
+        "", // Add space below this
+        "THIS SERVE AS AN OFFICIAL RECEIPT",
+        "Date Issued: " + DateTime.Now.ToString("MM/dd/yyyy")
+    };
+
+            foreach (string line in lines)
+            {
+                SizeF stringSize = graphic.MeasureString(line, font);
+                int stringWidth = (int)stringSize.Width;
+
+                int startX = (maxWidth - stringWidth) / 2 + e.MarginBounds.Left; // Center horizontally within the printable area
+
+                graphic.DrawString(line, font, new SolidBrush(Color.Black), startX, startY + offset);
+                offset += (int)fontHeight + 5;
+            }
         }
+
+        private void txtprice_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtname_TextChanged(object sender, EventArgs e)
+        {
+           /* if (!string.IsNullOrWhiteSpace(txtname.Text))
+            {
+                string username = txtname.Text;
+
+                try
+                {
+                    using (MySqlCommand cmd = new MySqlCommand())
+                    {
+                        cmd.Connection = con;
+                        cmd.CommandText = "SELECT membershipplan FROM register WHERE username = @username";
+                        cmd.Parameters.AddWithValue("@username", username);
+
+                        con.Open();
+                        object result = cmd.ExecuteScalar();
+                        con.Close(); // Close the connection after executing the query
+
+                        if (result != null)
+                        {
+                            // Display the membership in a separate textbox or label
+                            cmbmembership.Text = result.ToString();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Membership not found for the entered username", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            cmbmembership.Text = ""; // Clear the membership textbox if no membership is found
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error fetching membership: " + ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    con.Close(); // Ensure the connection is closed in case of an exception
+                }
+            } */
+        }
+
     }
 }

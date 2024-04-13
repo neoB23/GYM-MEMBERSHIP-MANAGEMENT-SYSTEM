@@ -298,7 +298,7 @@
             this.dataGridView2.Location = new System.Drawing.Point(378, 40);
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            this.dataGridView2.Size = new System.Drawing.Size(511, 555);
+            this.dataGridView2.Size = new System.Drawing.Size(778, 555);
             this.dataGridView2.TabIndex = 58;
             this.dataGridView2.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellContentClick);
             this.dataGridView2.RowHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView2_RowHeaderMouseClick);
@@ -437,7 +437,7 @@
             this.Controls.Add(this.pictureBox5);
             this.Controls.Add(this.pictureBox6);
             this.Name = "UserControl5";
-            this.Size = new System.Drawing.Size(927, 630);
+            this.Size = new System.Drawing.Size(1179, 630);
             this.Load += new System.EventHandler(this.UserControl5_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();

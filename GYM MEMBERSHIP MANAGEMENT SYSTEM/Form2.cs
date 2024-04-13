@@ -177,9 +177,11 @@ namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM
             }
             try
             {
+                // Open a new MySqlConnection outside the using block
                 using (MySqlConnection con = new MySqlConnection("server=localhost;user id=root;database=gym membership management;sslMode=none"))
                 {
-                    con.Open(); string sql = "INSERT INTO register (username, password, emailadress, phonenumber, firstname, lastname, gender, address) VALUES (@username, @password, @email, @phone, @firstname, @lastname, @gender, @address)";
+                    con.Open();
+                    string sql = "INSERT INTO register (username, password, emailadress, phonenumber, firstname, lastname, gender, address) VALUES (@username, @password, @email, @phone, @firstname, @lastname, @gender, @address)";
 
                     MySqlCommand cmd = new MySqlCommand(sql, con);
                     cmd.Parameters.AddWithValue("@username", txtusername.Text);
@@ -191,10 +193,13 @@ namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM
                     cmd.Parameters.AddWithValue("@gender", txtgender.Text);
                     cmd.Parameters.AddWithValue("@address", txtadd.Text);
                     cmd.ExecuteNonQuery();
+
+                    MessageBox.Show("Registered Successfully");
+
+                    // Close the current form and show a new one
                     this.Hide();
                     Form1 Frm1 = new Form1();
                     Frm1.Show();
-                    MessageBox.Show("Registered Successfully");
                 }
             }
             catch (MySqlException ex)

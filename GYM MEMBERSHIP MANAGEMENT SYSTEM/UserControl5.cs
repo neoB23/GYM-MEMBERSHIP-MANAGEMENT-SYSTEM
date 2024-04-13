@@ -182,10 +182,10 @@ namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM
                 }
             }
             con.Close();
-            
+
             string passwordPattern = @"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^\da-zA-Z]).{8,}$";
             //address min input wala pa pati sa email add
-            
+
             int minimumUsernameLength = 6;
             int minimumPasswordLength = 8;
             int minimumFirstNameLength = 3;
@@ -226,12 +226,12 @@ namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM
                 MessageBox.Show($"First name and Last name must be at least {minimumFirstNameLength} characters long", "Error");
                 return;
             }
-            MySqlCommand cmd = new MySqlCommand("INSERT INTO Admin(username, password, email, firstname, lastname) VALUES(@username, @password, @email, @firstname, @lastname)", con);
+            MySqlCommand cmd = new MySqlCommand("INSERT INTO admin(username, password, email, firstname, lastname) VALUES(@username, @password, @email, @firstname, @lastname)", con);
             con.Open();
             cmd.Parameters.AddWithValue("@firstname", txtfirstname.Text);
             cmd.Parameters.AddWithValue("@lastname", txtlastname.Text);
             cmd.Parameters.AddWithValue("@username", txtusername.Text);
-            cmd.Parameters.AddWithValue("@password", Hash(txtpassword.Text)); ;
+            cmd.Parameters.AddWithValue("@password", Hash(txtpassword.Text)); // Hashing the password
             cmd.Parameters.AddWithValue("@email", txtemail.Text);
             cmd.ExecuteNonQuery();
             con.Close();
@@ -239,6 +239,7 @@ namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM
             DisplayData();
             ClearData();
         }
+
 
         private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {

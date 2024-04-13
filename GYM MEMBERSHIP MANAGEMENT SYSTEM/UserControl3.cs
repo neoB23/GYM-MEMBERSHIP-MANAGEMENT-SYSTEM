@@ -71,7 +71,7 @@ namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM
         }
         private void DisplayData()
         {
-            string sql = "SELECT id, membership, duration, goal, cost FROM membership"; 
+            string sql = "SELECT id, membership, duration, goal, Price FROM membership"; 
             cmd = new MySqlCommand(sql, con);
             adapt = new MySqlDataAdapter(cmd);
             DataTable dt = new DataTable();
@@ -94,36 +94,46 @@ namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM
                 txtmembership.Text = dataGridView2.Rows[e.RowIndex].Cells["membership"].Value?.ToString() ?? "";
                 txtduration.Text = dataGridView2.Rows[e.RowIndex].Cells["duration"].Value?.ToString();
                 txtgoal.Text = dataGridView2.Rows[e.RowIndex].Cells["goal"].Value?.ToString();
-                txtcost.Text = dataGridView2.Rows[e.RowIndex].Cells["cost"].Value?.ToString();
+                txtcost.Text = dataGridView2.Rows[e.RowIndex].Cells["Price"].Value?.ToString();
             }
         }
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            //may error sa pag update ng username
             // Check if all required fields are filled
             if (!string.IsNullOrWhiteSpace(txtmembership.Text) &&
                 !string.IsNullOrWhiteSpace(txtduration.Text) &&
                 !string.IsNullOrWhiteSpace(txtgoal.Text) &&
                 !string.IsNullOrWhiteSpace(txtcost.Text))
             {
-                string sql = "UPDATE membership SET duration = @duration, goal = @goal, cost = @cost WHERE membership = @membership";
-                cmd = new MySqlCommand(sql, con);
-                cmd.Parameters.AddWithValue("@membership", txtmembership.Text);
-                cmd.Parameters.AddWithValue("@duration", txtduration.Text);
-                cmd.Parameters.AddWithValue("@goal", txtgoal.Text);
-                cmd.Parameters.AddWithValue("@cost", txtcost.Text);
-                con.Open();
-                int rowsAffected = cmd.ExecuteNonQuery();
-                con.Close();
-                if (rowsAffected > 0)
+                try
                 {
-                    MessageBox.Show("Membership information updated successfully!", "UPDATE", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    DisplayData();
-                    ClearData();
+                    string sql = "UPDATE membership SET duration = @duration, goal = @goal, Price = @Price WHERE membership = @membership";
+                    using (MySqlCommand cmd = new MySqlCommand(sql, con))
+                    {
+                        cmd.Parameters.AddWithValue("@membership", txtmembership.Text);
+                        cmd.Parameters.AddWithValue("@duration", txtduration.Text);
+                        cmd.Parameters.AddWithValue("@goal", txtgoal.Text);
+                        cmd.Parameters.AddWithValue("@Price", txtcost.Text);
+                        con.Open();
+                        int rowsAffected = cmd.ExecuteNonQuery();
+                        con.Close();
+
+                        if (rowsAffected > 0)
+                        {
+                            MessageBox.Show("Membership information updated successfully!", "UPDATE", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            DisplayData();
+                            ClearData();
+                        }
+                        else
+                        {
+                            MessageBox.Show("No membership found with this name!", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
                 }
-                else
+                catch (Exception ex)
                 {
-                    MessageBox.Show("No user found with this name!", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Error updating membership information: " + ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    con.Close(); // Close the connection in case of an exception
                 }
             }
             else
@@ -132,27 +142,29 @@ namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM
             }
         }
 
+
         private void guna2GradientButton1_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrWhiteSpace(txtmembership.Text) ||
-               string.IsNullOrWhiteSpace(txtduration.Text) ||
-               string.IsNullOrWhiteSpace(txtgoal.Text) ||
-               string.IsNullOrWhiteSpace(txtcost.Text))
+         string.IsNullOrWhiteSpace(txtduration.Text) ||
+         string.IsNullOrWhiteSpace(txtgoal.Text) ||
+         string.IsNullOrWhiteSpace(txtcost.Text))
             {
                 MessageBox.Show("Fill up all information", "Error");
                 return;
             }
 
-            MySqlCommand cmd1 = new MySqlCommand("SELECT * FROM membership WHERE membership = @membership", con); 
+            // Check if the membership already exists in the 'membership' table
+            MySqlCommand cmd1 = new MySqlCommand("SELECT * FROM membership WHERE membership = @membership", con);
             cmd1.Parameters.AddWithValue("@membership", txtmembership.Text);
             con.Open();
-            bool userExists = false;
+            bool membershipExists = false;
             using (var dr1 = cmd1.ExecuteReader())
             {
-                userExists = dr1.HasRows;
-                if (userExists)
+                membershipExists = dr1.HasRows;
+                if (membershipExists)
                 {
-                    MessageBox.Show("Username not available!", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Membership already exists!", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     con.Close();
                     return;
                 }
@@ -186,12 +198,12 @@ namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM
                 return; // Return without further processing if phone number is not numeric
             }
             // Adds a User in the Database
-            MySqlCommand cmd = new MySqlCommand("INSERT INTO membership(membership, duration, goal, cost) VALUES(@membership, @duration, @goal, @cost)", con);
+            MySqlCommand cmd = new MySqlCommand("INSERT INTO membership(membership, duration, goal, Price) VALUES(@membership, @duration, @goal, @Price)", con);
             con.Open();
             cmd.Parameters.AddWithValue("@membership", txtmembership.Text);
             cmd.Parameters.AddWithValue("@duration", txtduration.Text);
             cmd.Parameters.AddWithValue("@goal", txtgoal.Text);
-            cmd.Parameters.AddWithValue("@cost", txtcost.Text);
+            cmd.Parameters.AddWithValue("@Price", txtcost.Text);
             cmd.ExecuteNonQuery();
             con.Close();
             MessageBox.Show("Membership added successfully", "SAVE", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -200,6 +212,11 @@ namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM
         }
 
         private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void txtmembership_TextChanged(object sender, EventArgs e)
         {
 
         }

@@ -85,7 +85,7 @@
             this.btnDelete.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btnDelete.ForeColor = System.Drawing.Color.Black;
             this.btnDelete.HoverState.Parent = this.btnDelete;
-            this.btnDelete.Location = new System.Drawing.Point(139, 512);
+            this.btnDelete.Location = new System.Drawing.Point(139, 555);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.ShadowDecoration.Parent = this.btnDelete;
             this.btnDelete.Size = new System.Drawing.Size(120, 40);
@@ -102,7 +102,7 @@
             this.btnUpdate.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btnUpdate.ForeColor = System.Drawing.Color.Black;
             this.btnUpdate.HoverState.Parent = this.btnUpdate;
-            this.btnUpdate.Location = new System.Drawing.Point(139, 562);
+            this.btnUpdate.Location = new System.Drawing.Point(139, 509);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.ShadowDecoration.Parent = this.btnUpdate;
             this.btnUpdate.Size = new System.Drawing.Size(120, 40);
@@ -205,6 +205,7 @@
             this.txtmembership.ShadowDecoration.Parent = this.txtmembership;
             this.txtmembership.Size = new System.Drawing.Size(202, 27);
             this.txtmembership.TabIndex = 37;
+            this.txtmembership.TextChanged += new System.EventHandler(this.txtmembership_TextChanged);
             // 
             // label1
             // 

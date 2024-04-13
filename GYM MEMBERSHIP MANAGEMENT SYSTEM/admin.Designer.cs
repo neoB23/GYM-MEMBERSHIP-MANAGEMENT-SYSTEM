@@ -37,12 +37,12 @@
             this.bunifuCustomLabel2 = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.bunifuCustomLabel1 = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.printDialog1 = new System.Windows.Forms.PrintDialog();
+            this.userControl51 = new GYM_MEMBERSHIP_MANAGEMENT_SYSTEM.UserControl5();
             this.userControl11 = new GYM_MEMBERSHIP_MANAGEMENT_SYSTEM.UserControl1();
             this.userControl41 = new GYM_MEMBERSHIP_MANAGEMENT_SYSTEM.UserControl4();
             this.userControl31 = new GYM_MEMBERSHIP_MANAGEMENT_SYSTEM.UserControl3();
             this.userControl21 = new GYM_MEMBERSHIP_MANAGEMENT_SYSTEM.UserControl2();
             this.userControl01 = new GYM_MEMBERSHIP_MANAGEMENT_SYSTEM.UserControl0();
-            this.userControl51 = new GYM_MEMBERSHIP_MANAGEMENT_SYSTEM.UserControl5();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -154,6 +154,14 @@
             // 
             this.printDialog1.UseEXDialog = true;
             // 
+            // userControl51
+            // 
+            this.userControl51.BackColor = System.Drawing.Color.Black;
+            this.userControl51.Location = new System.Drawing.Point(145, 0);
+            this.userControl51.Name = "userControl51";
+            this.userControl51.Size = new System.Drawing.Size(859, 647);
+            this.userControl51.TabIndex = 6;
+            // 
             // userControl11
             // 
             this.userControl11.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
@@ -168,7 +176,7 @@
             this.userControl41.BackColor = System.Drawing.Color.Black;
             this.userControl41.Location = new System.Drawing.Point(145, 0);
             this.userControl41.Name = "userControl41";
-            this.userControl41.Size = new System.Drawing.Size(861, 647);
+            this.userControl41.Size = new System.Drawing.Size(859, 647);
             this.userControl41.TabIndex = 4;
             this.userControl41.Load += new System.EventHandler(this.userControl41_Load);
             // 
@@ -177,7 +185,7 @@
             this.userControl31.BackColor = System.Drawing.Color.Black;
             this.userControl31.Location = new System.Drawing.Point(145, 0);
             this.userControl31.Name = "userControl31";
-            this.userControl31.Size = new System.Drawing.Size(861, 647);
+            this.userControl31.Size = new System.Drawing.Size(859, 647);
             this.userControl31.TabIndex = 3;
             // 
             // userControl21
@@ -185,7 +193,7 @@
             this.userControl21.BackColor = System.Drawing.Color.Black;
             this.userControl21.Location = new System.Drawing.Point(143, 0);
             this.userControl21.Name = "userControl21";
-            this.userControl21.Size = new System.Drawing.Size(863, 656);
+            this.userControl21.Size = new System.Drawing.Size(1105, 656);
             this.userControl21.TabIndex = 2;
             // 
             // userControl01
@@ -195,26 +203,18 @@
             this.userControl01.Size = new System.Drawing.Size(855, 651);
             this.userControl01.TabIndex = 5;
             // 
-            // userControl51
-            // 
-            this.userControl51.BackColor = System.Drawing.Color.Black;
-            this.userControl51.Location = new System.Drawing.Point(145, 0);
-            this.userControl51.Name = "userControl51";
-            this.userControl51.Size = new System.Drawing.Size(851, 647);
-            this.userControl51.TabIndex = 6;
-            // 
             // admin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1001, 648);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.userControl51);
-            this.Controls.Add(this.userControl11);
-            this.Controls.Add(this.userControl41);
             this.Controls.Add(this.userControl31);
             this.Controls.Add(this.userControl21);
             this.Controls.Add(this.userControl01);
+            this.Controls.Add(this.userControl51);
+            this.Controls.Add(this.userControl11);
+            this.Controls.Add(this.userControl41);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "admin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
