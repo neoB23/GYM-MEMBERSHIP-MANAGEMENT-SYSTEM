@@ -37,12 +37,12 @@ namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM
                 con.Open();
 
                 // Count members
-                string memberSql = "SELECT COUNT(*) FROM register";
+                string memberSql = "SELECT COUNT(*) FROM coach";
                 MySqlCommand memberCmd = new MySqlCommand(memberSql, con);
                 int memberCount = Convert.ToInt32(memberCmd.ExecuteScalar());
 
                 // Count coaches
-                string coachSql = "SELECT COUNT(*) FROM coach";
+                string coachSql = "SELECT COUNT(*) FROM register";
                 MySqlCommand coachCmd = new MySqlCommand(coachSql, con);
                 int coachCount = Convert.ToInt32(coachCmd.ExecuteScalar());
 
@@ -90,6 +90,11 @@ namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM
         }
 
         private void label8_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void UserControl0_Load(object sender, EventArgs e)
         {
 
         }

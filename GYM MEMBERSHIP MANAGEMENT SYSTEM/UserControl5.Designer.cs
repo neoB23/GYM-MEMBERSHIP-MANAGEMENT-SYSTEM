@@ -54,6 +54,12 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.pictureBox7 = new System.Windows.Forms.PictureBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.txtaddress = new Guna.UI2.WinForms.Guna2TextBox();
+            this.pictureBox8 = new System.Windows.Forms.PictureBox();
+            this.txtcontactnumber = new Guna.UI2.WinForms.Guna2TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
@@ -61,6 +67,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
             this.SuspendLayout();
             // 
             // txtusername
@@ -171,7 +179,7 @@
             this.txtemail.FocusedState.Parent = this.txtemail;
             this.txtemail.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtemail.HoverState.Parent = this.txtemail;
-            this.txtemail.Location = new System.Drawing.Point(37, 323);
+            this.txtemail.Location = new System.Drawing.Point(41, 396);
             this.txtemail.Name = "txtemail";
             this.txtemail.PasswordChar = '\0';
             this.txtemail.PlaceholderText = "";
@@ -233,7 +241,7 @@
             this.guna2GradientButton1.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.guna2GradientButton1.ForeColor = System.Drawing.Color.Black;
             this.guna2GradientButton1.HoverState.Parent = this.guna2GradientButton1;
-            this.guna2GradientButton1.Location = new System.Drawing.Point(206, 399);
+            this.guna2GradientButton1.Location = new System.Drawing.Point(206, 490);
             this.guna2GradientButton1.Name = "guna2GradientButton1";
             this.guna2GradientButton1.ShadowDecoration.Parent = this.guna2GradientButton1;
             this.guna2GradientButton1.Size = new System.Drawing.Size(120, 40);
@@ -250,7 +258,7 @@
             this.btnDelete.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btnDelete.ForeColor = System.Drawing.Color.Black;
             this.btnDelete.HoverState.Parent = this.btnDelete;
-            this.btnDelete.Location = new System.Drawing.Point(128, 457);
+            this.btnDelete.Location = new System.Drawing.Point(128, 548);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.ShadowDecoration.Parent = this.btnDelete;
             this.btnDelete.Size = new System.Drawing.Size(120, 40);
@@ -267,7 +275,7 @@
             this.btnUpdate.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btnUpdate.ForeColor = System.Drawing.Color.Black;
             this.btnUpdate.HoverState.Parent = this.btnUpdate;
-            this.btnUpdate.Location = new System.Drawing.Point(68, 399);
+            this.btnUpdate.Location = new System.Drawing.Point(68, 490);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.ShadowDecoration.Parent = this.btnUpdate;
             this.btnUpdate.Size = new System.Drawing.Size(120, 40);
@@ -298,7 +306,7 @@
             this.dataGridView2.Location = new System.Drawing.Point(378, 40);
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            this.dataGridView2.Size = new System.Drawing.Size(778, 555);
+            this.dataGridView2.Size = new System.Drawing.Size(434, 555);
             this.dataGridView2.TabIndex = 58;
             this.dataGridView2.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellContentClick);
             this.dataGridView2.RowHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView2_RowHeaderMouseClick);
@@ -347,7 +355,7 @@
             this.pictureBox6.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox6.BackgroundImage")));
             this.pictureBox6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.pictureBox6.ErrorImage = ((System.Drawing.Image)(resources.GetObject("pictureBox6.ErrorImage")));
-            this.pictureBox6.Location = new System.Drawing.Point(32, 316);
+            this.pictureBox6.Location = new System.Drawing.Point(36, 389);
             this.pictureBox6.Name = "pictureBox6";
             this.pictureBox6.Size = new System.Drawing.Size(313, 42);
             this.pictureBox6.TabIndex = 142;
@@ -370,7 +378,7 @@
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.White;
-            this.label5.Location = new System.Drawing.Point(42, 308);
+            this.label5.Location = new System.Drawing.Point(46, 381);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(36, 15);
             this.label5.TabIndex = 144;
@@ -408,11 +416,109 @@
             this.pictureBox2.TabIndex = 147;
             this.pictureBox2.TabStop = false;
             // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.ForeColor = System.Drawing.Color.White;
+            this.label9.Location = new System.Drawing.Point(46, 314);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(96, 15);
+            this.label9.TabIndex = 150;
+            this.label9.Text = "Contact Number";
+            // 
+            // pictureBox7
+            // 
+            this.pictureBox7.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox7.BackgroundImage")));
+            this.pictureBox7.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pictureBox7.ErrorImage = ((System.Drawing.Image)(resources.GetObject("pictureBox7.ErrorImage")));
+            this.pictureBox7.Location = new System.Drawing.Point(37, 322);
+            this.pictureBox7.Name = "pictureBox7";
+            this.pictureBox7.Size = new System.Drawing.Size(125, 42);
+            this.pictureBox7.TabIndex = 149;
+            this.pictureBox7.TabStop = false;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.ForeColor = System.Drawing.Color.White;
+            this.label10.Location = new System.Drawing.Point(191, 314);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(52, 15);
+            this.label10.TabIndex = 153;
+            this.label10.Text = "Address:";
+            // 
+            // txtaddress
+            // 
+            this.txtaddress.BorderThickness = 0;
+            this.txtaddress.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtaddress.DefaultText = "";
+            this.txtaddress.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txtaddress.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.txtaddress.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtaddress.DisabledState.Parent = this.txtaddress;
+            this.txtaddress.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtaddress.FillColor = System.Drawing.Color.Transparent;
+            this.txtaddress.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtaddress.FocusedState.Parent = this.txtaddress;
+            this.txtaddress.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtaddress.HoverState.Parent = this.txtaddress;
+            this.txtaddress.Location = new System.Drawing.Point(185, 326);
+            this.txtaddress.Name = "txtaddress";
+            this.txtaddress.PasswordChar = '\0';
+            this.txtaddress.PlaceholderText = "";
+            this.txtaddress.SelectedText = "";
+            this.txtaddress.ShadowDecoration.Parent = this.txtaddress;
+            this.txtaddress.Size = new System.Drawing.Size(160, 32);
+            this.txtaddress.TabIndex = 151;
+            // 
+            // pictureBox8
+            // 
+            this.pictureBox8.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox8.BackgroundImage")));
+            this.pictureBox8.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pictureBox8.ErrorImage = ((System.Drawing.Image)(resources.GetObject("pictureBox8.ErrorImage")));
+            this.pictureBox8.Location = new System.Drawing.Point(178, 322);
+            this.pictureBox8.Name = "pictureBox8";
+            this.pictureBox8.Size = new System.Drawing.Size(171, 42);
+            this.pictureBox8.TabIndex = 152;
+            this.pictureBox8.TabStop = false;
+            // 
+            // txtcontactnumber
+            // 
+            this.txtcontactnumber.BorderThickness = 0;
+            this.txtcontactnumber.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtcontactnumber.DefaultText = "";
+            this.txtcontactnumber.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txtcontactnumber.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.txtcontactnumber.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtcontactnumber.DisabledState.Parent = this.txtcontactnumber;
+            this.txtcontactnumber.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtcontactnumber.FillColor = System.Drawing.Color.Transparent;
+            this.txtcontactnumber.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtcontactnumber.FocusedState.Parent = this.txtcontactnumber;
+            this.txtcontactnumber.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtcontactnumber.HoverState.Parent = this.txtcontactnumber;
+            this.txtcontactnumber.Location = new System.Drawing.Point(42, 332);
+            this.txtcontactnumber.Name = "txtcontactnumber";
+            this.txtcontactnumber.PasswordChar = '\0';
+            this.txtcontactnumber.PlaceholderText = "";
+            this.txtcontactnumber.SelectedText = "";
+            this.txtcontactnumber.ShadowDecoration.Parent = this.txtcontactnumber;
+            this.txtcontactnumber.Size = new System.Drawing.Size(113, 17);
+            this.txtcontactnumber.TabIndex = 154;
+            // 
             // UserControl5
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
+            this.Controls.Add(this.txtcontactnumber);
+            this.Controls.Add(this.label10);
+            this.Controls.Add(this.txtaddress);
+            this.Controls.Add(this.pictureBox8);
+            this.Controls.Add(this.label9);
+            this.Controls.Add(this.pictureBox7);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
@@ -446,6 +552,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -475,5 +583,11 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.PictureBox pictureBox7;
+        private System.Windows.Forms.Label label10;
+        private Guna.UI2.WinForms.Guna2TextBox txtaddress;
+        private System.Windows.Forms.PictureBox pictureBox8;
+        private Guna.UI2.WinForms.Guna2TextBox txtcontactnumber;
     }
 }

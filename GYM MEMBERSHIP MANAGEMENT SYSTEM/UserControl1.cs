@@ -118,7 +118,7 @@ namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM
             }
 
             // Hash the password
-            string hashedPassword = Hash(txtpassword.Text);
+            string hashedPassword = (txtpassword.Text);
 
             // Insert user data into the database
             MySqlCommand cmd = new MySqlCommand("INSERT INTO coach(FirstName, LastName, UserName, Password, DateofBirth, `contactnumber`, Experience, Gender) VALUES(@FirstName, @LastName, @username, @password, @dateofbirth, @contactnum, @exp, @gender)", con);
@@ -265,10 +265,10 @@ namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM
         {
 
         }
-        private string Hash(string input)
+       /* private string Hash(string input)
         {
             // Generate a salt and hash the password
             return BCrypt.Net.BCrypt.HashPassword(input, BCrypt.Net.BCrypt.GenerateSalt());
-        }
+        }*/
     }
 }

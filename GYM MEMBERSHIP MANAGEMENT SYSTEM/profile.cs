@@ -126,7 +126,30 @@ namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM
         {
             LoadUserData();
         }
+        private void UpdateUserEmail()
+        {
+            try
+            {
+                string newEmail = txtEmail.Text; // Assuming txtEmail is the TextBox for the user's email
 
+                string connectionString = "Server=localhost;User ID=root;Database=gym membership management;SslMode=none;";
+                using (MySqlConnection connection = new MySqlConnection(connectionString))
+                {
+                    connection.Open();
+                    string updateQuery = "UPDATE register SET emailadress = @newEmail WHERE id = @id";
+                    MySqlCommand updateCommand = new MySqlCommand(updateQuery, connection);
+                    updateCommand.Parameters.AddWithValue("@newEmail", newEmail);
+                    updateCommand.Parameters.AddWithValue("@id", userId);
+                    updateCommand.ExecuteNonQuery();
+                }
+
+                MessageBox.Show("Email updated successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message);
+            }
+        }
         private void guna2Button1_Click(object sender, EventArgs e)
         {
             LoadUserData();

@@ -1,28 +1,27 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Data.SqlClient;
 using System.Security.Cryptography;
+using System.Text;
 
 namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM
 {
-    class HashCode
+    public class HashCode
     {
-        public string PassHash(string data)
+        public string hash(string input)
         {
-            using (SHA1  sha1 = SHA1.Create()) 
+            // Convert the input string to a byte array and compute the hash
+            using (SHA256 sha256Hash = SHA256.Create())
             {
-                byte [] hashData = sha1.ComputeHash(Encoding.Default.GetBytes(data));
-                StringBuilder returnValue = new StringBuilder();
+                // ComputeHash - returns byte array
+                byte[] bytes = sha256Hash.ComputeHash(Encoding.UTF8.GetBytes(input));
 
-                for (int i = 0;  i < hashData.Length && i < 50; i++ ) 
+                // Convert byte array to a string
+                StringBuilder builder = new StringBuilder();
+                for (int i = 0; i < bytes.Length; i++)
                 {
-                    returnValue.Append(hashData[i]. ToString("x2"));
+                    builder.Append(bytes[i].ToString("x2"));
                 }
-                return returnValue.ToString();
+                return builder.ToString();
             }
         }
-    }  
+    }
 }

@@ -10,7 +10,8 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml.Linq;
-using BCrypt.Net;
+//using BCrypt.Net;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 
 namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM
 {
@@ -43,7 +44,7 @@ namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM
         }
         private void DisplayData()
         {
-            string sql = "SELECT id, username, password, email, firstname, lastname, createdat FROM admin"; // Changed column names
+            string sql = "SELECT id, username, password, email, firstname, lastname, createdat, address, contactnumber FROM admin"; // Changed column names
             cmd = new MySqlCommand(sql, con);
             adapt = new MySqlDataAdapter(cmd);
             DataTable dt = new DataTable();
@@ -59,8 +60,10 @@ namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM
             txtlastname.Text = "";
             txtemail.Text = "";
             txtpassword.Text = "";
-            
-            
+            txtaddress.Text = "";
+            txtcontactnumber.Text = "";
+
+
         }
         private void dataGridView2_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
@@ -71,6 +74,9 @@ namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM
                 txtusername.Text = dataGridView2.Rows[e.RowIndex].Cells["username"].Value?.ToString();
                 txtpassword.Text = dataGridView2.Rows[e.RowIndex].Cells["password"].Value?.ToString();
                 txtemail.Text = dataGridView2.Rows[e.RowIndex].Cells["email"].Value?.ToString();
+                txtcontactnumber.Text = dataGridView2.Rows[e.RowIndex].Cells["contactnumber"].Value?.ToString();
+                txtaddress.Text = dataGridView2.Rows[e.RowIndex].Cells["address"].Value?.ToString();
+                
             }
         }
 
@@ -84,19 +90,23 @@ namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM
             //may error sa pag update ng username
             // Check if all required fields are filled
             if (!string.IsNullOrWhiteSpace(txtfirstname.Text) &&
+                !string.IsNullOrWhiteSpace(txtaddress.Text) &&
+                !string.IsNullOrWhiteSpace(txtcontactnumber.Text) &&
                 !string.IsNullOrWhiteSpace(txtusername.Text) &&
                 !string.IsNullOrWhiteSpace(txtpassword.Text) &&
                 !string.IsNullOrWhiteSpace(txtlastname.Text) &&
                 !string.IsNullOrWhiteSpace(txtemail.Text))
                 
             {
-                string sql = "UPDATE admin SET username = @username, password = @password, email = @email, lastname = @lastname WHERE firstname = @FirstName";
+                string sql = "UPDATE admin SET username = @username, password = @password, email = @email, lastname = @lastname, address = @address, contactnumber = @contactnumber WHERE firstname = @FirstName";
                 cmd = new MySqlCommand(sql, con);
                 cmd.Parameters.AddWithValue("@FirstName", txtfirstname.Text);
                 cmd.Parameters.AddWithValue("@LastName", txtlastname.Text);
                 cmd.Parameters.AddWithValue("@username", txtusername.Text);
                 cmd.Parameters.AddWithValue("@password", txtpassword.Text);
                 cmd.Parameters.AddWithValue("@email", txtemail.Text);
+                cmd.Parameters.AddWithValue("@address", txtaddress.Text);
+                cmd.Parameters.AddWithValue("@contactnumber", txtcontactnumber.Text);
                 con.Open();
                 int rowsAffected = cmd.ExecuteNonQuery();
                 con.Close();
@@ -148,6 +158,8 @@ namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM
         {
             // Check if all required fields are filled
             if (string.IsNullOrWhiteSpace(txtusername.Text) ||
+                string.IsNullOrWhiteSpace(txtaddress.Text) ||
+                string.IsNullOrWhiteSpace(txtcontactnumber.Text) ||
                 string.IsNullOrWhiteSpace(txtpassword.Text) ||
                 string.IsNullOrWhiteSpace(txtfirstname.Text) ||
                 string.IsNullOrWhiteSpace(txtlastname.Text) ||
@@ -161,37 +173,49 @@ namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM
             cmd1.Parameters.AddWithValue("@firstname", txtfirstname.Text);
             con.Open();
             bool userExists = false;
-            string hashedPasswordFromDatabase = null; // Variable to store hashed password from database
+            string passwordFromDatabase = null; // Variable to store password from database
             using (var dr1 = cmd1.ExecuteReader())
             {
                 if (dr1.Read())
                 {
                     userExists = true;
-                    hashedPasswordFromDatabase = dr1["password"].ToString(); // Retrieve hashed password from database
+                    passwordFromDatabase = dr1["password"].ToString(); // Retrieve password from database
                 }
             }
             con.Close();
 
             if (userExists)
             {
-                // Verify the entered password with the hashed password from the database
-                if (BCrypt.Net.BCrypt.Verify(txtpassword.Text, hashedPasswordFromDatabase))
-                {
-                    MessageBox.Show("Username not available!", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
+                // Check if username already exists
+                MessageBox.Show("Username not available!", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
-            con.Close();
 
             string passwordPattern = @"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^\da-zA-Z]).{8,}$";
-            //address min input wala pa pati sa email add
-
             int minimumUsernameLength = 6;
             int minimumPasswordLength = 8;
             int minimumFirstNameLength = 3;
             int minimumLastNameLength = 3;
             int minimumEmailadLength = 4;
+            int minimumPhoneNumberLength = 12;
+            int minimumAddressLength = 6;
 
+            // Perform validation checks
+            if (txtaddress.Text.Length < minimumAddressLength)
+            {
+                MessageBox.Show($"Address number must be at least {minimumAddressLength} characters long", "Error");
+                return;
+            }
+            if (txtcontactnumber.Text.Length < minimumPhoneNumberLength)
+            {
+                MessageBox.Show($"Phone number must be at least {minimumPhoneNumberLength} characters long", "Error");
+                return;
+            }
+            if (!IsNumeric(txtcontactnumber.Text))
+            {
+                MessageBox.Show("Phone number should contain only numeric characters", "Error");
+                return;
+            }
             if (!txtemail.Text.Contains("@gmail.com"))
             {
                 MessageBox.Show("Email address should contain '@gmail' symbol", "Error");
@@ -200,45 +224,46 @@ namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM
             if (txtemail.Text.Length < minimumEmailadLength)
             {
                 MessageBox.Show($"Email address must be at least {minimumEmailadLength} characters long", "Error");
+                return;
             }
-            // Check other validations if all fields are filled and phone number is numeric
             if (txtusername.Text.Length < minimumUsernameLength)
             {
-                // Display error message if username length is less than minimum
                 MessageBox.Show($"Username must be at least {minimumUsernameLength} characters long", "Error");
                 return;
             }
-            else if (txtpassword.Text.Length < minimumPasswordLength)
+            if (txtpassword.Text.Length < minimumPasswordLength)
             {
-                // Display error message if password length is less than minimum
                 MessageBox.Show($"Password must be at least {minimumPasswordLength} characters long", "Error");
                 return;
             }
-            else if (!Regex.IsMatch(txtpassword.Text, passwordPattern))
+            if (!Regex.IsMatch(txtpassword.Text, passwordPattern))
             {
-                // Display error message if password format is incorrect
                 MessageBox.Show("Password must contain at least one uppercase letter, one lowercase letter, one special character, one number, and be at least 8 characters long", "Error");
                 return;
             }
-            else if (txtfirstname.Text.Length < minimumFirstNameLength || txtlastname.Text.Length < minimumLastNameLength)
+            if (txtfirstname.Text.Length < minimumFirstNameLength || txtlastname.Text.Length < minimumLastNameLength)
             {
-                // Display error message if first name or last name length is less than minimum
                 MessageBox.Show($"First name and Last name must be at least {minimumFirstNameLength} characters long", "Error");
                 return;
             }
-            MySqlCommand cmd = new MySqlCommand("INSERT INTO admin(username, password, email, firstname, lastname) VALUES(@username, @password, @email, @firstname, @lastname)", con);
+
+            // Insert new admin record into the database
+            MySqlCommand cmd = new MySqlCommand("INSERT INTO admin(username, password, email, firstname, lastname, address, contactnumber) VALUES(@username, @password, @email, @firstname, @lastname, @address, @contactnumber)", con);
             con.Open();
             cmd.Parameters.AddWithValue("@firstname", txtfirstname.Text);
             cmd.Parameters.AddWithValue("@lastname", txtlastname.Text);
             cmd.Parameters.AddWithValue("@username", txtusername.Text);
-            cmd.Parameters.AddWithValue("@password", Hash(txtpassword.Text)); // Hashing the password
+            cmd.Parameters.AddWithValue("@password", txtpassword.Text); // Store password as it is
             cmd.Parameters.AddWithValue("@email", txtemail.Text);
+            cmd.Parameters.AddWithValue("@address", txtaddress.Text);
+            cmd.Parameters.AddWithValue("@contactnumber", txtcontactnumber.Text);
             cmd.ExecuteNonQuery();
             con.Close();
             MessageBox.Show("Admin added successfully", "SAVE", MessageBoxButtons.OK, MessageBoxIcon.Information);
             DisplayData();
             ClearData();
         }
+
 
 
         private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -260,11 +285,7 @@ namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM
         {
 
         }
-        private string Hash(string input)
-        {
-            // Generate a salt and hash the password
-            return BCrypt.Net.BCrypt.HashPassword(input, BCrypt.Net.BCrypt.GenerateSalt());
-        }
+        
 
         private void txtpassword_TextChanged(object sender, EventArgs e)
         {

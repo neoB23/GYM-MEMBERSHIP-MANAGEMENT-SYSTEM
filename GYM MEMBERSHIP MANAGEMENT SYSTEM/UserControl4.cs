@@ -33,10 +33,7 @@ namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM
         {
             InitializeComponent();
 
-            // Set values in the receipt
-            //this.name = name;
-            //this.membership = membership;
-            // this.price = price;
+        
 
             // Set values in the controls
             txtname.Text = name;
@@ -277,9 +274,20 @@ namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM
             Font font = new Font("Courier New", 12); // Define font
             float fontHeight = font.GetHeight();
 
-            int startY = (e.MarginBounds.Height - 30 * (int)fontHeight) / 2 + e.MarginBounds.Top; // Center vertically
+            int startY = e.MarginBounds.Top + 20; // Start drawing from the top margin with some extra spacing
             int maxWidth = e.MarginBounds.Width; // Maximum width within the printable area
             int offset = 0;
+
+            // Draw logo
+            Image logo = Image.FromFile(@"C:\Users\Parlan\Downloads\Red Black Minimalist Fitness Logo .png");
+            int logoWidth = 200; // Adjust width as needed
+            int logoHeight = 200; // Adjust height as needed
+            int logoX = e.MarginBounds.Left + (maxWidth - logoWidth) / 2; // Center horizontally
+            int logoY = startY; // Start drawing logo at the top
+            graphic.DrawImage(logo, logoX, logoY, logoWidth, logoHeight);
+
+            // Update startY to start drawing text below the logo
+            startY += logoHeight + 20;
 
             // Drawing text on the receipt
             string[] lines = {
@@ -317,7 +325,6 @@ namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM
                 offset += (int)fontHeight + 5;
             }
         }
-
         private void txtprice_TextChanged(object sender, EventArgs e)
         {
 
