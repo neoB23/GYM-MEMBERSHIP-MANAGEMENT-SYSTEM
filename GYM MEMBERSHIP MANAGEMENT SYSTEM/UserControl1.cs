@@ -187,7 +187,7 @@ namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            //may error sa pag update ng username
+            // Check if all required fields are filled
             if (!string.IsNullOrWhiteSpace(txtfirstname.Text) &&
                 !string.IsNullOrWhiteSpace(txtlastname.Text) &&
                 !string.IsNullOrWhiteSpace(txtpassword.Text) &&
@@ -198,14 +198,15 @@ namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM
             {
                 string sql = "UPDATE coach SET lastname = @LastName, username = @username, password = @password, dateofbirth = @dateofbirth, contactnumber = @contactnum, experience = @exp, gender = @gender WHERE firstname = @FirstName";
                 cmd = new MySqlCommand(sql, con);
-                cmd.Parameters.AddWithValue("@FirstName", txtfirstname.Text);
-                cmd.Parameters.AddWithValue("@LastName", txtlastname.Text);
+                cmd.Parameters.AddWithValue("@LastName", txtlastname.Text); // Set last name first
                 cmd.Parameters.AddWithValue("@username", txtusername.Text);
-                cmd.Parameters.AddWithValue("@password", txtpassword.Text);
+                string hashedPassword = BCrypt.Net.BCrypt.HashPassword(txtpassword.Text);
+                cmd.Parameters.AddWithValue("@password", hashedPassword);
                 cmd.Parameters.AddWithValue("@dateofbirth", timepicker.Value);
                 cmd.Parameters.AddWithValue("@contactnum", txtphonenumber.Text);
                 cmd.Parameters.AddWithValue("@exp", txtexp.Text);
                 cmd.Parameters.AddWithValue("@gender", cmbgender.SelectedItem.ToString());
+                cmd.Parameters.AddWithValue("@FirstName", txtfirstname.Text); // Set first name last
                 con.Open();
                 int rowsAffected = cmd.ExecuteNonQuery();
                 con.Close();
@@ -225,6 +226,7 @@ namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM
                 MessageBox.Show("Fill out all the information needed", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
 
         private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {

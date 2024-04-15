@@ -17,9 +17,10 @@ using System.Threading;
 using Guna.UI2.WinForms.Suite;
 using System.Text.RegularExpressions;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
-using SYSTEM_GYM;
-//using BCrypt.Net;
+//using SYSTEM_GYM;
+using BCrypt.Net;
 using System.Security.Cryptography;
+using SYSTEM_GYM;
 
 
 
@@ -38,6 +39,11 @@ namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM
             InitializeComponent();
 
 
+        }
+        private string Hash(string input)
+        {
+            // Generate a salt and hash the password
+            return BCrypt.Net.BCrypt.HashPassword(input, BCrypt.Net.BCrypt.GenerateSalt());
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
@@ -131,7 +137,7 @@ namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM
                 if (dt.Rows.Count > 0)
                 {
                     string passwordFromDatabase = dt.Rows[0]["password"].ToString();
-                    if (txtpassword.Text == passwordFromDatabase)
+                    if (BCrypt.Net.BCrypt.Verify(txtpassword.Text, passwordFromDatabase))
                     {
                         MessageBox.Show("Admin Login Successful");
                         sql = "INSERT INTO login_history_admin (username, time_in) VALUES (@username, NOW())";
@@ -149,17 +155,18 @@ namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM
                 }
                 else
                 {
-                    sql = "SELECT * FROM register WHERE username = @username";
+                    sql = "SELECT * FROM user WHERE username = @username";
                     cmd = new MySqlCommand(sql, con);
                     cmd.Parameters.AddWithValue("@username", txtusername.Text);
                     da = new MySqlDataAdapter(cmd);
                     dt = new DataTable();
                     da.Fill(dt);
 
+
                     if (dt.Rows.Count > 0)
                     {
                         string passwordFromDatabase = dt.Rows[0]["password"].ToString();
-                        if (txtpassword.Text == passwordFromDatabase)
+                        if (BCrypt.Net.BCrypt.Verify(txtpassword.Text, passwordFromDatabase))
                         {
                             MessageBox.Show("User Login Successful");
                             sql = "INSERT INTO login_history (username, time_in) VALUES (@username, NOW())";
@@ -169,6 +176,7 @@ namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM
                             this.Hide();
                             userchoice userchoice = new userchoice();
                             userchoice.Show();
+
                         }
                         else
                         {
@@ -190,6 +198,7 @@ namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM
                 con.Close();
             }
         }
+
 
 
 

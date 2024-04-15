@@ -10,7 +10,7 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml.Linq;
-//using BCrypt.Net;
+using BCrypt.Net;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 
 namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM
@@ -87,7 +87,6 @@ namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            //may error sa pag update ng username
             // Check if all required fields are filled
             if (!string.IsNullOrWhiteSpace(txtfirstname.Text) &&
                 !string.IsNullOrWhiteSpace(txtaddress.Text) &&
@@ -96,29 +95,40 @@ namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM
                 !string.IsNullOrWhiteSpace(txtpassword.Text) &&
                 !string.IsNullOrWhiteSpace(txtlastname.Text) &&
                 !string.IsNullOrWhiteSpace(txtemail.Text))
-                
+
             {
-                string sql = "UPDATE admin SET username = @username, password = @password, email = @email, lastname = @lastname, address = @address, contactnumber = @contactnumber WHERE firstname = @FirstName";
-                cmd = new MySqlCommand(sql, con);
-                cmd.Parameters.AddWithValue("@FirstName", txtfirstname.Text);
-                cmd.Parameters.AddWithValue("@LastName", txtlastname.Text);
-                cmd.Parameters.AddWithValue("@username", txtusername.Text);
-                cmd.Parameters.AddWithValue("@password", txtpassword.Text);
-                cmd.Parameters.AddWithValue("@email", txtemail.Text);
-                cmd.Parameters.AddWithValue("@address", txtaddress.Text);
-                cmd.Parameters.AddWithValue("@contactnumber", txtcontactnumber.Text);
-                con.Open();
-                int rowsAffected = cmd.ExecuteNonQuery();
-                con.Close();
-                if (rowsAffected > 0)
+                try
                 {
-                    MessageBox.Show("Admin information updated successfully!", "UPDATE", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    DisplayData();
-                    ClearData();
+                    string sql = "UPDATE admin SET username = @username, password = @password, email = @email, lastname = @lastname, address = @address, contactnumber = @contactnumber WHERE firstname = @FirstName";
+                    cmd = new MySqlCommand(sql, con);
+                    cmd.Parameters.AddWithValue("@FirstName", txtfirstname.Text);
+                    cmd.Parameters.AddWithValue("@LastName", txtlastname.Text);
+                    cmd.Parameters.AddWithValue("@username", txtusername.Text);
+
+                    // Hash the password before updating it
+                    string hashedPassword = BCrypt.Net.BCrypt.HashPassword(txtpassword.Text);
+                    cmd.Parameters.AddWithValue("@password", hashedPassword);
+
+                    cmd.Parameters.AddWithValue("@email", txtemail.Text);
+                    cmd.Parameters.AddWithValue("@address", txtaddress.Text);
+                    cmd.Parameters.AddWithValue("@contactnumber", txtcontactnumber.Text);
+                    con.Open();
+                    int rowsAffected = cmd.ExecuteNonQuery();
+                    con.Close();
+                    if (rowsAffected > 0)
+                    {
+                        MessageBox.Show("Admin information updated successfully!", "UPDATE", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        DisplayData();
+                        ClearData();
+                    }
+                    else
+                    {
+                        MessageBox.Show("No Admin found with this name!", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
-                else
+                catch (Exception ex)
                 {
-                    MessageBox.Show("No Admin found with this name!", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Error: " + ex.Message);
                 }
             }
             else
@@ -126,6 +136,7 @@ namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM
                 MessageBox.Show("Fill out all the information needed", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
@@ -247,22 +258,33 @@ namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM
                 return;
             }
 
-            // Insert new admin record into the database
-            MySqlCommand cmd = new MySqlCommand("INSERT INTO admin(username, password, email, firstname, lastname, address, contactnumber) VALUES(@username, @password, @email, @firstname, @lastname, @address, @contactnumber)", con);
-            con.Open();
-            cmd.Parameters.AddWithValue("@firstname", txtfirstname.Text);
-            cmd.Parameters.AddWithValue("@lastname", txtlastname.Text);
-            cmd.Parameters.AddWithValue("@username", txtusername.Text);
-            cmd.Parameters.AddWithValue("@password", txtpassword.Text); // Store password as it is
-            cmd.Parameters.AddWithValue("@email", txtemail.Text);
-            cmd.Parameters.AddWithValue("@address", txtaddress.Text);
-            cmd.Parameters.AddWithValue("@contactnumber", txtcontactnumber.Text);
-            cmd.ExecuteNonQuery();
-            con.Close();
-            MessageBox.Show("Admin added successfully", "SAVE", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            DisplayData();
-            ClearData();
+            try
+            {
+                // Hash the password before saving it
+                string hashedPassword = BCrypt.Net.BCrypt.HashPassword(txtpassword.Text);
+
+                // Insert new admin record into the database
+                MySqlCommand cmd = new MySqlCommand("INSERT INTO admin(username, password, email, firstname, lastname, address, contactnumber) VALUES(@username, @password, @email, @firstname, @lastname, @address, @contactnumber)", con);
+                con.Open();
+                cmd.Parameters.AddWithValue("@firstname", txtfirstname.Text);
+                cmd.Parameters.AddWithValue("@lastname", txtlastname.Text);
+                cmd.Parameters.AddWithValue("@username", txtusername.Text);
+                cmd.Parameters.AddWithValue("@password", hashedPassword); // Store hashed password
+                cmd.Parameters.AddWithValue("@email", txtemail.Text);
+                cmd.Parameters.AddWithValue("@address", txtaddress.Text);
+                cmd.Parameters.AddWithValue("@contactnumber", txtcontactnumber.Text);
+                cmd.ExecuteNonQuery();
+                con.Close();
+                MessageBox.Show("Admin added successfully", "SAVE", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                DisplayData();
+                ClearData();
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show("Error: " + ex.Message);
+            }
         }
+
 
 
 

@@ -13,7 +13,7 @@ using System.Xml.Linq;
 using Bunifu.Framework.UI;
 using Guna.UI2.WinForms.Suite;
 using MySql.Data.MySqlClient;
-//using BCrypt.Net;
+using BCrypt.Net;
 
 namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM
 {
@@ -138,10 +138,14 @@ namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM
             try
             {
                 con.Open();
-                string sql = "INSERT INTO register (username, password, emailadress, phonenumber, firstname, lastname, gender, address) VALUES (@username, @password, @email, @phone, @firstname, @lastname, @gender, @address)";
+                string sql = "INSERT INTO user (username, password, emailadress, phonenumber, firstname, lastname, gender, address) VALUES (@username, @password, @email, @phone, @firstname, @lastname, @gender, @address)";
                 MySqlCommand cmd = new MySqlCommand(sql, con);
                 cmd.Parameters.AddWithValue("@username", txtusername.Text);
-                cmd.Parameters.AddWithValue("@password", (txtpassword.Text));
+
+                // Hash the password before saving it
+                string hashedPassword = BCrypt.Net.BCrypt.HashPassword(txtpassword.Text);
+                cmd.Parameters.AddWithValue("@password", hashedPassword);
+
                 cmd.Parameters.AddWithValue("@email", txtemailadd.Text);
                 cmd.Parameters.AddWithValue("@phone", txtphonenum.Text);
                 cmd.Parameters.AddWithValue("@firstname", txtfirstname.Text);
@@ -165,10 +169,10 @@ namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM
             }
         }
 
-        /*private string Hash(string input)
+        private string Hash(string input)
         {
             return BCrypt.Net.BCrypt.HashPassword(input, BCrypt.Net.BCrypt.GenerateSalt());
-        }*/
+        }
 
 
         private void Form2_Load(object sender, EventArgs e)

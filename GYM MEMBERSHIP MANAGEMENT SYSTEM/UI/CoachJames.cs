@@ -16,5 +16,10 @@ namespace SYSTEM_GYM
         {
             InitializeComponent();
         }
+
+        private void CoachJames_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

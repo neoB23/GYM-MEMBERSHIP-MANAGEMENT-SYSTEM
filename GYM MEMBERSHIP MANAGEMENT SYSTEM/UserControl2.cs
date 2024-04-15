@@ -50,7 +50,7 @@ namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM
                 return;
             }
 
-            MySqlCommand cmd1 = new MySqlCommand("SELECT * FROM register WHERE FirstName = @firstname", con); // Changed column name in the query
+            MySqlCommand cmd1 = new MySqlCommand("SELECT * FROM user WHERE FirstName = @firstname", con); // Changed column name in the query
             cmd1.Parameters.AddWithValue("@firstname", txtfirstname.Text);
             con.Open();
             bool userExists = false;
@@ -125,14 +125,14 @@ namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM
                 MessageBox.Show($"First name and Last name must be at least {minimumFirstNameLength} characters long", "Error");
                 return;
             }
-
+            string hashedPassword = BCrypt.Net.BCrypt.HashPassword(txtpassword.Text);
             // Adds a User in the Database
-            MySqlCommand cmd = new MySqlCommand("INSERT INTO register(firstname, lastname, username, password, emailadress, address, phonenumber, gender, membershipplan) VALUES(@firstname, @lastname, @username, @password, @emailadress, @address, @phonenumber, @gender, @membershipplan)", con); 
+            MySqlCommand cmd = new MySqlCommand("INSERT INTO user(firstname, lastname, username, password, emailadress, address, phonenumber, gender, membershipplan) VALUES(@firstname, @lastname, @username, @password, @emailadress, @address, @phonenumber, @gender, @membershipplan)", con); 
             con.Open();
             cmd.Parameters.AddWithValue("@firstname", txtfirstname.Text);
             cmd.Parameters.AddWithValue("@lastname", txtlastname.Text);
             cmd.Parameters.AddWithValue("@username", txtusername.Text);
-            cmd.Parameters.AddWithValue("@password", txtpassword.Text);
+            cmd.Parameters.AddWithValue("@password", hashedPassword);
             cmd.Parameters.AddWithValue("@dateofbirth", timepicker.Value);
             cmd.Parameters.AddWithValue("@phonenumber", txtphonenum.Text);
             cmd.Parameters.AddWithValue("@address", txtadd.Text);
@@ -150,9 +150,8 @@ namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM
 
         }
 
-        private void btnUpdate_Click(object sender, EventArgs e) 
+        private void btnUpdate_Click(object sender, EventArgs e)
         {
-            //may error sa pag update ng username
             // Check if all required fields are filled
             if (!string.IsNullOrWhiteSpace(txtfirstname.Text) &&
                 !string.IsNullOrWhiteSpace(txtusername.Text) &&
@@ -165,18 +164,18 @@ namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM
                 cmbgender.SelectedItem != null &&
                 cmbmembership.SelectedItem != null)
             {
-                string sql = "UPDATE register SET lastname = @lastname, username = @username, password = @password, emailadress = @emailadress, address = @address, phonenumber = @phonenumber, gender = @gender, membershipplan = @membershipplan WHERE firstname = @FirstName";
+                string sql = "UPDATE user SET lastname = @lastname, username = @username, password = @password, emailadress = @emailadress, address = @address, phonenumber = @phonenumber, gender = @gender, membershipplan = @membershipplan WHERE firstname = @FirstName";
                 cmd = new MySqlCommand(sql, con);
-                cmd.Parameters.AddWithValue("@FirstName", txtfirstname.Text);
-                cmd.Parameters.AddWithValue("@LastName", txtlastname.Text);
+                cmd.Parameters.AddWithValue("@lastname", txtlastname.Text);
                 cmd.Parameters.AddWithValue("@username", txtusername.Text);
-                cmd.Parameters.AddWithValue("@password", txtpassword.Text);
-                cmd.Parameters.AddWithValue("@dateofbirth", timepicker.Value);
+                string hashedPassword = BCrypt.Net.BCrypt.HashPassword(txtpassword.Text);
+                cmd.Parameters.AddWithValue("@password", hashedPassword);
                 cmd.Parameters.AddWithValue("@emailadress", txtemailadd.Text);
                 cmd.Parameters.AddWithValue("@address", txtadd.Text);
-                cmd.Parameters.AddWithValue("@phonenumber", txtphonenum.Text); 
+                cmd.Parameters.AddWithValue("@phonenumber", txtphonenum.Text);
                 cmd.Parameters.AddWithValue("@gender", cmbgender.SelectedItem.ToString());
                 cmd.Parameters.AddWithValue("@membershipplan", cmbmembership.SelectedItem.ToString());
+                cmd.Parameters.AddWithValue("@FirstName", txtfirstname.Text); // Set first name last
                 con.Open();
                 int rowsAffected = cmd.ExecuteNonQuery();
                 con.Close();
@@ -196,9 +195,11 @@ namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM
                 MessageBox.Show("Fill out all the information needed", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+
         private void DisplayData()
         {
-            string sql = "SELECT id, firstname, lastname, username, password, emailadress, address, phonenumber, gender, account_created, membershipplan, img FROM register";
+            string sql = "SELECT id, firstname, lastname, username, password, emailadress, address, phonenumber, gender, account_created, membershipplan, img FROM user";
             cmd = new MySqlCommand(sql, con);
             adapt = new MySqlDataAdapter(cmd);
             DataTable dt = new DataTable();
@@ -234,15 +235,20 @@ namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM
                 if (dataGridView2.Columns.Contains("gender") && dataGridView2.Rows[e.RowIndex].Cells["gender"].Value != null)
                     cmbgender.SelectedItem = dataGridView2.Rows[e.RowIndex].Cells["gender"].Value.ToString();
                 else
-                    cmbgender.SelectedItem = null;      
+                    cmbgender.SelectedItem = null;
+                if (dataGridView2.Columns.Contains("membershipplan") && dataGridView2.Rows[e.RowIndex].Cells["membershipplan"].Value != null)
+                    cmbmembership.SelectedItem = dataGridView2.Rows[e.RowIndex].Cells["membershipplan"].Value.ToString();
+                else
+                    cmbmembership.SelectedItem = null;
             }
         }
+
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
             if (!string.IsNullOrEmpty(txtfirstname.Text))
             {
-                string sql = "DELETE FROM register WHERE firstname=@firstname";
+                string sql = "DELETE FROM user WHERE firstname=@firstname";
                 cmd = new MySqlCommand(sql, con);
                 cmd.Parameters.AddWithValue("@firstname", txtfirstname.Text); 
                 con.Open();
@@ -284,6 +290,11 @@ namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM
 
 
         private void cmbmembership_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtpassword_TextChanged(object sender, EventArgs e)
         {
 
         }

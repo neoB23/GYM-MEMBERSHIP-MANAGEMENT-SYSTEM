@@ -16,5 +16,10 @@ namespace SYSTEM_GYM
         {
             InitializeComponent();
         }
+
+        private void formMenu_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -7,6 +7,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web.Security;
@@ -25,6 +26,12 @@ namespace SYSTEM_GYM
         formEquipment equipment;
         profile1 profile;
         About_us about_Us;
+        formperday perday;
+        formbronze bronze;
+        formsilver silver;
+        formGold gold;
+        
+
         private Size formOriginalSize;
         public userchoice()
         {
@@ -46,6 +53,7 @@ namespace SYSTEM_GYM
         }
 
         bool coachExpand = false;
+        bool planExpand = false;
 
         private void userchoice_Load(object sender, EventArgs e)
         {
@@ -78,7 +86,7 @@ namespace SYSTEM_GYM
             if(coachExpand == false)
             {
                 coachContainer.Height += 10;
-                if (coachContainer.Height >= 243) {
+                if (coachContainer.Height >= 244) {
 
                     coachTransition.Stop();
                     coachExpand = true;
@@ -103,38 +111,7 @@ namespace SYSTEM_GYM
         bool SidebarExpand = true;
         private void SidebarTransition_Tick(object sender, EventArgs e)
         {
-            if (SidebarExpand)
-            {
-                slidebar.Width -= 50;
-                if (slidebar.Width <= 63)
-                {
-                    SidebarExpand = false;
-                    SidebarTransition.Stop();
 
-                    pnMenu.Width = slidebar.Width;
-                    coachContainer.Width = slidebar.Width;
-                    pnMembership.Width = slidebar.Width;
-                    pnschedule.Width = slidebar.Width;
-                    pnEquipment.Width = slidebar.Width;
-                    pnLogout.Width = slidebar.Width;
-                }
-            }
-            else
-            {
-                slidebar.Width += 50;
-                if (slidebar.Width >= 234)
-                {
-                    SidebarExpand = true;
-                    SidebarTransition.Stop();
-
-                    pnMenu.Width = slidebar.Width;
-                    coachContainer.Width = slidebar.Width;
-                    pnMembership.Width = slidebar.Width;
-                    pnschedule.Width = slidebar.Width;
-                    pnEquipment.Width = slidebar.Width;
-                    pnLogout.Width = slidebar.Width;
-                }
-            }
         }
         private void slidebar_Paint(object sender, PaintEventArgs e)
         {
@@ -142,7 +119,7 @@ namespace SYSTEM_GYM
         }
         private void bntham_Click(object sender, EventArgs e)
         {
-            SidebarTransition.Start();
+            
         }
         private void button1_Click(object sender, EventArgs e)
         {
@@ -363,6 +340,156 @@ namespace SYSTEM_GYM
         private void About_us_FormClosed(object sender, FormClosedEventArgs e)
         {
             about_Us = null;
+        }
+
+        private void bntbronze_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void Bronze_FormClosed(object sender, FormClosedEventArgs e)
+        {
+           
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void planTransition_Tick(object sender, EventArgs e)
+        {
+            if (planExpand == false)
+            {
+                MembershipContainer.Height += 10;
+                if (MembershipContainer.Height >= 303)
+                {
+
+                    planTransition.Stop();
+                    planExpand = true;
+                }
+            }
+            else
+            {
+                MembershipContainer.Height -= 10;
+                if (MembershipContainer.Height <= 61)
+                {
+                    planTransition.Stop();
+                    planExpand = false;
+                }
+            }
+        }
+
+        private void bntmembership_Click_1(object sender, EventArgs e)
+        {
+            planTransition.Start();
+
+            if ( membership == null)
+            {
+                membership = new formMembership();
+                membership.FormClosed += Membership_FormClosed1;
+                membership.MdiParent = this;
+                membership.Dock = DockStyle.Fill;
+                membership.Show();
+            }
+            else
+            {
+                membership.Activate();
+            }
+
+        }
+
+        private void Membership_FormClosed1(object sender, FormClosedEventArgs e)
+        {
+            membership = null;
+        }
+
+        private void bntday_Click(object sender, EventArgs e)
+        {
+            if (perday == null)
+            {
+                perday = new formperday();
+                perday.FormClosed += Perday_FormClosed;
+                perday.MdiParent = this;
+                perday.Dock = DockStyle.Fill;
+                perday.Show();
+            }
+            else
+            {
+                perday.Activate();
+            }
+        }
+
+        private void Perday_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            perday = null;
+        }
+
+        private void bntbro_Click(object sender, EventArgs e)
+        {
+            if (bronze == null)
+            {
+                bronze = new formbronze();
+                bronze.FormClosed += Bronze_FormClosed1;
+                bronze.MdiParent = this;
+                bronze.Dock = DockStyle.Fill;
+                bronze.Show();
+            }
+            else
+            {
+                bronze.Activate();
+            }
+        }
+
+        private void Bronze_FormClosed1(object sender, FormClosedEventArgs e)
+        {
+            bronze = null;
+        }
+
+        private void bntsil_Click(object sender, EventArgs e)
+        {
+            if (silver == null)
+            {
+                silver = new formsilver();
+                silver.FormClosed += Silver_FormClosed;
+                silver.MdiParent = this;
+                silver.Dock = DockStyle.Fill;
+                silver.Show();
+            }
+            else
+            {
+                silver.Activate();
+            }
+        }
+
+        private void Silver_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            silver = null;
+        }
+
+        private void bntgo_Click(object sender, EventArgs e)
+        {
+            if (gold == null)
+            {
+                gold = new formGold();
+                gold.FormClosed += Gold_FormClosed;
+                gold.MdiParent = this;
+                gold.Dock = DockStyle.Fill;
+                gold.Show();
+            }
+            else
+            {
+                gold.Activate();
+            }
+        }
+
+        private void Gold_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            gold = null;
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            this.Hide();
         }
     }   
 }

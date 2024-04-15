@@ -48,6 +48,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="BCrypt.Net-Next, Version=4.0.3.0, Culture=neutral, PublicKeyToken=1e11be04b6288443, processorArchitecture=MSIL">
+      <HintPath>..\packages\BCrypt.Net-Next.4.0.3\lib\net472\BCrypt.Net-Next.dll</HintPath>
+    </Reference>
     <Reference Include="Bunifu_UI_v1.5.3">
       <HintPath>..\..\Bunifu_UI_v1.5.3.dll</HintPath>
     </Reference>
@@ -165,7 +168,6 @@
     <Compile Include="admin.Designer.cs">
       <DependentUpon>admin.cs</DependentUpon>
     </Compile>
-    <Compile Include="Class1.cs" />
     <Compile Include="coach.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -214,11 +216,41 @@
     <Compile Include="UI\CoachLilli.Designer.cs">
       <DependentUpon>CoachLilli.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\formbarbel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\formbarbel.Designer.cs">
+      <DependentUpon>formbarbel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\formbronze.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\formbronze.Designer.cs">
+      <DependentUpon>formbronze.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\formEquipment.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="UI\formEquipment.Designer.cs">
       <DependentUpon>formEquipment.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\formGold.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\formGold.Designer.cs">
+      <DependentUpon>formGold.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\formlatputdown.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\formlatputdown.Designer.cs">
+      <DependentUpon>formlatputdown.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\formlegpress.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\formlegpress.Designer.cs">
+      <DependentUpon>formlegpress.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\formMembership.cs">
       <SubType>Form</SubType>
@@ -232,23 +264,35 @@
     <Compile Include="UI\formMenu.Designer.cs">
       <DependentUpon>formMenu.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\formperday.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\formperday.Designer.cs">
+      <DependentUpon>formperday.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\formSchedule.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="UI\formSchedule.Designer.cs">
       <DependentUpon>formSchedule.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\formsilver.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\formsilver.Designer.cs">
+      <DependentUpon>formsilver.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\formtreatmill.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\formtreatmill.Designer.cs">
+      <DependentUpon>formtreatmill.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\profile1.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="UI\profile1.Designer.cs">
       <DependentUpon>profile1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="UI\userchoice.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="UI\userchoice.Designer.cs">
-      <DependentUpon>userchoice.cs</DependentUpon>
     </Compile>
     <Compile Include="profile.cs">
       <SubType>UserControl</SubType>
@@ -264,35 +308,11 @@
     <Compile Include="termsagreement.Designer.cs">
       <DependentUpon>termsagreement.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\UserControl10.cs">
-      <SubType>UserControl</SubType>
+    <Compile Include="UI\userchoice.cs">
+      <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\UserControl10.Designer.cs">
-      <DependentUpon>UserControl10.cs</DependentUpon>
-    </Compile>
-    <Compile Include="UI\UserControl6.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="UI\UserControl6.Designer.cs">
-      <DependentUpon>UserControl6.cs</DependentUpon>
-    </Compile>
-    <Compile Include="UI\UserControl7.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="UI\UserControl7.Designer.cs">
-      <DependentUpon>UserControl7.cs</DependentUpon>
-    </Compile>
-    <Compile Include="UI\UserControl8.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="UI\UserControl8.Designer.cs">
-      <DependentUpon>UserControl8.cs</DependentUpon>
-    </Compile>
-    <Compile Include="UI\UserControl9.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="UI\UserControl9.Designer.cs">
-      <DependentUpon>UserControl9.cs</DependentUpon>
+    <Compile Include="UI\userchoice.Designer.cs">
+      <DependentUpon>userchoice.cs</DependentUpon>
     </Compile>
     <Compile Include="UserControl0.cs">
       <SubType>UserControl</SubType>
@@ -357,8 +377,23 @@
     <EmbeddedResource Include="UI\CoachLilli.resx">
       <DependentUpon>CoachLilli.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UI\formbarbel.resx">
+      <DependentUpon>formbarbel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\formbronze.resx">
+      <DependentUpon>formbronze.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\formEquipment.resx">
       <DependentUpon>formEquipment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\formGold.resx">
+      <DependentUpon>formGold.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\formlatputdown.resx">
+      <DependentUpon>formlatputdown.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\formlegpress.resx">
+      <DependentUpon>formlegpress.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\formMembership.resx">
       <DependentUpon>formMembership.cs</DependentUpon>
@@ -366,14 +401,20 @@
     <EmbeddedResource Include="UI\formMenu.resx">
       <DependentUpon>formMenu.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UI\formperday.resx">
+      <DependentUpon>formperday.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\formSchedule.resx">
       <DependentUpon>formSchedule.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UI\formsilver.resx">
+      <DependentUpon>formsilver.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\formtreatmill.resx">
+      <DependentUpon>formtreatmill.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\profile1.resx">
       <DependentUpon>profile1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UI\userchoice.resx">
-      <DependentUpon>userchoice.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="profile.resx">
       <DependentUpon>profile.cs</DependentUpon>
@@ -390,20 +431,8 @@
     <EmbeddedResource Include="termsagreement.resx">
       <DependentUpon>termsagreement.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\UserControl10.resx">
-      <DependentUpon>UserControl10.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UI\UserControl6.resx">
-      <DependentUpon>UserControl6.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UI\UserControl7.resx">
-      <DependentUpon>UserControl7.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UI\UserControl8.resx">
-      <DependentUpon>UserControl8.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UI\UserControl9.resx">
-      <DependentUpon>UserControl9.cs</DependentUpon>
+    <EmbeddedResource Include="UI\userchoice.resx">
+      <DependentUpon>userchoice.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControl0.resx">
       <DependentUpon>UserControl0.cs</DependentUpon>

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using GYM_MEMBERSHIP_MANAGEMENT_SYSTEM;
+using GYM_MEMBERSHIP_MANAGEMENT_SYSTEM.UI;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,6 +14,13 @@ namespace SYSTEM_GYM
 {
     public partial class formMembership : Form
     {
+
+        formperday perday;
+        formbronze bronze;
+        formsilver silver;
+        formGold   gold; 
+
+
         private Timer toggleTimer;
         public formMembership()
         {
@@ -33,15 +42,6 @@ namespace SYSTEM_GYM
         {
 
         }
-
-
-        private void picoradayone_MouseLeave(object sender, EventArgs e)
-        {
-            
-        }
-
-        
-
         private void picboxwhite_MouseEnter(object sender, EventArgs e)
         {
            // picboxwhite.Visible = false;
@@ -54,11 +54,6 @@ namespace SYSTEM_GYM
            // picboxrange.Visible = false;
         }
 
-        private void label7_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void pictureBox4_MouseEnter(object sender, EventArgs e)
         {
            // pictureBox4.Visible = false;
@@ -67,29 +62,22 @@ namespace SYSTEM_GYM
 
         private void picboxwhite_Click(object sender, EventArgs e)
         {
-            userControl61.Show();
-            userControl61.BringToFront();
+           
         }
 
         private void pictureBox4_Click(object sender, EventArgs e)
         {
-            userControl61.Hide();
-            userControl71.Show();
-            userControl71.BringToFront();
+            
         }
 
         private void pictureBox7_Click(object sender, EventArgs e)
         {
-            userControl71.Hide();
-            userControl81.Show();
-            userControl81.BringToFront();
+           
         }
 
         private void pictureBox9_Click(object sender, EventArgs e)
         {
-            userControl81.Hide();
-            userControl91.Show();
-            userControl91.BringToFront();
+          
         }
 
         private void userControl61_Load(object sender, EventArgs e)
@@ -182,34 +170,51 @@ namespace SYSTEM_GYM
 
         }
 
-        private void label10_Click(object sender, EventArgs e)
+        private void formMembership_Load(object sender, EventArgs e)
         {
 
         }
 
-        private void label11_Click(object sender, EventArgs e)
+        private void guna2Button1_Click(object sender, EventArgs e)
         {
-
+            formperday formperday = new formperday();
+            
+            formperday.Show();
+           
         }
 
-        private void label12_Click(object sender, EventArgs e)
+        private void Perday_FormClosed1(object sender, FormClosedEventArgs e)
         {
-
+            perday = null;
         }
 
-        private void userControl71_Load(object sender, EventArgs e)
+        private void Perday_FormClosed(object sender, FormClosedEventArgs e)
         {
-
+            throw new NotImplementedException();
         }
 
-        private void userControl81_Load(object sender, EventArgs e)
+        private void bntbronze_Click(object sender, EventArgs e)
         {
-
+            
         }
 
-        private void userControl91_Load(object sender, EventArgs e)
-        {
+       
 
+        private void bntsilver_Click(object sender, EventArgs e)
+        {
+            
         }
+
+        private void Silver_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            silver = null; 
+        }
+
+        private void bntgold_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+       
     }
 }

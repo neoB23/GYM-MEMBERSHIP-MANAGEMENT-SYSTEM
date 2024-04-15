@@ -16,5 +16,10 @@ namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM.UI
         {
             InitializeComponent();
         }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

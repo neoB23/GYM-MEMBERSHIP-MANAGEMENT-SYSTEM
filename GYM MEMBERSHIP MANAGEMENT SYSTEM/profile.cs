@@ -21,7 +21,7 @@ namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM
     {
         private int userId; // Declare userId at the class level to make it accessible in different methods
 
-        public profile(int userId = 0)
+        public profile(int userId = 1)
         {
             InitializeComponent();
             this.userId = userId; // Assign the parameter value to the class-level variable
@@ -57,7 +57,7 @@ namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM
                     using (MySqlConnection connection = new MySqlConnection(connectionString))
                     {
                         connection.Open();
-                        string updateQuery = "UPDATE register SET img = @newImg WHERE id = @id";
+                        string updateQuery = "UPDATE user SET img = @newImg WHERE id = @id";
                         MySqlCommand updateCommand = new MySqlCommand(updateQuery, connection);
                         updateCommand.Parameters.AddWithValue("@newImg", newImageData);
                         updateCommand.Parameters.AddWithValue("@id", userId); // Use the user ID obtained earlier
@@ -92,13 +92,14 @@ namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM
                 using (MySqlConnection connection = new MySqlConnection(connectionString))
                 {
                     connection.Open();
-                    string query = "SELECT * FROM register WHERE id = @id";
+                    string query = "SELECT * FROM user WHERE id = @id"; // Updated query to select from the 'user' table
                     MySqlCommand command = new MySqlCommand(query, connection);
                     command.Parameters.AddWithValue("@id", userId);
                     using (MySqlDataReader reader = command.ExecuteReader())
                     {
                         if (reader.Read())
                         {
+                            // Retrieve user data from the reader
                             txtFirstName.Text = reader["firstname"].ToString();
                             txtLastName.Text = reader["lastname"].ToString();
                             txtUsername.Text = reader["username"].ToString();
@@ -122,6 +123,7 @@ namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM
             }
         }
 
+
         private void guna2Button2_Click(object sender, EventArgs e)
         {
             LoadUserData();
@@ -136,7 +138,7 @@ namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM
                 using (MySqlConnection connection = new MySqlConnection(connectionString))
                 {
                     connection.Open();
-                    string updateQuery = "UPDATE register SET emailadress = @newEmail WHERE id = @id";
+                    string updateQuery = "UPDATE user SET emailadress = @newEmail WHERE id = @id";
                     MySqlCommand updateCommand = new MySqlCommand(updateQuery, connection);
                     updateCommand.Parameters.AddWithValue("@newEmail", newEmail);
                     updateCommand.Parameters.AddWithValue("@id", userId);

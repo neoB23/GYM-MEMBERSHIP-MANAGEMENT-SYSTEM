@@ -42,7 +42,7 @@ namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM
                 int memberCount = Convert.ToInt32(memberCmd.ExecuteScalar());
 
                 // Count coaches
-                string coachSql = "SELECT COUNT(*) FROM register";
+                string coachSql = "SELECT COUNT(*) FROM user";
                 MySqlCommand coachCmd = new MySqlCommand(coachSql, con);
                 int coachCount = Convert.ToInt32(coachCmd.ExecuteScalar());
 
