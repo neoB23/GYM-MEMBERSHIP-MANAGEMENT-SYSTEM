@@ -16,12 +16,14 @@ namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM
         {
             InitializeComponent();
             DisplayData();
+            dataGridView2.DataError += dataGridView2_DataError;
+           
         }
-
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
         }
+
         private bool IsNumeric(string text)
         {
             foreach (char c in text)
@@ -35,6 +37,7 @@ namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM
         }
         private void guna2GradientButton1_Click(object sender, EventArgs e)
         {
+            // Check if all required fields are filled
             if (string.IsNullOrWhiteSpace(txtusername.Text) ||
                 string.IsNullOrWhiteSpace(txtpassword.Text) ||
                 string.IsNullOrWhiteSpace(txtfirstname.Text) ||
@@ -50,8 +53,11 @@ namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM
                 return;
             }
 
-            MySqlCommand cmd1 = new MySqlCommand("SELECT * FROM user WHERE FirstName = @firstname", con); // Changed column name in the query
-            cmd1.Parameters.AddWithValue("@firstname", txtfirstname.Text);
+            // Check if username already exists
+            MySqlCommand cmd1 = new MySqlCommand("SELECT * FROM user_information ui " +
+                                                 "LEFT JOIN user_account ua ON ui.User_id = ua.id " +
+                                                 "WHERE ua.userUserName = @userUserName", con);
+            cmd1.Parameters.AddWithValue("@userUserName", txtusername.Text);
             con.Open();
             bool userExists = false;
             using (var dr1 = cmd1.ExecuteReader())
@@ -74,6 +80,9 @@ namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM
             int minimumLastNameLength = 3;
             int minimumAddressLength = 6;
             int minimumEmailadLength = 4;
+
+
+            
 
             if (!txtemailadd.Text.Contains("@gmail.com"))
             {
@@ -126,21 +135,32 @@ namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM
                 return;
             }
             string hashedPassword = BCrypt.Net.BCrypt.HashPassword(txtpassword.Text);
-            // Adds a User in the Database
-            MySqlCommand cmd = new MySqlCommand("INSERT INTO user(firstname, lastname, username, password, emailadress, address, phonenumber, gender, membershipplan) VALUES(@firstname, @lastname, @username, @password, @emailadress, @address, @phonenumber, @gender, @membershipplan)", con); 
+
+            // Insert the new user into the database
+            MySqlCommand cmd = new MySqlCommand("INSERT INTO user_information(userFirstName, userLastName, userEmail, userAddress, userPhoneNumber, userGender, userCreatedDate, membershipplan) VALUES(@userFirstName, @userLastName, @userEmail, @userAddress, @userPhoneNumber, @userGender, @userCreatedDate, @membershipplan)", con);
             con.Open();
-            cmd.Parameters.AddWithValue("@firstname", txtfirstname.Text);
-            cmd.Parameters.AddWithValue("@lastname", txtlastname.Text);
-            cmd.Parameters.AddWithValue("@username", txtusername.Text);
-            cmd.Parameters.AddWithValue("@password", hashedPassword);
-            cmd.Parameters.AddWithValue("@dateofbirth", timepicker.Value);
-            cmd.Parameters.AddWithValue("@phonenumber", txtphonenum.Text);
-            cmd.Parameters.AddWithValue("@address", txtadd.Text);
-            cmd.Parameters.AddWithValue("@emailadress", txtemailadd.Text);
+            cmd.Parameters.AddWithValue("@userFirstName", txtfirstname.Text);
+            cmd.Parameters.AddWithValue("@userLastName", txtlastname.Text);
+            cmd.Parameters.AddWithValue("@userEmail", txtemailadd.Text);
+            cmd.Parameters.AddWithValue("@userAddress", txtadd.Text);
+            cmd.Parameters.AddWithValue("@userPhoneNumber", txtphonenum.Text);
+            cmd.Parameters.AddWithValue("@userGender", cmbgender.SelectedItem.ToString());
+            cmd.Parameters.AddWithValue("@userCreatedDate", timepicker.Value);
             cmd.Parameters.AddWithValue("@membershipplan", cmbmembership.SelectedItem.ToString());
-            cmd.Parameters.AddWithValue("@gender", cmbgender.SelectedItem.ToString());
             cmd.ExecuteNonQuery();
+
+            // Retrieve the user ID of the newly inserted user
+            long userId = cmd.LastInsertedId;
+
+            // Insert username and hashed password into user_account table
+            MySqlCommand cmd2 = new MySqlCommand("INSERT INTO user_account( userUserName, userPassword) VALUES(@userUserName, @userPassword)", con);
+            cmd2.Parameters.AddWithValue("@userUserName", txtusername.Text);
+            cmd2.Parameters.AddWithValue("@userPassword", hashedPassword);
+            cmd2.ExecuteNonQuery();
+
             con.Close();
+
+            // Display success message and refresh data
             MessageBox.Show("Member added successfully", "SAVE", MessageBoxButtons.OK, MessageBoxIcon.Information);
             DisplayData();
             ClearData();
@@ -164,18 +184,31 @@ namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM
                 cmbgender.SelectedItem != null &&
                 cmbmembership.SelectedItem != null)
             {
-                string sql = "UPDATE user SET lastname = @lastname, username = @username, password = @password, emailadress = @emailadress, address = @address, phonenumber = @phonenumber, gender = @gender, membershipplan = @membershipplan WHERE firstname = @FirstName";
+                string sql = "UPDATE user_information AS ui " +
+             "LEFT JOIN user_account AS ua ON ui.User_id = ua.id " +
+             "SET ui.userLastName = @userLastName, " +
+             "    ua.userUserName = @userUserName, " +
+             "    ua.userPassword = @userPassword, " +
+             "    ui.userEmail = @userEmail, " +
+             "    ui.userAddress = @userAddress, " +
+             "    ui.userPhoneNumber = @userPhoneNumber, " +
+             "    ui.userGender = @userGender, " +
+             "    ui.userCreatedDate = @userCreatedDate, " +
+             "    ui.membershipplan = @membershipplan " +
+             "WHERE ui.userFirstName = @userFirstName";
+
                 cmd = new MySqlCommand(sql, con);
-                cmd.Parameters.AddWithValue("@lastname", txtlastname.Text);
-                cmd.Parameters.AddWithValue("@username", txtusername.Text);
+                cmd.Parameters.AddWithValue("@userFirstName", txtfirstname.Text);
+                cmd.Parameters.AddWithValue("@userLastName", txtlastname.Text);
+                cmd.Parameters.AddWithValue("@userUserName", txtusername.Text);
                 string hashedPassword = BCrypt.Net.BCrypt.HashPassword(txtpassword.Text);
-                cmd.Parameters.AddWithValue("@password", hashedPassword);
-                cmd.Parameters.AddWithValue("@emailadress", txtemailadd.Text);
-                cmd.Parameters.AddWithValue("@address", txtadd.Text);
-                cmd.Parameters.AddWithValue("@phonenumber", txtphonenum.Text);
-                cmd.Parameters.AddWithValue("@gender", cmbgender.SelectedItem.ToString());
+                cmd.Parameters.AddWithValue("@userPassword", hashedPassword);
+                cmd.Parameters.AddWithValue("@userCreatedDate", timepicker.Value);
+                cmd.Parameters.AddWithValue("@userPhoneNumber", txtphonenum.Text);
+                cmd.Parameters.AddWithValue("@userAddress", txtadd.Text);
+                cmd.Parameters.AddWithValue("@userEmail", txtemailadd.Text);
                 cmd.Parameters.AddWithValue("@membershipplan", cmbmembership.SelectedItem.ToString());
-                cmd.Parameters.AddWithValue("@FirstName", txtfirstname.Text); // Set first name last
+                cmd.Parameters.AddWithValue("@userGender", cmbgender.SelectedItem.ToString());
                 con.Open();
                 int rowsAffected = cmd.ExecuteNonQuery();
                 con.Close();
@@ -195,17 +228,37 @@ namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM
                 MessageBox.Show("Fill out all the information needed", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
-
         private void DisplayData()
         {
-            string sql = "SELECT id, firstname, lastname, username, password, emailadress, address, phonenumber, gender, account_created, membershipplan, img FROM user";
-            cmd = new MySqlCommand(sql, con);
-            adapt = new MySqlDataAdapter(cmd);
-            DataTable dt = new DataTable();
-            adapt.Fill(dt);
-            dataGridView2.DataSource = dt;
+            try
+            {
+                con.Open();
+                string sql = @"
+            SELECT ui.userFirstName AS `First Name`, ui.userLastName AS `Last Name`, ua.userUserName AS `Username`,
+                   ua.userPassword AS `Password`, ui.userEmail AS `Email`, ui.userAddress AS `Address`,
+                   ui.userPhoneNumber AS `Phone Number`, ui.userGender AS `Gender`, ui.userCreatedDate AS `Created Account`,
+                   ui.membershipplan AS `Membership Plan`
+            FROM user_information ui
+            LEFT JOIN user_account ua ON ui.User_id = ua.id
+        ";
+                MySqlCommand cmd = new MySqlCommand(sql, con);
+                adapt = new MySqlDataAdapter(cmd);
+                DataTable dt = new DataTable();
+                adapt.Fill(dt);
+                dataGridView2.DataSource = dt;
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show("Error: " + ex.Message);
+            }
+            finally
+            {
+                con.Close();
+            }
         }
+
+
+
 
 
         private void ClearData()
@@ -223,23 +276,35 @@ namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM
         }
         private void dataGridView2_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
-            if (e.RowIndex >= 0 && e.RowIndex < dataGridView2.Rows.Count)
+            try
             {
-                txtfirstname.Text = dataGridView2.Rows[e.RowIndex].Cells["firstname"].Value?.ToString() ?? "";
-                txtlastname.Text = dataGridView2.Rows[e.RowIndex].Cells["lastname"].Value?.ToString();
-                txtusername.Text = dataGridView2.Rows[e.RowIndex].Cells["username"].Value?.ToString();
-                txtpassword.Text = dataGridView2.Rows[e.RowIndex].Cells["password"].Value?.ToString();
-                txtemailadd.Text = dataGridView2.Rows[e.RowIndex].Cells["emailadress"].Value?.ToString();
-                txtadd.Text = dataGridView2.Rows[e.RowIndex].Cells["address"].Value?.ToString();
-                txtphonenum.Text = dataGridView2.Rows[e.RowIndex].Cells["phonenumber"].Value?.ToString();
-                if (dataGridView2.Columns.Contains("gender") && dataGridView2.Rows[e.RowIndex].Cells["gender"].Value != null)
-                    cmbgender.SelectedItem = dataGridView2.Rows[e.RowIndex].Cells["gender"].Value.ToString();
+                if (e.RowIndex >= 0 && e.RowIndex < dataGridView2.Rows.Count)
+                {
+                    txtfirstname.Text = dataGridView2.Rows[e.RowIndex].Cells["First Name"].Value?.ToString() ?? "";
+                    txtlastname.Text = dataGridView2.Rows[e.RowIndex].Cells["Last Name"].Value?.ToString();
+                    txtusername.Text = dataGridView2.Rows[e.RowIndex].Cells["Username"].Value?.ToString();
+                    txtpassword.Text = dataGridView2.Rows[e.RowIndex].Cells["Password"].Value?.ToString();
+                    txtemailadd.Text = dataGridView2.Rows[e.RowIndex].Cells["Email"].Value?.ToString();
+                    txtadd.Text = dataGridView2.Rows[e.RowIndex].Cells["Address"].Value?.ToString();
+                    txtphonenum.Text = dataGridView2.Rows[e.RowIndex].Cells["Phone Number"].Value?.ToString();
+                    if (dataGridView2.Columns.Contains("Gender") && dataGridView2.Rows[e.RowIndex].Cells["Gender"].Value != null)
+                        cmbgender.SelectedItem = dataGridView2.Rows[e.RowIndex].Cells["Gender"].Value.ToString();
+                    else
+                        cmbgender.SelectedItem = null;
+                    if (dataGridView2.Columns.Contains("Membership Plan") && dataGridView2.Rows[e.RowIndex].Cells["Membership Plan"].Value != null)
+                        cmbmembership.SelectedItem = dataGridView2.Rows[e.RowIndex].Cells["Membership Plan"].Value.ToString();
+                    else
+                        cmbmembership.SelectedItem = null;
+                }
                 else
-                    cmbgender.SelectedItem = null;
-                if (dataGridView2.Columns.Contains("membershipplan") && dataGridView2.Rows[e.RowIndex].Cells["membershipplan"].Value != null)
-                    cmbmembership.SelectedItem = dataGridView2.Rows[e.RowIndex].Cells["membershipplan"].Value.ToString();
-                else
-                    cmbmembership.SelectedItem = null;
+                {
+                    MessageBox.Show("Invalid row index", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+
+            catch (Exception ex)
+            {
+                MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -248,9 +313,9 @@ namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM
         {
             if (!string.IsNullOrEmpty(txtfirstname.Text))
             {
-                string sql = "DELETE FROM user WHERE firstname=@firstname";
+                string sql = "DELETE FROM user_information WHERE userFirstName=@userFirstName";
                 cmd = new MySqlCommand(sql, con);
-                cmd.Parameters.AddWithValue("@firstname", txtfirstname.Text); 
+                cmd.Parameters.AddWithValue("@userFirstName", txtfirstname.Text); 
                 con.Open();
                 int rowsAffected = cmd.ExecuteNonQuery();
                 con.Close();
@@ -278,7 +343,14 @@ namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM
 
         private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-
+            try
+            {
+                // Add code here if needed
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         
@@ -295,6 +367,41 @@ namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM
         }
 
         private void txtpassword_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void bunifuTextbox1_OnTextChange(object sender, EventArgs e)
+        {
+            string searchText = bunifuTextbox1.text.Trim();
+            SearchData(searchText);
+        }
+        private void SearchData(string searchText)
+        {
+            string sql = "SELECT ui.userFirstName AS `First Name`, ui.userLastName AS `Last Name`, ua.userUserName AS `Username`, ua.userPassword AS `Password`, ui.userCreatedDate AS `Created Date`, ui.userPhoneNumber AS `Phone Number`, ui.userEmail AS `Email`, ui.userAddress AS `Address`, ui.userGender AS `Gender`, ui.membershipplan AS `Membership Plan` FROM user_information ui LEFT JOIN user_account ua ON ui.User_id = ua.id WHERE ui.userFirstName LIKE @searchText OR ui.userLastName LIKE @searchText OR ua.userUserName LIKE @searchText";
+            cmd = new MySqlCommand(sql, con);
+            cmd.Parameters.AddWithValue("@searchText", "%" + searchText + "%");
+            adapt = new MySqlDataAdapter(cmd);
+            DataTable dt = new DataTable();
+            adapt.Fill(dt);
+            dataGridView2.DataSource = dt;
+        }
+
+
+        private void dataGridView2_DataError(object sender, DataGridViewDataErrorEventArgs e)
+        {
+            if (e.Exception is ArgumentException && e.Context == DataGridViewDataErrorContexts.Formatting)
+            {
+                MessageBox.Show($"An error occurred while processing data: {e.Exception.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                e.ThrowException = false; // Prevent DataGridView from throwing the exception
+            }
+            else
+            {
+                MessageBox.Show("An error occurred while processing data.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void txtusername_TextChanged(object sender, EventArgs e)
         {
 
         }

@@ -17,14 +17,13 @@ namespace SYSTEM_GYM
 {
     public partial class userchoice : Form
     {
-        formMenu menu;
+        formprofile profile;
         CoachLilli lilli;
         CoachJames james;
         CoachAlex alex;
         formMembership membership;
         formSchedule schedule;
         formEquipment equipment;
-        profile1 profile;
         About_us about_Us;
         formperday perday;
         formbronze bronze;
@@ -77,6 +76,7 @@ namespace SYSTEM_GYM
                 form1.Show();
             }
         }
+
         private void flowLayoutPanel2_Paint_1(object sender, PaintEventArgs e)
         {
 
@@ -123,24 +123,24 @@ namespace SYSTEM_GYM
         }
         private void button1_Click(object sender, EventArgs e)
         {
-            if (menu == null)
+            if (profile == null)
             {
-                menu = new formMenu();
-                menu.FormClosed += Menu_FormClosed;
-                menu.MdiParent = this;
-                menu.Dock = DockStyle.Fill;
-                menu.Show();
+                profile = new formprofile();
+                profile.FormClosed += Profile_FormClosed;
+                profile.MdiParent = this;
+                profile.Dock = DockStyle.Fill;
+                profile.Show();
             }
             else
             {
-                menu.Activate();
+                profile.Activate();
             }
-            label2.Text = "Menu";
+            label2.Text = "Profile";
         }
 
-        private void Menu_FormClosed(object sender, FormClosedEventArgs e)
+        private void Profile_FormClosed(object sender, FormClosedEventArgs e)
         {
-            menu = null;
+            profile = null;
         }
 
         private void bntcoachlilli_Click(object sender, EventArgs e)
@@ -282,23 +282,11 @@ namespace SYSTEM_GYM
 
         private void bunifuTileButton1_Click(object sender, EventArgs e)
         {
-            if (profile == null)
-            {
-                profile = new profile1();
-                profile.FormClosed += Profile1_FormClosed; 
-                profile.MdiParent = this;
-                profile.Dock = DockStyle.Fill;
-                profile.Show();
-            }
-            else
-            {
-                profile.Activate();
-            }
-            label2.Text = "Profile";
+           
         }
         private void Profile1_FormClosed(object sender, FormClosedEventArgs e)
         {
-            equipment = null;
+            
         }
 
         private void label2_Click(object sender, EventArgs e)
@@ -358,25 +346,7 @@ namespace SYSTEM_GYM
 
         private void planTransition_Tick(object sender, EventArgs e)
         {
-            if (planExpand == false)
-            {
-                MembershipContainer.Height += 10;
-                if (MembershipContainer.Height >= 303)
-                {
-
-                    planTransition.Stop();
-                    planExpand = true;
-                }
-            }
-            else
-            {
-                MembershipContainer.Height -= 10;
-                if (MembershipContainer.Height <= 61)
-                {
-                    planTransition.Stop();
-                    planExpand = false;
-                }
-            }
+           
         }
 
         private void bntmembership_Click_1(object sender, EventArgs e)
@@ -395,6 +365,7 @@ namespace SYSTEM_GYM
             {
                 membership.Activate();
             }
+            label2.Text = "Membership";
 
         }
 
@@ -405,18 +376,7 @@ namespace SYSTEM_GYM
 
         private void bntday_Click(object sender, EventArgs e)
         {
-            if (perday == null)
-            {
-                perday = new formperday();
-                perday.FormClosed += Perday_FormClosed;
-                perday.MdiParent = this;
-                perday.Dock = DockStyle.Fill;
-                perday.Show();
-            }
-            else
-            {
-                perday.Activate();
-            }
+            
         }
 
         private void Perday_FormClosed(object sender, FormClosedEventArgs e)
@@ -426,18 +386,7 @@ namespace SYSTEM_GYM
 
         private void bntbro_Click(object sender, EventArgs e)
         {
-            if (bronze == null)
-            {
-                bronze = new formbronze();
-                bronze.FormClosed += Bronze_FormClosed1;
-                bronze.MdiParent = this;
-                bronze.Dock = DockStyle.Fill;
-                bronze.Show();
-            }
-            else
-            {
-                bronze.Activate();
-            }
+           
         }
 
         private void Bronze_FormClosed1(object sender, FormClosedEventArgs e)
@@ -447,18 +396,7 @@ namespace SYSTEM_GYM
 
         private void bntsil_Click(object sender, EventArgs e)
         {
-            if (silver == null)
-            {
-                silver = new formsilver();
-                silver.FormClosed += Silver_FormClosed;
-                silver.MdiParent = this;
-                silver.Dock = DockStyle.Fill;
-                silver.Show();
-            }
-            else
-            {
-                silver.Activate();
-            }
+            
         }
 
         private void Silver_FormClosed(object sender, FormClosedEventArgs e)
@@ -468,18 +406,7 @@ namespace SYSTEM_GYM
 
         private void bntgo_Click(object sender, EventArgs e)
         {
-            if (gold == null)
-            {
-                gold = new formGold();
-                gold.FormClosed += Gold_FormClosed;
-                gold.MdiParent = this;
-                gold.Dock = DockStyle.Fill;
-                gold.Show();
-            }
-            else
-            {
-                gold.Activate();
-            }
+           
         }
 
         private void Gold_FormClosed(object sender, FormClosedEventArgs e)
@@ -490,6 +417,11 @@ namespace SYSTEM_GYM
         private void pictureBox1_Click(object sender, EventArgs e)
         {
             this.Hide();
+        }
+
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
         }
     }   
 }

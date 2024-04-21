@@ -29,6 +29,12 @@ namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM
             this.Hide();
             Form1.Show();
         }
+
+        private void BntLog_in_Click(object sender, EventArgs e)
+        {
+            Form1 Form1 = new Form1();
+            Form1.Show();
+        }
     }
 }
  

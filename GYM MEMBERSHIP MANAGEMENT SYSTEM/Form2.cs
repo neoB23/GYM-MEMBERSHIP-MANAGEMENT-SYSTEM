@@ -14,6 +14,8 @@ using Bunifu.Framework.UI;
 using Guna.UI2.WinForms.Suite;
 using MySql.Data.MySqlClient;
 using BCrypt.Net;
+using GYM_MEMBERSHIP_MANAGEMENT_SYSTEM.UI;
+using SYSTEM_GYM;
 
 namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM
 {
@@ -55,18 +57,162 @@ namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM
         }
         private void bunifuThinButton21_Click(object sender, EventArgs e)
         {
-            string passwordPattern = @"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^\da-zA-Z]).{8,}$";
-            int minimumUsernameLength = 6;
-            int minimumPasswordLength = 8;
+        }
+
+        private string Hash(string input)
+        {
+            return BCrypt.Net.BCrypt.HashPassword(input, BCrypt.Net.BCrypt.GenerateSalt());
+        }
+
+
+        private void Form2_Load(object sender, EventArgs e)
+        {
+
+        }
+        /*private string Hash(string input)
+        {
+            return BCrypt.Net.BCrypt.HashPassword(input);
+        }*/
+
+
+        private void bunifuCheckbox1_OnChange(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pictureBox4_MouseEnter(object sender, EventArgs e)
+        {
+            pictureBox4.Visible = false;
+            pictureBox3.Visible = true;
+        }
+
+        private void pictureBox4_MouseLeave(object sender, EventArgs e)
+        {
+            pictureBox4.Visible = true;
+            pictureBox3.Visible = false;
+        }
+
+        private void pictureBox5_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pictureBox4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtfirstname_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pictureBox5_MouseEnter_1(object sender, EventArgs e)
+        {
+
+
+        }
+
+        private void pictureBox5_MouseLeave_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pictureBox13_MouseEnter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pictureBox6_MouseLeave(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pictureBox6_MouseEnter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pictureBox7_MouseEnter(object sender, EventArgs e)
+        {
+
+
+        }
+
+        private void pictureBox7_MouseLeave(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pictureBox8_MouseEnter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pictureBox8_MouseLeave(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pictureBox11_MouseEnter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pictureBox11_MouseLeave(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pictureBox10_MouseEnter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pictureBox10_MouseLeave(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pictureBox9_MouseEnter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pictureBox9_MouseLeave(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox1_TextChanged_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void bunifuThinButton21_MouseEnter(object sender, EventArgs e)
+        {
+
+        }
+
+       
+
+        private void BntRegister_Click(object sender, EventArgs e)
+        {
+
             int minimumEmailLength = 5;
-            int minimumPhoneNumLength = 11;
+            int minimumPhoneNumLength = 11; // Updated minimum phone number length
             int minimumFirstNameLength = 3;
             int minimumLastNameLength = 3;
             int minimumAddressLength = 10;
 
             errorProvider1.Clear();
 
-            if (string.IsNullOrEmpty(txtusername.Text) || string.IsNullOrEmpty(txtpassword.Text) || string.IsNullOrEmpty(txtemailadd.Text) || string.IsNullOrEmpty(txtphonenum.Text) || string.IsNullOrEmpty(txtfirstname.Text) || string.IsNullOrEmpty(txtlastname.Text) || string.IsNullOrEmpty(txtgender.Text) || string.IsNullOrEmpty(txtadd.Text))
+            if (string.IsNullOrWhiteSpace(txtemailadd.Text) || string.IsNullOrWhiteSpace(txtphonenum.Text) || string.IsNullOrWhiteSpace(txtfirstname.Text) || string.IsNullOrWhiteSpace(txtlastname.Text) || string.IsNullOrWhiteSpace(cmbgender.Text) || string.IsNullOrWhiteSpace(txtadd.Text))
             {
                 MessageBox.Show("Fill up all information", "Error");
                 return;
@@ -78,38 +224,24 @@ namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM
                 return;
             }
 
-            if (!IsNumeric(txtphonenum.Text))
+            if (!Regex.IsMatch(txtphonenum.Text, @"^\d{11}$")) // Check if phone number is exactly 11 digits
             {
-                errorProvider1.SetError(txtphonenum, "Phone number should contain only numeric characters");
-                MessageBox.Show("Phone number should contain only numeric characters", "Error");
+                errorProvider1.SetError(txtphonenum, "Phone number should contain exactly 11 numeric characters");
+                MessageBox.Show("Phone number should contain exactly 11 numeric characters", "Error");
                 return;
             }
 
-            if (!txtemailadd.Text.Contains("@gmail.com"))
+            if (!txtemailadd.Text.EndsWith("@gmail.com", StringComparison.OrdinalIgnoreCase))
             {
-                errorProvider1.SetError(txtemailadd, "Email address should contain '@' symbol");
-                MessageBox.Show("Email address should contain '@gmail' symbol", "Error");
-                return;
-            }
-
-            if (txtusername.Text.Length < minimumUsernameLength)
-            {
-                errorProvider1.SetError(txtusername, $"Username must be at least {minimumUsernameLength} characters long");
-                MessageBox.Show($"Username must be at least {minimumUsernameLength} characters long", "Error");
-                return;
-            }
-
-            if (txtpassword.Text.Length < minimumPasswordLength || !Regex.IsMatch(txtpassword.Text, passwordPattern))
-            {
-                errorProvider1.SetError(txtpassword, "Password must contain at least one uppercase letter, one lowercase letter, one special character, one number, and be at least 8 characters long");
-                MessageBox.Show("Password must contain at least one uppercase letter, one lowercase letter, one special character, one number, and be at least 8 characters long", "Error");
+                errorProvider1.SetError(txtemailadd, "Email address should end with '@gmail.com'");
+                MessageBox.Show("Email address should end with '@gmail.com'", "Error");
                 return;
             }
 
             if (txtphonenum.Text.Length < minimumPhoneNumLength)
             {
-                errorProvider1.SetError(txtphonenum, $"Phone number must be at least {minimumPhoneNumLength} characters long");
-                MessageBox.Show($"Phone number must be at least {minimumPhoneNumLength} characters long", "Error");
+                errorProvider1.SetError(txtphonenum, $"Phone number must be exactly {minimumPhoneNumLength} characters long");
+                MessageBox.Show($"Phone number must be exactly {minimumPhoneNumLength} characters long", "Error");
                 return;
             }
 
@@ -134,30 +266,23 @@ namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM
                 MessageBox.Show($"Address must be at least {minimumAddressLength} characters long", "Error");
                 return;
             }
-
             try
             {
                 con.Open();
-                string sql = "INSERT INTO user (username, password, emailadress, phonenumber, firstname, lastname, gender, address) VALUES (@username, @password, @email, @phone, @firstname, @lastname, @gender, @address)";
+                string sql = "INSERT INTO user_information (userFirstName, userLastName, userEmail, userAddress, userPhoneNumber, userGender) VALUES (@userFirstName, @userLastName, @userEmail, @userAddress, @userPhoneNumber, @userGender)";
                 MySqlCommand cmd = new MySqlCommand(sql, con);
-                cmd.Parameters.AddWithValue("@username", txtusername.Text);
-
-                // Hash the password before saving it
-                string hashedPassword = BCrypt.Net.BCrypt.HashPassword(txtpassword.Text);
-                cmd.Parameters.AddWithValue("@password", hashedPassword);
-
-                cmd.Parameters.AddWithValue("@email", txtemailadd.Text);
-                cmd.Parameters.AddWithValue("@phone", txtphonenum.Text);
-                cmd.Parameters.AddWithValue("@firstname", txtfirstname.Text);
-                cmd.Parameters.AddWithValue("@lastname", txtlastname.Text);
-                cmd.Parameters.AddWithValue("@gender", txtgender.Text);
-                cmd.Parameters.AddWithValue("@address", txtadd.Text);
+                cmd.Parameters.AddWithValue("@userFirstName", txtfirstname.Text);
+                cmd.Parameters.AddWithValue("@userLastName", txtlastname.Text);
+                cmd.Parameters.AddWithValue("@userEmail", txtemailadd.Text);
+                cmd.Parameters.AddWithValue("@userAddress", txtadd.Text);
+                cmd.Parameters.AddWithValue("@userPhoneNumber", txtphonenum.Text);
+                cmd.Parameters.AddWithValue("@userGender", cmbgender.SelectedItem.ToString());
                 cmd.ExecuteNonQuery();
-                MessageBox.Show("Registered Successfully");
+                MessageBox.Show("Applied to Membership Successfully");
 
                 this.Hide();
-                Form1 Frm1 = new Form1();
-                Frm1.Show();
+                formmessage formmessage = new formmessage();
+                formmessage.Show();
             }
             catch (MySqlException ex)
             {
@@ -169,158 +294,49 @@ namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM
             }
         }
 
-        private string Hash(string input)
-        {
-            return BCrypt.Net.BCrypt.HashPassword(input, BCrypt.Net.BCrypt.GenerateSalt());
-        }
 
-
-        private void Form2_Load(object sender, EventArgs e)
-        {
-
-        }
-        /*private string Hash(string input)
-        {
-            return BCrypt.Net.BCrypt.HashPassword(input);
-        }*/
-
-
-        private void bunifuCheckbox1_OnChange(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void pictureBox4_MouseEnter(object sender, EventArgs e)
-        {
-            pictureBox4.Visible = false;
-            pictureBox3.Visible = true;
-        }
-
-        private void pictureBox4_MouseLeave(object sender, EventArgs e)
-        {
-            pictureBox4.Visible = true;
-            pictureBox3.Visible = false;
-        }
-        
-        private void pictureBox5_Click(object sender, EventArgs e)
+        private void bunifuCheckbox1_OnChange_1(object sender, EventArgs e)
         {
 
         }
 
-        private void pictureBox4_Click(object sender, EventArgs e)
-        {
+       
 
+        private void button2_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
         }
 
-        private void txtfirstname_TextChanged(object sender, EventArgs e)
+        private void pictureBox11_Click(object sender, EventArgs e)
         {
-
+            this.Hide();
         }
 
-        private void pictureBox5_MouseEnter_1(object sender, EventArgs e)
+        private void pictureBox12_Click(object sender, EventArgs e)
         {
-            pictureBox5.Visible = false;
-            pictureBox12.Visible = true;
-            
+            formMembership formMembership = Application.OpenForms["FormMembership"] as formMembership;
+
+            if (formMembership == null)
+            {
+                formMembership = new formMembership();
+            }
+
+            formMembership.Show();
+            this.Hide();
+        }
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (e.CloseReason == CloseReason.UserClosing)
+            {
+                e.Cancel = true; // Cancels the form closing event
+                this.Hide(); // Hides the form instead of closing it
+            }
         }
 
-        private void pictureBox5_MouseLeave_1(object sender, EventArgs e)
-        {
-            pictureBox5.Visible = true;
-            pictureBox12.Visible = false;
-        }
-
-        private void pictureBox13_MouseEnter(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void pictureBox6_MouseLeave(object sender, EventArgs e)
-        {
-            pictureBox6.Visible = true;
-            pictureBox13.Visible = false;
-        }
-
-        private void pictureBox6_MouseEnter(object sender, EventArgs e)
-        {
-            pictureBox6.Visible = false;
-            pictureBox13.Visible = true;
-        }
-
-        private void pictureBox7_MouseEnter(object sender, EventArgs e)
-        {
-            pictureBox7.Visible = false;
-            pictureBox14.Visible = true;
-
-        }
-
-        private void pictureBox7_MouseLeave(object sender, EventArgs e)
-        {
-            pictureBox7.Visible = true;
-            pictureBox14.Visible = false;
-        }
-
-        private void pictureBox8_MouseEnter(object sender, EventArgs e)
-        {
-            pictureBox8.Visible = false;
-            pictureBox15.Visible = true;
-        }
-
-        private void pictureBox8_MouseLeave(object sender, EventArgs e)
-        {
-            pictureBox8.Visible = true;
-            pictureBox15.Visible = false;
-        }
-
-        private void pictureBox11_MouseEnter(object sender, EventArgs e)
-        {
-            pictureBox11.Visible = false;
-            pictureBox16.Visible = true;
-        }
-
-        private void pictureBox11_MouseLeave(object sender, EventArgs e)
-        {
-            pictureBox11.Visible = true;
-            pictureBox16.Visible = false;
-        }
-
-        private void pictureBox10_MouseEnter(object sender, EventArgs e)
-        {
-            pictureBox10.Visible = false;
-            pictureBox17.Visible = true;
-        }
-
-        private void pictureBox10_MouseLeave(object sender, EventArgs e)
-        {
-            pictureBox10.Visible = true;
-            pictureBox17.Visible = false;
-        }
-
-        private void pictureBox9_MouseEnter(object sender, EventArgs e)
-        {
-            pictureBox9.Visible = false;
-            pictureBox18.Visible = true;
-        }
-
-        private void pictureBox9_MouseLeave(object sender, EventArgs e)
-        {
-            pictureBox9.Visible = true;
-            pictureBox18.Visible = false;
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox1_TextChanged_1(object sender, EventArgs e)
-        {
-
-        }
-
-        private void bunifuThinButton21_MouseEnter(object sender, EventArgs e)
+        private void bnthide_Click(object sender, EventArgs e)
         {
 
         }
     }
 }
+

@@ -12,8 +12,16 @@ using System.Windows.Forms;
 
 namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM
 {
+
     public partial class UserControl3 : UserControl
     {
+        public event EventHandler<MembershipUpdatedEventArgs> MembershipUpdated;
+        protected virtual void OnMembershipUpdated(MembershipUpdatedEventArgs e)
+        {
+            MembershipUpdated?.Invoke(this, e);
+        }
+
+
         MySqlConnection con = new MySqlConnection("server=localhost;user id=root;database=gym membership management;sslMode=none");
         MySqlCommand cmd;
         MySqlDataAdapter adapt;
@@ -21,6 +29,26 @@ namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM
         {
             InitializeComponent();
             DisplayData();
+        }
+        public class MembershipUpdatedEventArgs : EventArgs
+        {
+            public string UpdatedMembership { get; }
+
+            public MembershipUpdatedEventArgs(string updatedMembership)
+            {
+                UpdatedMembership = updatedMembership;
+            }
+        }
+        private void UpdateMembership(string updatedMembership)
+        {
+            // Your existing code for updating the membership
+            // ...
+
+            // Create an event argument with the updated membership details
+            var membershipEventArgs = new MembershipUpdatedEventArgs(updatedMembership);
+
+            // Raise the MembershipUpdated event
+            OnMembershipUpdated(membershipEventArgs);
         }
         private bool IsNumeric(string text)
         {
@@ -38,7 +66,7 @@ namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM
 
         }
 
-        private void btnDelete_Click(object sender, EventArgs e)
+        /*private void btnDelete_Click(object sender, EventArgs e)
         {
             if (!string.IsNullOrEmpty(txtmembership.Text))
             {
@@ -63,7 +91,7 @@ namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM
             {
                 MessageBox.Show("Enter the name of the user you want to delete", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-        }
+        }*/
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -71,13 +99,21 @@ namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM
         }
         private void DisplayData()
         {
-            string sql = "SELECT id, membership, duration, goal, Price FROM membership"; 
-            cmd = new MySqlCommand(sql, con);
-            adapt = new MySqlDataAdapter(cmd);
-            DataTable dt = new DataTable();
-            adapt.Fill(dt);
-            dataGridView2.DataSource = dt;
+            try
+            {
+                string sql = "SELECT membership AS `Membership Plan`, membershipDuration AS `Duration of Training`, membershipGoal AS `Goal of the Training`, membershipPrice AS Price FROM membership";
+                cmd = new MySqlCommand(sql, con);
+                adapt = new MySqlDataAdapter(cmd);
+                DataTable dt = new DataTable();
+                adapt.Fill(dt);
+                dataGridView2.DataSource = dt;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
+
 
         // Clears the Data  
         private void ClearData()
@@ -91,12 +127,13 @@ namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM
         {
             if (e.RowIndex >= 0 && e.RowIndex < dataGridView2.Rows.Count)
             {
-                txtmembership.Text = dataGridView2.Rows[e.RowIndex].Cells["membership"].Value?.ToString() ?? "";
-                txtduration.Text = dataGridView2.Rows[e.RowIndex].Cells["duration"].Value?.ToString();
-                txtgoal.Text = dataGridView2.Rows[e.RowIndex].Cells["goal"].Value?.ToString();
+                txtmembership.Text = dataGridView2.Rows[e.RowIndex].Cells["Membership Plan"].Value?.ToString() ?? "";
+                txtduration.Text = dataGridView2.Rows[e.RowIndex].Cells["Duration of Training"].Value?.ToString();
+                txtgoal.Text = dataGridView2.Rows[e.RowIndex].Cells["Goal of the Training"].Value?.ToString();
                 txtcost.Text = dataGridView2.Rows[e.RowIndex].Cells["Price"].Value?.ToString();
             }
         }
+
         private void btnUpdate_Click(object sender, EventArgs e)
         {
             // Check if all required fields are filled
@@ -107,13 +144,13 @@ namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM
             {
                 try
                 {
-                    string sql = "UPDATE membership SET duration = @duration, goal = @goal, Price = @Price WHERE membership = @membership";
+                    string sql = "UPDATE membership SET membershipDuration = @membershipDuration, membershipGoal = @membershipGoal, membershipPrice = @membershipPrice WHERE membership = @membership";
                     using (MySqlCommand cmd = new MySqlCommand(sql, con))
                     {
                         cmd.Parameters.AddWithValue("@membership", txtmembership.Text);
-                        cmd.Parameters.AddWithValue("@duration", txtduration.Text);
-                        cmd.Parameters.AddWithValue("@goal", txtgoal.Text);
-                        cmd.Parameters.AddWithValue("@Price", txtcost.Text);
+                        cmd.Parameters.AddWithValue("@membershipDuration", txtduration.Text);
+                        cmd.Parameters.AddWithValue("@membershipGoal", txtgoal.Text);
+                        cmd.Parameters.AddWithValue("@membershipPrice", txtcost.Text);
                         con.Open();
                         int rowsAffected = cmd.ExecuteNonQuery();
                         con.Close();
@@ -140,10 +177,12 @@ namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM
             {
                 MessageBox.Show("Fill out all the information needed", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            UpdateMembership(txtmembership.Text);
+
         }
 
 
-        private void guna2GradientButton1_Click(object sender, EventArgs e)
+        /*private void guna2GradientButton1_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrWhiteSpace(txtmembership.Text) ||
          string.IsNullOrWhiteSpace(txtduration.Text) ||
@@ -209,7 +248,7 @@ namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM
             MessageBox.Show("Membership added successfully", "SAVE", MessageBoxButtons.OK, MessageBoxIcon.Information);
             DisplayData();
             ClearData();
-        }
+        }*/
 
         private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -217,6 +256,11 @@ namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM
         }
 
         private void txtmembership_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtcost_TextChanged(object sender, EventArgs e)
         {
 
         }

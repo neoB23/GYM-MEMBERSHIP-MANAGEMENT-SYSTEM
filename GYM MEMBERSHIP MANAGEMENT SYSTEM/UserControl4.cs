@@ -12,49 +12,53 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web.Security;
+using System.Web.UI;
 using System.Windows.Forms;
 using System.Xml.Linq;
+using static GYM_MEMBERSHIP_MANAGEMENT_SYSTEM.UserControl3;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 
 namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM
 {
-
-    public partial class UserControl4 : UserControl
+   
+    public partial class UserControl4 : System.Windows.Forms.UserControl
     {
-        private string name;
-        private string membership;
-        private string price;
-
+        // Event handler for when a membership is updated
+        
         MySqlConnection con = new MySqlConnection("server=localhost;user id=root;database=gym membership management;sslMode=none");
         MySqlCommand cmd;
         MySqlDataAdapter adapt;
         public UserControl4()
         {
             InitializeComponent();
-
-        
-
-            // Set values in the controls
-            txtname.Text = name;
-            cmbmembership.Text = membership;
-            txtprice.Text = price;
             DisplayData();
         }
-
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
         }
         private void DisplayData()
         {
-            string sql = "SELECT id, username, membership, price FROM receipt";
-            cmd = new MySqlCommand(sql, con);
-            adapt = new MySqlDataAdapter(cmd);
-            DataTable dt = new DataTable();
-            adapt.Fill(dt);
-            bunifuCustomDataGrid1.DataSource = dt;
+            try
+            {
+                string sql = "SELECT receiptUserName AS UserName, receiptMembership AS Membership, receiptPrice AS Price FROM receipt";
+                using (cmd = new MySqlCommand(sql, con))
+                {
+                    adapt = new MySqlDataAdapter(cmd);
+                    DataTable dt = new DataTable();
+                    adapt.Fill(dt);
+                    bunifuCustomDataGrid1.DataSource = dt;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
+
+
+
 
         // Clears the Data  
         private void ClearData()
@@ -62,57 +66,62 @@ namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM
             txtname.Text = "";
             cmbmembership.Text = "";
             txtprice.Text = "";
-
         }
 
         private void UserControl4_Load(object sender, EventArgs e)
         {
 
         }
+
         private void guna2GradientButton1_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(cmbmembership.Text) ||
-                string.IsNullOrWhiteSpace(txtprice.Text) ||
-                string.IsNullOrWhiteSpace(txtname.Text))
+            try
             {
-                MessageBox.Show("Fill up all information", "Error");
-                return;
-            }
-
-            // Check if the username already exists in the 'membership' table
-            MySqlCommand cmd1 = new MySqlCommand("SELECT * FROM receipt WHERE username = @username", con);
-            cmd1.Parameters.AddWithValue("@username", txtname.Text);
-            con.Open();
-            bool userExists = false;
-            using (var dr1 = cmd1.ExecuteReader())
-            {
-                userExists = dr1.HasRows;
-                if (userExists)
+                if (string.IsNullOrWhiteSpace(cmbmembership.Text) || string.IsNullOrWhiteSpace(txtprice.Text) || string.IsNullOrWhiteSpace(txtname.Text))
                 {
-                    MessageBox.Show("Username already exists!", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    con.Close();
+                    MessageBox.Show("Fill up all information", "Error");
                     return;
                 }
+
+                using (con)
+                {
+                    con.Open();
+
+                    // Check if the username already exists in the 'receipt' table
+                    using (MySqlCommand cmd1 = new MySqlCommand("SELECT * FROM receipt WHERE receiptUserName = @receiptUserName", con))
+                    {
+                        cmd1.Parameters.AddWithValue("@receiptUserName", txtname.Text);
+                        bool userExists = cmd1.ExecuteScalar() != null;
+
+                        if (userExists)
+                        {
+                            MessageBox.Show("Username already exists!", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+                        }
+                    }
+
+                    // Insert membership data into the 'receipt' table
+                    using (MySqlCommand cmd = new MySqlCommand("INSERT INTO receipt (receiptUserName, receiptMembership, receiptPrice) VALUES(@receiptUserName, @receiptMembership, @receiptPrice)", con))
+                    {
+                        cmd.Parameters.AddWithValue("@receiptUserName", txtname.Text);
+                        cmd.Parameters.AddWithValue("@receiptMembership", cmbmembership.Text);
+                        cmd.Parameters.AddWithValue("@receiptPrice", txtprice.Text);
+                        cmd.ExecuteNonQuery();
+                    }
+
+                    MessageBox.Show("Membership added successfully", "SAVE", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
             }
-            con.Close();
-
-            // Insert membership data into the 'membership' table
-            MySqlCommand cmd = new MySqlCommand("INSERT INTO receipt (username, Membership, Price) VALUES(@username, @Membership, @Price)", con);
-            con.Open();
-            cmd.Parameters.AddWithValue("@username", txtname.Text);
-            cmd.Parameters.AddWithValue("@Membership", cmbmembership.Text);
-            cmd.Parameters.AddWithValue("@Price", txtprice.Text);
-            cmd.ExecuteNonQuery();
-            con.Close();
-
-            MessageBox.Show("Membership added successfully", "SAVE", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            DisplayData(); // Assuming DisplayData() method is defined to refresh the data grid
-            ClearData(); // Assuming ClearData() method is defined to clear the input fields
-
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                DisplayData();
+                ClearData();
+            }
         }
-
-
-
         private void btnUpdate_Click(object sender, EventArgs e)
         {
             //may error sa pag update ng username
@@ -121,11 +130,11 @@ namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM
                 !string.IsNullOrWhiteSpace(txtname.Text) &&
                 !string.IsNullOrWhiteSpace(txtprice.Text))
             {
-                string sql = "UPDATE receipt SET membership = @membership, price = @price WHERE username = @username";
+                string sql = "UPDATE receipt SET receiptMembership = @receiptMembership, receiptPrice = @receiptPrice WHERE receiptUserName = @receiptUserName";
                 cmd = new MySqlCommand(sql, con);
-                cmd.Parameters.AddWithValue("@membership", cmbmembership.Text);
-                cmd.Parameters.AddWithValue("@username", txtname.Text);
-                cmd.Parameters.AddWithValue("@price", txtprice.Text);
+                cmd.Parameters.AddWithValue("@receiptMembership", cmbmembership.Text);
+                cmd.Parameters.AddWithValue("@receiptUserName", txtname.Text);
+                cmd.Parameters.AddWithValue("@receiptPrice", txtprice.Text);
                 con.Open();
                 int rowsAffected = cmd.ExecuteNonQuery();
                 con.Close();
@@ -144,9 +153,7 @@ namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM
             {
                 MessageBox.Show("Fill out all the information needed", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
         }
-
 
         private void bunifuCustomDataGrid1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -164,7 +171,7 @@ namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM
                     using (MySqlCommand cmd = new MySqlCommand())
                     {
                         cmd.Connection = con;
-                        cmd.CommandText = "SELECT price FROM membership WHERE membership = @membership";
+                        cmd.CommandText = "SELECT membershipPrice FROM membership WHERE membership = @membership";
                         cmd.Parameters.AddWithValue("@membership", selectedMembership);
 
                         con.Open();
@@ -189,12 +196,10 @@ namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM
                 }
             }
         }
-
         private void pictureBox2_Click(object sender, EventArgs e)
         {
 
         }
-
         private void guna2GradientButton2_Click(object sender, EventArgs e)
         {
             // Check if all required fields are filled
@@ -218,35 +223,27 @@ namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM
                 MessageBox.Show("Fill out all the information needed", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
-
-
-
-
-
-
         private void bunifuCustomDataGrid1_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             if (e.RowIndex >= 0 && e.RowIndex < bunifuCustomDataGrid1.Rows.Count)
             {
-                txtname.Text = bunifuCustomDataGrid1.Rows[e.RowIndex].Cells["username"].Value?.ToString() ?? "";
-                cmbmembership.Text = bunifuCustomDataGrid1.Rows[e.RowIndex].Cells["membership"].Value?.ToString();
-                txtprice.Text = bunifuCustomDataGrid1.Rows[e.RowIndex].Cells["price"].Value?.ToString();
-
+                txtname.Text = bunifuCustomDataGrid1.Rows[e.RowIndex].Cells["UserName"].Value?.ToString() ?? "";
+                cmbmembership.Text = bunifuCustomDataGrid1.Rows[e.RowIndex].Cells["Membership"].Value?.ToString();
+                txtprice.Text = bunifuCustomDataGrid1.Rows[e.RowIndex].Cells["Price"].Value?.ToString();
             }
         }
+
         private void dataGridView2_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
 
         }
-
         private void btnDelete_Click(object sender, EventArgs e)
         {
             if (!string.IsNullOrEmpty(txtname.Text))
             {
-                string sql = "DELETE FROM receipt WHERE username=@username";
+                string sql = "DELETE FROM receipt WHERE receiptUserName=@receiptUserName";
                 cmd = new MySqlCommand(sql, con);
-                cmd.Parameters.AddWithValue("@username", txtname.Text);
+                cmd.Parameters.AddWithValue("@receiptUserName", txtname.Text);
                 con.Open();
                 int rowsAffected = cmd.ExecuteNonQuery();
                 con.Close();
@@ -279,7 +276,7 @@ namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM
             int offset = 0;
 
             // Draw logo
-            Image logo = Image.FromFile(@"C:\Users\Parlan\Downloads\Red Black Minimalist Fitness Logo .png");
+            Image logo = Image.FromFile(@"C:\Users\Parlan\Desktop\FINALS 2024\GYM MEMBERSHIP MANAGEMENT SYSTEM\Red Black Minimalist Fitness Logo .png");
             int logoWidth = 200; // Adjust width as needed
             int logoHeight = 200; // Adjust height as needed
             int logoX = e.MarginBounds.Left + (maxWidth - logoWidth) / 2; // Center horizontally
@@ -332,41 +329,12 @@ namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM
 
         private void txtname_TextChanged(object sender, EventArgs e)
         {
-           /* if (!string.IsNullOrWhiteSpace(txtname.Text))
-            {
-                string username = txtname.Text;
-
-                try
-                {
-                    using (MySqlCommand cmd = new MySqlCommand())
-                    {
-                        cmd.Connection = con;
-                        cmd.CommandText = "SELECT membershipplan FROM register WHERE username = @username";
-                        cmd.Parameters.AddWithValue("@username", username);
-
-                        con.Open();
-                        object result = cmd.ExecuteScalar();
-                        con.Close(); // Close the connection after executing the query
-
-                        if (result != null)
-                        {
-                            // Display the membership in a separate textbox or label
-                            cmbmembership.Text = result.ToString();
-                        }
-                        else
-                        {
-                            MessageBox.Show("Membership not found for the entered username", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            cmbmembership.Text = ""; // Clear the membership textbox if no membership is found
-                        }
-                    }
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Error fetching membership: " + ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    con.Close(); // Ensure the connection is closed in case of an exception
-                }
-            } */
+            
         }
 
+        private void pictureBox5_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

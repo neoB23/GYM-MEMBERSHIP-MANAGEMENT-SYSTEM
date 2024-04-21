@@ -13,20 +13,15 @@ namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM
         public UserControl0()
         {
             InitializeComponent();
-
-            // Initialize and start the timer
             timer = new Timer();
-            timer.Interval = 5000; // Refresh every 5 seconds (adjust as needed)
+            timer.Interval = 5000; 
             timer.Tick += Timer_Tick;
             timer.Start();
-
-            // Load initial data
             LoadRegisteredMemberCount();
         }
 
         private void Timer_Tick(object sender, EventArgs e)
         {
-            // Load updated data
             LoadRegisteredMemberCount();
         }
 
@@ -42,7 +37,7 @@ namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM
                 int memberCount = Convert.ToInt32(memberCmd.ExecuteScalar());
 
                 // Count coaches
-                string coachSql = "SELECT COUNT(*) FROM user";
+                string coachSql = "SELECT COUNT(*) FROM user_information";
                 MySqlCommand coachCmd = new MySqlCommand(coachSql, con);
                 int coachCount = Convert.ToInt32(coachCmd.ExecuteScalar());
 
@@ -53,9 +48,9 @@ namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM
                 con.Close();
 
                 // Update labels with counts
-                label5.Text = $"Total Members: {memberCount}";
-                label6.Text = $"Total Coaches: {coachCount}";
-                label7.Text = $"Total Admins: {adminCount}";
+                label5.Text = $"Total: {memberCount}";
+                label6.Text = $"Total: {coachCount}";
+                label7.Text = $"Total: {adminCount}";
             }
             catch (Exception ex)
             {
@@ -95,6 +90,21 @@ namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM
         }
 
         private void UserControl0_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pictureBox3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pictureBox2_Click(object sender, EventArgs e)
         {
 
         }

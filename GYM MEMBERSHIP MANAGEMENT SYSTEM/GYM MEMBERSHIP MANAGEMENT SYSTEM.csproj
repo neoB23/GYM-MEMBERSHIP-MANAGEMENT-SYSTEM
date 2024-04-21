@@ -168,12 +168,6 @@
     <Compile Include="admin.Designer.cs">
       <DependentUpon>admin.cs</DependentUpon>
     </Compile>
-    <Compile Include="coach.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="coach.Designer.cs">
-      <DependentUpon>coach.cs</DependentUpon>
-    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -185,6 +179,12 @@
     </Compile>
     <Compile Include="Form2.Designer.cs">
       <DependentUpon>Form2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form3.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form3.Designer.cs">
+      <DependentUpon>Form3.cs</DependentUpon>
     </Compile>
     <Compile Include="loadingscreen.cs">
       <SubType>Form</SubType>
@@ -258,11 +258,17 @@
     <Compile Include="UI\formMembership.Designer.cs">
       <DependentUpon>formMembership.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\formMenu.cs">
+    <Compile Include="UI\formprofile.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\formMenu.Designer.cs">
-      <DependentUpon>formMenu.cs</DependentUpon>
+    <Compile Include="UI\formprofile.Designer.cs">
+      <DependentUpon>formprofile.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\formmessage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\formmessage.Designer.cs">
+      <DependentUpon>formmessage.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\formperday.cs">
       <SubType>Form</SubType>
@@ -287,18 +293,6 @@
     </Compile>
     <Compile Include="UI\formtreatmill.Designer.cs">
       <DependentUpon>formtreatmill.cs</DependentUpon>
-    </Compile>
-    <Compile Include="UI\profile1.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="UI\profile1.Designer.cs">
-      <DependentUpon>profile1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="profile.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="profile.Designer.cs">
-      <DependentUpon>profile.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -353,14 +347,14 @@
     <EmbeddedResource Include="admin.resx">
       <DependentUpon>admin.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="coach.resx">
-      <DependentUpon>coach.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form2.resx">
       <DependentUpon>Form2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form3.resx">
+      <DependentUpon>Form3.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="loadingscreen.resx">
       <DependentUpon>loadingscreen.cs</DependentUpon>
@@ -398,8 +392,11 @@
     <EmbeddedResource Include="UI\formMembership.resx">
       <DependentUpon>formMembership.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\formMenu.resx">
-      <DependentUpon>formMenu.cs</DependentUpon>
+    <EmbeddedResource Include="UI\formprofile.resx">
+      <DependentUpon>formprofile.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\formmessage.resx">
+      <DependentUpon>formmessage.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\formperday.resx">
       <DependentUpon>formperday.cs</DependentUpon>
@@ -412,12 +409,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\formtreatmill.resx">
       <DependentUpon>formtreatmill.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UI\profile1.resx">
-      <DependentUpon>profile1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="profile.resx">
-      <DependentUpon>profile.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

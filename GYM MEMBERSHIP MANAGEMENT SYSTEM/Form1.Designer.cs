@@ -33,6 +33,7 @@
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.guna2ToggleSwitch1 = new Guna.UI2.WinForms.Guna2ToggleSwitch();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.BntLog_in = new Guna.UI2.WinForms.Guna2Button();
             this.txtpassword = new System.Windows.Forms.TextBox();
             this.txtusername = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -41,7 +42,6 @@
             this.passorange = new System.Windows.Forms.PictureBox();
             this.picblack = new System.Windows.Forms.PictureBox();
             this.picorange = new System.Windows.Forms.PictureBox();
-            this.bunifuThinButton21 = new Bunifu.Framework.UI.BunifuThinButton2();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.SignUp = new System.Windows.Forms.LinkLabel();
@@ -68,6 +68,7 @@
             // 
             // guna2ToggleSwitch1
             // 
+            this.guna2ToggleSwitch1.BackColor = System.Drawing.Color.White;
             this.guna2ToggleSwitch1.CheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.guna2ToggleSwitch1.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.guna2ToggleSwitch1.CheckedState.InnerBorderColor = System.Drawing.Color.White;
@@ -89,6 +90,7 @@
             // 
             this.panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.BntLog_in);
             this.panel1.Controls.Add(this.txtpassword);
             this.panel1.Controls.Add(this.txtusername);
             this.panel1.Controls.Add(this.label4);
@@ -97,7 +99,6 @@
             this.panel1.Controls.Add(this.passorange);
             this.panel1.Controls.Add(this.picblack);
             this.panel1.Controls.Add(this.picorange);
-            this.panel1.Controls.Add(this.bunifuThinButton21);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.guna2ToggleSwitch1);
             this.panel1.Controls.Add(this.label1);
@@ -109,13 +110,31 @@
             this.panel1.Size = new System.Drawing.Size(471, 491);
             this.panel1.TabIndex = 13;
             // 
+            // BntLog_in
+            // 
+            this.BntLog_in.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("BntLog_in.BackgroundImage")));
+            this.BntLog_in.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.BntLog_in.CheckedState.Parent = this.BntLog_in;
+            this.BntLog_in.CustomImages.Parent = this.BntLog_in;
+            this.BntLog_in.FillColor = System.Drawing.Color.Transparent;
+            this.BntLog_in.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.BntLog_in.ForeColor = System.Drawing.Color.Transparent;
+            this.BntLog_in.HoverState.Parent = this.BntLog_in;
+            this.BntLog_in.Location = new System.Drawing.Point(135, 323);
+            this.BntLog_in.Name = "BntLog_in";
+            this.BntLog_in.PressedColor = System.Drawing.Color.Transparent;
+            this.BntLog_in.ShadowDecoration.Parent = this.BntLog_in;
+            this.BntLog_in.Size = new System.Drawing.Size(205, 45);
+            this.BntLog_in.TabIndex = 156;
+            this.BntLog_in.Click += new System.EventHandler(this.BntLog_in_Click);
+            // 
             // txtpassword
             // 
             this.txtpassword.BackColor = System.Drawing.Color.White;
             this.txtpassword.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtpassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtpassword.ForeColor = System.Drawing.Color.Black;
-            this.txtpassword.Location = new System.Drawing.Point(57, 272);
+            this.txtpassword.Location = new System.Drawing.Point(60, 276);
             this.txtpassword.Name = "txtpassword";
             this.txtpassword.PasswordChar = '*';
             this.txtpassword.Size = new System.Drawing.Size(344, 19);
@@ -127,7 +146,7 @@
             this.txtusername.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtusername.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtusername.ForeColor = System.Drawing.Color.Black;
-            this.txtusername.Location = new System.Drawing.Point(57, 203);
+            this.txtusername.Location = new System.Drawing.Point(63, 206);
             this.txtusername.Name = "txtusername";
             this.txtusername.Size = new System.Drawing.Size(344, 19);
             this.txtusername.TabIndex = 152;
@@ -195,33 +214,6 @@
             this.picorange.TabIndex = 25;
             this.picorange.TabStop = false;
             // 
-            // bunifuThinButton21
-            // 
-            this.bunifuThinButton21.ActiveBorderThickness = 1;
-            this.bunifuThinButton21.ActiveCornerRadius = 20;
-            this.bunifuThinButton21.ActiveFillColor = System.Drawing.Color.OrangeRed;
-            this.bunifuThinButton21.ActiveForecolor = System.Drawing.Color.White;
-            this.bunifuThinButton21.ActiveLineColor = System.Drawing.Color.OrangeRed;
-            this.bunifuThinButton21.BackColor = System.Drawing.Color.White;
-            this.bunifuThinButton21.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("bunifuThinButton21.BackgroundImage")));
-            this.bunifuThinButton21.ButtonText = "ThinButton";
-            this.bunifuThinButton21.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.bunifuThinButton21.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bunifuThinButton21.ForeColor = System.Drawing.Color.DarkOrange;
-            this.bunifuThinButton21.IdleBorderThickness = 1;
-            this.bunifuThinButton21.IdleCornerRadius = 20;
-            this.bunifuThinButton21.IdleFillColor = System.Drawing.Color.White;
-            this.bunifuThinButton21.IdleForecolor = System.Drawing.Color.SeaGreen;
-            this.bunifuThinButton21.IdleLineColor = System.Drawing.Color.SeaGreen;
-            this.bunifuThinButton21.Location = new System.Drawing.Point(108, 320);
-            this.bunifuThinButton21.Margin = new System.Windows.Forms.Padding(5);
-            this.bunifuThinButton21.Name = "bunifuThinButton21";
-            this.bunifuThinButton21.Size = new System.Drawing.Size(268, 64);
-            this.bunifuThinButton21.TabIndex = 24;
-            this.bunifuThinButton21.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.bunifuThinButton21.Click += new System.EventHandler(this.bunifuThinButton21_Click_2);
-            this.bunifuThinButton21.MouseEnter += new System.EventHandler(this.bunifuThinButton21_MouseEnter);
-            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -250,7 +242,7 @@
             this.SignUp.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SignUp.ForeColor = System.Drawing.Color.Transparent;
             this.SignUp.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.SignUp.Location = new System.Drawing.Point(232, 393);
+            this.SignUp.Location = new System.Drawing.Point(236, 373);
             this.SignUp.Name = "SignUp";
             this.SignUp.Size = new System.Drawing.Size(62, 18);
             this.SignUp.TabIndex = 7;
@@ -263,7 +255,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(147, 391);
+            this.label3.Location = new System.Drawing.Point(150, 371);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(89, 20);
             this.label3.TabIndex = 6;
@@ -273,7 +265,7 @@
             // 
             this.pictureBox2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox2.BackgroundImage")));
             this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pictureBox2.Location = new System.Drawing.Point(87, 16);
+            this.pictureBox2.Location = new System.Drawing.Point(83, 16);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(300, 161);
             this.pictureBox2.TabIndex = 0;
@@ -318,7 +310,7 @@
             // button1
             // 
             this.button1.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button1.ForeColor = System.Drawing.Color.Transparent;
             this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
             this.button1.Location = new System.Drawing.Point(1171, 12);
@@ -371,7 +363,6 @@
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox pictureBox6;
-        private Bunifu.Framework.UI.BunifuThinButton2 bunifuThinButton21;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.PictureBox passblack;
@@ -382,6 +373,7 @@
         private System.Windows.Forms.TextBox txtpassword;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button1;
+        private Guna.UI2.WinForms.Guna2Button BntLog_in;
     }
 }
 

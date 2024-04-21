@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.UI;
 using System.Windows.Forms;
 
 namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM
@@ -15,6 +16,7 @@ namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM
         public admin()
         {
             InitializeComponent();
+            
         }
 
         private void guna2Button1_Click(object sender, EventArgs e)
@@ -51,8 +53,8 @@ namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM
         private void bunifuCustomLabel4_Click(object sender, EventArgs e)
         {
             userControl31.Hide();
-            userControl41.Show();
-            userControl41.BringToFront();
+            userControl42.Show();
+            userControl42.BringToFront();
         }
 
         private void bunifuFlatButton1_Click(object sender, EventArgs e)
@@ -85,15 +87,36 @@ namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM
 
         private void bunifuCustomLabel5_Click(object sender, EventArgs e)
         {
+           
             userControl01.Show();
             userControl01.BringToFront();   
         }
 
         private void bunifuCustomLabel6_Click(object sender, EventArgs e)
         {
-            userControl41.Hide();
+            userControl42.Hide();
             userControl51.Show();
             userControl51.BringToFront();   
+        }
+
+        private void userControl51_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void userControl31_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void userControl01_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void userControl42_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

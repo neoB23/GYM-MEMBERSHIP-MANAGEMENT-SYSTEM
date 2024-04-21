@@ -21,6 +21,7 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 using BCrypt.Net;
 using System.Security.Cryptography;
 using SYSTEM_GYM;
+using static SYSTEM_GYM.formprofile;
 
 
 
@@ -79,8 +80,8 @@ namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM
         private void SignUp_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             this.Hide();
-            Form2 Form2 = new Form2();
-            Form2.Show();
+            Form3 Form3 = new Form3();
+            Form3.Show();
         }
 
         private void bunifuThinButton21_Click_1(object sender, EventArgs e)
@@ -118,98 +119,7 @@ namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM
 
         private void bunifuThinButton21_Click_2(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(txtusername.Text) || string.IsNullOrEmpty(txtpassword.Text))
-            {
-                MessageBox.Show("Please enter both username and password.", "Error");
-                return;
-            }
-
-            try
-            {
-                con.Open();
-                sql = "SELECT * FROM admin WHERE username = @username";
-                cmd = new MySqlCommand(sql, con);
-                cmd.Parameters.AddWithValue("@username", txtusername.Text);
-                da = new MySqlDataAdapter(cmd);
-                dt = new DataTable();
-                da.Fill(dt);
-
-                if (dt.Rows.Count > 0)
-                {
-                    string passwordFromDatabase = dt.Rows[0]["password"].ToString();
-                    if (BCrypt.Net.BCrypt.Verify(txtpassword.Text, passwordFromDatabase))
-                    {
-                        MessageBox.Show("Admin Login Successful");
-                        sql = "INSERT INTO login_history_admin (username, time_in) VALUES (@username, NOW())";
-                        cmd = new MySqlCommand(sql, con);
-                        cmd.Parameters.AddWithValue("@username", txtusername.Text);
-                        cmd.ExecuteNonQuery();
-                        this.Hide();
-                        admin admin = new admin();
-                        admin.Show();
-                    }
-                    else
-                    {
-                        MessageBox.Show("Incorrect Password. Please try again.");
-                    }
-                }
-                else
-                {
-                    sql = "SELECT * FROM user WHERE username = @username";
-                    cmd = new MySqlCommand(sql, con);
-                    cmd.Parameters.AddWithValue("@username", txtusername.Text);
-                    da = new MySqlDataAdapter(cmd);
-                    dt = new DataTable();
-                    da.Fill(dt);
-
-
-                    if (dt.Rows.Count > 0)
-                    {
-                        string passwordFromDatabase = dt.Rows[0]["password"].ToString();
-                        if (BCrypt.Net.BCrypt.Verify(txtpassword.Text, passwordFromDatabase))
-                        {
-                            MessageBox.Show("User Login Successful");
-                            sql = "INSERT INTO login_history (username, time_in) VALUES (@username, NOW())";
-                            cmd = new MySqlCommand(sql, con);
-                            cmd.Parameters.AddWithValue("@username", txtusername.Text);
-                            cmd.ExecuteNonQuery();
-                            this.Hide();
-                            userchoice userchoice = new userchoice();
-                            userchoice.Show();
-
-                        }
-                        else
-                        {
-                            MessageBox.Show("Incorrect Password. Please try again.");
-                        }
-                    }
-                    else
-                    {
-                        MessageBox.Show("Username not found. Please try again.");
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error: " + ex.Message);
-            }
-            finally
-            {
-                con.Close();
-            }
         }
-
-
-
-
-
-
-
-        /*private string Hash(string input)
-        {
-            // Generate a salt and hash the password
-            return BCrypt.Net.BCrypt.HashPassword(input, BCrypt.Net.BCrypt.GenerateSalt());
-        }*/
 
         private void picblack_Click(object sender, EventArgs e)
         {
@@ -260,5 +170,99 @@ namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM
         {
             WindowState = FormWindowState.Minimized;
         }
+        private void BntLog_in_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtusername.Text) || string.IsNullOrEmpty(txtpassword.Text))
+            {
+                MessageBox.Show("Please enter both username and password.", "Error");
+                return;
+            }
+
+            try
+            {
+                con.Open();
+                sql = "SELECT * FROM admin WHERE adminName = @adminName";
+                cmd = new MySqlCommand(sql, con);
+                cmd.Parameters.AddWithValue("@adminName", txtusername.Text);
+                da = new MySqlDataAdapter(cmd);
+                dt = new DataTable();
+                da.Fill(dt);
+
+                if (dt.Rows.Count > 0)
+                {
+                    string passwordFromDatabase = dt.Rows[0]["adminPassword"].ToString();
+                    if (BCrypt.Net.BCrypt.Verify(txtpassword.Text, passwordFromDatabase))
+                    {
+                        MessageBox.Show("Admin Login Successful");
+                        SessionManager.SetLoggedInUsername(txtusername.Text);
+                        sql = "INSERT INTO login_history_admin (username, time_in) VALUES (@username, NOW())";
+                        cmd = new MySqlCommand(sql, con);
+                        cmd.Parameters.AddWithValue("@username", txtusername.Text);
+                        cmd.ExecuteNonQuery();
+                        this.Hide();
+                        admin admin = new admin();
+                        admin.Show();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Incorrect Password. Please try again.");
+                    }
+                }
+                else
+                {
+                    sql = "SELECT * FROM user_account WHERE userUserName = @userUserName";
+                    cmd = new MySqlCommand(sql, con);
+                    cmd.Parameters.AddWithValue("@userUserName", txtusername.Text);
+                    da = new MySqlDataAdapter(cmd);
+                    dt = new DataTable();
+                    da.Fill(dt);
+
+
+                    if (dt.Rows.Count > 0)
+                    {
+                        string passwordFromDatabase = dt.Rows[0]["userPassword"].ToString();
+                        if (BCrypt.Net.BCrypt.Verify(txtpassword.Text, passwordFromDatabase))
+                        {
+                            MessageBox.Show("User Login Successful");
+                            sql = "INSERT INTO login_history (userUserName, userTime_In) VALUES (@userUserName, NOW())";
+                            cmd = new MySqlCommand(sql, con);
+                            cmd.Parameters.AddWithValue("@userUserName", txtusername.Text);
+                            cmd.ExecuteNonQuery();
+                            this.Hide();
+                            userchoice userchoice = new userchoice();
+                            userchoice.Show();
+
+                        }
+                        else
+                        {
+                            MessageBox.Show("Incorrect Password. Please try again.");
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Username not found. Please try again.");
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message);
+            }
+            finally
+            {
+                con.Close();
+            }
+        }
+        public static class UserSession
+        {
+            public static string LoggedInUsername { get; set; }
+        }
+
+
+        /*private string Hash(string input)
+        {
+            // Generate a salt and hash the password
+            return BCrypt.Net.BCrypt.HashPassword(input, BCrypt.Net.BCrypt.GenerateSalt());
+        }*/
     }
 }

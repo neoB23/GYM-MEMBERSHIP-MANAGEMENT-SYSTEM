@@ -47,9 +47,9 @@ namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM
         {
             if (!string.IsNullOrEmpty(txtfirstname.Text))
             {
-                string sql = "DELETE FROM coach WHERE firstname=@firstname";
+                string sql = "DELETE FROM coach WHERE coachFirstName=@coachFirstNam";
                 cmd = new MySqlCommand(sql, con);
-                cmd.Parameters.AddWithValue("@firstname", txtfirstname.Text); 
+                cmd.Parameters.AddWithValue("@coachFirstNam", txtfirstname.Text);
                 con.Open();
                 int rowsAffected = cmd.ExecuteNonQuery();
                 con.Close();
@@ -91,23 +91,6 @@ namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM
                 return;
             }
 
-            // Check if username is available
-            MySqlCommand cmd1 = new MySqlCommand("SELECT * FROM coach WHERE firstname = @firstname", con);
-            cmd1.Parameters.AddWithValue("@firstname", txtfirstname.Text);
-            con.Open();
-            bool userExists = false;
-            using (var dr1 = cmd1.ExecuteReader())
-            {
-                userExists = dr1.HasRows;
-                if (userExists)
-                {
-                    MessageBox.Show("Username not available!", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    con.Close();
-                    return;
-                }
-            }
-            con.Close();
-
             // Validate password complexity and length
             string passwordPattern = @"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^\da-zA-Z]).{8,}$";
             int minimumPasswordLength = 8;
@@ -118,19 +101,19 @@ namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM
             }
 
             // Hash the password
-            string hashedPassword = (txtpassword.Text);
+            string hashedPassword = BCrypt.Net.BCrypt.HashPassword(txtpassword.Text);
 
-            // Insert user data into the database
-            MySqlCommand cmd = new MySqlCommand("INSERT INTO coach(FirstName, LastName, UserName, Password, DateofBirth, `contactnumber`, Experience, Gender) VALUES(@FirstName, @LastName, @username, @password, @dateofbirth, @contactnum, @exp, @gender)", con);
+            // Insert coach data into the coach table
+            MySqlCommand cmd = new MySqlCommand("INSERT INTO Coach(coachFirstName, coachLastName, coachUsername, coachPassword, coachDateofBirth, coachContactnumber, coachExperience, coachGender) VALUES(@coachFirstName, @coachLastName, @coachUsername, @coachPassword, @coachDateofBirth, @coachContactnumber, @coachExperience, @coachGender)", con);
             con.Open();
-            cmd.Parameters.AddWithValue("@FirstName", txtfirstname.Text);
-            cmd.Parameters.AddWithValue("@LastName", txtlastname.Text);
-            cmd.Parameters.AddWithValue("@username", txtusername.Text);
-            cmd.Parameters.AddWithValue("@password", hashedPassword);
-            cmd.Parameters.AddWithValue("@dateofbirth", timepicker.Value);
-            cmd.Parameters.AddWithValue("@contactnum", txtphonenumber.Text);
-            cmd.Parameters.AddWithValue("@exp", txtexp.Text);
-            cmd.Parameters.AddWithValue("@gender", cmbgender.SelectedItem.ToString());
+            cmd.Parameters.AddWithValue("@coachFirstName", txtfirstname.Text);
+            cmd.Parameters.AddWithValue("@coachLastName", txtlastname.Text);
+            cmd.Parameters.AddWithValue("@coachUsername", txtusername.Text);
+            cmd.Parameters.AddWithValue("@coachPassword", hashedPassword);
+            cmd.Parameters.AddWithValue("@coachDateofBirth", timepicker.Value);
+            cmd.Parameters.AddWithValue("@coachContactnumber", txtphonenumber.Text);
+            cmd.Parameters.AddWithValue("@coachExperience", txtexp.Text);
+            cmd.Parameters.AddWithValue("@coachGender", cmbgender.SelectedItem.ToString());
             cmd.ExecuteNonQuery();
             con.Close();
 
@@ -138,35 +121,43 @@ namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM
             DisplayData();
             ClearData();
         }
+
+
+
+
+
+
         private void dataGridView1_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             if (e.RowIndex >= 0 && e.RowIndex < dataGridView2.Rows.Count)
             {
-                txtfirstname.Text = dataGridView2.Rows[e.RowIndex].Cells["firstname"].Value?.ToString() ?? "";
-                txtlastname.Text = dataGridView2.Rows[e.RowIndex].Cells["lastname"].Value?.ToString();
-                txtusername.Text = dataGridView2.Rows[e.RowIndex].Cells["username"].Value?.ToString();
-                txtpassword.Text = dataGridView2.Rows[e.RowIndex].Cells["password"].Value?.ToString();
+                txtfirstname.Text = dataGridView2.Rows[e.RowIndex].Cells["coachFirstName"].Value?.ToString() ?? "";
+                txtlastname.Text = dataGridView2.Rows[e.RowIndex].Cells["coachLastName"].Value?.ToString();
+                txtusername.Text = dataGridView2.Rows[e.RowIndex].Cells["coachUsername"].Value?.ToString();
+                txtpassword.Text = dataGridView2.Rows[e.RowIndex].Cells["coachPassword"].Value?.ToString();
 
-                if (DateTime.TryParse(dataGridView2.Rows[e.RowIndex].Cells["dateofbirth"].Value?.ToString(), out DateTime dob))
+                if (DateTime.TryParse(dataGridView2.Rows[e.RowIndex].Cells["coachDateofBirth"].Value?.ToString(), out DateTime dob))
                     timepicker.Value = dob;
-                txtphonenumber.Text = dataGridView2.Rows[e.RowIndex].Cells["contactnumber"].Value?.ToString();
-                txtexp.Text = dataGridView2.Rows[e.RowIndex].Cells["experience"].Value?.ToString();
+                txtphonenumber.Text = dataGridView2.Rows[e.RowIndex].Cells["coachContactnumber"].Value?.ToString();
+                txtexp.Text = dataGridView2.Rows[e.RowIndex].Cells["coachExperience"].Value?.ToString();
 
-                if (dataGridView2.Columns.Contains("gender") && dataGridView2.Rows[e.RowIndex].Cells["gender"].Value != null)
-                    cmbgender.SelectedItem = dataGridView2.Rows[e.RowIndex].Cells["gender"].Value.ToString();
+                if (dataGridView2.Columns.Contains("coachGender") && dataGridView2.Rows[e.RowIndex].Cells["coachGender"].Value != null)
+                    cmbgender.SelectedItem = dataGridView2.Rows[e.RowIndex].Cells["coachGender"].Value.ToString();
                 else
                     cmbgender.SelectedItem = null;
             }
         }
+
         private void DisplayData()
         {
-            string sql = "SELECT firstname, lastname, username, password, dateofbirth, contactnumber, experience, gender FROM coach"; // Changed column names
+            string sql = "SELECT coachFirstName, coachLastName, coachUsername, coachPassword, coachDateofBirth, coachContactnumber, coachExperience, coachGender FROM Coach";
             cmd = new MySqlCommand(sql, con);
             adapt = new MySqlDataAdapter(cmd);
             DataTable dt = new DataTable();
             adapt.Fill(dt);
             dataGridView2.DataSource = dt;
         }
+
 
         // Clears the Data  
         private void ClearData()
@@ -196,17 +187,17 @@ namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM
                 !string.IsNullOrWhiteSpace(txtexp.Text) &&
                 cmbgender.SelectedItem != null)
             {
-                string sql = "UPDATE coach SET lastname = @LastName, username = @username, password = @password, dateofbirth = @dateofbirth, contactnumber = @contactnum, experience = @exp, gender = @gender WHERE firstname = @FirstName";
+                string sql = "UPDATE coach SET coachLastName = @coachLastName, coachUsername = @coachUsername, coachPassword = @coachPassword, coachDateofBirth = @coachDateofBirth, coachContactnumber = @coachContactnumber, coachExperience = @coachExperience, coachGender = @coachGender WHERE coachFirstName = @coachFirstName";
                 cmd = new MySqlCommand(sql, con);
-                cmd.Parameters.AddWithValue("@LastName", txtlastname.Text); // Set last name first
-                cmd.Parameters.AddWithValue("@username", txtusername.Text);
+                cmd.Parameters.AddWithValue("@coachLastName", txtlastname.Text); // Set last name first
+                cmd.Parameters.AddWithValue("@coachUsername", txtusername.Text);
                 string hashedPassword = BCrypt.Net.BCrypt.HashPassword(txtpassword.Text);
-                cmd.Parameters.AddWithValue("@password", hashedPassword);
-                cmd.Parameters.AddWithValue("@dateofbirth", timepicker.Value);
-                cmd.Parameters.AddWithValue("@contactnum", txtphonenumber.Text);
-                cmd.Parameters.AddWithValue("@exp", txtexp.Text);
-                cmd.Parameters.AddWithValue("@gender", cmbgender.SelectedItem.ToString());
-                cmd.Parameters.AddWithValue("@FirstName", txtfirstname.Text); // Set first name last
+                cmd.Parameters.AddWithValue("@coachPassword", hashedPassword);
+                cmd.Parameters.AddWithValue("@coachDateofBirth", timepicker.Value);
+                cmd.Parameters.AddWithValue("@coachContactnumber", txtphonenumber.Text);
+                cmd.Parameters.AddWithValue("@coachExperience", txtexp.Text);
+                cmd.Parameters.AddWithValue("@coachGender", cmbgender.SelectedItem.ToString());
+                cmd.Parameters.AddWithValue("@coachFirstName", txtfirstname.Text); // Set first name last
                 con.Open();
                 int rowsAffected = cmd.ExecuteNonQuery();
                 con.Close();
@@ -228,12 +219,8 @@ namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM
         }
 
 
+
         private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
-        private void label4_Click(object sender, EventArgs e)
         {
 
         }
@@ -244,11 +231,6 @@ namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM
         }
 
         private void txtexp_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void pictureBox2_Click(object sender, EventArgs e)
         {
 
         }
@@ -267,10 +249,52 @@ namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM
         {
 
         }
-       /* private string Hash(string input)
+
+        private void bunifuTextbox1_OnTextChange(object sender, EventArgs e)
         {
-            // Generate a salt and hash the password
-            return BCrypt.Net.BCrypt.HashPassword(input, BCrypt.Net.BCrypt.GenerateSalt());
-        }*/
+            string searchText = bunifuTextbox1.text.Trim();
+            SearchData(searchText);
+        }
+
+        private void bunifuTextbox1_KeyPress(object sender, EventArgs e)
+        {
+
+        }
+        private void SearchData(string searchText)
+        {
+            string sql = "SELECT coachFirstName, coachLastName, coachUsername, coachPassword, coachDateofBirth, coachContactnumber, coachExperience, coachGender FROM Coach WHERE coachFirstName LIKE @searchText OR coachLastName LIKE @searchText OR coachUsername LIKE @searchText";
+            cmd = new MySqlCommand(sql, con);
+            cmd.Parameters.AddWithValue("@searchText", "%" + searchText + "%");
+            adapt = new MySqlDataAdapter(cmd);
+            DataTable dt = new DataTable();
+            adapt.Fill(dt);
+            dataGridView2.DataSource = dt;
+        }
+
+        private void bunifuTextbox1_Enter(object sender, EventArgs e)
+        {
+            if (bunifuTextbox1.Text == "Search for username")
+            {
+                bunifuTextbox1.Text = "";
+                bunifuTextbox1.ForeColor = Color.Orange;
+            }
+        }
+
+        private void bunifuTextbox1_Leave(object sender, EventArgs e)
+        {
+            // Check if the search box is currently empty
+            if (string.IsNullOrWhiteSpace(bunifuTextbox1.Text))
+            {
+                // If it's empty, restore the default search text and change the color to silver
+                bunifuTextbox1.Text = "Search for username";
+                bunifuTextbox1.ForeColor = Color.Silver;
+            }
+        }
+
+        /* private string Hash(string input)
+{
+// Generate a salt and hash the password
+return BCrypt.Net.BCrypt.HashPassword(input, BCrypt.Net.BCrypt.GenerateSalt());
+}*/
     }
 }

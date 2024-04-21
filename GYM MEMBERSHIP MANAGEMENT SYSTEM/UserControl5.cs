@@ -44,7 +44,7 @@ namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM
         }
         private void DisplayData()
         {
-            string sql = "SELECT id, username, password, email, firstname, lastname, createdat, address, contactnumber FROM admin"; // Changed column names
+            string sql = "SELECT Admin_id, adminName, adminPassword, adminEmail, adminFirstName, adminLastName, admin_CreatedDate, adminAddress, adminContactNumber FROM admin"; // Changed column names
             cmd = new MySqlCommand(sql, con);
             adapt = new MySqlDataAdapter(cmd);
             DataTable dt = new DataTable();
@@ -62,23 +62,22 @@ namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM
             txtpassword.Text = "";
             txtaddress.Text = "";
             txtcontactnumber.Text = "";
-
-
         }
+
         private void dataGridView2_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             if (e.RowIndex >= 0 && e.RowIndex < dataGridView2.Rows.Count)
             {
-                txtfirstname.Text = dataGridView2.Rows[e.RowIndex].Cells["firstname"].Value?.ToString() ?? "";
-                txtlastname.Text = dataGridView2.Rows[e.RowIndex].Cells["lastname"].Value?.ToString();
-                txtusername.Text = dataGridView2.Rows[e.RowIndex].Cells["username"].Value?.ToString();
-                txtpassword.Text = dataGridView2.Rows[e.RowIndex].Cells["password"].Value?.ToString();
-                txtemail.Text = dataGridView2.Rows[e.RowIndex].Cells["email"].Value?.ToString();
-                txtcontactnumber.Text = dataGridView2.Rows[e.RowIndex].Cells["contactnumber"].Value?.ToString();
-                txtaddress.Text = dataGridView2.Rows[e.RowIndex].Cells["address"].Value?.ToString();
-                
+                txtfirstname.Text = dataGridView2.Rows[e.RowIndex].Cells["adminFirstName"].Value?.ToString() ?? "";
+                txtlastname.Text = dataGridView2.Rows[e.RowIndex].Cells["adminLastName"].Value?.ToString();
+                txtusername.Text = dataGridView2.Rows[e.RowIndex].Cells["adminName"].Value?.ToString();
+                txtpassword.Text = dataGridView2.Rows[e.RowIndex].Cells["adminPassword"].Value?.ToString();
+                txtemail.Text = dataGridView2.Rows[e.RowIndex].Cells["adminEmail"].Value?.ToString();
+                txtcontactnumber.Text = dataGridView2.Rows[e.RowIndex].Cells["adminContactNumber"].Value?.ToString();
+                txtaddress.Text = dataGridView2.Rows[e.RowIndex].Cells["adminAddress"].Value?.ToString();
             }
         }
+
 
         private void UserControl5_Load(object sender, EventArgs e)
         {
@@ -99,19 +98,20 @@ namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM
             {
                 try
                 {
-                    string sql = "UPDATE admin SET username = @username, password = @password, email = @email, lastname = @lastname, address = @address, contactnumber = @contactnumber WHERE firstname = @FirstName";
+                    string sql = "UPDATE Admin SET adminName = @adminName, adminPassword = @adminPassword, adminEmail = @adminEmail, adminLastName = @adminLastName, adminAddress = @adminAddress, adminContactNumber = @adminContactNumber WHERE adminFirstName = @adminFirstName";
                     cmd = new MySqlCommand(sql, con);
-                    cmd.Parameters.AddWithValue("@FirstName", txtfirstname.Text);
-                    cmd.Parameters.AddWithValue("@LastName", txtlastname.Text);
-                    cmd.Parameters.AddWithValue("@username", txtusername.Text);
+                    cmd.Parameters.AddWithValue("@adminFirstName", txtfirstname.Text);
+                    cmd.Parameters.AddWithValue("@adminLastName", txtlastname.Text);
+                    cmd.Parameters.AddWithValue("@adminName", txtusername.Text);
 
                     // Hash the password before updating it
                     string hashedPassword = BCrypt.Net.BCrypt.HashPassword(txtpassword.Text);
-                    cmd.Parameters.AddWithValue("@password", hashedPassword);
+                    cmd.Parameters.AddWithValue("@adminPassword", hashedPassword);
 
-                    cmd.Parameters.AddWithValue("@email", txtemail.Text);
-                    cmd.Parameters.AddWithValue("@address", txtaddress.Text);
-                    cmd.Parameters.AddWithValue("@contactnumber", txtcontactnumber.Text);
+                    cmd.Parameters.AddWithValue("@adminEmail", txtemail.Text);
+                    cmd.Parameters.AddWithValue("@adminAddress", txtaddress.Text);
+                    cmd.Parameters.AddWithValue("@adminContactNumber", txtcontactnumber.Text);
+                    cmd.Parameters.AddWithValue("@admin_CreatedDate", DateTime.Now); // Assuming admin_CreatedDate is the current date/time
                     con.Open();
                     int rowsAffected = cmd.ExecuteNonQuery();
                     con.Close();
@@ -138,25 +138,43 @@ namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM
         }
 
 
+
         private void btnDelete_Click(object sender, EventArgs e)
         {
             if (!string.IsNullOrEmpty(txtfirstname.Text))
             {
-                string sql = "DELETE FROM admin WHERE firstname=@firstname";
+                string sql = "DELETE FROM admin WHERE adminFirstName=@adminFirstName";
                 cmd = new MySqlCommand(sql, con);
-                cmd.Parameters.AddWithValue("@firstname", txtfirstname.Text);
-                con.Open();
-                int rowsAffected = cmd.ExecuteNonQuery();
-                con.Close();
-                if (rowsAffected > 0)
+                cmd.Parameters.AddWithValue("@adminFirstName", txtfirstname.Text);
+                try
                 {
-                    MessageBox.Show("admin deleted successfully!", "DELETE", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    DisplayData();
-                    ClearData();
+                    if (con.State != ConnectionState.Open)
+                    {
+                        con.Open();
+                    }
+                    int rowsAffected = cmd.ExecuteNonQuery();
+                    con.Close();
+                    if (rowsAffected > 0)
+                    {
+                        MessageBox.Show("admin deleted successfully!", "DELETE", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        DisplayData();
+                        ClearData();
+                    }
+                    else
+                    {
+                        MessageBox.Show("No admin found with this name!", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
-                else
+                catch (MySqlException ex)
                 {
-                    MessageBox.Show("No admin found with this name!", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Error: " + ex.Message);
+                }
+                finally
+                {
+                    if (con.State == ConnectionState.Open)
+                    {
+                        con.Close();
+                    }
                 }
             }
             else
@@ -165,9 +183,9 @@ namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM
             }
         }
 
+
         private void guna2GradientButton1_Click(object sender, EventArgs e)
         {
-            // Check if all required fields are filled
             if (string.IsNullOrWhiteSpace(txtusername.Text) ||
                 string.IsNullOrWhiteSpace(txtaddress.Text) ||
                 string.IsNullOrWhiteSpace(txtcontactnumber.Text) ||
@@ -180,110 +198,69 @@ namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM
                 return;
             }
 
-            MySqlCommand cmd1 = new MySqlCommand("SELECT * FROM admin WHERE FirstName = @firstname", con);
-            cmd1.Parameters.AddWithValue("@firstname", txtfirstname.Text);
-            con.Open();
-            bool userExists = false;
-            string passwordFromDatabase = null; // Variable to store password from database
-            using (var dr1 = cmd1.ExecuteReader())
-            {
-                if (dr1.Read())
-                {
-                    userExists = true;
-                    passwordFromDatabase = dr1["password"].ToString(); // Retrieve password from database
-                }
-            }
-            con.Close();
-
-            if (userExists)
-            {
-                // Check if username already exists
-                MessageBox.Show("Username not available!", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
-            string passwordPattern = @"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^\da-zA-Z]).{8,}$";
-            int minimumUsernameLength = 6;
-            int minimumPasswordLength = 8;
-            int minimumFirstNameLength = 3;
-            int minimumLastNameLength = 3;
-            int minimumEmailadLength = 4;
-            int minimumPhoneNumberLength = 12;
-            int minimumAddressLength = 6;
-
-            // Perform validation checks
-            if (txtaddress.Text.Length < minimumAddressLength)
-            {
-                MessageBox.Show($"Address number must be at least {minimumAddressLength} characters long", "Error");
-                return;
-            }
-            if (txtcontactnumber.Text.Length < minimumPhoneNumberLength)
-            {
-                MessageBox.Show($"Phone number must be at least {minimumPhoneNumberLength} characters long", "Error");
-                return;
-            }
-            if (!IsNumeric(txtcontactnumber.Text))
-            {
-                MessageBox.Show("Phone number should contain only numeric characters", "Error");
-                return;
-            }
-            if (!txtemail.Text.Contains("@gmail.com"))
-            {
-                MessageBox.Show("Email address should contain '@gmail' symbol", "Error");
-                return;
-            }
-            if (txtemail.Text.Length < minimumEmailadLength)
-            {
-                MessageBox.Show($"Email address must be at least {minimumEmailadLength} characters long", "Error");
-                return;
-            }
-            if (txtusername.Text.Length < minimumUsernameLength)
-            {
-                MessageBox.Show($"Username must be at least {minimumUsernameLength} characters long", "Error");
-                return;
-            }
-            if (txtpassword.Text.Length < minimumPasswordLength)
-            {
-                MessageBox.Show($"Password must be at least {minimumPasswordLength} characters long", "Error");
-                return;
-            }
-            if (!Regex.IsMatch(txtpassword.Text, passwordPattern))
-            {
-                MessageBox.Show("Password must contain at least one uppercase letter, one lowercase letter, one special character, one number, and be at least 8 characters long", "Error");
-                return;
-            }
-            if (txtfirstname.Text.Length < minimumFirstNameLength || txtlastname.Text.Length < minimumLastNameLength)
-            {
-                MessageBox.Show($"First name and Last name must be at least {minimumFirstNameLength} characters long", "Error");
-                return;
-            }
-
             try
             {
+                // Open the connection
+                con.Open();
+
+                // Check if username already exists
+                using (MySqlCommand cmd1 = new MySqlCommand("SELECT * FROM Admin WHERE adminFirstName = @adminFirstName", con))
+                {
+                    cmd1.Parameters.AddWithValue("@adminFirstName", txtfirstname.Text);
+                    bool userExists = false;
+                    using (var dr1 = cmd1.ExecuteReader())
+                    {
+                        userExists = dr1.Read();
+                    }
+
+                    if (userExists)
+                    {
+                        MessageBox.Show("Username not available!", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+                }
+
                 // Hash the password before saving it
                 string hashedPassword = BCrypt.Net.BCrypt.HashPassword(txtpassword.Text);
 
                 // Insert new admin record into the database
-                MySqlCommand cmd = new MySqlCommand("INSERT INTO admin(username, password, email, firstname, lastname, address, contactnumber) VALUES(@username, @password, @email, @firstname, @lastname, @address, @contactnumber)", con);
-                con.Open();
-                cmd.Parameters.AddWithValue("@firstname", txtfirstname.Text);
-                cmd.Parameters.AddWithValue("@lastname", txtlastname.Text);
-                cmd.Parameters.AddWithValue("@username", txtusername.Text);
-                cmd.Parameters.AddWithValue("@password", hashedPassword); // Store hashed password
-                cmd.Parameters.AddWithValue("@email", txtemail.Text);
-                cmd.Parameters.AddWithValue("@address", txtaddress.Text);
-                cmd.Parameters.AddWithValue("@contactnumber", txtcontactnumber.Text);
-                cmd.ExecuteNonQuery();
-                con.Close();
-                MessageBox.Show("Admin added successfully", "SAVE", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                DisplayData();
-                ClearData();
+                using (MySqlCommand cmd = new MySqlCommand("INSERT INTO Admin(adminName, adminPassword, adminEmail, adminFirstName, adminLastName, admin_CreatedDate, adminContactNumber, adminAddress) VALUES(@adminName, @adminPassword, @adminEmail, @adminFirstName, @adminLastName, @admin_CreatedDate, @adminContactNumber, @adminAddress)", con))
+                {
+                    cmd.Parameters.AddWithValue("@adminFirstName", txtfirstname.Text);
+                    cmd.Parameters.AddWithValue("@adminLastName", txtlastname.Text);
+                    cmd.Parameters.AddWithValue("@adminName", txtusername.Text);
+                    cmd.Parameters.AddWithValue("@adminPassword", hashedPassword);
+                    cmd.Parameters.AddWithValue("@adminEmail", txtemail.Text);
+                    cmd.Parameters.AddWithValue("@adminAddress", txtaddress.Text);
+                    cmd.Parameters.AddWithValue("@adminContactNumber", txtcontactnumber.Text);
+                    cmd.Parameters.AddWithValue("@admin_CreatedDate", DateTime.Now);
+                    int rowsAffected = cmd.ExecuteNonQuery();
+
+                    if (rowsAffected > 0)
+                    {
+                        MessageBox.Show("Admin added successfully", "SAVE", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        DisplayData();
+                        ClearData();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Admin could not be added", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
             }
             catch (MySqlException ex)
             {
                 MessageBox.Show("Error: " + ex.Message);
             }
+            finally
+            {
+                // Close the connection
+                con.Close();
+            }
         }
+
+
+
 
 
 

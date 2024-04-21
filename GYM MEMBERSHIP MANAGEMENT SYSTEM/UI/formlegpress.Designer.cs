@@ -30,19 +30,16 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(formlegpress));
-            this.bntbackleg = new System.Windows.Forms.Label();
             this.modaleffecttimer = new System.Windows.Forms.Timer(this.components);
-            this.bntlegpress = new Guna.UI2.WinForms.Guna2Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.bntbacklegpress = new Guna.UI2.WinForms.Guna2Button();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.SuspendLayout();
-            // 
-            // bntbackleg
-            // 
-            this.bntbackleg.AutoSize = true;
-            this.bntbackleg.Location = new System.Drawing.Point(377, 145);
-            this.bntbackleg.Name = "bntbackleg";
-            this.bntbackleg.Size = new System.Drawing.Size(46, 13);
-            this.bntbackleg.TabIndex = 0;
-            this.bntbackleg.Text = "legpress";
             // 
             // modaleffecttimer
             // 
@@ -50,43 +47,95 @@
             this.modaleffecttimer.Interval = 1;
             this.modaleffecttimer.Tick += new System.EventHandler(this.modaleffecttimer_Tick);
             // 
-            // bntlegpress
+            // pictureBox1
             // 
-            this.bntlegpress.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("bntlegpress.BackgroundImage")));
-            this.bntlegpress.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.bntlegpress.CheckedState.Parent = this.bntlegpress;
-            this.bntlegpress.CustomImages.Parent = this.bntlegpress;
-            this.bntlegpress.FillColor = System.Drawing.Color.Transparent;
-            this.bntlegpress.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.bntlegpress.ForeColor = System.Drawing.Color.White;
-            this.bntlegpress.HoverState.Parent = this.bntlegpress;
-            this.bntlegpress.Location = new System.Drawing.Point(340, 204);
-            this.bntlegpress.Name = "bntlegpress";
-            this.bntlegpress.ShadowDecoration.Parent = this.bntlegpress;
-            this.bntlegpress.Size = new System.Drawing.Size(128, 48);
-            this.bntlegpress.TabIndex = 29;
-            this.bntlegpress.Click += new System.EventHandler(this.bntlegpress_Click);
+            this.pictureBox1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.BackgroundImage")));
+            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pictureBox1.Location = new System.Drawing.Point(676, -5);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(949, 802);
+            this.pictureBox1.TabIndex = 30;
+            this.pictureBox1.TabStop = false;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox2.BackgroundImage")));
+            this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pictureBox2.Location = new System.Drawing.Point(24, 73);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(584, 452);
+            this.pictureBox2.TabIndex = 31;
+            this.pictureBox2.TabStop = false;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Century Schoolbook", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(39, 26);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(136, 34);
+            this.label1.TabIndex = 32;
+            this.label1.Text = "Legpress";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
+            // 
+            // bntbacklegpress
+            // 
+            this.bntbacklegpress.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("bntbacklegpress.BackgroundImage")));
+            this.bntbacklegpress.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.bntbacklegpress.CheckedState.Parent = this.bntbacklegpress;
+            this.bntbacklegpress.CustomImages.Parent = this.bntbacklegpress;
+            this.bntbacklegpress.FillColor = System.Drawing.Color.Transparent;
+            this.bntbacklegpress.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.bntbacklegpress.ForeColor = System.Drawing.Color.White;
+            this.bntbacklegpress.HoverState.Parent = this.bntbacklegpress;
+            this.bntbacklegpress.Location = new System.Drawing.Point(45, 715);
+            this.bntbacklegpress.Name = "bntbacklegpress";
+            this.bntbacklegpress.ShadowDecoration.Parent = this.bntbacklegpress;
+            this.bntbacklegpress.Size = new System.Drawing.Size(80, 30);
+            this.bntbacklegpress.TabIndex = 33;
+            this.bntbacklegpress.Click += new System.EventHandler(this.bntbackbarbel_Click);
+            // 
+            // pictureBox3
+            // 
+            this.pictureBox3.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox3.BackgroundImage")));
+            this.pictureBox3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pictureBox3.Location = new System.Drawing.Point(24, 535);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(623, 163);
+            this.pictureBox3.TabIndex = 34;
+            this.pictureBox3.TabStop = false;
+            this.pictureBox3.Click += new System.EventHandler(this.pictureBox3_Click);
             // 
             // formlegpress
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(809, 457);
-            this.Controls.Add(this.bntlegpress);
-            this.Controls.Add(this.bntbackleg);
+            this.BackColor = System.Drawing.Color.White;
+            this.ClientSize = new System.Drawing.Size(1527, 771);
+            this.Controls.Add(this.pictureBox3);
+            this.Controls.Add(this.pictureBox2);
+            this.Controls.Add(this.bntbacklegpress);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.pictureBox1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "formlegpress";
             this.Opacity = 0D;
             this.Text = "formlegpress";
             this.Load += new System.EventHandler(this.formlegpress_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Label bntbackleg;
         private System.Windows.Forms.Timer modaleffecttimer;
-        private Guna.UI2.WinForms.Guna2Button bntlegpress;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.Label label1;
+        private Guna.UI2.WinForms.Guna2Button bntbacklegpress;
+        private System.Windows.Forms.PictureBox pictureBox3;
     }
 }

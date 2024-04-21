@@ -71,7 +71,7 @@
             this.guna2GradientButton1.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.guna2GradientButton1.ForeColor = System.Drawing.Color.Black;
             this.guna2GradientButton1.HoverState.Parent = this.guna2GradientButton1;
-            this.guna2GradientButton1.Location = new System.Drawing.Point(71, 500);
+            this.guna2GradientButton1.Location = new System.Drawing.Point(157, 504);
             this.guna2GradientButton1.Name = "guna2GradientButton1";
             this.guna2GradientButton1.ShadowDecoration.Parent = this.guna2GradientButton1;
             this.guna2GradientButton1.Size = new System.Drawing.Size(120, 40);
@@ -88,7 +88,7 @@
             this.btnDelete.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btnDelete.ForeColor = System.Drawing.Color.Black;
             this.btnDelete.HoverState.Parent = this.btnDelete;
-            this.btnDelete.Location = new System.Drawing.Point(211, 557);
+            this.btnDelete.Location = new System.Drawing.Point(157, 595);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.ShadowDecoration.Parent = this.btnDelete;
             this.btnDelete.Size = new System.Drawing.Size(120, 40);
@@ -105,10 +105,10 @@
             this.btnUpdate.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btnUpdate.ForeColor = System.Drawing.Color.Black;
             this.btnUpdate.HoverState.Parent = this.btnUpdate;
-            this.btnUpdate.Location = new System.Drawing.Point(211, 500);
+            this.btnUpdate.Location = new System.Drawing.Point(158, 550);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.ShadowDecoration.Parent = this.btnUpdate;
-            this.btnUpdate.Size = new System.Drawing.Size(120, 40);
+            this.btnUpdate.Size = new System.Drawing.Size(119, 39);
             this.btnUpdate.TabIndex = 29;
             this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
@@ -128,9 +128,9 @@
             this.cmbmembership.ItemHeight = 28;
             this.cmbmembership.Items.AddRange(new object[] {
             "1 Day Pass",
-            "VIP",
-            "VVIP",
-            "VVVIP"});
+            "Bronze",
+            "Silver",
+            "Gold"});
             this.cmbmembership.ItemsAppearance.Parent = this.cmbmembership;
             this.cmbmembership.Location = new System.Drawing.Point(117, 260);
             this.cmbmembership.Name = "cmbmembership";
@@ -209,7 +209,7 @@
             this.bunifuCustomDataGrid1.Location = new System.Drawing.Point(366, 53);
             this.bunifuCustomDataGrid1.Name = "bunifuCustomDataGrid1";
             this.bunifuCustomDataGrid1.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            this.bunifuCustomDataGrid1.Size = new System.Drawing.Size(526, 566);
+            this.bunifuCustomDataGrid1.Size = new System.Drawing.Size(948, 631);
             this.bunifuCustomDataGrid1.TabIndex = 39;
             this.bunifuCustomDataGrid1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.bunifuCustomDataGrid1_CellContentClick);
             this.bunifuCustomDataGrid1.RowHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.bunifuCustomDataGrid1_RowHeaderMouseClick);
@@ -279,6 +279,7 @@
             this.pictureBox5.Size = new System.Drawing.Size(213, 43);
             this.pictureBox5.TabIndex = 139;
             this.pictureBox5.TabStop = false;
+            this.pictureBox5.Click += new System.EventHandler(this.pictureBox5_Click);
             // 
             // pictureBox1
             // 
@@ -300,7 +301,7 @@
             this.guna2GradientButton2.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.guna2GradientButton2.ForeColor = System.Drawing.Color.Black;
             this.guna2GradientButton2.HoverState.Parent = this.guna2GradientButton2;
-            this.guna2GradientButton2.Location = new System.Drawing.Point(71, 557);
+            this.guna2GradientButton2.Location = new System.Drawing.Point(157, 644);
             this.guna2GradientButton2.Name = "guna2GradientButton2";
             this.guna2GradientButton2.ShadowDecoration.Parent = this.guna2GradientButton2;
             this.guna2GradientButton2.Size = new System.Drawing.Size(120, 40);
@@ -398,7 +399,7 @@
             this.Controls.Add(this.pictureBox4);
             this.Controls.Add(this.pictureBox5);
             this.Name = "UserControl4";
-            this.Size = new System.Drawing.Size(930, 693);
+            this.Size = new System.Drawing.Size(1342, 737);
             this.Load += new System.EventHandler(this.UserControl4_Load);
             ((System.ComponentModel.ISupportInitialize)(this.bunifuCustomDataGrid1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
