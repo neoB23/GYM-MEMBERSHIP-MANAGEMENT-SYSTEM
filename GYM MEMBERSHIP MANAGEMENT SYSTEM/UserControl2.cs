@@ -137,8 +137,10 @@ namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM
             string hashedPassword = BCrypt.Net.BCrypt.HashPassword(txtpassword.Text);
 
             // Insert the new user into the database
-            MySqlCommand cmd = new MySqlCommand("INSERT INTO user_information(userFirstName, userLastName, userEmail, userAddress, userPhoneNumber, userGender, userCreatedDate, membershipplan) VALUES(@userFirstName, @userLastName, @userEmail, @userAddress, @userPhoneNumber, @userGender, @userCreatedDate, @membershipplan)", con);
+            MySqlCommand cmd = new MySqlCommand("INSERT INTO user_information(userFirstName, userLastName, userEmail, userAddress, userPhoneNumber, userGender, userCreatedDate, membershipplan, userCoach) VALUES(@userFirstName, @userLastName, @userEmail, @userAddress, @userPhoneNumber, @userGender, @userCreatedDate, @membershipplan, @userCoach)", con);
             con.Open();
+            cmd.Parameters.AddWithValue("@membershipplan", cmbmembership.SelectedItem.ToString());
+            cmd.Parameters.AddWithValue("@userCoach", cmbcoach.SelectedItem.ToString());
             cmd.Parameters.AddWithValue("@userFirstName", txtfirstname.Text);
             cmd.Parameters.AddWithValue("@userLastName", txtlastname.Text);
             cmd.Parameters.AddWithValue("@userEmail", txtemailadd.Text);
@@ -146,7 +148,6 @@ namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM
             cmd.Parameters.AddWithValue("@userPhoneNumber", txtphonenum.Text);
             cmd.Parameters.AddWithValue("@userGender", cmbgender.SelectedItem.ToString());
             cmd.Parameters.AddWithValue("@userCreatedDate", timepicker.Value);
-            cmd.Parameters.AddWithValue("@membershipplan", cmbmembership.SelectedItem.ToString());
             cmd.ExecuteNonQuery();
 
             // Retrieve the user ID of the newly inserted user
@@ -194,10 +195,14 @@ namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM
              "    ui.userPhoneNumber = @userPhoneNumber, " +
              "    ui.userGender = @userGender, " +
              "    ui.userCreatedDate = @userCreatedDate, " +
-             "    ui.membershipplan = @membershipplan " +
+             "    ui.membershipplan = @membershipplan, " +
+             "    ui.userCoach = @userCoach " +
              "WHERE ui.userFirstName = @userFirstName";
+                
 
                 cmd = new MySqlCommand(sql, con);
+                cmd.Parameters.AddWithValue("@membershipplan", cmbmembership.SelectedItem.ToString());
+                cmd.Parameters.AddWithValue("@userCoach", cmbcoach.SelectedItem.ToString());
                 cmd.Parameters.AddWithValue("@userFirstName", txtfirstname.Text);
                 cmd.Parameters.AddWithValue("@userLastName", txtlastname.Text);
                 cmd.Parameters.AddWithValue("@userUserName", txtusername.Text);
@@ -207,7 +212,7 @@ namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM
                 cmd.Parameters.AddWithValue("@userPhoneNumber", txtphonenum.Text);
                 cmd.Parameters.AddWithValue("@userAddress", txtadd.Text);
                 cmd.Parameters.AddWithValue("@userEmail", txtemailadd.Text);
-                cmd.Parameters.AddWithValue("@membershipplan", cmbmembership.SelectedItem.ToString());
+               
                 cmd.Parameters.AddWithValue("@userGender", cmbgender.SelectedItem.ToString());
                 con.Open();
                 int rowsAffected = cmd.ExecuteNonQuery();
@@ -235,7 +240,7 @@ namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM
                 con.Open();
                 string sql = @"
             SELECT ui.userFirstName AS `First Name`, ui.userLastName AS `Last Name`, ua.userUserName AS `Username`,
-                   ua.userPassword AS `Password`, ui.userEmail AS `Email`, ui.userAddress AS `Address`,
+                   ua.userPassword AS `Password`, ui.userEmail AS `Email`, ui.userAddress AS `Address`, ui.membershipplan AS membershipplan, ui.userCoach AS userCoach,
                    ui.userPhoneNumber AS `Phone Number`, ui.userGender AS `Gender`, ui.userCreatedDate AS `Created Account`,
                    ui.membershipplan AS `Membership Plan`
             FROM user_information ui
@@ -269,6 +274,8 @@ namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM
             txtemailadd.Text = "";
             txtpassword.Text = "";
             cmbgender.Text = "";
+            cmbmembership.Text = "";
+            cmbcoach.Text = "";
             txtphonenum.Text = "";
             txtadd.Text = "";
             timepicker.Value = DateTime.Now;
@@ -293,6 +300,14 @@ namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM
                         cmbgender.SelectedItem = null;
                     if (dataGridView2.Columns.Contains("Membership Plan") && dataGridView2.Rows[e.RowIndex].Cells["Membership Plan"].Value != null)
                         cmbmembership.SelectedItem = dataGridView2.Rows[e.RowIndex].Cells["Membership Plan"].Value.ToString();
+                    else
+                       cmbcoach.SelectedItem = null;
+                    if (dataGridView2.Columns.Contains("userCoach") && dataGridView2.Rows[e.RowIndex].Cells["userCoach"].Value != null)
+                        cmbgender.SelectedItem = dataGridView2.Rows[e.RowIndex].Cells["userCoach"].Value.ToString();
+                    else
+                        cmbmembership.SelectedItem = null;
+                    if (dataGridView2.Columns.Contains("membershipplan") && dataGridView2.Rows[e.RowIndex].Cells["membershipplan"].Value != null)
+                        cmbgender.SelectedItem = dataGridView2.Rows[e.RowIndex].Cells["membershipplan"].Value.ToString();
                     else
                         cmbmembership.SelectedItem = null;
                 }
@@ -402,6 +417,11 @@ namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM
         }
 
         private void txtusername_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cmbcoach_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }

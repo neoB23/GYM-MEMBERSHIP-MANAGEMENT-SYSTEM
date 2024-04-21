@@ -57,6 +57,12 @@
             this.label6 = new System.Windows.Forms.Label();
             this.cmbgender = new Guna.UI2.WinForms.Guna2ComboBox();
             this.pictureBox8 = new System.Windows.Forms.PictureBox();
+            this.label15 = new System.Windows.Forms.Label();
+            this.cmbmembership = new Guna.UI2.WinForms.Guna2ComboBox();
+            this.pictureBox5 = new System.Windows.Forms.PictureBox();
+            this.label16 = new System.Windows.Forms.Label();
+            this.cmbcoach = new Guna.UI2.WinForms.Guna2ComboBox();
+            this.pictureBox6 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -68,6 +74,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox11)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox12)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             this.SuspendLayout();
             // 
             // linkLabel1
@@ -385,12 +393,117 @@
             this.pictureBox8.TabIndex = 185;
             this.pictureBox8.TabStop = false;
             // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.ForeColor = System.Drawing.Color.White;
+            this.label15.Location = new System.Drawing.Point(560, 407);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(74, 15);
+            this.label15.TabIndex = 189;
+            this.label15.Text = "Membership";
+            this.label15.Click += new System.EventHandler(this.cmbmembership_Click);
+            // 
+            // cmbmembership
+            // 
+            this.cmbmembership.BackColor = System.Drawing.Color.Black;
+            this.cmbmembership.BorderColor = System.Drawing.Color.Transparent;
+            this.cmbmembership.BorderThickness = 0;
+            this.cmbmembership.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cmbmembership.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbmembership.FillColor = System.Drawing.Color.Transparent;
+            this.cmbmembership.FocusedColor = System.Drawing.Color.Empty;
+            this.cmbmembership.FocusedState.Parent = this.cmbmembership;
+            this.cmbmembership.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.cmbmembership.ForeColor = System.Drawing.Color.White;
+            this.cmbmembership.FormattingEnabled = true;
+            this.cmbmembership.HoverState.Parent = this.cmbmembership;
+            this.cmbmembership.ItemHeight = 30;
+            this.cmbmembership.Items.AddRange(new object[] {
+            "Per Day",
+            "Bronze",
+            "Silver",
+            "Gold"});
+            this.cmbmembership.ItemsAppearance.Parent = this.cmbmembership;
+            this.cmbmembership.Location = new System.Drawing.Point(561, 419);
+            this.cmbmembership.Name = "cmbmembership";
+            this.cmbmembership.ShadowDecoration.Parent = this.cmbmembership;
+            this.cmbmembership.Size = new System.Drawing.Size(188, 36);
+            this.cmbmembership.TabIndex = 187;
+            // 
+            // pictureBox5
+            // 
+            this.pictureBox5.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox5.BackgroundImage")));
+            this.pictureBox5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pictureBox5.Location = new System.Drawing.Point(546, 415);
+            this.pictureBox5.Name = "pictureBox5";
+            this.pictureBox5.Size = new System.Drawing.Size(216, 45);
+            this.pictureBox5.TabIndex = 188;
+            this.pictureBox5.TabStop = false;
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label16.ForeColor = System.Drawing.Color.White;
+            this.label16.Location = new System.Drawing.Point(876, 403);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(41, 15);
+            this.label16.TabIndex = 192;
+            this.label16.Text = "Coach";
+            // 
+            // cmbcoach
+            // 
+            this.cmbcoach.BackColor = System.Drawing.Color.Black;
+            this.cmbcoach.BorderColor = System.Drawing.Color.Transparent;
+            this.cmbcoach.BorderThickness = 0;
+            this.cmbcoach.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cmbcoach.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbcoach.FillColor = System.Drawing.Color.Transparent;
+            this.cmbcoach.FocusedColor = System.Drawing.Color.Empty;
+            this.cmbcoach.FocusedState.Parent = this.cmbcoach;
+            this.cmbcoach.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.cmbcoach.ForeColor = System.Drawing.Color.White;
+            this.cmbcoach.FormattingEnabled = true;
+            this.cmbcoach.HoverState.Parent = this.cmbcoach;
+            this.cmbcoach.ItemHeight = 30;
+            this.cmbcoach.Items.AddRange(new object[] {
+            "None",
+            "Coach Lili",
+            "Coach Alex",
+            "Coach James",
+            "Random Available Coach"});
+            this.cmbcoach.ItemsAppearance.Parent = this.cmbcoach;
+            this.cmbcoach.Location = new System.Drawing.Point(877, 415);
+            this.cmbcoach.Name = "cmbcoach";
+            this.cmbcoach.ShadowDecoration.Parent = this.cmbcoach;
+            this.cmbcoach.Size = new System.Drawing.Size(188, 36);
+            this.cmbcoach.TabIndex = 190;
+            this.cmbcoach.SelectedIndexChanged += new System.EventHandler(this.guna2ComboBox2_SelectedIndexChanged);
+            // 
+            // pictureBox6
+            // 
+            this.pictureBox6.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox6.BackgroundImage")));
+            this.pictureBox6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pictureBox6.Location = new System.Drawing.Point(862, 411);
+            this.pictureBox6.Name = "pictureBox6";
+            this.pictureBox6.Size = new System.Drawing.Size(216, 45);
+            this.pictureBox6.TabIndex = 191;
+            this.pictureBox6.TabStop = false;
+            // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.ClientSize = new System.Drawing.Size(1176, 638);
+            this.Controls.Add(this.label16);
+            this.Controls.Add(this.cmbcoach);
+            this.Controls.Add(this.pictureBox6);
+            this.Controls.Add(this.label15);
+            this.Controls.Add(this.cmbmembership);
+            this.Controls.Add(this.pictureBox5);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.cmbgender);
             this.Controls.Add(this.pictureBox8);
@@ -433,6 +546,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox11)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox12)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -466,5 +581,11 @@
         private System.Windows.Forms.Label label6;
         private Guna.UI2.WinForms.Guna2ComboBox cmbgender;
         private System.Windows.Forms.PictureBox pictureBox8;
+        private System.Windows.Forms.Label label16;
+        private Guna.UI2.WinForms.Guna2ComboBox cmbcoach;
+        private System.Windows.Forms.PictureBox pictureBox6;
+        private System.Windows.Forms.Label label15;
+        private Guna.UI2.WinForms.Guna2ComboBox cmbmembership;
+        private System.Windows.Forms.PictureBox pictureBox5;
     }
 }

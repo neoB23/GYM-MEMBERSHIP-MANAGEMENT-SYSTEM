@@ -212,7 +212,7 @@
             this.bntMenu.Padding = new System.Windows.Forms.Padding(25, 0, 0, 0);
             this.bntMenu.Size = new System.Drawing.Size(307, 77);
             this.bntMenu.TabIndex = 3;
-            this.bntMenu.Text = "             Profile";
+            this.bntMenu.Text = "             Home";
             this.bntMenu.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.bntMenu.UseVisualStyleBackColor = false;
             this.bntMenu.Click += new System.EventHandler(this.button1_Click);

@@ -109,11 +109,11 @@
             this.bunifuCustomLabel5.AutoSize = true;
             this.bunifuCustomLabel5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bunifuCustomLabel5.ForeColor = System.Drawing.Color.White;
-            this.bunifuCustomLabel5.Location = new System.Drawing.Point(41, 161);
+            this.bunifuCustomLabel5.Location = new System.Drawing.Point(32, 182);
             this.bunifuCustomLabel5.Name = "bunifuCustomLabel5";
-            this.bunifuCustomLabel5.Size = new System.Drawing.Size(27, 20);
+            this.bunifuCustomLabel5.Size = new System.Drawing.Size(51, 20);
             this.bunifuCustomLabel5.TabIndex = 9;
-            this.bunifuCustomLabel5.Text = "??";
+            this.bunifuCustomLabel5.Text = "Stats:";
             this.bunifuCustomLabel5.Click += new System.EventHandler(this.bunifuCustomLabel5_Click);
             // 
             // bunifuCustomLabel4

@@ -19,9 +19,6 @@ using SYSTEM_GYM;
 
 namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM
 {
-
-    //missing function:
-    //bawal pareparehas password
     public partial class Form2 : Form
     {
         MySqlConnection con = new MySqlConnection("server=localhost;user id=root;database=gym membership management;sslMode=none");
@@ -199,7 +196,7 @@ namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM
 
         }
 
-       
+
 
         private void BntRegister_Click(object sender, EventArgs e)
         {
@@ -269,7 +266,7 @@ namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM
             try
             {
                 con.Open();
-                string sql = "INSERT INTO user_information (userFirstName, userLastName, userEmail, userAddress, userPhoneNumber, userGender) VALUES (@userFirstName, @userLastName, @userEmail, @userAddress, @userPhoneNumber, @userGender)";
+                string sql = "INSERT INTO user_information (userFirstName, userLastName, userEmail, userAddress, userPhoneNumber, userGender, membershipplan, userCoach) VALUES (@userFirstName, @userLastName, @userEmail, @userAddress, @userPhoneNumber, @userGender, @membershipplan, @userCoach)";
                 MySqlCommand cmd = new MySqlCommand(sql, con);
                 cmd.Parameters.AddWithValue("@userFirstName", txtfirstname.Text);
                 cmd.Parameters.AddWithValue("@userLastName", txtlastname.Text);
@@ -277,12 +274,17 @@ namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM
                 cmd.Parameters.AddWithValue("@userAddress", txtadd.Text);
                 cmd.Parameters.AddWithValue("@userPhoneNumber", txtphonenum.Text);
                 cmd.Parameters.AddWithValue("@userGender", cmbgender.SelectedItem.ToString());
+                cmd.Parameters.AddWithValue("@membershipplan", cmbmembership.SelectedItem != null ? cmbmembership.SelectedItem.ToString() : string.Empty); // Check if cmbmembership.SelectedItem is not null
+                cmd.Parameters.AddWithValue("@userCoach", cmbcoach.SelectedItem != null ? cmbcoach.SelectedItem.ToString() : string.Empty); // Check if cmbcoach.SelectedItem is not null
                 cmd.ExecuteNonQuery();
                 MessageBox.Show("Applied to Membership Successfully");
-
                 this.Hide();
                 formmessage formmessage = new formmessage();
-                formmessage.Show();
+                formmessage.stdName = txtfirstname.Text;
+                formmessage.stdMembership = cmbmembership.Text;
+                formmessage.ShowDialog();
+
+                this.Hide();
             }
             catch (MySqlException ex)
             {
@@ -295,7 +297,7 @@ namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM
         }
 
 
-        private void bunifuCheckbox1_OnChange_1(object sender, EventArgs e)
+            private void bunifuCheckbox1_OnChange_1(object sender, EventArgs e)
         {
 
         }
@@ -334,6 +336,16 @@ namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM
         }
 
         private void bnthide_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void guna2ComboBox2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cmbmembership_Click(object sender, EventArgs e)
         {
 
         }

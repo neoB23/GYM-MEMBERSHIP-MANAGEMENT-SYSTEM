@@ -82,6 +82,16 @@ namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM.UI
             }
         }
 
+        private void bunifuCheckbox1_OnChange(object sender, EventArgs e)
+        {
+
+        }
+
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+
+        }
+
         private void goldtimer_Tick(object sender, EventArgs e)
         {
             if (Opacity >= 1)

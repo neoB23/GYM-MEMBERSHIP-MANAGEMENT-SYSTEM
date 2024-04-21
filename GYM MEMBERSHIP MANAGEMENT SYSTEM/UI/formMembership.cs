@@ -1,4 +1,5 @@
-﻿using GYM_MEMBERSHIP_MANAGEMENT_SYSTEM;
+﻿using Bunifu.Framework.UI;
+using GYM_MEMBERSHIP_MANAGEMENT_SYSTEM;
 using GYM_MEMBERSHIP_MANAGEMENT_SYSTEM.UI;
 using System;
 using System.Collections.Generic;
@@ -264,6 +265,16 @@ namespace SYSTEM_GYM
         private void Silver_FormClosed(object sender, FormClosedEventArgs e)
         {
             silver = null;
+        }
+
+        private void guna2Button1_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pictureBox13_Click(object sender, EventArgs e)
+        {
+
         }
 
         private void bntgold_Click(object sender, EventArgs e)

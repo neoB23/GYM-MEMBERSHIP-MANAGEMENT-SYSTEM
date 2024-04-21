@@ -216,6 +216,12 @@
     <Compile Include="UI\CoachLilli.Designer.cs">
       <DependentUpon>CoachLilli.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\Form4.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Form4.Designer.cs">
+      <DependentUpon>Form4.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\formbarbel.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -257,12 +263,6 @@
     </Compile>
     <Compile Include="UI\formMembership.Designer.cs">
       <DependentUpon>formMembership.cs</DependentUpon>
-    </Compile>
-    <Compile Include="UI\formprofile.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="UI\formprofile.Designer.cs">
-      <DependentUpon>formprofile.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\formmessage.cs">
       <SubType>Form</SubType>
@@ -371,6 +371,9 @@
     <EmbeddedResource Include="UI\CoachLilli.resx">
       <DependentUpon>CoachLilli.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UI\Form4.resx">
+      <DependentUpon>Form4.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\formbarbel.resx">
       <DependentUpon>formbarbel.cs</DependentUpon>
     </EmbeddedResource>
@@ -391,9 +394,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\formMembership.resx">
       <DependentUpon>formMembership.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UI\formprofile.resx">
-      <DependentUpon>formprofile.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\formmessage.resx">
       <DependentUpon>formmessage.cs</DependentUpon>

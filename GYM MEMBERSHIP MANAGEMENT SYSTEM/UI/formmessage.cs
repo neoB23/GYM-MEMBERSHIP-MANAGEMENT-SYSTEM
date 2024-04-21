@@ -13,6 +13,9 @@ namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM.UI
 {
     public partial class formmessage : Form
     {
+        public string stdName { get; set; }
+        public string stdMembership {  get; set; }
+
         public formmessage()
         {
             InitializeComponent();
@@ -39,6 +42,31 @@ namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM.UI
 
             formMembership.Show();
             this.Hide();
+        }
+
+        private void label6_Click(object sender, EventArgs e)
+        {
+           
+        }
+
+        private void label6_Click_1(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void label5_Click(object sender, EventArgs e)
+        {
+           
+        }
+
+        private void label7_Click(object sender, EventArgs e)
+        {
+            label7.Text = stdName;
+        }
+
+        private void label6_Click_2(object sender, EventArgs e)
+        {
+            label6.Text = stdMembership;
         }
     }
 }

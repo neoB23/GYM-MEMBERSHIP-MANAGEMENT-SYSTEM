@@ -40,7 +40,6 @@
             this.guna2PictureBox2 = new Guna.UI2.WinForms.Guna2PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.bntperksgold = new Guna.UI2.WinForms.Guna2Button();
@@ -77,11 +76,11 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Century Schoolbook", 26.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(269, 539);
+            this.label3.Location = new System.Drawing.Point(327, 550);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(147, 40);
+            this.label3.Size = new System.Drawing.Size(167, 40);
             this.label3.TabIndex = 22;
-            this.label3.Text = "2700.00";
+            this.label3.Text = "$8000.00";
             // 
             // guna2PictureBox4
             // 
@@ -185,17 +184,6 @@
             this.pictureBox2.TabIndex = 20;
             this.pictureBox2.TabStop = false;
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Century Schoolbook", 26.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(414, 539);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(164, 40);
-            this.label1.TabIndex = 25;
-            this.label1.Text = "Monthly";
-            // 
             // label4
             // 
             this.label4.AutoSize = true;
@@ -246,6 +234,7 @@
             this.bunifuCheckbox1.Name = "bunifuCheckbox1";
             this.bunifuCheckbox1.Size = new System.Drawing.Size(20, 20);
             this.bunifuCheckbox1.TabIndex = 180;
+            this.bunifuCheckbox1.OnChange += new System.EventHandler(this.bunifuCheckbox1_OnChange);
             // 
             // linkLabel1
             // 
@@ -258,6 +247,7 @@
             this.linkLabel1.TabIndex = 179;
             this.linkLabel1.TabStop = true;
             this.linkLabel1.Text = "Agreement to Terms and Conditions";
+            this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
             // 
             // goldtimer
             // 
@@ -326,7 +316,6 @@
             this.Controls.Add(this.bntperksgold);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.guna2PictureBox4);
             this.Controls.Add(this.guna2PictureBox3);
@@ -369,7 +358,6 @@
         private Guna.UI2.WinForms.Guna2PictureBox guna2PictureBox2;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox pictureBox2;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private Guna.UI2.WinForms.Guna2Button bntperksgold;

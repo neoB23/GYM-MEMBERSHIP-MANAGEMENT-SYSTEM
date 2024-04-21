@@ -192,9 +192,9 @@
             this.label4.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.label4.Location = new System.Drawing.Point(477, 395);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(122, 28);
+            this.label4.Size = new System.Drawing.Size(128, 28);
             this.label4.TabIndex = 34;
-            this.label4.Text = "treatmill";
+            this.label4.Text = "treadmill";
             // 
             // label5
             // 

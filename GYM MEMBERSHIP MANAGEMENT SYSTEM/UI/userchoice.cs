@@ -17,7 +17,7 @@ namespace SYSTEM_GYM
 {
     public partial class userchoice : Form
     {
-        formprofile profile;
+        Form4 homepage;
         CoachLilli lilli;
         CoachJames james;
         CoachAlex alex;
@@ -123,24 +123,27 @@ namespace SYSTEM_GYM
         }
         private void button1_Click(object sender, EventArgs e)
         {
-            if (profile == null)
+            if (homepage == null)
             {
-                profile = new formprofile();
-                profile.FormClosed += Profile_FormClosed;
-                profile.MdiParent = this;
-                profile.Dock = DockStyle.Fill;
-                profile.Show();
+                homepage = new Form4();
+                homepage.FormClosed += homepage_FormClosed;
+                homepage.MdiParent = this;
+                homepage.Dock = DockStyle.Fill;
+                homepage.Show();
             }
             else
             {
-                profile.Activate();
+                homepage.Activate();
             }
-            label2.Text = "Profile";
+        }
+        private void homepage_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            homepage = null;
         }
 
         private void Profile_FormClosed(object sender, FormClosedEventArgs e)
         {
-            profile = null;
+           
         }
 
         private void bntcoachlilli_Click(object sender, EventArgs e)
@@ -194,6 +197,10 @@ namespace SYSTEM_GYM
                 alex.MdiParent = this;
                 alex.Dock = DockStyle.Fill;
                 alex.Show();
+            }
+            else
+            {
+                alex.Activate();
             }
         }
 

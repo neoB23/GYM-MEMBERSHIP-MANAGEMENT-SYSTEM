@@ -51,6 +51,7 @@
             this.bntbronze = new Guna.UI2.WinForms.Guna2Button();
             this.bntsilver = new Guna.UI2.WinForms.Guna2Button();
             this.bntgold = new Guna.UI2.WinForms.Guna2Button();
+            this.guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picboxrange)).BeginInit();
@@ -340,12 +341,29 @@
             this.bntgold.TabIndex = 30;
             this.bntgold.Click += new System.EventHandler(this.bntgold_Click);
             // 
+            // guna2Button1
+            // 
+            this.guna2Button1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("guna2Button1.BackgroundImage")));
+            this.guna2Button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.guna2Button1.CheckedState.Parent = this.guna2Button1;
+            this.guna2Button1.CustomImages.Parent = this.guna2Button1;
+            this.guna2Button1.FillColor = System.Drawing.Color.Transparent;
+            this.guna2Button1.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.guna2Button1.ForeColor = System.Drawing.Color.White;
+            this.guna2Button1.HoverState.Parent = this.guna2Button1;
+            this.guna2Button1.Location = new System.Drawing.Point(605, 639);
+            this.guna2Button1.Name = "guna2Button1";
+            this.guna2Button1.ShadowDecoration.Parent = this.guna2Button1;
+            this.guna2Button1.Size = new System.Drawing.Size(128, 48);
+            this.guna2Button1.TabIndex = 31;
+            // 
             // formMembership
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.MenuText;
             this.ClientSize = new System.Drawing.Size(1315, 732);
+            this.Controls.Add(this.guna2Button1);
             this.Controls.Add(this.bntgold);
             this.Controls.Add(this.bntsilver);
             this.Controls.Add(this.bntbronze);
@@ -416,5 +434,6 @@
         private Guna.UI2.WinForms.Guna2Button bntbronze;
         private Guna.UI2.WinForms.Guna2Button bntsilver;
         private Guna.UI2.WinForms.Guna2Button bntgold;
+        private Guna.UI2.WinForms.Guna2Button guna2Button1;
     }
 }

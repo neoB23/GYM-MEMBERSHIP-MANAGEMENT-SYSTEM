@@ -27,9 +27,10 @@ namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM
 
         private void BntRegister_Click(object sender, EventArgs e)
         {
-            string passwordPattern = @"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^\da-zA-Z]).{8,}$";
+            string passwordPattern = @"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^\da-zA-Z]).{8,14}$"; // Updated password pattern
             int minimumUsernameLength = 6;
             int minimumPasswordLength = 8;
+            int maximumPasswordLength = 14; // Added maximum password length
 
             if (string.IsNullOrWhiteSpace(txtusername.Text) || string.IsNullOrWhiteSpace(txtpassword.Text) || string.IsNullOrWhiteSpace(txtconfirmpass.Text))
             {
@@ -46,8 +47,8 @@ namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM
 
             if (!Regex.IsMatch(txtpassword.Text, passwordPattern))
             {
-                errorProvider1.SetError(txtpassword, "Password must contain at least one uppercase letter, one lowercase letter, one special character, one number, and be at least 8 characters long");
-                MessageBox.Show("Password must contain at least one uppercase letter, one lowercase letter, one special character, one number, and be at least 8 characters long", "Error");
+                errorProvider1.SetError(txtpassword, $"Password must contain at least one uppercase letter, one lowercase letter, one special character, one number, and be between {minimumPasswordLength} and {maximumPasswordLength} characters long");
+                MessageBox.Show($"Password must contain at least one uppercase letter, one lowercase letter, one special character, one number, and be between {minimumPasswordLength} and {maximumPasswordLength} characters long", "Error");
                 return;
             }
 
@@ -58,12 +59,13 @@ namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM
                 return;
             }
 
-            if (txtpassword.Text.Length < minimumPasswordLength)
+            if (txtpassword.Text.Length < minimumPasswordLength || txtpassword.Text.Length > maximumPasswordLength)
             {
-                errorProvider1.SetError(txtpassword, $"Password must be at least {minimumPasswordLength} characters long");
-                MessageBox.Show($"Password must be at least {minimumPasswordLength} characters long", "Error");
+                errorProvider1.SetError(txtpassword, $"Password must be between {minimumPasswordLength} and {maximumPasswordLength} characters long");
+                MessageBox.Show($"Password must be between {minimumPasswordLength} and {maximumPasswordLength} characters long", "Error");
                 return;
             }
+
             try
             {
                 con.Open();
@@ -103,6 +105,8 @@ namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM
                 con.Close();
             }
         }
+
+
         private void pictureBox12_Click(object sender, EventArgs e)
         {
             Form1 form1 = new Form1();

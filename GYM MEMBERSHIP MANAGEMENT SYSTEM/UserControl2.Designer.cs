@@ -66,6 +66,9 @@
             this.txtusername = new Guna.UI2.WinForms.Guna2TextBox();
             this.txtpassword = new Guna.UI2.WinForms.Guna2TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.cmbcoach = new Guna.UI2.WinForms.Guna2ComboBox();
+            this.pictureBox12 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -78,6 +81,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox11)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox12)).BeginInit();
             this.SuspendLayout();
             // 
             // guna2GradientButton1
@@ -141,7 +145,7 @@
             this.timepicker.ForeColor = System.Drawing.Color.White;
             this.timepicker.Format = System.Windows.Forms.DateTimePickerFormat.Long;
             this.timepicker.HoverState.Parent = this.timepicker;
-            this.timepicker.Location = new System.Drawing.Point(967, 125);
+            this.timepicker.Location = new System.Drawing.Point(939, 125);
             this.timepicker.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
             this.timepicker.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
             this.timepicker.Name = "timepicker";
@@ -166,7 +170,7 @@
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(964, 45);
+            this.label4.Location = new System.Drawing.Point(936, 45);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(98, 16);
             this.label4.TabIndex = 108;
@@ -177,7 +181,7 @@
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.White;
-            this.label5.Location = new System.Drawing.Point(611, 111);
+            this.label5.Location = new System.Drawing.Point(583, 111);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(61, 16);
             this.label5.TabIndex = 109;
@@ -188,7 +192,7 @@
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.White;
-            this.label6.Location = new System.Drawing.Point(855, 112);
+            this.label6.Location = new System.Drawing.Point(827, 112);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(55, 16);
             this.label6.TabIndex = 110;
@@ -225,7 +229,7 @@
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.ForeColor = System.Drawing.Color.White;
-            this.label7.Location = new System.Drawing.Point(606, 44);
+            this.label7.Location = new System.Drawing.Point(578, 44);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(100, 16);
             this.label7.TabIndex = 112;
@@ -247,7 +251,7 @@
             this.txtemailadd.FocusedState.Parent = this.txtemailadd;
             this.txtemailadd.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtemailadd.HoverState.Parent = this.txtemailadd;
-            this.txtemailadd.Location = new System.Drawing.Point(963, 59);
+            this.txtemailadd.Location = new System.Drawing.Point(935, 59);
             this.txtemailadd.Name = "txtemailadd";
             this.txtemailadd.PasswordChar = '\0';
             this.txtemailadd.PlaceholderText = "";
@@ -273,7 +277,7 @@
             this.txtadd.FocusedState.Parent = this.txtadd;
             this.txtadd.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtadd.HoverState.Parent = this.txtadd;
-            this.txtadd.Location = new System.Drawing.Point(605, 126);
+            this.txtadd.Location = new System.Drawing.Point(577, 126);
             this.txtadd.Name = "txtadd";
             this.txtadd.PasswordChar = '\0';
             this.txtadd.PlaceholderText = "";
@@ -298,7 +302,7 @@
             this.txtphonenum.FocusedState.Parent = this.txtphonenum;
             this.txtphonenum.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtphonenum.HoverState.Parent = this.txtphonenum;
-            this.txtphonenum.Location = new System.Drawing.Point(605, 59);
+            this.txtphonenum.Location = new System.Drawing.Point(577, 59);
             this.txtphonenum.Name = "txtphonenum";
             this.txtphonenum.PasswordChar = '\0';
             this.txtphonenum.PlaceholderText = "";
@@ -348,7 +352,7 @@
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.ForeColor = System.Drawing.Color.White;
-            this.label8.Location = new System.Drawing.Point(814, 44);
+            this.label8.Location = new System.Drawing.Point(786, 44);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(112, 16);
             this.label8.TabIndex = 125;
@@ -388,7 +392,7 @@
             // 
             this.pictureBox5.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox5.BackgroundImage")));
             this.pictureBox5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pictureBox5.Location = new System.Drawing.Point(602, 54);
+            this.pictureBox5.Location = new System.Drawing.Point(574, 54);
             this.pictureBox5.Name = "pictureBox5";
             this.pictureBox5.Size = new System.Drawing.Size(200, 36);
             this.pictureBox5.TabIndex = 133;
@@ -418,7 +422,7 @@
             // 
             this.pictureBox6.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox6.BackgroundImage")));
             this.pictureBox6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pictureBox6.Location = new System.Drawing.Point(808, 54);
+            this.pictureBox6.Location = new System.Drawing.Point(780, 54);
             this.pictureBox6.Name = "pictureBox6";
             this.pictureBox6.Size = new System.Drawing.Size(144, 36);
             this.pictureBox6.TabIndex = 138;
@@ -428,7 +432,7 @@
             // 
             this.pictureBox7.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox7.BackgroundImage")));
             this.pictureBox7.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pictureBox7.Location = new System.Drawing.Point(603, 121);
+            this.pictureBox7.Location = new System.Drawing.Point(575, 121);
             this.pictureBox7.Name = "pictureBox7";
             this.pictureBox7.Size = new System.Drawing.Size(240, 36);
             this.pictureBox7.TabIndex = 139;
@@ -438,7 +442,7 @@
             // 
             this.pictureBox8.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox8.BackgroundImage")));
             this.pictureBox8.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pictureBox8.Location = new System.Drawing.Point(848, 121);
+            this.pictureBox8.Location = new System.Drawing.Point(820, 121);
             this.pictureBox8.Name = "pictureBox8";
             this.pictureBox8.Size = new System.Drawing.Size(107, 36);
             this.pictureBox8.TabIndex = 140;
@@ -448,7 +452,7 @@
             // 
             this.pictureBox9.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox9.BackgroundImage")));
             this.pictureBox9.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pictureBox9.Location = new System.Drawing.Point(961, 54);
+            this.pictureBox9.Location = new System.Drawing.Point(933, 54);
             this.pictureBox9.Name = "pictureBox9";
             this.pictureBox9.Size = new System.Drawing.Size(166, 36);
             this.pictureBox9.TabIndex = 141;
@@ -458,7 +462,7 @@
             // 
             this.pictureBox10.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox10.BackgroundImage")));
             this.pictureBox10.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pictureBox10.Location = new System.Drawing.Point(964, 121);
+            this.pictureBox10.Location = new System.Drawing.Point(936, 121);
             this.pictureBox10.Name = "pictureBox10";
             this.pictureBox10.Size = new System.Drawing.Size(181, 36);
             this.pictureBox10.TabIndex = 142;
@@ -482,7 +486,7 @@
             "Female",
             "Male"});
             this.cmbgender.ItemsAppearance.Parent = this.cmbgender;
-            this.cmbgender.Location = new System.Drawing.Point(854, 126);
+            this.cmbgender.Location = new System.Drawing.Point(826, 126);
             this.cmbgender.Name = "cmbgender";
             this.cmbgender.ShadowDecoration.Parent = this.cmbgender;
             this.cmbgender.Size = new System.Drawing.Size(95, 26);
@@ -508,7 +512,7 @@
             "Silver",
             "Gold"});
             this.cmbmembership.ItemsAppearance.Parent = this.cmbmembership;
-            this.cmbmembership.Location = new System.Drawing.Point(834, 59);
+            this.cmbmembership.Location = new System.Drawing.Point(806, 59);
             this.cmbmembership.Name = "cmbmembership";
             this.cmbmembership.ShadowDecoration.Parent = this.cmbmembership;
             this.cmbmembership.Size = new System.Drawing.Size(115, 26);
@@ -633,11 +637,64 @@
             this.label1.TabIndex = 122;
             this.label1.Text = "Username:";
             // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label16.ForeColor = System.Drawing.Color.White;
+            this.label16.Location = new System.Drawing.Point(1123, 44);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(41, 15);
+            this.label16.TabIndex = 195;
+            this.label16.Text = "Coach";
+            // 
+            // cmbcoach
+            // 
+            this.cmbcoach.BackColor = System.Drawing.Color.Black;
+            this.cmbcoach.BorderColor = System.Drawing.Color.Transparent;
+            this.cmbcoach.BorderThickness = 0;
+            this.cmbcoach.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cmbcoach.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbcoach.FillColor = System.Drawing.Color.Transparent;
+            this.cmbcoach.FocusedColor = System.Drawing.Color.Empty;
+            this.cmbcoach.FocusedState.Parent = this.cmbcoach;
+            this.cmbcoach.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.cmbcoach.ForeColor = System.Drawing.Color.White;
+            this.cmbcoach.FormattingEnabled = true;
+            this.cmbcoach.HoverState.Parent = this.cmbcoach;
+            this.cmbcoach.ItemHeight = 30;
+            this.cmbcoach.Items.AddRange(new object[] {
+            "None",
+            "Coach Lili",
+            "Coach Alex",
+            "Coach James",
+            "Random Available Coach"});
+            this.cmbcoach.ItemsAppearance.Parent = this.cmbcoach;
+            this.cmbcoach.Location = new System.Drawing.Point(1124, 56);
+            this.cmbcoach.Name = "cmbcoach";
+            this.cmbcoach.ShadowDecoration.Parent = this.cmbcoach;
+            this.cmbcoach.Size = new System.Drawing.Size(188, 36);
+            this.cmbcoach.TabIndex = 193;
+            this.cmbcoach.SelectedIndexChanged += new System.EventHandler(this.cmbcoach_SelectedIndexChanged);
+            // 
+            // pictureBox12
+            // 
+            this.pictureBox12.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox12.BackgroundImage")));
+            this.pictureBox12.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pictureBox12.Location = new System.Drawing.Point(1109, 52);
+            this.pictureBox12.Name = "pictureBox12";
+            this.pictureBox12.Size = new System.Drawing.Size(216, 45);
+            this.pictureBox12.TabIndex = 194;
+            this.pictureBox12.TabStop = false;
+            // 
             // UserControl2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
+            this.Controls.Add(this.label16);
+            this.Controls.Add(this.cmbcoach);
+            this.Controls.Add(this.pictureBox12);
             this.Controls.Add(this.bunifuTextbox1);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.pictureBox11);
@@ -688,6 +745,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox11)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox12)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -730,5 +788,8 @@
         private Guna.UI2.WinForms.Guna2TextBox txtusername;
         private Guna.UI2.WinForms.Guna2TextBox txtpassword;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label16;
+        private Guna.UI2.WinForms.Guna2ComboBox cmbcoach;
+        private System.Windows.Forms.PictureBox pictureBox12;
     }
 }

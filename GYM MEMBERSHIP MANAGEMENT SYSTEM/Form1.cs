@@ -21,7 +21,7 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 using BCrypt.Net;
 using System.Security.Cryptography;
 using SYSTEM_GYM;
-using static SYSTEM_GYM.formprofile;
+
 
 
 
@@ -194,7 +194,6 @@ namespace GYM_MEMBERSHIP_MANAGEMENT_SYSTEM
                     if (BCrypt.Net.BCrypt.Verify(txtpassword.Text, passwordFromDatabase))
                     {
                         MessageBox.Show("Admin Login Successful");
-                        SessionManager.SetLoggedInUsername(txtusername.Text);
                         sql = "INSERT INTO login_history_admin (username, time_in) VALUES (@username, NOW())";
                         cmd = new MySqlCommand(sql, con);
                         cmd.Parameters.AddWithValue("@username", txtusername.Text);
